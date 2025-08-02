@@ -1,0 +1,3640 @@
+[
+    {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100000,
+    "difficulty": "easy",
+    "type": "single",
+    "question": "What is the primary role of the Java Virtual Machine (JVM)?",
+    "choices": {
+      "0": "To compile Java source code into bytecode.",
+      "1": "To execute Java bytecode on a specific platform.",
+      "2": "To manage Java libraries and APIs.",
+      "3": "To provide development tools for Java applications."
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100001,
+    "difficulty": "easy",
+    "type": "single",
+    "question": "Which command is used to compile a Java source file named \\texttt{MyClass.java}?",
+    "choices": {
+      "0": "\\texttt{java MyClass}",
+      "1": "\\texttt{javac MyClass.java}",
+      "2": "\\texttt{javadoc MyClass}",
+      "3": "\\texttt{jar MyClass.java}"
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100002,
+    "difficulty": "easy",
+    "type": "single",
+    "question": "What is the most common and standard correct signature for the \\texttt{main} method in a Java application?",
+    "choices": {
+      "0": "\\texttt{public static void main(String[] args)}",
+      "1": "\\texttt{public void main(String[] args)}",
+      "2": "\\texttt{static void main(String... args)}",
+      "3": "\\texttt{public static int main(String[] args)}"
+    },
+    "answers": [0]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100003,
+    "difficulty": "easy",
+    "type": "single",
+    "question": "Which component provides the runtime environment for executing Java applications, but does not include development tools?",
+    "choices": {
+      "0": "JDK",
+      "1": "JRE",
+      "2": "JVM",
+      "3": "JIT"
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100004,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "Consider the following Java code:\n\\texttt{\npublic class Test \{\n\\quad public static void main(String[] args) \{\n\\quad \\quad System.out.println(\"Hello\");\n\\quad \}\n\}\n}\nIf this code is saved as \\texttt{Test.java}, which command will successfully compile it?",
+    "choices": {
+      "0": "\\texttt{javac Test}",
+      "1": "\\texttt{javac Test.java}",
+      "2": "\\texttt{java Test}",
+      "3": "\\texttt{java Test.java}"
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100005,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "You have a compiled Java class file named \\texttt{MyApp.class} located in the directory \\texttt{/home/user/java/bin}. You are currently in the directory \\texttt{/home/user}. Which command will correctly execute \\texttt{MyApp}?",
+    "choices": {
+      "0": "\\texttt{java MyApp}",
+      "1": "\\texttt{java -classpath java/bin MyApp}",
+      "2": "\\texttt{java -cp /home/user/java/bin MyApp}",
+      "3": "\\texttt{java -classpath /home/user/java/bin MyApp.class}"
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100006,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "What happens if you try to compile a Java source file that contains a syntax error?",
+    "choices": {
+      "0": "The program will compile but throw a runtime exception.",
+      "1": "The compiler will generate a warning but produce a \\texttt{.class} file.",
+      "2": "The compiler will report an error and not produce a \\texttt{.class} file.",
+      "3": "The JVM will attempt to fix the error during execution."
+    },
+    "answers": [2]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100007,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "Which of the following statements about the \\texttt{main} method is true?",
+    "choices": {
+      "0": "It must always be declared as \\texttt{public final}.",
+      "1": "It can return any primitive type.",
+      "2": "It is the entry point for a Java application.",
+      "3": "It can be overloaded with different parameters and still be the application entry point."
+    },
+    "answers": [2]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100008,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "What is the primary purpose of the \\texttt{CLASSPATH} environment variable or the \\texttt{-cp} command-line option?",
+    "choices": {
+      "0": "To specify the location of Java source files.",
+      "1": "To specify the location of Java executable files (like \\texttt{java} and \\texttt{javac}).",
+      "2": "To specify the directories where the JVM should look for \\texttt{.class} files and \\texttt{.jar} files.",
+      "3": "To specify the version of the Java Development Kit to use."
+    },
+    "answers": [2]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100009,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "Consider the following code snippet:\n\\texttt{\nclass MyClass \{\n\\quad public static void main(String[] args) \{\n\\quad \\quad System.out.println(\"Hello Java!\");\n\\quad \}\n\}\n}\nIf this code is saved as \\texttt{MyClass.java}, compiled, and then executed using \\texttt{java MyClass}, what will be the output?",
+    "choices": {
+      "0": "\\texttt{Hello Java!}",
+      "1": "Compilation Error",
+      "2": "Runtime Error (e.g., \\texttt{NoClassDefFoundError})",
+      "3": "No output"
+    },
+    "answers": [0]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100010,
+    "difficulty": "medium",
+    "type": "multiple",
+    "question": "Which of the following are valid declarations for the \\texttt{main} method in a Java application?",
+    "choices": {
+      "0": "\\texttt{public static void main(String[] args)}",
+      "1": "\\texttt{static public void main(String... args)}",
+      "2": "\\texttt{public void main(String[] args)}",
+      "3": "\\texttt{public static void main(String args[])}",
+      "4": "\\texttt{public static final void main(String[] args)}",
+      "5": "\\texttt{private static void main(String[] args)}"
+    },
+    "answers": [0, 1, 3, 4]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100011,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "What is the primary difference between JDK and JRE?",
+    "choices": {
+      "0": "JDK is for executing Java applications, while JRE is for developing them.",
+      "1": "JDK includes development tools (like \\texttt{javac}), while JRE only includes the runtime environment (JVM and libraries).",
+      "2": "JRE includes the Java compiler, while JDK does not.",
+      "3": "JDK is platform-independent, while JRE is platform-dependent."
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100012,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "You compile a Java file \\texttt{App.java} which contains a class \\texttt{com.example.App}. The compiled \\texttt{.class} file is located in the \\texttt{project/bin/com/example/} directory. To run this class from the \\texttt{project} directory, which command would you use?",
+    "choices": {
+      "0": "\\texttt{java App}",
+      "1": "\\texttt{java com.example.App}",
+      "2": "\\texttt{java -cp bin com.example.App}",
+      "3": "\\texttt{java -cp . com.example.App}"
+    },
+    "answers": [2]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100013,
+    "difficulty": "medium",
+    "type": "multiple",
+    "question": "Which of the following are true statements regarding the Java compilation and execution process?",
+    "choices": {
+      "0": "The \\texttt{javac} command produces \\texttt{.jar} files.",
+      "1": "The JVM directly executes \\texttt{.java} source files.",
+      "2": "Java bytecode is designed to be platform-independent.",
+      "3": "The \\texttt{java} command requires a \\texttt{.class} file to execute a Java application.",
+      "4": "The JIT compiler translates bytecode into native machine code during runtime to improve performance."
+    },
+    "answers": [2, 3, 4]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100014,
+    "difficulty": "hard",
+    "type": "single",
+    "question": "Consider the following directory structure and files:\n\\texttt{\n/project\n\\quad /src\n\\quad \\quad /com\n\\quad \\quad \\quad /example\n\\quad \\quad \\quad \\quad MyClass.java\n\\quad /bin\n}\n\\texttt{MyClass.java} contains:\n\\texttt{\npackage com.example;\npublic class MyClass \{\n\\quad public static void main(String[] args) \{\n\\quad \\quad System.out.println(\"Running MyClass\");\n\\quad \}\n\}\n}\nYou are currently in the \\texttt{/project} directory. Which sequence of commands will successfully compile and run \\texttt{MyClass}?",
+    "choices": {
+      "0": "\\texttt{javac src/com/example/MyClass.java}\n\\texttt{java -cp src com.example.MyClass}",
+      "1": "\\texttt{javac src/com/example/MyClass.java}\n\\texttt{java -cp bin com.example.MyClass}",
+      "2": "\\texttt{javac -d bin src/com/example/MyClass.java}\n\\texttt{java -cp bin com.example.MyClass}",
+      "3": "\\texttt{javac -d bin src/com/example/MyClass.java}\n\\texttt{java com.example.MyClass}"
+    },
+    "answers": [2]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100015,
+    "difficulty": "hard",
+    "type": "single",
+    "question": "You have a Java application with multiple classes. One of them, \\texttt{MainApp.java}, contains the \\texttt{main} method. If you compile all files successfully and then try to run \\texttt{MainApp} using \\texttt{java MainApp}, but you get a \\texttt{NoClassDefFoundError} for another class, \\texttt{HelperClass}, what is the most likely reason?",
+    "choices": {
+      "0": "\\texttt{HelperClass.java} was not compiled into a \\texttt{.class} file.",
+      "1": "\\texttt{HelperClass.class} is not found in the classpath at runtime.",
+      "2": "The \\texttt{main} method in \\texttt{MainApp} has an incorrect signature.",
+      "3": "There is a syntax error in \\texttt{HelperClass.java} that was somehow missed during compilation."
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100016,
+    "difficulty": "hard",
+    "type": "single",
+    "question": "Consider the following Java code:\n\\texttt{\npublic class EntryPoint \{\n\\quad public static void main(String... arguments) \{\n\\quad \\quad System.out.println(\"Arguments count: \" + arguments.length);\n\\quad \}\n\}\n}\nIf this code is compiled and executed using the command: \\texttt{java EntryPoint one \"two three\" four}, what will be the output?",
+    "choices": {
+      "0": "\\texttt{Arguments count: 3}",
+      "1": "\\texttt{Arguments count: 4}",
+      "2": "\\texttt{Arguments count: 2}",
+      "3": "Compilation Error"
+    },
+    "answers": [0]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100017,
+    "difficulty": "hard",
+    "type": "multiple",
+    "question": "Which of the following statements are true regarding the Java Development Kit (JDK)?",
+    "choices": {
+      "0": "It includes the Java Runtime Environment (JRE).",
+      "1": "It contains the Java compiler (\\texttt{javac}).",
+      "2": "It is strictly required to run any Java application.",
+      "3": "It includes tools for debugging and monitoring Java applications (e.g., \\texttt{jconsole}, \\texttt{jvisualvm}).",
+      "4": "The JDK itself is platform-independent, meaning one JDK installation works on any operating system."
+    },
+    "answers": [0, 1, 3]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100018,
+    "difficulty": "hard",
+    "type": "single",
+    "question": "You have a Java source file \\texttt{MyProgram.java} with the following content:\n\\texttt{\nclass MyProgram \{\n\\quad public static void main(String[] args) \{\n\\quad \\quad System.out.println(\"Hello\");\n\\quad \}\n\}\nclass AnotherClass \{\n\\quad // Some code\n\}\n}\nIf you compile this file using \\texttt{javac MyProgram.java}, what \\texttt{.class} files will be generated?",
+    "choices": {
+      "0": "\\texttt{MyProgram.class} only",
+      "1": "\\texttt{AnotherClass.class} only",
+      "2": "\\texttt{MyProgram.class} and \\texttt{AnotherClass.class}",
+      "3": "Compilation Error, as a single file cannot contain multiple classes."
+    },
+    "answers": [2]
+  },
+  {
+    "topicId": 1000,
+    "topic": "Java Environment and Fundamentals",
+    "questionID": 100019,
+    "difficulty": "hard",
+    "type": "single",
+    "question": "What is the consequence of declaring a class as \\texttt{public} in a Java source file when the file name does not exactly match the public class name (e.g., \\texttt{MyFile.java} contains \\texttt{public class MyClass})?",
+    "choices": {
+      "0": "The compilation will succeed, but a runtime error will occur when trying to load the class.",
+      "1": "The compilation will succeed with a warning, and the program will run normally.",
+      "2": "The compilation will fail with an error.",
+      "3": "The \\texttt{public} keyword will be ignored by the compiler, and the class will be treated as package-private."
+    },
+    "answers": [2]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100100,
+    "difficulty": "easy",
+    "type": "single",
+    "question": "What is the correct return type for the \\texttt{main} method in a standard Java application?",
+    "choices": {
+      "0": "\\texttt{void}",
+      "1": "\\texttt{int}",
+      "2": "\\texttt{String}",
+      "3": "\\texttt{boolean}"
+    },
+    "answers": [0]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100101,
+    "difficulty": "easy",
+    "type": "single",
+    "question": "What is the purpose of the \\texttt{static} keyword in the \\texttt{main} method signature?",
+    "choices": {
+      "0": "It allows the method to be overridden by subclasses.",
+      "1": "It indicates that the method belongs to the class itself, not to an instance of the class.",
+      "2": "It ensures that the method can only be accessed from within the same package.",
+      "3": "It makes the method thread-safe."
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100102,
+    "difficulty": "easy",
+    "type": "single",
+    "question": "If you compile and run a Java class \\texttt{MyProgram} using the command \\texttt{java MyProgram hello world}, what will be the value of \\texttt{args.length} inside the \\texttt{main} method?",
+    "choices": {
+      "0": "0",
+      "1": "1",
+      "2": "2",
+      "3": "3"
+    },
+    "answers": [2]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100103,
+    "difficulty": "easy",
+    "type": "multiple",
+    "question": "Which of the following keywords are essential components of a valid \\texttt{main} method signature in Java?",
+    "choices": {
+      "0": "\\texttt{public}",
+      "1": "\\texttt{private}",
+      "2": "\\texttt{static}",
+      "3": "\\texttt{final}",
+      "4": "\\texttt{void}"
+    },
+    "answers": [0, 2, 4]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100104,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "Consider a Java class \\texttt{MyClass} with the following \\texttt{main} method:\n\\texttt{\nclass MyClass \{\n\\quad private static void main(String[] args) \{\n\\quad \\quad System.out.println(\"Hello\");\n\\quad \}\n\}\n}\nWhat will happen if you try to execute this class using \\texttt{java MyClass}?",
+    "choices": {
+      "0": "The program will print \\texttt{Hello}.",
+      "1": "A \\texttt{NoSuchMethodError} will occur at runtime.",
+      "2": "A compilation error will occur.",
+      "3": "The program will run, but no output will be produced."
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100105,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "If a Java program is executed with \\texttt{java MyProgram} (without any command-line arguments), what will be the value of \\texttt{args[0]} if you try to access it inside the \\texttt{main} method?",
+    "choices": {
+      "0": "An empty string (\\texttt{\\\"\\\"})",
+      "1": "\\texttt{null}",
+      "2": "A \\texttt{java.lang.ArrayIndexOutOfBoundsException}",
+      "3": "The program will not compile."
+    },
+    "answers": [2]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100106,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "Consider the \\texttt{main} method signature: \\texttt{public static void main(String... arguments)}. If the program is run as \\texttt{java MyProgram \"one two\" three}, how many elements will the \\texttt{arguments} array contain?",
+    "choices": {
+      "0": "1",
+      "1": "2",
+      "2": "3",
+      "3": "4"
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100107,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "What is the output of the following code if the program is run as \\texttt{java MyClass} (i.e., with no command-line arguments)?\n\\texttt{\npublic class MyClass \{\n\\quad public static void main(String[] args) \{\n\\quad \\quad System.out.println(args.length);\n\\quad \}\n\}\n}",
+    "choices": {
+      "0": "0",
+      "1": "1",
+      "2": "null",
+      "3": "Compilation Error"
+    },
+    "answers": [0]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100108,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "Which exception is most likely to occur if you try to access \\texttt{args[1]} inside the \\texttt{main} method when the program was executed with only one command-line argument (e.g., \\texttt{java MyProgram arg1})?",
+    "choices": {
+      "0": "\\texttt{NullPointerException}",
+      "1": "\\texttt{IllegalArgumentException}",
+      "2": "\\texttt{ArrayIndexOutOfBoundsException}",
+      "3": "\\texttt{NoSuchElementException}"
+    },
+    "answers": [2]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100109,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "What is the output of the following code if run with \\texttt{java MyProgram \"\" \" \" \"hello\"}?\n\\texttt{\npublic class MyProgram \{\n\\quad public static void main(String[] args) \{\n\\quad \\quad System.out.println(args.length);\n\\quad \}\n\}\n}",
+    "choices": {
+      "0": "0",
+      "1": "1",
+      "2": "2",
+      "3": "3"
+    },
+    "answers": [3]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100110,
+    "difficulty": "medium",
+    "type": "multiple",
+    "question": "Which of the following are valid ways to declare the parameter for the \\texttt{main} method in Java?",
+    "choices": {
+      "0": "\\texttt{String[] args}",
+      "1": "\\texttt{String args[]}",
+      "2": "\\texttt{String... args}",
+      "3": "\\texttt{String args}",
+      "4": "\\texttt{Object[] args}"
+    },
+    "answers": [0, 1, 2]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100111,
+    "difficulty": "medium",
+    "type": "multiple",
+    "question": "If a Java class \\texttt{Test} has a \\texttt{main} method and its compiled \\texttt{Test.class} file is located in the current directory, which of the following commands would successfully execute it?",
+    "choices": {
+      "0": "\\texttt{java Test}",
+      "1": "\\texttt{java Test.class}",
+      "2": "\\texttt{java -cp . Test}",
+      "3": "\\texttt{java -classpath Test.class Test}"
+    },
+    "answers": [0, 2]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100112,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "What is the output of the following code if run with \\texttt{java MyProgram 10 20}?\n\\texttt{\npublic class MyProgram \{\n\\quad public static void main(String[] numbers) \{\n\\quad \\quad int sum = Integer.parseInt(numbers[0]) + Integer.parseInt(numbers[1]);\n\\quad \\quad System.out.println(sum);\n\\quad \}\n\}\n}",
+    "choices": {
+      "0": "30",
+      "1": "1020",
+      "2": "Compilation Error",
+      "3": "Runtime Error"
+    },
+    "answers": [0]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100113,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "Consider the following code:\n\\texttt{\npublic class CommandLineArgs \{\n\\quad public static void main(String[] arguments) \{\n\\quad \\quad if (arguments.length > 0) \{\n\\quad \\quad \\quad System.out.println(arguments[0]);\n\\quad \\quad \} else \{\n\\quad \\quad \\quad System.out.println(\"No arguments provided.\");\n\\quad \\quad \}\n\\quad \}\n\}\n}\nWhat is the output if this program is executed with the command: \\texttt{java CommandLineArgs \"Hello World\"}?",
+    "choices": {
+      "0": "\\texttt{Hello World}",
+      "1": "\\texttt{Hello}",
+      "2": "\\texttt{World}",
+      "3": "\\texttt{No arguments provided.}"
+    },
+    "answers": [0]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100114,
+    "difficulty": "hard",
+    "type": "single",
+    "question": "Consider the following code:\n\\texttt{\npublic class TrickyMain \{\n\\quad public static void main(String[] args) \{\n\\quad \\quad if (args.length > 0) \{\n\\quad \\quad \\quad System.out.println(args[0].length());\n\\quad \\quad \} else \{\n\\quad \\quad \\quad System.out.println(\"No args\");\n\\quad \\quad \}\n\\quad \}\n\}\n}\nWhat is the output if this code is compiled and run with \\texttt{java TrickyMain \"\"}?",
+    "choices": {
+      "0": "\\texttt{0}",
+      "1": "\\texttt{No args}",
+      "2": "Compilation Error",
+      "3": "\\texttt{NullPointerException}"
+    },
+    "answers": [0]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100115,
+    "difficulty": "hard",
+    "type": "single",
+    "question": "What is the output of the following code if run with \\texttt{java MyArgs \"a b\" c d}?\n\\texttt{\npublic class MyArgs \{\n\\quad public static void main(String... values) \{\n\\quad \\quad System.out.println(values[0] + values[1]);\n\\quad \}\n\}\n}",
+    "choices": {
+      "0": "\\texttt{a bc}",
+      "1": "\\texttt{a b c}",
+      "2": "\\texttt{a bcd}",
+      "3": "Compilation Error",
+      "4": "\\texttt{a b c d}"
+    },
+    "answers": [0]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100116,
+    "difficulty": "hard",
+    "type": "single",
+    "question": "A Java class \\texttt{App} with a \\texttt{main} method is part of the package \\texttt{com.example}. The compiled \\texttt{.class} files are packaged into a JAR file named \\texttt{my_app.jar}. The entry point is specified in the JAR's manifest as \\texttt{Main-Class: com.example.App}. Which command will correctly execute the application?",
+    "choices": {
+      "0": "\\texttt{java com.example.App}",
+      "1": "\\texttt{java -jar my_app.jar}",
+      "2": "\\texttt{java -cp my_app.jar com.example.App}",
+      "3": "\\texttt{java App}"
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100117,
+    "difficulty": "hard",
+    "type": "single",
+    "question": "What happens if you declare the \\texttt{main} method as \\texttt{public static void main(String args)} (i.e., without array brackets for the \\texttt{String} parameter)?",
+    "choices": {
+      "0": "The program will compile and run, but \\texttt{args} will be \\texttt{null}.",
+      "1": "The program will compile, but a \\texttt{NoSuchMethodError} will occur at runtime.",
+      "2": "The program will fail to compile.",
+      "3": "The program will compile and run, treating the single \\texttt{String} as the first argument."
+    },
+    "answers": [2]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100118,
+    "difficulty": "hard",
+    "type": "multiple",
+    "question": "Which of the following statements about the \\texttt{main} method in Java are true?",
+    "choices": {
+      "0": "A Java class can have multiple \\texttt{main} methods with different parameter types (overloading).",
+      "1": "The \\texttt{main} method must always be declared in a \\texttt{public} class.",
+      "2": "The order of \\texttt{public}, \\texttt{static}, and \\texttt{void} in the \\texttt{main} method signature does not affect its validity.",
+      "3": "The \\texttt{main} method can throw checked exceptions without being caught or declared.",
+      "4": "The \\texttt{args} parameter can be named anything, not necessarily \\texttt{args}."
+    },
+    "answers": [0, 2, 4]
+  },
+  {
+    "topicId": 1001,
+    "topic": "Main Method and Command Line Arguments",
+    "questionID": 100119,
+    "difficulty": "hard",
+    "type": "multiple",
+    "question": "Consider a Java class \\texttt{MainRunner} with a \\texttt{main} method. If you execute \\texttt{java -Dmy.prop=value MainRunner arg1 arg2}, which of the following are true?",
+    "choices": {
+      "0": "The string \\texttt{\"my.prop=value\"} will be the first element in the \\texttt{args} array.",
+      "1": "The \\texttt{args} array will contain two elements: \\texttt{\"arg1\"} and \\texttt{\"arg2\"}.",
+      "2": "You can retrieve the value \\texttt{\"value\"} using \\texttt{System.getProperty(\"my.prop\")}.",
+      "3": "The \\texttt{-D} option is a standard command-line argument passed to the \\texttt{main} method.",
+      "4": "The \\texttt{main} method will execute even if \\texttt{MainRunner.class} is not in the current directory, provided it's in the classpath."
+    },
+    "answers": [1, 2, 4]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100200,
+    "difficulty": "easy",
+    "type": "single",
+    "question": "What is the primary purpose of a Java package?",
+    "choices": {
+      "0": "To define the main entry point of a Java application.",
+      "1": "To group related classes and interfaces, providing a naming convention and access protection.",
+      "2": "To compile Java source code into bytecode.",
+      "3": "To execute Java applications on the Java Virtual Machine."
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100201,
+    "difficulty": "easy",
+    "type": "single",
+    "question": "Which statement is used to make classes from another package accessible in the current Java source file?",
+    "choices": {
+      "0": "\\texttt{package}",
+      "1": "\\texttt{class}",
+      "2": "\\texttt{import}",
+      "3": "\\texttt{include}"
+    },
+    "answers": [2]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100202,
+    "difficulty": "easy",
+    "type": "single",
+    "question": "What is a JAR file primarily used for in Java?",
+    "choices": {
+      "0": "To store Java source code files.",
+      "1": "To package multiple Java class files and associated resources into a single archive.",
+      "2": "To define the Java classpath.",
+      "3": "To compile Java programs."
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100203,
+    "difficulty": "easy",
+    "type": "multiple",
+    "question": "Which of the following are valid ways to specify the classpath when running a Java application?",
+    "choices": {
+      "0": "Using the \\texttt{-classpath} command-line option.",
+      "1": "Using the \\texttt{-cp} command-line option.",
+      "2": "Setting the \\texttt{CLASSPATH} environment variable.",
+      "3": "Including the path directly in the \\texttt{java} command without any flags."
+    },
+    "answers": [0, 1, 2]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100204,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "Consider a Java source file \\texttt{MyClass.java} with the content:\\n\\texttt{\npackage com.example.app;\npublic class MyClass \{\n\\quad // ...\n\}\n}\nIn which directory structure must \\texttt{MyClass.java} be placed relative to the compilation root for successful compilation?",
+    "choices": {
+      "0": "\\texttt{com/example/app/MyClass.java}",
+      "1": "\\texttt{app/MyClass.java}",
+      "2": "\\texttt{MyClass.java} (anywhere)",
+      "3": "\\texttt{example/app/MyClass.java}"
+    },
+    "answers": [0]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100205,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "You have a compiled class \\texttt{com.mycompany.MainApp} located in \\texttt{/home/user/classes/com/mycompany/MainApp.class}. You are currently in \\texttt{/home/user}. Which command will correctly execute \\texttt{MainApp}?",
+    "choices": {
+      "0": "\\texttt{java com.mycompany.MainApp}",
+      "1": "\\texttt{java -cp classes com.mycompany.MainApp}",
+      "2": "\\texttt{java -classpath /home/user/classes MainApp}",
+      "3": "\\texttt{java classes/com/mycompany/MainApp}"
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100206,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "What is the effect of using \\texttt{import static} in Java?",
+    "choices": {
+      "0": "It imports all classes from a package statically.",
+      "1": "It allows static members (fields and methods) of a class to be accessed without qualifying them with the class name.",
+      "2": "It makes the imported class immutable.",
+      "3": "It prevents the imported class from being garbage collected."
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100207,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "You have a Java source file \\texttt{MyClass.java} that does NOT contain a \\texttt{package} statement. If you compile it, what package will \\texttt{MyClass} belong to?",
+    "choices": {
+      "0": "It will belong to the \\texttt{java.lang} package.",
+      "1": "It will belong to a default, unnamed package.",
+      "2": "It will cause a compilation error.",
+      "3": "It will belong to the package of the first imported class."
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100208,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "Which of the following is the correct order for statements at the top of a Java source file?",
+    "choices": {
+      "0": "\\texttt{import} statements, then \\texttt{package} statement, then class definition.",
+      "1": "\\texttt{package} statement, then \\texttt{import} statements, then class definition.",
+      "2": "Class definition, then \\texttt{package} statement, then \\texttt{import} statements.",
+      "3": "The order of \\texttt{package} and \\texttt{import} statements does not matter."
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100209,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "You want to create a JAR file named \\texttt{my_app.jar} containing all \\texttt{.class} files from the current directory. Which command would you use?",
+    "choices": {
+      "0": "\\texttt{jar -c my_app.jar *.class}",
+      "1": "\\texttt{jar -cf my_app.jar .}",
+      "2": "\\texttt{jar -cvf my_app.jar *.class}",
+      "3": "\\texttt{jar -cvf my_app.jar .}"
+    },
+    "answers": [3]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100210,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "If a JAR file \\texttt{my_app.jar} has a \\texttt{Main-Class} entry in its manifest file pointing to \\texttt{com.example.Main}, which command will execute the application?",
+    "choices": {
+      "0": "\\texttt{java com.example.Main}",
+      "1": "\\texttt{java -jar my_app.jar}",
+      "2": "\\texttt{java -cp my_app.jar com.example.Main}",
+      "3": "\\texttt{java my_app.jar}"
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100211,
+    "difficulty": "medium",
+    "type": "multiple",
+    "question": "Which of the following statements about the Java classpath are true?",
+    "choices": {
+      "0": "The classpath tells the JVM where to find \\texttt{.java} source files.",
+      "1": "The classpath can include directories and JAR files.",
+      "2": "If no classpath is explicitly set, the current directory (\\texttt{.}) is typically included by default.",
+      "3": "The order of entries in the classpath matters.",
+      "4": "The \\texttt{CLASSPATH} environment variable overrides any \\texttt{-cp} or \\texttt{-classpath} command-line options."
+    },
+    "answers": [1, 2, 3]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100212,
+    "difficulty": "medium",
+    "type": "multiple",
+    "question": "You have a class \\texttt{com.util.StringUtils} and another class \\texttt{com.app.MainApp}. \\texttt{MainApp} needs to use \\texttt{StringUtils}. Which of the following \\texttt{import} statements would allow \\texttt{MainApp} to use \\texttt{StringUtils} without full qualification?",
+    "choices": {
+      "0": "\\texttt{import com.util.StringUtils;}",
+      "1": "\\texttt{import com.util.*;}",
+      "2": "\\texttt{import com.util;}",
+      "3": "\\texttt{import StringUtils;}"
+    },
+    "answers": [0, 1]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100213,
+    "difficulty": "medium",
+    "type": "single",
+    "question": "What happens if the JVM cannot find a required class at runtime, even if it was present during compilation?",
+    "choices": {
+      "0": "A \\texttt{ClassNotFoundException} is thrown.",
+      "1": "A \\texttt{NoClassDefFoundError} is thrown.",
+      "2": "The program continues execution, ignoring the missing class.",
+      "3": "A compilation error occurs."
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100214,
+    "difficulty": "hard",
+    "type": "single",
+    "question": "Consider the following directory structure:\n\\texttt{\n/root\n\\quad /lib\n\\quad \\quad mylib.jar\n\\quad /src\n\\quad \\quad /app\n\\quad \\quad \\quad Main.java\n}\n\\texttt{Main.java} contains:\\n\\texttt{\npackage app;\nimport com.external.Util;\npublic class Main \{\n\\quad public static void main(String[] args) \{\n\\quad \\quad System.out.println(Util.getVersion());\n\\quad \}\n\}\n}\n\\texttt{mylib.jar} contains the compiled class \\texttt{com.external.Util}. You are in the \\texttt{/root} directory. Which command sequence will compile and run \\texttt{Main.java}?",
+    "choices": {
+      "0": "\\texttt{javac src/app/Main.java}\n\\texttt{java -cp src:lib/mylib.jar app.Main}",
+      "1": "\\texttt{javac -d . src/app/Main.java}\n\\texttt{java -cp .:lib/mylib.jar app.Main}",
+      "2": "\\texttt{javac -d . src/app/Main.java}\n\\texttt{java -cp lib/mylib.jar app.Main}",
+      "3": "\\texttt{javac -cp lib/mylib.jar src/app/Main.java}\n\\texttt{java -cp . app.Main}"
+    },
+    "answers": [0]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100215,
+    "difficulty": "hard",
+    "type": "single",
+    "question": "You have a JAR file \\texttt{app.jar} with a \\texttt{Main-Class} entry. You also have a separate library \\texttt{lib.jar} that \\texttt{app.jar} depends on. If you run \\texttt{java -jar app.jar}, and \\texttt{lib.jar} is not in the default classpath, what will happen?",
+    "choices": {
+      "0": "The application will run successfully if \\texttt{lib.jar} is in the same directory as \\texttt{app.jar}.",
+      "1": "A \\texttt{NoClassDefFoundError} will occur for classes from \\texttt{lib.jar}.",
+      "2": "The JVM will automatically search for \\texttt{lib.jar} in common library locations.",
+      "3": "A compilation error will occur, as dependencies are checked at compile time."
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100216,
+    "difficulty": "hard",
+    "type": "single",
+    "question": "Consider the following scenario:\\n\\texttt{\n// File: MyClass.java\npackage com.example;\nclass MyClass \{\n\\quad public void greet() \{\n\\quad \\quad System.out.println(\"Hello from MyClass\");\n\\quad \}\n\}\n// File: AnotherClass.java\npackage com.another;\nimport com.example.MyClass;\npublic class AnotherClass \{\n\\quad public static void main(String[] args) \{\n\\quad \\quad MyClass mc = new MyClass();\n\\quad \\quad mc.greet();\n\\quad \}\n}\n}\nAssuming both files are in their correct package directories under a \\texttt{src} root, and compiled to a \\texttt{bin} root. What will happen when you try to compile \\texttt{AnotherClass.java}?",
+    "choices": {
+      "0": "It will compile successfully.",
+      "1": "It will fail to compile due to \\texttt{MyClass} having package-private access.",
+      "2": "It will fail to compile because \\texttt{MyClass} is not \\texttt{public}.",
+      "3": "It will compile, but a runtime error will occur."
+    },
+    "answers": [1]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100217,
+    "difficulty": "hard",
+    "type": "multiple",
+    "question": "Which of the following are true statements about the \\texttt{MANIFEST.MF} file within a JAR archive?",
+    "choices": {
+      "0": "It is located in the \\texttt{META-INF} directory.",
+      "1": "It can specify the main class of the application using the \\texttt{Main-Class} attribute.",
+      "2": "It can list other JAR files that the application depends on using the \\texttt{Class-Path} attribute.",
+      "3": "It is automatically generated by the \\texttt{javac} compiler.",
+      "4": "It is mandatory for all JAR files."
+    },
+    "answers": [0, 1, 2]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100218,
+    "difficulty": "hard",
+    "type": "single",
+    "question": "You have a directory structure:\\n\\texttt{\n/project\n\\quad /classes\n\\quad \\quad /my\n\\quad \\quad \\quad /app\n\\quad \\quad \\quad \\quad Main.class\n\\quad /libs\n\\quad \\quad dependency.jar\n}\n\\texttt{Main.class} is in package \\texttt{my.app} and depends on classes inside \\texttt{dependency.jar}. You are currently in the \\texttt{/project} directory. Which command will successfully run \\texttt{Main}?",
+    "choices": {
+      "0": "\\texttt{java -cp classes:libs/dependency.jar my.app.Main}",
+      "1": "\\texttt{java -cp classes;libs/dependency.jar my.app.Main} (on Windows)",
+      "2": "\\texttt{java -cp classes/* my.app.Main}",
+      "3": "Both 0 and 1 are correct, depending on the OS."
+    },
+    "answers": [3]
+  },
+  {
+    "topicId": 1002,
+    "topic": "Packages, Classpath, and JARs",
+    "questionID": 100219,
+    "difficulty": "hard",
+    "type": "single",
+    "question": "Consider the following code and execution attempt:\\n\\texttt{\n// File: MyUtil.java\npackage com.tools;\npublic class MyUtil \{\n\\quad public static void printMessage() \{\n\\quad \\quad System.out.println(\"Utility message\");\n\\quad \}\n\}\n// File: App.java\npackage com.main;\nimport static com.tools.MyUtil.printMessage;\npublic class App \{\n\\quad public static void main(String[] args) \{\n\\quad \\quad printMessage();\n\\quad \}\n}\n}\n\\texttt{MyUtil.java} is compiled to \\texttt{/build/com/tools/MyUtil.class}. \\texttt{App.java} is compiled to \\texttt{/build/com/main/App.class}. You are in the \\texttt{/build} directory. Which command will successfully run \\texttt{App}?",
+    "choices": {
+      "0": "\\texttt{java com.main.App}",
+      "1": "\\texttt{java -cp . com.main.App}",
+      "2": "\\texttt{java -cp com.tools com.main.App}",
+      "3": "\\texttt{java -cp com.main com.main.App}"
+    },
+    "answers": [1]
+  },
+  {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100300,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "According to standard Java coding conventions, which of the following is the correct way to name a class?",
+        "choices": {
+            "0": "\\texttt{myApplication}",
+            "1": "\\texttt{MyApplication}",
+            "2": "\\texttt{MY_APPLICATION}",
+            "3": "\\texttt{\\_MyApplication}"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100301,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "Which of the following declarations adheres to the standard Java convention for a constant?",
+        "choices": {
+            "0": "\\texttt{final int maxUsers = 10;}",
+            "1": "\\texttt{final int MaxUsers = 10;}",
+            "2": "\\texttt{final int MAX_USERS = 10;}",
+            "3": "\\texttt{final int max_users = 10;}"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100302,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "Which syntax is used to start a single-line comment in Java?",
+        "choices": {
+            "0": "\\texttt{/*}",
+            "1": "\\texttt{/**}",
+            "2": "\\texttt{\\#}",
+            "3": "\\texttt{//}"
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100303,
+        "difficulty": "easy",
+        "type": "multiple",
+        "question": "Which of the following represent syntactically valid comments in Java? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{// This is a comment}",
+            "1": "\\texttt{/* This is a comment */}",
+            "2": "\\texttt{/** This is a comment */}",
+            "3": "\\texttt{-- This is a comment}"
+        },
+        "answers": [0, 1, 2]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100304,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "In a Javadoc comment, which tag is used to document a method's return value?",
+        "choices": {
+            "0": "\\texttt{@param}",
+            "1": "\\texttt{@return}",
+            "2": "\\texttt{@throws}",
+            "3": "\\texttt{@result}"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100305,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "Following standard Java conventions, how should a method that 'calculates the final grade' be named?",
+        "choices": {
+            "0": "\\texttt{CalculateFinalGrade()}",
+            "1": "\\texttt{calculate_final_grade()}",
+            "2": "\\texttt{calculateFinalGrade()}",
+            "3": "\\texttt{calculatefinalgrade()}"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100306,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the primary purpose of Javadoc comments?",
+        "choices": {
+            "0": "To provide instructions to the Java Virtual Machine at runtime.",
+            "1": "To generate API documentation in HTML format.",
+            "2": "To prevent a block of code from being compiled.",
+            "3": "To hide implementation details from other developers."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100307,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the key syntactic difference that distinguishes a Javadoc comment from a standard multi-line comment?",
+        "choices": {
+            "0": "A Javadoc comment begins with \\texttt{/**}, while a multi-line comment begins with \\texttt{/*}.",
+            "1": "Javadoc comments cannot be nested, whereas multi-line comments can.",
+            "2": "A Javadoc comment must always contain at least one tag, like \\texttt{@param}.",
+            "3": "Multi-line comments can only be placed immediately before a class declaration."
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100308,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the standard naming convention for a Java interface?",
+        "choices": {
+            "0": "camelCase, e.g., \\texttt{listable}",
+            "1": "PascalCase, e.g., \\texttt{Listable}",
+            "2": "UPPER_SNAKE_CASE, e.g., \\texttt{LISTABLE}",
+            "3": "A lowercase 'i' prefix, e.g., \\texttt{iListable}"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100309,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the primary function of the \\texttt{@deprecated} Javadoc tag?",
+        "choices": {
+            "0": "It prevents the associated class or method from being used in the code.",
+            "1": "It signals to the garbage collector that the object is ready for cleanup.",
+            "2": "It causes the compiler to issue a warning if the tagged element is used.",
+            "3": "It automatically refactors code to use a newer alternative."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100310,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "Which Javadoc tag is used to create a link to another class or method in the generated documentation?",
+        "choices": {
+            "0": "\\texttt{@link}",
+            "1": "\\texttt{@ref}",
+            "2": "\\texttt{@connect}",
+            "3": "\\texttt{@code}"
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100311,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "Review the code. Which element most clearly violates standard Java naming conventions?\\n\\begin{verbatim}public class userprofile {\\n    String userName;\\n    public void Print_Details() {\\n        System.out.println(userName);\\n    }\\n}\\end{verbatim}",
+        "choices": {
+            "0": "The variable name \\texttt{userName}",
+            "1": "The method name \\texttt{Print\\_Details}",
+            "2": "The class name \\texttt{userprofile}",
+            "3": "The use of \\texttt{System.out.println}"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100312,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which of the following are widely accepted Java coding conventions? (Choose all that apply)",
+        "choices": {
+            "0": "Placing the opening brace `\\{` on the same line as the method or class declaration.",
+            "1": "Using 4 spaces for one level of indentation.",
+            "2": "Limiting the length of a line of code to around 80-120 characters.",
+            "3": "Using an underscore prefix (e.g., \\texttt{\\_field}) for private instance variables."
+        },
+        "answers": [0, 1, 2]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100313,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which of the following Javadoc tags are most appropriately used within the Javadoc for a method? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{@param}",
+            "1": "\\texttt{@return}",
+            "2": "\\texttt{@throws}",
+            "3": "\\texttt{@version}"
+        },
+        "answers": [0, 1, 2]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100314,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the result of attempting to compile the following code?\\n\\begin{verbatim}public class CommentTest {\\n    /* A classic interview question.\\n       /* Is this nested comment legal? */\\n       This will cause an issue.\\n    */\\n    int x = 10;\\n}\\end{verbatim}",
+        "choices": {
+            "0": "The code compiles successfully.",
+            "1": "The code fails to compile due to the nested multi-line comment.",
+            "2": "The code compiles, but with a warning about the nested comment.",
+            "3": "The code compiles only if the inner comment is removed."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100315,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "Given the following code, what will the generated Javadoc for \\texttt{doWork} contain when the \\texttt{javadoc} tool is run on the file?\\n\\begin{verbatim}public class DocPlacement {\\n    public void doWork() {\\n        // Business logic here\\n    }\\n    /**\\n     * This Javadoc describes the doWork method.\\n     */\\n}\\end{verbatim}",
+        "choices": {
+            "0": "The text 'This Javadoc describes the doWork method.' will be associated with the \\texttt{doWork} method.",
+            "1": "The \\texttt{javadoc} tool will fail because the comment is misplaced.",
+            "2": "The generated documentation for the \\texttt{doWork} method will be empty.",
+            "3": "The Javadoc comment will be associated with the class \\texttt{DocPlacement} instead."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100316,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the result of compiling and running the following class?\\n\\begin{verbatim}public class LegalNames {\\n    public static void main(String[] args) {\\n        int _x = 5;\\n        int $y = 10;\\n        System.out.println(_x + $y);\\n    }\\n}\\end{verbatim}",
+        "choices": {
+            "0": "Compilation fails because \\texttt{\\_x} is not a valid identifier.",
+            "1": "Compilation fails because \\texttt{\\$y} is not a valid identifier.",
+            "2": "The code compiles and prints \\texttt{15}.",
+            "3": "The code compiles but throws an \\texttt{IllegalNameException} at runtime."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100317,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "By default, without specifying any access modifier flags (e.g., -private), which members are included in documentation generated by the \\texttt{javadoc} tool?",
+        "choices": {
+            "0": "Only \\texttt{public} members.",
+            "1": "\\texttt{public} and \\texttt{protected} members.",
+            "2": "\\texttt{public}, \\texttt{protected}, and package-private members.",
+            "3": "All members, including \\texttt{private} ones."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100318,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "You execute the command: \\texttt{javadoc -d docs -author -version MyClass.java}. The file contains Javadoc comments including \\texttt{@param}, \\texttt{@return}, \\texttt{@author}, and \\texttt{@version} tags for its public methods and class. Which statements are true? (Choose all that apply)",
+        "choices": {
+            "0": "The generated documentation will be placed in a directory named \\texttt{docs}.",
+            "1": "The author information will be included in the generated output.",
+            "2": "The version information will be included in the generated output.",
+            "3": "Documentation for \\texttt{private} methods will be included in the output."
+        },
+        "answers": [0, 1, 2]
+    },
+    {
+        "topicId": 1003,
+        "topic": "Java Coding Conventions and Javadoc",
+        "questionID": 100319,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Which of the following declarations correctly follow standard Java naming conventions for constants (i.e., static final fields)? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{public final static int MAX_BUFFER = 1024;}",
+            "1": "\\texttt{static final String default_name = \"guest\";}",
+            "2": "\\texttt{private static final Logger LOGGER = getLogger();}",
+            "3": "\\texttt{final double Pi = 3.14159;}"
+        },
+        "answers": [0, 2]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100400,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "Which primitive data type is used to store single 16-bit Unicode characters?",
+        "choices": {
+            "0": "\\texttt{byte}",
+            "1": "\\texttt{string}",
+            "2": "\\texttt{char}",
+            "3": "\\texttt{short}"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100401,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "What is the default value of a \\texttt{boolean} field in a Java class?",
+        "choices": {
+            "0": "\\texttt{true}",
+            "1": "\\texttt{false}",
+            "2": "\\texttt{null}",
+            "3": "It does not have a default value and must be initialized."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100402,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "Which of the following is the correct way to declare a variable and assign it a long literal value of one hundred?",
+        "choices": {
+            "0": "\\texttt{long num = 100;}",
+            "1": "\\texttt{long num = 100L;}",
+            "2": "\\texttt{long num = (long)100;}",
+            "3": "Both A and B are valid and equivalent for this value."
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100403,
+        "difficulty": "easy",
+        "type": "multiple",
+        "question": "Which of the following are valid declarations for an integer variable? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{int value = 1_000;}",
+            "1": "\\texttt{int value = 0b101;}",
+            "2": "\\texttt{int value = 0xFF;}",
+            "3": "\\texttt{int value = 1,000;}"
+        },
+        "answers": [0, 1, 2]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100404,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of attempting to compile the following line of code?\\n\\texttt{float pi = 3.14;}",
+        "choices": {
+            "0": "The code compiles successfully.",
+            "1": "A compilation error occurs because 3.14 is a \\texttt{double} literal by default.",
+            "2": "A compilation error occurs because floating-point numbers cannot be assigned to \\texttt{float} types.",
+            "3": "The code compiles, but a runtime exception will be thrown."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100405,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "Which of the following numeric literals is invalid in Java?",
+        "choices": {
+            "0": "\\texttt{1_000_000}",
+            "1": "\\texttt{100_L}",
+            "2": "\\texttt{_100.0}",
+            "3": "\\texttt{0x_FF_FE}"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100406,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "How many bits are used to represent a \\texttt{double} primitive type?",
+        "choices": {
+            "0": "16 bits",
+            "1": "32 bits",
+            "2": "64 bits",
+            "3": "128 bits"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100407,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is printed by the following code snippet?\\n\\begin{verbatim}char letter = 65;\\nSystem.out.println(letter);\\end{verbatim}",
+        "choices": {
+            "0": "\\texttt{65}",
+            "1": "\\texttt{A}",
+            "2": "\\texttt{a}",
+            "3": "The code does not compile."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100408,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of attempting to compile the following line of code?\\n\\texttt{byte b = 128;}",
+        "choices": {
+            "0": "The code compiles successfully, and b will be -128 due to overflow.",
+            "1": "The code compiles successfully, and b will be 127.",
+            "2": "A compilation error occurs because 128 is outside the valid range for a byte.",
+            "3": "The code compiles, but throws an \\texttt{ArithmeticException} at runtime."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100409,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "Which of the following correctly represents the decimal number 10 using a Java binary literal?",
+        "choices": {
+            "0": "\\texttt{0b1010}",
+            "1": "\\texttt{0x1010}",
+            "2": "\\texttt{0d10}",
+            "3": "\\texttt{b1010}"
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100410,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the default value of a primitive \\texttt{long} instance variable if it is not explicitly initialized?",
+        "choices": {
+            "0": "\\texttt{0}",
+            "1": "\\texttt{0L}",
+            "2": "\\texttt{null}",
+            "3": "The code will not compile."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100411,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the decimal value of the octal literal \\texttt{012}?",
+        "choices": {
+            "0": "12",
+            "1": "10",
+            "2": "8",
+            "3": "The literal is invalid."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100412,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which of the following assignments will compile successfully? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{int i = 100L;}",
+            "1": "\\texttt{long l = 100;}",
+            "2": "\\texttt{float f = 10.5;}",
+            "3": "\\texttt{double d = 100F;}"
+        },
+        "answers": [1, 3]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100413,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which of the following are valid ways to declare and initialize a variable with the hexadecimal value C0? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{int c = 0xC0;}",
+            "1": "\\texttt{byte c = 0xC0;}",
+            "2": "\\texttt{int c = 192;}",
+            "3": "\\texttt{short c = 0xC0;}"
+        },
+        "answers": [0, 2, 3]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100414,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the result of attempting to compile and run the following code?\\n\\begin{verbatim}public class LocalVar {\\n    public void compute() {\\n        int x;\\n        int y = x + 5;\\n        System.out.println(y);\\n    }\\n}\\end{verbatim}",
+        "choices": {
+            "0": "The code compiles and prints 5.",
+            "1": "The code compiles and prints 0.",
+            "2": "The code compiles but throws a \\texttt{NullPointerException} at runtime.",
+            "3": "The code fails to compile because the local variable x is not initialized."
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100415,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the result of compiling the following code snippet?\\n\\begin{verbatim}short s = 10;\\ns = s + 5;\\nSystem.out.println(s);\\end{verbatim}",
+        "choices": {
+            "0": "It compiles and prints 15.",
+            "1": "It fails to compile because the result of \\texttt{s + 5} is an \\texttt{int}.",
+            "2": "It compiles but throws an exception because of potential overflow.",
+            "3": "It fails to compile because \\texttt{short} cannot be used in arithmetic operations."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100416,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "Given the expression: \\texttt{1.5 + 2L * 3 / 4.0f}. What is the data type of the final result?",
+        "choices": {
+            "0": "\\texttt{int}",
+            "1": "\\texttt{long}",
+            "2": "\\texttt{float}",
+            "3": "\\texttt{double}"
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100417,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "Which line of code will fail to compile?\\n\\begin{verbatim}1: double d1 = 1_00.00_1;\\n2: double d2 = 10_0.0_0F;\\n3: float f1 = 1_0.0_0;\\n4: int i1 = 0b_1010;\\end{verbatim}",
+        "choices": {
+            "0": "Line 1",
+            "1": "Line 2",
+            "2": "Line 3",
+            "3": "Line 4"
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100418,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Which of the following numeric literals are invalid and will cause a compilation error? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{long l = 4321L;}",
+            "1": "\\texttt{float f = 123.456_F;}",
+            "2": "\\texttt{double d = 123.456D;}",
+            "3": "\\texttt{int i = 0x_123;}"
+        },
+        "answers": [1, 3]
+    },
+    {
+        "topicId": 1004,
+        "topic": "Primitive Data Types and Literals",
+        "questionID": 100419,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Given the class:\\n\\begin{verbatim}class Defaults {\\n    byte b;\\n    char c;\\n    float f;\\n}\\end{verbatim}\\nWhich statements correctly describe the default values of the instance variables? (Choose all that apply)",
+        "choices": {
+            "0": "The default value of \\texttt{b} is 0.",
+            "1": "The default value of \\texttt{c} is '\\texttt{\\u0000}'.",
+            "2": "The default value of \\texttt{f} is 0.0.",
+            "3": "The default value of \\texttt{c} is \\texttt{null}."
+        },
+        "answers": [0, 1]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100500,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "The automatic conversion of a value from a smaller primitive data type to a larger one (e.g., \\texttt{int} to \\texttt{long}) is known as:",
+        "choices": {
+            "0": "Narrowing conversion",
+            "1": "Explicit casting",
+            "2": "Widening conversion",
+            "3": "Data promotion"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100501,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "Which of the following conversions requires an explicit cast?",
+        "choices": {
+            "0": "\\texttt{byte} to \\texttt{int}",
+            "1": "\\texttt{int} to \\texttt{long}",
+            "2": "\\texttt{float} to \\texttt{double}",
+            "3": "\\texttt{double} to \\texttt{int}"
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100502,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "Which of the following statements about the \\texttt{boolean} primitive type is true?",
+        "choices": {
+            "0": "It can be implicitly cast to an \\texttt{int}.",
+            "1": "It can be explicitly cast to an \\texttt{int} (0 or 1).",
+            "2": "It cannot be cast to or from any other primitive type.",
+            "3": "It is automatically promoted to \\texttt{true} in expressions."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100503,
+        "difficulty": "easy",
+        "type": "multiple",
+        "question": "Which of the following assignments represent a valid widening primitive conversion and will compile without a cast? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{int i = 10; long l = i;}",
+            "1": "\\texttt{char c = 'A'; int j = c;}",
+            "2": "\\texttt{int k = 100; short s = k;}",
+            "3": "\\texttt{float f = 1.0f; double d = f;}"
+        },
+        "answers": [0, 1, 3]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100504,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of compiling and running the following code snippet?\\n\\begin{verbatim}int i = (int)5.99f;\\nSystem.out.println(i);\\end{verbatim}",
+        "choices": {
+            "0": "It prints \\texttt{5.99}",
+            "1": "It prints \\texttt{6}",
+            "2": "It prints \\texttt{5}",
+            "3": "It fails to compile."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100505,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "In an arithmetic expression involving only \\texttt{byte}, \\texttt{short}, and \\texttt{int} variables, to which type are the \\texttt{byte} and \\texttt{short} operands automatically promoted before the operation is performed?",
+        "choices": {
+            "0": "\\texttt{long}",
+            "1": "\\texttt{byte}",
+            "2": "\\texttt{short}",
+            "3": "\\texttt{int}"
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100506,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of attempting to compile the following code?\\n\\begin{verbatim}long l = 1000L;\\nint i = l;\\end{verbatim}",
+        "choices": {
+            "0": "It compiles successfully.",
+            "1": "It compiles, but will throw an exception at runtime.",
+            "2": "It fails to compile due to a possible loss of precision.",
+            "3": "It fails to compile because \\texttt{l} is a long literal."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100507,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of compiling and running the following code snippet?\\n\\begin{verbatim}int i = 258;\\nbyte b = (byte)i;\\nSystem.out.println(b);\\end{verbatim}",
+        "choices": {
+            "0": "\\texttt{258}",
+            "1": "\\texttt{1}",
+            "2": "\\texttt{2}",
+            "3": "\\texttt{-127}"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100508,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "Why does the third line of the following code snippet fail to compile?\\n\\begin{verbatim}byte b1 = 10;\\nbyte b2 = 20;\\nbyte b3 = b1 + b2;\\end{verbatim}",
+        "choices": {
+            "0": "The sum of \\texttt{b1} and \\texttt{b2} exceeds the maximum value for a byte.",
+            "1": "Arithmetic operations are not permitted on \\texttt{byte} types.",
+            "2": "\\texttt{b1} and \\texttt{b2} are promoted to \\texttt{int} before addition, and the result is an \\texttt{int}.",
+            "3": "The variable \\texttt{b3} must be declared as \\texttt{final}."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100509,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the data type of the resulting value of the expression: \\texttt{10L + 5.5f}?",
+        "choices": {
+            "0": "\\texttt{long}",
+            "1": "\\texttt{int}",
+            "2": "\\texttt{double}",
+            "3": "\\texttt{float}"
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100510,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of attempting to compile the following code?\\n\\begin{verbatim}float f = 10.0;\\n\\end{verbatim}",
+        "choices": {
+            "0": "It compiles successfully.",
+            "1": "It fails to compile because \\texttt{10.0} is a double literal.",
+            "2": "It fails to compile because floats must be initialized with the 'f' suffix in all cases.",
+            "3": "It compiles, but with a warning."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100511,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "Given the following snippet, what is the value of `result`?\\n\\begin{verbatim}int x = 5;\\ndouble y = 2.0;\\nint result = (int)(x / y);\\n\\end{verbatim}",
+        "choices": {
+            "0": "\\texttt{2.5}",
+            "1": "\\texttt{2}",
+            "2": "\\texttt{3}",
+            "3": "A compilation error occurs."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100512,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which of the following lines of code will cause a compilation error? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{short s = 10;}",
+            "1": "\\texttt{float f = 10L;}",
+            "2": "\\texttt{long l = 10.5f;}",
+            "3": "\\texttt{int i = 'A';}"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100513,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which of the following explicit casts may result in a loss of information or a change in value? (Choose all that apply)",
+        "choices": {
+            "0": "An \\texttt{int} cast to a \\texttt{long}.",
+            "1": "A \\texttt{long} cast to an \\texttt{int}.",
+            "2": "A \\texttt{double} cast to a \\texttt{float}.",
+            "3": "An \\texttt{int} cast to a \\texttt{byte}."
+        },
+        "answers": [1, 2, 3]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100514,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the result of attempting to compile and run the following code?\\n\\begin{verbatim}short s = 5;\\ns += 10;\\nSystem.out.println(s);\\end{verbatim}",
+        "choices": {
+            "0": "It fails to compile because \\texttt{s + 10} results in an \\texttt{int}.",
+            "1": "It compiles and prints \\texttt{15}.",
+            "2": "It fails to compile because \\texttt{+=} is not defined for the \\texttt{short} type.",
+            "3": "It compiles but throws an \\texttt{ArithmeticException} at runtime."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100515,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the result of attempting to compile the following code?\\n\\begin{verbatim}final byte b1 = 5;\\nfinal byte b2 = 10;\\nbyte b3 = b1 + b2;\\end{verbatim}",
+        "choices": {
+            "0": "The code fails to compile because \\texttt{b1 + b2} is promoted to an \\texttt{int}.",
+            "1": "The code fails to compile because \\texttt{b3} is not final.",
+            "2": "The code compiles successfully.",
+            "3": "The code compiles, but with a warning about using final local variables."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100516,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "Given the code, what is the value of \\texttt{i} after execution?\\n\\begin{verbatim}float f = 2.2E10f; // 22,000,000,000\\nint i = (int)f;\\n\\end{verbatim}",
+        "choices": {
+            "0": "\\texttt{22000000000}",
+            "1": "\\texttt{0}",
+            "2": "\\texttt{2147483647}",
+            "3": "A compilation error occurs."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100517,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the output of the following program?\\n\\begin{verbatim}char c1 = 'a'; // Unicode 97\\nchar c2 = (char)(c1 - 32); // 'a' - 32 = 'A'\\nint result = c2 - c1;\\nSystem.out.println(result);\\end{verbatim}",
+        "choices": {
+            "0": "\\texttt{A}",
+            "1": "\\texttt{32}",
+            "2": "\\texttt{-32}",
+            "3": "The code fails to compile."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100518,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Which of the following code snippets will compile without error? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{byte b = 10; b = b + 7;}",
+            "1": "\\texttt{short s = 100; s *= 2;}",
+            "2": "\\texttt{final int x = 10; byte b = x;}",
+            "3": "\\texttt{long l = 100; int i = (int)l;}"
+        },
+        "answers": [1, 2, 3]
+    },
+    {
+        "topicId": 1005,
+        "topic": "Type Conversion and Casting",
+        "questionID": 100519,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Which of these assignments are invalid and will cause a compilation failure? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{float f = 10d;}",
+            "1": "\\texttt{double d = 10f;}",
+            "2": "\\texttt{long l = 10; byte b = l;}",
+            "3": "\\texttt{int i = 10; char c = i;}"
+        },
+        "answers": [0, 2, 3]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100600,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "Which of the following lines of code correctly demonstrates autoboxing?",
+        "choices": {
+            "0": "\\texttt{int p = 100;}",
+            "1": "\\texttt{Integer w = 100;}",
+            "2": "\\texttt{Integer w = new Integer(100);}",
+            "3": "\\texttt{int p = w;}"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100601,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "What is the output of the following code snippet?\n\\texttt{\nInteger wrapper = new Integer(50);\nint primitive = wrapper;\nSystem.out.println(primitive);\n}",
+        "choices": {
+            "0": "It will not compile.",
+            "1": "50",
+            "2": "An exception is thrown at runtime.",
+            "3": "0"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100602,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "Which of the following is NOT a wrapper class for a primitive type in Java?",
+        "choices": {
+            "0": "\\texttt{Integer}",
+            "1": "\\texttt{Boolean}",
+            "2": "\\texttt{String}",
+            "3": "\\texttt{Character}"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100603,
+        "difficulty": "easy",
+        "type": "multiple",
+        "question": "Which of the following are valid ways to create a \\texttt{Long} object with a value of 25? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{Long val1 = 25L;}",
+            "1": "\\texttt{Long val2 = new Long(25);}",
+            "2": "\\texttt{Long val3 = Long.valueOf(25);}",
+            "3": "\\texttt{Long val4 = new Long(\"25\");}"
+        },
+        "answers": [0, 1, 2, 3]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100604,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of the following code?\n\\texttt{\nInteger i1 = 150;\nInteger i2 = 150;\nInteger i3 = 100;\nInteger i4 = 100;\nSystem.out.print(i1 == i2);\nSystem.out.print(\", \");\nSystem.out.print(i3 == i4);\n}",
+        "choices": {
+            "0": "\\texttt{true, true}",
+            "1": "\\texttt{true, false}",
+            "2": "\\texttt{false, true}",
+            "3": "\\texttt{false, false}"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100605,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of executing the following code snippet?\n\\texttt{\npublic class Test \{\n\\quad public static void main(String[] args) \{\n\\quad \\quad Integer i = null;\n\\quad \\quad method(i);\n\\quad \}\n\\quad public static void method(int i) \{\n\\quad \\quad System.out.println(\"int method\");\n\\quad \}\n\\quad public static void method(Object o) \{\n\\quad \\quad System.out.println(\"Object method\");\n\\quad \}\n\}\n}",
+        "choices": {
+            "0": "It prints \\texttt{int method}.",
+            "1": "It prints \\texttt{Object method}.",
+            "2": "The code does not compile.",
+            "3": "It throws a \\texttt{NullPointerException} at runtime."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100606,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of executing the following code?\n\\texttt{\nInteger i = null;\ntry \{\n\\quad int p = i;\n\\quad System.out.print(\"A\");\n\} catch (NullPointerException e) \{\n\\quad System.out.print(\"B\");\n\} finally {\n\\quad System.out.print(\"C\");\n}\n}",
+        "choices": {
+            "0": "\\texttt{A}",
+            "1": "\\texttt{AC}",
+            "2": "\\texttt{B}",
+            "3": "\\texttt{BC}"
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100607,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of the following code snippet?\n\\texttt{\nInteger i1 = 1;\nInteger i2 = new Integer(1);\nint i3 = 1;\nSystem.out.print(i1 == i2);\nSystem.out.print(i1 == i3);\n}",
+        "choices": {
+            "0": "\\texttt{truetrue}",
+            "1": "\\texttt{truefalse}",
+            "2": "\\texttt{falsetrue}",
+            "3": "\\texttt{falsefalse}"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100608,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the final state of the list after this code executes?\n\\texttt{\njava.util.List<Integer> list = new java.util.ArrayList<>();\nlist.add(10);\nlist.add(20);\nlist.add(30);\nlist.remove(1);\nSystem.out.println(list);\n}",
+        "choices": {
+            "0": "\\texttt{[10, 20, 30]}",
+            "1": "\\texttt{[20, 30]}",
+            "2": "\\texttt{[10, 30]}",
+            "3": "\\texttt{[10, 20]}"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100609,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the final state of the list after this code executes?\n\\texttt{\njava.util.List<Integer> list = new java.util.ArrayList<>();\nlist.add(10);\nlist.add(20);\nlist.add(30);\nlist.remove(Integer.valueOf(20));\nSystem.out.println(list);\n}",
+        "choices": {
+            "0": "\\texttt{[10, 20, 30]}",
+            "1": "\\texttt{[20, 30]}",
+            "2": "\\texttt{[10, 30]}",
+            "3": "An exception is thrown at runtime."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100610,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "Given the following overloaded methods, what will be printed when \\texttt{test(5)} is called?\n\\texttt{\npublic class OverloadTest \{\n\\quad static void test(Integer i) { System.out.print(\"Wrapper\"); }\n\\quad static void test(long l) { System.out.print(\"long\"); }\n\\quad public static void main(String[] args) {\n\\quad \\quad test(5);\n\\quad }\n\}\n}",
+        "choices": {
+            "0": "\\texttt{Wrapper}",
+            "1": "\\texttt{long}",
+            "2": "The code will not compile due to an ambiguous call.",
+            "3": "A runtime exception will be thrown."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100611,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of the following code?\n\\texttt{\nLong a = 10L;\nInteger b = 10;\nSystem.out.println(a.equals(b));\n}",
+        "choices": {
+            "0": "\\texttt{true}",
+            "1": "\\texttt{false}",
+            "2": "The code does not compile.",
+            "3": "A \\texttt{ClassCastException} is thrown at runtime."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100612,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which of the following statements compile successfully? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{Integer i = 10; Long l = i;}",
+            "1": "\\texttt{Float f = 10.0f; double d = f;}",
+            "2": "\\texttt{Character c = 'A'; int i = c;}",
+            "3": "\\texttt{Short s = 100;}",
+            "4": "\\texttt{Double d = 100;}"
+        },
+        "answers": [1, 2, 3]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100613,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which statements about wrapper classes in Java are true? (Choose all that apply)",
+        "choices": {
+            "0": "Wrapper class instances are immutable.",
+            "1": "The \\texttt{==} operator always compares the numeric value for wrapper types.",
+            "2": "All wrapper classes provide a constructor that accepts a \\texttt{String} argument.",
+            "3": "Autoboxing can sometimes lead to a \\texttt{NullPointerException}.",
+            "4": "\\texttt{Float} and \\texttt{Double} wrapper objects are cached just like \\texttt{Integer} objects."
+        },
+        "answers": [0, 2, 3]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100614,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the output of the following code?\n\\texttt{\nInteger a = 2;\nInteger b = 4;\nInteger c = 6;\nLong d = 6L;\nSystem.out.print(c == (a + b));\nSystem.out.print(d == (a + b));\nSystem.out.print(c.equals(a + b));\n}",
+        "choices": {
+            "0": "\\texttt{truetruetrue}",
+            "1": "\\texttt{truefalsetrue}",
+            "2": "\\texttt{falsetruetrue}",
+            "3": "\\texttt{falsefalsefalse}"
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100615,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the result of executing the following code snippet?\n\\texttt{\nInteger i = null;\nint j = 10;\nint k = true ? j : i;\nSystem.out.println(k);\n}",
+        "choices": {
+            "0": "It prints \\texttt{10}.",
+            "1": "It prints \\texttt{null}.",
+            "2": "It fails to compile.",
+            "3": "It throws a \\texttt{NullPointerException} at runtime."
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100616,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the output of the following code?\n\\texttt{\nObject obj = true ? new Integer(10) : new Double(15.0);\nSystem.out.println(obj);\n}",
+        "choices": {
+            "0": "10",
+            "1": "10.0",
+            "2": "The code does not compile.",
+            "3": "An exception is thrown at runtime."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100617,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is printed by the following code?\n\\texttt{\nInteger i1 = 1;\nInteger i2 = i1;\ni1++;\nSystem.out.println(i1 == i2);\n}",
+        "choices": {
+            "0": "\\texttt{true}",
+            "1": "\\texttt{false}",
+            "2": "The code does not compile.",
+            "3": "An exception is thrown at runtime."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100618,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Which of the following code snippets will compile and run to completion without throwing an exception? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{Boolean b = new Boolean(\"true\"); switch(b) { case true: System.out.println(\"T\"); break; default: System.out.println(\"D\"); }}",
+            "1": "\\texttt{Integer i = null; if (i != null && i.intValue() > 5) { System.out.println(\"OK\"); }}",
+            "2": "\\texttt{java.util.List<Integer> list = new java.util.ArrayList<>(); list.add(null); int x = list.get(0);}",
+            "3": "\\texttt{Short s = 10; Long l = Long.valueOf(s);}",
+            "4": "\\texttt{Byte b = 1; Character c = (char)b.byteValue();}"
+        },
+        "answers": [0, 1, 4]
+    },
+    {
+        "topicId": 1006,
+        "topic": "Wrapper Classes and Autoboxing/Unboxing",
+        "questionID": 100619,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Consider the following overloaded methods:\n\\texttt{\nstatic void calc(long l) { System.out.print(\"long \"); }\nstatic void calc(Short s) { System.out.print(\"Short \"); }\nstatic void calc(byte... b) { System.out.print(\"byte... \"); }\n}\nWhich of the following method calls are valid and what is their respective output? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{calc(5);} prints \\texttt{long}",
+            "1": "\\texttt{byte b = 5; calc(b);} prints \\texttt{long}",
+            "2": "\\texttt{calc((short)5);} prints \\texttt{Short}",
+            "3": "\\texttt{calc();} prints \\texttt{byte...}",
+            "4": "\\texttt{short s = 5; calc(s);} prints \\texttt{long}"
+        },
+        "answers": [0, 1, 2, 3, 4]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100700,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "In the following code snippet, what type of variable is `count`?\n\\texttt{\npublic class Counter {\n\\quad private static int count = 0;\n\\quad public void increment() {\n\\quad \\quad count++;\n\\quad }\n}\n}",
+        "choices": {
+            "0": "Local variable",
+            "1": "Instance variable",
+            "2": "Static variable",
+            "3": "Final variable"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100701,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "What is the result of attempting to compile and run the following code?\n\\texttt{\npublic class ScopeTest {\n\\quad public void process() {\n\\quad \\quad if (true) {\n\\quad \\quad \\quad String message = \"Hello\";\n\\quad \\quad }\n\\quad \\quad System.out.println(message);\n\\quad }\n}\n}",
+        "choices": {
+            "0": "It prints \\texttt{Hello}.",
+            "1": "It prints \\texttt{null}.",
+            "2": "It fails to compile.",
+            "3": "It throws a runtime exception."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100702,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "What is the output of the following program?\n\\texttt{\npublic class Defaults {\n\\quad int intVal;\n\\quad boolean boolVal;\n\\quad public static void main(String[] args) {\n\\quad \\quad Defaults d = new Defaults();\n\\quad \\quad System.out.print(d.intVal + \", \");\n\\quad \\quad System.out.print(d.boolVal);\n\\quad }\n}\n}",
+        "choices": {
+            "0": "The code does not compile.",
+            "1": "\\texttt{0, false}",
+            "2": "\\texttt{0, true}",
+            "3": "\\texttt{null, false}"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100703,
+        "difficulty": "easy",
+        "type": "multiple",
+        "question": "Which of the following modifiers can be applied to a local variable (a variable declared inside a method)? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{public}",
+            "1": "\\texttt{static}",
+            "2": "\\texttt{final}",
+            "3": "\\texttt{transient}",
+            "4": "\\texttt{abstract}"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100704,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of this code?\n\\texttt{\npublic class ShadowTest {\n\\quad int x = 10;\n\\quad public void printX() {\n\\quad \\quad int x = 20;\n\\quad \\quad System.out.print(this.x + \",\");\n\\quad \\quad System.out.print(x);\n\\quad }\n\\quad public static void main(String[] args) {\n\\quad \\quad new ShadowTest().printX();\n\\quad }\n}\n}",
+        "choices": {
+            "0": "\\texttt{10,10}",
+            "1": "\\texttt{20,10}",
+            "2": "\\texttt{10,20}",
+            "3": "\\texttt{20,20}"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100705,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of attempting to compile and run the following code?\n\\texttt{\npublic class Uninitialized {\n\\quad public void check() {\n\\quad \\quad int value;\n\\quad \\quad if (false) {\n\\quad \\quad \\quad value = 10;\n\\quad \\quad }\n\\quad \\quad // Line X\n\\quad \\quad System.out.println(value);\n\\quad }\n}\n}",
+        "choices": {
+            "0": "A compile error occurs at Line X.",
+            "1": "A runtime exception occurs at Line X.",
+            "2": "The code compiles and prints 0.",
+            "3": "The code compiles but does not print anything."
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100706,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What will the following code print?\n\\texttt{\npublic class StaticTest {\n\\quad public static int counter = 0;\n\\quad public int id;\n\\quad public StaticTest() {\n\\quad \\quad id = ++counter;\n\\quad }\n\\quad public static void main(String[] args) {\n\\quad \\quad StaticTest s1 = new StaticTest();\n\\quad \\quad StaticTest s2 = new StaticTest();\n\\quad \\quad s1.counter = 100; // Accessing static via instance\n\\quad \\quad System.out.println(s2.counter);\n\\quad }\n}\n}",
+        "choices": {
+            "0": "2",
+            "1": "100",
+            "2": "A compile error occurs.",
+            "3": "An exception is thrown at runtime."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100707,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of attempting to compile this class?\n\\texttt{\npublic class AccessTest {\n\\quad String instanceName = \"Instance\";\n\\quad public static void main(String[] args) {\n\\quad \\quad System.out.println(instanceName);\n\\quad }\n}\n}",
+        "choices": {
+            "0": "It compiles and prints \\texttt{Instance}.",
+            "1": "It compiles and prints \\texttt{null}.",
+            "2": "It does not compile.",
+            "3": "It compiles but throws a \\texttt{NullPointerException}."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100708,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of the following code?\n\\texttt{\npublic class ParameterScope {\n\\quad int value = 10;\n\\quad void update(int value) {\n\\quad \\quad value = 20;\n\\quad }\n\\quad public static void main(String... args) {\n\\quad \\quad ParameterScope ps = new ParameterScope();\n\\quad \\quad ps.update(30);\n\\quad \\quad System.out.println(ps.value);\n\\quad }\n}\n}",
+        "choices": {
+            "0": "10",
+            "1": "20",
+            "2": "30",
+            "3": "The code fails to compile."
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100709,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of attempting to compile and run this code?\n\\texttt{\npublic class LoopScope {\n\\quad public static void main(String[] args) {\n\\quad \\quad for (int i = 0; i < 5; i++) {\n\\quad \\quad \\quad // loop body\n\\quad \\quad }\n\\quad \\quad System.out.println(i);\n\\quad }\n}\n}",
+        "choices": {
+            "0": "It prints 5.",
+            "1": "It prints 4.",
+            "2": "It fails to compile.",
+            "3": "It prints 0."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100710,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of the program?\n\\texttt{\npublic class TryScope {\n\\quad public static void main(String[] args) {\n\\quad \\quad try {\n\\quad \\quad \\quad String msg = \"A\";\n\\quad \\quad \\quad System.out.print(msg);\n\\quad \\quad } catch (Exception e) {\n\\quad \\quad \\quad // String msg = \"B\"; // This line is commented out\n\\quad \\quad } finally {\n\\quad \\quad \\quad String msg = \"C\";\n\\quad \\quad \\quad System.out.print(msg);\n\\quad \\quad }\n\\quad }\n}\n}",
+        "choices": {
+            "0": "\\texttt{AC}",
+            "1": "\\texttt{A}",
+            "2": "\\texttt{C}",
+            "3": "The code does not compile."
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100711,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the lifetime of an instance variable?",
+        "choices": {
+            "0": "The lifetime of the method in which it is used.",
+            "1": "The lifetime of the class.",
+            "2": "The lifetime of the object to which it belongs.",
+            "3": "Until the program terminates."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100712,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which of the following statements are true? (Choose all that apply)",
+        "choices": {
+            "0": "Local variables are stored on the heap.",
+            "1": "Static variables are created when a class is loaded and destroyed when the class is unloaded.",
+            "2": "It's possible for a local variable and an instance variable to have the same name within the same class.",
+            "3": "A local variable must be initialized before it is used.",
+            "4": "Instance variables can be marked `static`."
+        },
+        "answers": [1, 2, 3]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100713,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Given the code below, identify the type of each numbered variable. (Choose all that apply)\n\\texttt{\npublic class VarTypes {\n\\quad public static String v1 = \"A\"; // 1\n\\quad private int v2;               // 2\n\n\\quad public VarTypes(int val) {\n\\quad \\quad this.v2 = val;\n\\quad }\n\n\\quad public void process(int v3) {   // 3\n\\quad \\quad boolean v4 = v3 > v2;     // 4\n\\quad }\n}\n}",
+        "choices": {
+            "0": "\\texttt{v1} is a static variable.",
+            "1": "\\texttt{v2} is a local variable.",
+            "2": "\\texttt{v3} is a method parameter, which is a type of local variable.",
+            "3": "\\texttt{v4} is an instance variable."
+        },
+        "answers": [0, 2]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100714,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the output of the main method?\n\\texttt{\npublic class ComplexShadow {\n\\quad static int x = 1;\n\\quad int y = 2;\n\\quad void a() {\n\\quad \\quad int y = 3;\n\\quad \\quad b();\n\\quad \\quad System.out.print(this.y);\n\\quad }\n\\quad void b() {\n\\quad \\quad int y = 4;\n\\quad \\quad System.out.print(y);\n\\quad }\n\\quad public static void main(String[] args) {\n\\quad \\quad new ComplexShadow().a();\n\\quad }\n}\n}",
+        "choices": {
+            "0": "\\texttt{42}",
+            "1": "\\texttt{43}",
+            "2": "\\texttt{32}",
+            "3": "The code fails to compile."
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100715,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the output of this program?\n\\texttt{\npublic class InitOrder {\n\\quad static { System.out.print(\"S\"); }\n\\quad { System.out.print(\"I\"); }\n\\quad public InitOrder() {\n\\quad \\quad System.out.print(\"C\");\n\\quad }\n\\quad public static void main(String[] args) {\n\\quad \\quad System.out.print(\"M\");\n\\quad \\quad new InitOrder();\n\\quad \\quad new InitOrder();\n\\quad }\n}\n}",
+        "choices": {
+            "0": "\\texttt{SMICIC}",
+            "1": "\\texttt{MSICIC}",
+            "2": "\\texttt{SMCICI}",
+            "3": "\\texttt{MICICS}"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100716,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the result of attempting to compile this code?\n\\texttt{\npublic class BadInit {\n\\quad public void tricky() {\n\\quad \\quad int x = 10;\n\\quad \\quad int y = y + x; // Line 4\n\\quad \\quad System.out.println(y);\n\\quad }\n}\n}",
+        "choices": {
+            "0": "It compiles and prints 10.",
+            "1": "It compiles and prints 0.",
+            "2": "A compile error occurs at Line 4.",
+            "3": "A runtime exception occurs at Line 4."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100717,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the result of attempting to compile this method?\n\\texttt{\nvoid processData() {\n\\quad final int value;\n\\quad try {\n\\quad \\quad value = 100;\n\\quad } catch (Exception e) {\n\\quad \\quad // 'value' is not assigned here\n\\quad }\n\\quad System.out.println(value);\n}\n}",
+        "choices": {
+            "0": "It compiles and runs, printing 100.",
+            "1": "It compiles, but throws an exception if the `catch` block is entered.",
+            "2": "A compile error occurs because `value` might not have been initialized.",
+            "3": "A compile error occurs because a `final` variable cannot be assigned in a `try` block."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100718,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "A local variable is considered **effectively final** if its value is never changed after initialization. Which of the following code snippets will fail to compile because a variable accessed by a lambda expression is not final or effectively final? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{int x = 10; java.util.function.IntSupplier s = () -> x;}",
+            "1": "\\texttt{int x = 10; x++; java.util.function.IntSupplier s = () -> x;}",
+            "2": "\\texttt{int x; x = 10; java.util.function.IntSupplier s = () -> x;}",
+            "3": "\\texttt{java.util.List<String> list = new java.util.ArrayList<>();\nRunnable r = () -> list.add(\"item\");}"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1007,
+        "topic": "Variable Scope and Lifetime",
+        "questionID": 100719,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Which of the following method bodies will fail to compile due to a variable scope or initialization error? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{int x = 10; for (int i=0; i<1; i++) { int x = 20; } }",
+            "1": "\\texttt{for (int i=0; i<1; i++) { String x = \"a\"; } for (int i=0; i<1; i++) { String x = \"b\"; } }",
+            "2": "\\texttt{String val; if (Math.random() > 0.5) val = \"A\"; else val = \"B\"; System.out.println(val);}",
+            "3": "\\texttt{long val; System.out.println(val);}"
+        },
+        "answers": [0, 3]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100800,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "What is the value of the variable `result` after the following code is executed?\n\\texttt{int result = 5 + 2 * 3;}",
+        "choices": {
+            "0": "21",
+            "1": "11",
+            "2": "10",
+            "3": "The code does not compile."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100801,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "What is the output of the following code snippet?\n\\texttt{System.out.println(10 % 3);}",
+        "choices": {
+            "0": "0",
+            "1": "1",
+            "2": "3",
+            "3": "3.33"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100802,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "Which of the following expressions evaluates to `true`?",
+        "choices": {
+            "0": "\\texttt{!(5 > 3)}",
+            "1": "\\texttt{(10 != 10) || (5 == 4)}",
+            "2": "\\texttt{true && false}",
+            "3": "\\texttt{(8 >= 8) && ('A' == 'a')}"
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100803,
+        "difficulty": "easy",
+        "type": "multiple",
+        "question": "Which of the following are valid relational operators in Java? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{==}",
+            "1": "\\texttt{!=}",
+            "2": "\\texttt{<>}",
+            "3": "\\texttt{>=}",
+            "4": "\\texttt{=}"
+        },
+        "answers": [0, 1, 3]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100804,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What are the final values of `x` and `y`?\n\\texttt{\nint x = 5;\nint y = ++x;\n}",
+        "choices": {
+            "0": "x is 5, y is 6",
+            "1": "x is 6, y is 5",
+            "2": "x is 5, y is 5",
+            "3": "x is 6, y is 6"
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100805,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of the following code snippet?\n\\texttt{\nint a = 1;\nint b = 2;\nboolean result = (a > 5) && (++b > 2);\nSystem.out.println(b);\n}",
+        "choices": {
+            "0": "2",
+            "1": "3",
+            "2": "1",
+            "3": "The code does not compile."
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100806,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of attempting to compile and run the following code?\n\\texttt{\nint x = 10;\nx += 5.5;\nSystem.out.println(x);\n}",
+        "choices": {
+            "0": "It prints 15.",
+            "1": "It prints 15.5.",
+            "2": "It fails to compile.",
+            "3": "It throws a runtime exception."
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100807,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of this code?\n\\texttt{\nSystem.out.println(1 + 2 + \"A\" + 3 + 4);\n}",
+        "choices": {
+            "0": "\\texttt{12A34}",
+            "1": "\\texttt{3A7}",
+            "2": "\\texttt{12A7}",
+            "3": "\\texttt{3A34}"
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100808,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the value of `result`?\n\\texttt{int result = 5 | 3; // Bitwise OR}",
+        "choices": {
+            "0": "1",
+            "1": "3",
+            "2": "5",
+            "3": "7"
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100809,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of executing this code?\n\\texttt{\nString s = null;\nif (s != null && s.length() > 0) {\n\\quad System.out.println(\"Valid\");\n} else {\n\\quad System.out.println(\"Invalid\");\n}\n}",
+        "choices": {
+            "0": "It prints \\texttt{Valid}.",
+            "1": "It prints \\texttt{Invalid}.",
+            "2": "It throws a \\texttt{NullPointerException}.",
+            "3": "It does not compile."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100810,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output?\n\\texttt{\npublic class LogicTest {\n\\quad static boolean check() {\n\\quad \\quad System.out.print(\"check \");\n\\quad \\quad return true;\n\\quad }\n\\quad public static void main(String[] args) {\n\\quad \\quad if (false & check()) { }\n\\quad }\n}\n}",
+        "choices": {
+            "0": "The code produces no output.",
+            "1": "It prints \\texttt{check}.",
+            "2": "The code fails to compile.",
+            "3": "It throws an exception at runtime."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100811,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of `\"a\" instanceof Object`?",
+        "choices": {
+            "0": "\\texttt{true}",
+            "1": "\\texttt{false}",
+            "2": "A compile-time error.",
+            "3": "A runtime exception."
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100812,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which of the following expressions evaluate to `true`? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{new String(\"a\") == new String(\"a\")}",
+            "1": "\\texttt{new String(\"a\").equals(\"a\")}",
+            "2": "\\texttt{Integer.valueOf(127) == Integer.valueOf(127)}",
+            "3": "\\texttt{Integer.valueOf(128) == Integer.valueOf(128)}",
+            "4": "\\texttt{null instanceof Object}"
+        },
+        "answers": [1, 2]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100813,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which of the following statements will compile successfully? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{byte b = 1; b = b + 1;}",
+            "1": "\\texttt{byte b = 1; b += 1;}",
+            "2": "\\texttt{int i = 1; boolean b = i;}",
+            "3": "\\texttt{String s = \"1\"; s += 1;}"
+        },
+        "answers": [1, 3]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100814,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the value of `result` after execution?\n\\texttt{int result = 10 / 3 * 3 + 5 % 3;}",
+        "choices": {
+            "0": "11",
+            "1": "3",
+            "2": "10",
+            "3": "1"
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100815,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the final value of `x` after the following code is executed?\n\\texttt{\nint x = 1;\nboolean b = x++ == 2 || ++x == 2 && ++x == 3;\n}",
+        "choices": {
+            "0": "1",
+            "1": "2",
+            "2": "3",
+            "3": "4"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100816,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the output of the following program?\n\\texttt{\npublic class AssignTest {\n\\quad public static void main(String[] args) {\n\\quad \\quad int x = 0;\n\\quad \\quad boolean b = false;\n\\quad \\quad if (b = (x = 5) == 5) {\n\\quad \\quad \\quad System.out.println(\"Success\");\n\\quad \\quad }\n\\quad \\quad System.out.println(x);\n\\quad }\n}\n}",
+        "choices": {
+            "0": "\\texttt{Success\\n5}",
+            "1": "\\texttt{5}",
+            "2": "The code fails to compile.",
+            "3": "The code produces no output."
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100817,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the result of this expression?\n\\texttt{\nint x = 2, y = 3;\nboolean result = !(x > y) == (y > x) ^ !(y > x);\n}",
+        "choices": {
+            "0": "\\texttt{true}",
+            "1": "\\texttt{false}",
+            "2": "A compile-time error occurs.",
+            "3": "A runtime exception is thrown."
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100818,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Which of the following code snippets will result in a compile-time error? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{int x = 10; if (x) {}}",
+            "1": "\\texttt{boolean b = true; b = !b;}",
+            "2": "\\texttt{int y = 5; y = y * 2.5;}",
+            "3": "\\texttt{Object o = \"s\"; boolean b = o instanceof String;}",
+            "4": "\\texttt{int z = 1 > 2 ? 10 : \"twenty\";}"
+        },
+        "answers": [0, 2, 4]
+    },
+    {
+        "topicId": 1008,
+        "topic": "Java Operators and Precedence",
+        "questionID": 100819,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Select all options that, when executed, will result in a runtime exception. (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{int x = 10 % 0;}",
+            "1": "\\texttt{Object o = \"string\"; Integer i = (Integer)o;}",
+            "2": "\\texttt{double d = 10.0 / 0.0;}",
+            "3": "\\texttt{int[] a = {}; int x = a[0];}"
+        },
+        "answers": [0, 1, 3]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100900,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "What is the output of the following code snippet?\\n\\texttt{public class Test {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int score = 75;\\n\\quad \\quad if (score >= 90) {\\n\\quad \\quad \\quad System.out.println(\"Grade A\");\\n\\quad \\quad } else if (score >= 70) {\\n\\quad \\quad \\quad System.out.println(\"Grade B\");\\n\\quad \\quad } else {\\n\\quad \\quad \\quad System.out.println(\"Grade C\");\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "Grade A",
+            "1": "Grade B",
+            "2": "Grade C",
+            "3": "The code will not compile."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100901,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "What is printed to the console?\\n\\texttt{public class Test {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad char option = 'C';\\n\\quad \\quad switch (option) {\\n\\quad \\quad \\quad case 'A':\\n\\quad \\quad \\quad \\quad System.out.print(\"Option A\");\\n\\quad \\quad \\quad \\quad break;\\n\\quad \\quad \\quad case 'B':\\n\\quad \\quad \\quad \\quad System.out.print(\"Option B\");\\n\\quad \\quad \\quad \\quad break;\\n\\quad \\quad \\quad case 'C':\\n\\quad \\quad \\quad \\quad System.out.print(\"Option C\");\\n\\quad \\quad \\quad \\quad break;\\n\\quad \\quad \\quad default:\\n\\quad \\quad \\quad \\quad System.out.print(\"Default\");\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "Option A",
+            "1": "Option B",
+            "2": "Option C",
+            "3": "Default"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100902,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "What is the output of this code?\\n\\texttt{public class TernaryTest {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int x = 10;\\n\\quad \\quad int y = 20;\\n\\quad \\quad String result = x > y ? \"x is greater\" : \"y is greater or equal\";\\n\\quad \\quad System.out.println(result);\\n\\quad }\\n}}",
+        "choices": {
+            "0": "x is greater",
+            "1": "y is greater or equal",
+            "2": "The code produces a compilation error.",
+            "3": "The code throws an exception at runtime."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100903,
+        "difficulty": "easy",
+        "type": "multiple",
+        "question": "Which of the following data types are permitted for use in a Java `switch` statement expression? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{long}",
+            "1": "\\texttt{String}",
+            "2": "\\texttt{int}",
+            "3": "\\texttt{double}",
+            "4": "\\texttt{char}",
+            "5": "\\texttt{boolean}"
+        },
+        "answers": [1, 2, 4]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100904,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "Analyze the following code. What will be its output?\\n\\texttt{public class FallThrough {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int level = 2;\\n\\quad \\quad switch (level) {\\n\\quad \\quad \\quad case 1:\\n\\quad \\quad \\quad \\quad System.out.print(\"A\");\\n\\quad \\quad \\quad case 2:\\n\\quad \\quad \\quad \\quad System.out.print(\"B\");\\n\\quad \\quad \\quad case 3:\\n\\quad \\quad \\quad \\quad System.out.print(\"C\");\\n\\quad \\quad \\quad \\quad break;\\n\\quad \\quad \\quad default:\\n\\quad \\quad \\quad \\quad System.out.print(\"D\");\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "B",
+            "1": "BC",
+            "2": "BCD",
+            "3": "Compilation fails."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100905,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of compiling and running this code?\\n\\texttt{public class DanglingElse {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad boolean condition1 = true;\\n\\quad \\quad boolean condition2 = false;\\n\\quad \\quad if (condition1)\\n\\quad \\quad \\quad if (condition2)\\n\\quad \\quad \\quad \\quad System.out.println(\"Inner if\");\\n\\quad \\quad \\quad else\\n\\quad \\quad \\quad \\quad System.out.println(\"Attached else\");\\n\\quad }\\n}}",
+        "choices": {
+            "0": "Inner if",
+            "1": "Attached else",
+            "2": "No output is produced.",
+            "3": "The code fails to compile."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100906,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of the following code snippet?\\n\\texttt{public class AssignmentInIf {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad boolean value = false;\\n\\quad \\quad if (value = true) {\\n\\quad \\quad \\quad System.out.println(\"True\");\\n\\quad \\quad } else {\\n\\quad \\quad \\quad System.out.println(\"False\");\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "True",
+            "1": "False",
+            "2": "A compilation error occurs.",
+            "3": "A runtime exception is thrown."
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100907,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "Examine this code that uses a `switch` statement with `String`. What is the output?\\n\\texttt{public class StringSwitch {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad String s = new String(\"B\");\\n\\quad \\quad switch (s) {\\n\\quad \\quad \\quad default:\\n\\quad \\quad \\quad \\quad System.out.print(\"D\");\\n\\quad \\quad \\quad case \"A\":\\n\\quad \\quad \\quad \\quad System.out.print(\"A\");\\n\\quad \\quad \\quad case \"B\":\\n\\quad \\quad \\quad \\quad System.out.print(\"B\");\\n\\quad \\quad \\quad case \"C\":\\n\\quad \\quad \\quad \\quad System.out.print(\"C\");\\n\\quad \\quad \\quad \\quad break;\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "B",
+            "1": "BC",
+            "2": "D",
+            "3": "DABC"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100908,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which lines in the following code snippet will cause a compilation error? (Choose all that apply)\\n\\texttt{1: public class SwitchErrors {\\n2: \\quad public static void main(String[] args) {\\n3: \\quad \\quad final int c1 = 10;\\n4: \\quad \\quad int val = 5;\\n5: \\quad \\quad switch (val) {\\n6: \\quad \\quad \\quad case c1:\\n7: \\quad \\quad \\quad \\quad System.out.print(\"A\"); break;\\n8: \\quad \\quad \\quad case 20L:\\n9: \\quad \\quad \\quad \\quad System.out.print(\"B\"); break;\\n10: \\quad \\quad \\quad case c1:\\n11: \\quad \\quad \\quad \\quad System.out.print(\"C\"); break;\\n12: \\quad \\quad }\\n13: \\quad }\\n14: }}",
+        "choices": {
+            "0": "Line 6",
+            "1": "Line 8",
+            "2": "Line 10",
+            "3": "Line 4"
+        },
+        "answers": [1, 2]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100909,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the final value of `count` after this code executes?\\n\\texttt{public class ShortCircuit {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int count = 10;\\n\\quad \\quad boolean check = false;\\n\\quad \\quad if (check && (++count == 11)) {\\n\\quad \\quad \\quad // do nothing\\n\\quad \\quad }\\n\\quad \\quad System.out.println(count);\\n\\quad }\\n}}",
+        "choices": {
+            "0": "10",
+            "1": "11",
+            "2": "The code does not compile.",
+            "3": "The output is unpredictable."
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100910,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the final value of `counter` after this code snippet is run?\\n\\texttt{public class ShortCircuit2 {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int counter = 0;\\n\\quad \\quad if (true || (counter++ > 0)) {\\n\\quad \\quad \\quad System.out.println(\"Condition met\");\\n\\quad \\quad }\\n\\quad \\quad System.out.println(counter);\\n\\quad }\\n}}",
+        "choices": {
+            "0": "0",
+            "1": "1",
+            "2": "2",
+            "3": "Compilation fails"
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100911,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of the following nested ternary operation?\\n\\texttt{public class NestedTernary {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int p = 10;\\n\\quad \\quad int q = 10;\\n\\quad \\quad int result = p > 10 ? q++ : p < 10 ? --q : ++p;\\n\\quad \\quad System.out.println(result + \",\" + q);\\n\\quad }\\n}}",
+        "choices": {
+            "0": "10,10",
+            "1": "11,10",
+            "2": "10,9",
+            "3": "11,11"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100912,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Given the following declarations, which `case` statements are valid inside a `switch(x)` block? (Choose all that apply)\\n\\texttt{int x = 10;\\nfinal int A = 5;\\nfinal int B;\\nB = 15;\\nint C = 20;}",
+        "choices": {
+            "0": "\\texttt{case A:}",
+            "1": "\\texttt{case B:}",
+            "2": "\\texttt{case C:}",
+            "3": "\\texttt{case 25:}",
+            "4": "\\texttt{case 'a':}",
+            "5": "\\texttt{case 10:}"
+        },
+        "answers": [0, 3, 4, 5]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100913,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What does the following code print?\\n\\texttt{public class DefaultFirst {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad char val = 'X';\\n\\quad \\quad switch (val) {\\n\\quad \\quad \\quad case 'A':\\n\\quad \\quad \\quad \\quad System.out.print(\"1\");\\n\\quad \\quad \\quad \\quad break;\\n\\quad \\quad \\quad default:\\n\\quad \\quad \\quad \\quad System.out.print(\"D\");\\n\\quad \\quad \\quad case 'B':\\n\\quad \\quad \\quad \\quad System.out.print(\"2\");\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "D",
+            "1": "2",
+            "2": "D2",
+            "3": "Compilation fails because default is not the last case."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100914,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is printed to the console when this class is run?\\n\\texttt{public class TrickyLogic {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int x = 10;\\n\\quad \\quad String result = \"Z\";\\n\\quad \\quad if (x != 10 && (result = \"A\").equals(\"\")) {\\n\\quad \\quad \\quad // Block 1\\n\\quad \\quad } else if ((x = 5) == 5 || (result = \"B\").equals(\"\")) {\\n\\quad \\quad \\quad // Block 2\\n\\quad \\quad } else {\\n\\quad \\quad \\quad result = \"C\";\\n\\quad \\quad }\\n\\quad \\quad System.out.println(result);\\n\\quad }\\n}}",
+        "choices": {
+            "0": "A",
+            "1": "B",
+            "2": "C",
+            "3": "Z"
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100915,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the output of the following program?\\n\\texttt{public class SwitchAccumulate {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad String str = \"\";\\n\\quad \\quad char c = 'b';\\n\\quad \\quad switch(c) {\\n\\quad \\quad \\quad case 'a':\\n\\quad \\quad \\quad \\quad str += \"p\";\\n\\quad \\quad \\quad case 'b':\\n\\quad \\quad \\quad \\quad str += \"q\";\\n\\quad \\quad \\quad case 'c':\\n\\quad \\quad \\quad \\quad str += \"r\";\\n\\quad \\quad \\quad \\quad break;\\n\\quad \\quad \\quad default:\\n\\quad \\quad \\quad \\quad str += \"s\";\\n\\quad \\quad }\\n\\quad \\quad System.out.println(str);\\n\\quad }\\n}}",
+        "choices": {
+            "0": "q",
+            "1": "qr",
+            "2": "pqr",
+            "3": "s"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100916,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Which of the following lines of code will cause a compilation error? (Choose all that apply)\\n\\texttt{1: public class ScopeTest {\\n2: \\quad public static void main(String[] args) {\\n3: \\quad \\quad if (args.length > 0) {\\n4: \\quad \\quad \\quad String message = \"Input provided\";\\n5: \\quad \\quad } else {\\n6: \\quad \\quad \\quad int code = -1;\\n7: \\quad \\quad }\\n8: \\quad \\quad System.out.println(message);\\n9: \\quad \\quad System.out.println(code);\\n10: \\quad }\\n11: }}",
+        "choices": {
+            "0": "Line 4",
+            "1": "Line 6",
+            "2": "Line 8",
+            "3": "Line 9",
+            "4": "Line 3"
+        },
+        "answers": [2, 3]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100917,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the result of executing this code?\\n\\texttt{public class SwitchNull {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad String value = null;\\n\\quad \\quad try {\\n\\quad \\quad \\quad switch (value) {\\n\\quad \\quad \\quad \\quad case \"First\":\\n\\quad \\quad \\quad \\quad \\quad System.out.println(\"First\");\\n\\quad \\quad \\quad \\quad \\quad break;\\n\\quad \\quad \\quad \\quad default:\\n\\quad \\quad \\quad \\quad \\quad System.out.println(\"Default\");\\n\\quad \\quad \\quad }\\n\\quad \\quad } catch (Exception e) {\\n\\quad \\quad \\quad System.out.println(e.getClass().getSimpleName());\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "First",
+            "1": "Default",
+            "2": "The code does not compile.",
+            "3": "NullPointerException"
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100918,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "Predict the output of the following code snippet.\\n\\texttt{public class TrickyElse {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad if (false) \\n\\quad \\quad \\quad if (true) System.out.println(\"A\");\\n\\quad \\quad \\quad else System.out.println(\"B\");\\n\\quad \\quad else \\n\\quad \\quad \\quad System.out.println(\"C\");\\n\\quad }\\n}}",
+        "choices": {
+            "0": "A",
+            "1": "B",
+            "2": "C",
+            "3": "No output is printed."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1009,
+        "topic": "Conditional Statements (if/else, switch)",
+        "questionID": 100919,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Which of the following code snippets will compile without errors? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{int x=0; if(x=1) {}}",
+            "1": "\\texttt{boolean b=false; if(b=true) {}}",
+            "2": "\\texttt{int y=1; switch(y) { case 1.0: break; }}",
+            "3": "\\texttt{byte b=1; switch(b) { case 127: break; }}",
+            "4": "\\texttt{if(null) {}}"
+        },
+        "answers": [1, 3]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101000,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "What is the output of the following Java code?\\n\\texttt{public class ForLoopTest {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad for (int i = 0; i < 3; i++) {\\n\\quad \\quad \\quad System.out.print(i + \" \");\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "0 1 2 ",
+            "1": "0 1 2 3 ",
+            "2": "1 2 ",
+            "3": "1 2 3 "
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101001,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "How many times will the string `\"Looping\"` be printed?\\n\\texttt{public class WhileTest {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int count = 5;\\n\\quad \\quad while (count > 1) {\\n\\quad \\quad \\quad System.out.println(\"Looping\");\\n\\quad \\quad \\quad count--;\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "5",
+            "1": "4",
+            "2": "1",
+            "3": "The loop will run indefinitely."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101002,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "What is the final value of `x` after the `do-while` loop completes?\\n\\texttt{public class DoWhileTest {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int x = 10;\\n\\quad \\quad do {\\n\\quad \\quad \\quad x++;\\n\\quad \\quad } while (x < 10);\\n\\quad \\quad System.out.println(x);\\n\\quad }\\n}}",
+        "choices": {
+            "0": "9",
+            "1": "10",
+            "2": "11",
+            "3": "The code will not compile."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101003,
+        "difficulty": "easy",
+        "type": "multiple",
+        "question": "Which of the following are valid `for` loop constructs in Java? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{for (int i = 0; i < 10; ) { i++; }}",
+            "1": "\\texttt{int i = 0; for ( ; i < 10; i++) {}}",
+            "2": "\\texttt{for ( ; ; ) { break; }}",
+            "3": "\\texttt{for (int i = 0, j = 0; i < 10; i++) {}}",
+            "4": "\\texttt{for (i = 0; i < 10; i++) {}}",
+            "5": "\\texttt{for (int i; i < 10; i++) {}}"
+        },
+        "answers": [0, 1, 2, 3]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101004,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of this code?\\n\\texttt{public class LoopCounter {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad for (int i = 0; i < 5; i++) {\\n\\quad \\quad \\quad System.out.print(i + \" \");\\n\\quad \\quad \\quad i++;\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "0 1 2 3 4 ",
+            "1": "0 2 4 ",
+            "2": "1 3 ",
+            "3": "0 2 "
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101005,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "Analyze the enhanced `for` loop. What will be printed?\\n\\texttt{import java.util.Arrays;\\npublic class EnhancedFor {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int[] arr = {1, 2, 3};\\n\\quad \\quad for (int val : arr) {\\n\\quad \\quad \\quad val = 0;\\n\\quad \\quad }\\n\\quad \\quad System.out.println(Arrays.toString(arr));\\n\\quad }\\n}}",
+        "choices": {
+            "0": "[0, 0, 0]",
+            "1": "[1, 2, 3]",
+            "2": "[0, 2, 3]",
+            "3": "The code results in a compilation error."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101006,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of this loop with a `continue` statement?\\n\\texttt{public class ContinueTest {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad for (int i = 1; i <= 5; i++) {\\n\\quad \\quad \\quad if (i == 3) {\\n\\quad \\quad \\quad \\quad continue;\\n\\quad \\quad \\quad }\\n\\quad \\quad \\quad System.out.print(i);\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "12",
+            "1": "1245",
+            "2": "12345",
+            "3": "125"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101007,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "Examine the following nested loop. What is the output?\\n\\texttt{public class BreakTest {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad for (int i = 0; i < 3; i++) {\\n\\quad \\quad \\quad for (int j = 0; j < 3; j++) {\\n\\quad \\quad \\quad \\quad if (j == 1) {\\n\\quad \\quad \\quad \\quad \\quad break;\\n\\quad \\quad \\quad \\quad }\\n\\quad \\quad \\quad \\quad System.out.print(i + \"\" + j + \" \");\\n\\quad \\quad \\quad }\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "00 10 20 ",
+            "1": "00 01 10 11 20 21 ",
+            "2": "00 ",
+            "3": "00 10 11 20 21 "
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101008,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which of the following loops will run indefinitely? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{for(int i=0; i<10; i--){}}",
+            "1": "\\texttt{for( ; ; ){}}",
+            "2": "\\texttt{int i=0; while(i<10){ System.out.println(i); }}",
+            "3": "\\texttt{do{ }while(true);}",
+            "4": "\\texttt{for(int i=10; i>0; i--){}}"
+        },
+        "answers": [0, 1, 2, 3]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101009,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of the following `for` loop?\\n\\texttt{public class MultiVarLoop {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad for (int i = 0, j = 5; i < j; i++, j--) {\\n\\quad \\quad \\quad System.out.print(i + \"\" + j + \" \");\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "05 14 23 ",
+            "1": "05 14 23 32 41 ",
+            "2": "05 14 ",
+            "3": "The code does not compile."
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101010,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "Consider the scope of the variable `i`. Where can `i` be accessed?\\n\\texttt{public class ScopeTest {\\n\\quad public void myMethod() {\\n\\quad \\quad for (int i = 0; i < 5; i++) { // Line 1\\n\\quad \\quad \\quad System.out.println(i); // Line 2\\n\\quad \\quad }\\n\\quad \\quad // Where can 'i' be accessed?\\n\\quad }\\n}}",
+        "choices": {
+            "0": "Only on Line 1.",
+            "1": "Only on Line 2.",
+            "2": "On Line 1 and Line 2.",
+            "3": "On Line 1, Line 2, and anywhere else inside `myMethod`."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101011,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of this code snippet using an enhanced for loop with a `List`?\\n\\texttt{import java.util.ArrayList;\\nimport java.util.List;\\npublic class ListLoop {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad List<String> list = new ArrayList<>();\\n\\quad \\quad list.add(\"A\"); list.add(\"B\"); list.add(\"C\");\\n\\quad \\quad for (String s : list) {\\n\\quad \\quad \\quad System.out.print(s);\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "A",
+            "1": "B",
+            "2": "C",
+            "3": "ABC"
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101012,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which statements about the enhanced `for` loop are true? (Choose all that apply)",
+        "choices": {
+            "0": "It can be used to iterate over any `java.util.Collection`.",
+            "1": "It can be used to iterate over any `java.util.Map` directly.",
+            "2": "Attempting to iterate over a `null` array reference will cause a `NullPointerException`.",
+            "3": "The loop variable can be used to remove elements from the collection being iterated over.",
+            "4": "It can be used to iterate over arrays."
+        },
+        "answers": [0, 2, 4]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101013,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of the following `do-while` loop?\\n\\texttt{public class DoWhileTrick {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int x = 0;\\n\\quad \\quad do {\\n\\quad \\quad \\quad System.out.print(x);\\n\\quad \\quad } while (x++ < 2);\\n\\quad }\\n}}",
+        "choices": {
+            "0": "0",
+            "1": "01",
+            "2": "012",
+            "3": "0123"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101014,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the output of this code with a labeled `break`?\\n\\texttt{public class LabeledBreak {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad outer: for (int i = 0; i < 3; i++) {\\n\\quad \\quad \\quad for (int j = 0; j < 3; j++) {\\n\\quad \\quad \\quad \\quad if (i == 1 && j == 1) {\\n\\quad \\quad \\quad \\quad \\quad break outer;\\n\\quad \\quad \\quad \\quad }\\n\\quad \\quad \\quad \\quad System.out.print(i + \"\" + j + \" \");\\n\\quad \\quad \\quad }\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "00 01 02 10 ",
+            "1": "00 01 02 10 20 21 22 ",
+            "2": "00 01 02 ",
+            "3": "00 01 02 10 11 "
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101015,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the output of this code with a labeled `continue`?\\n\\texttt{public class LabeledContinue {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad outer: for (int i = 0; i < 3; i++) {\\n\\quad \\quad \\quad for (int j = 0; j < 3; j++) {\\n\\quad \\quad \\quad \\quad if (j > i) {\\n\\quad \\quad \\quad \\quad \\quad continue outer;\\n\\quad \\quad \\quad \\quad }\\n\\quad \\quad \\quad \\quad System.out.print(i + \"\" + j + \" \");\\n\\quad \\quad \\quad }\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "00 10 11 20 21 22 ",
+            "1": "00 01 02 10 11 20 ",
+            "2": "00 10 20 ",
+            "3": "00 10 11 20 21 "
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101016,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Which of the following code snippets will result in a compilation error? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{while(false) { System.out.println(\"unreachable\"); }}",
+            "1": "\\texttt{do { System.out.println(\"ok\"); } while(false);}",
+            "2": "\\texttt{long[] arr = {1, 2}; for(int i : arr) {}}",
+            "3": "\\texttt{for(int i=0; i<10; i++, System.out.println(i)) {}}",
+            "4": "\\texttt{Integer[] arr = {1,2}; for(int i : arr) {}}"
+        },
+        "answers": [0, 2]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101017,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What happens when the following code is executed?\\n\\texttt{public class ByteLoop {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad for (byte b = 0; b < 128; b++) {\\n\\quad \\quad \\quad System.out.print(b + \" \");\\n\\quad \\quad \\quad if (b == 127) {\\n\\quad \\quad \\quad \\quad System.out.print(\"END \");\\n\\quad \\quad \\quad }\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "It prints numbers from 0 to 127 and terminates.",
+            "1": "It prints numbers from 0 to 127, then `END`, and terminates.",
+            "2": "It results in a compilation error.",
+            "3": "It enters an infinite loop."
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101018,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the result of executing the following code?\\n\\texttt{import java.util.List;\\npublic class NullLoop {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad List<String> list = null;\\n\\quad \\quad for (String s : list) {\\n\\quad \\quad \\quad System.out.println(\"This will not print.\");\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "The code compiles and runs without printing anything.",
+            "1": "The code fails to compile.",
+            "2": "A `NullPointerException` is thrown at runtime.",
+            "3": "An `IllegalStateException` is thrown at runtime."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1010,
+        "topic": "Looping Constructs (for, while, do-while)",
+        "questionID": 101019,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Given the code below, what lines will be printed to the console? (Choose all that apply)\\n\\texttt{public class ComplexLoop {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad outer: for (int i = 0; i < 2; i++) {\\n\\quad \\quad \\quad inner: for (int j = 0; j < 2; j++) {\\n\\quad \\quad \\quad \\quad if (i == j) {\\n\\quad \\quad \\quad \\quad \\quad continue;\\n\\quad \\quad \\quad \\quad }\\n\\quad \\quad \\quad \\quad if (j == 1) {\\n\\quad \\quad \\quad \\quad \\quad break outer;\\n\\quad \\quad \\quad \\quad }\\n\\quad \\quad \\quad \\quad System.out.println(\"i=\" + i + \", j=\" + j); // Line X\\n\\quad \\quad \\quad }\\n\\quad \\quad \\quad System.out.println(\"End of outer loop iteration \" + i); // Line Y\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "i=0, j=0",
+            "1": "i=0, j=1",
+            "2": "i=1, j=0",
+            "3": "End of outer loop iteration 0",
+            "4": "End of outer loop iteration 1"
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101100,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "What is the output of the following code snippet?\\n\\texttt{public class BreakEasy {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad for (int i = 0; i < 5; i++) {\\n\\quad \\quad \\quad if (i == 3) {\\n\\quad \\quad \\quad \\quad break;\\n\\quad \\quad \\quad }\\n\\quad \\quad \\quad System.out.print(i);\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "012",
+            "1": "0123",
+            "2": "0124",
+            "3": "01234"
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101101,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "What does the following code print to the console?\\n\\texttt{public class ContinueEasy {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad for (int i = 0; i < 5; i++) {\\n\\quad \\quad \\quad if (i == 2) {\\n\\quad \\quad \\quad \\quad continue;\\n\\quad \\quad \\quad }\\n\\quad \\quad \\quad System.out.print(i);\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "01",
+            "1": "0134",
+            "2": "01234",
+            "3": "013"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101102,
+        "difficulty": "easy",
+        "type": "single",
+        "question": "In a nested loop, what does an unlabeled `break` statement do?\\n\\texttt{for (int i = 0; i < 3; i++) {\\n\\quad for (int j = 0; j < 3; j++) {\\n\\quad \\quad if (someCondition) {\\n\\quad \\quad \\quad break; // This break\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "It terminates the outer loop.",
+            "1": "It terminates the inner loop.",
+            "2": "It terminates both loops.",
+            "3": "It causes a compilation error."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101103,
+        "difficulty": "easy",
+        "type": "multiple",
+        "question": "An unlabeled `break` statement can be used to exit from which of the following constructs? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{if} statement",
+            "1": "\\texttt{for} loop",
+            "2": "\\texttt{switch} statement",
+            "3": "\\texttt{while} loop",
+            "4": "A method"
+        },
+        "answers": [1, 2, 3]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101104,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the result of running this code?\\n\\texttt{public class InfiniteContinue {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int count = 0;\\n\\quad \\quad while (count < 10) {\\n\\quad \\quad \\quad if (count == 5) {\\n\\quad \\quad \\quad \\quad continue;\\n\\quad \\quad \\quad }\\n\\quad \\quad \\quad System.out.print(count);\\n\\quad \\quad \\quad count++;\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "It prints 012346789",
+            "1": "It prints 01234",
+            "2": "It enters an infinite loop.",
+            "3": "It prints 01234 and throws an exception."
+        },
+        "answers": [2]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101105,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of the following code?\\n\\texttt{public class LabeledBreakSimple {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int sum = 0;\\n\\quad \\quad first: for (int i = 1; i < 5; i++) {\\n\\quad \\quad \\quad second: for (int j = 1; j < 5; j++) {\\n\\quad \\quad \\quad \\quad sum++;\\n\\quad \\quad \\quad \\quad if (i == 2 && j == 2) {\\n\\quad \\quad \\quad \\quad \\quad break first;\\n\\quad \\quad \\quad \\quad }\\n\\quad \\quad \\quad }\\n\\quad \\quad }\\n\\quad \\quad System.out.println(sum);\\n\\quad }\\n}}",
+        "choices": {
+            "0": "6",
+            "1": "8",
+            "2": "16",
+            "3": "5"
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101106,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of this code with a labeled continue?\\n\\texttt{public class LabeledContinueSimple {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad outer: for (int i = 0; i < 3; i++) {\\n\\quad \\quad \\quad for (int j = 0; j < 3; j++) {\\n\\quad \\quad \\quad \\quad if (j == 1) {\\n\\quad \\quad \\quad \\quad \\quad continue outer;\\n\\quad \\quad \\quad \\quad }\\n\\quad \\quad \\quad \\quad System.out.print(\" \" + i + j);\\n\\quad \\quad \\quad }\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": " 00 10 20",
+            "1": " 00 10 11 20 21",
+            "2": " 00 02 10 12 20 22",
+            "3": " 00"
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101107,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "Examine the code. What is the final value of `count`?\\n\\texttt{public class SwitchBreak {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int count = 0;\\n\\quad \\quad int x = 3;\\n\\quad \\quad while (count < 5) {\\n\\quad \\quad \\quad count++;\\n\\quad \\quad \\quad switch (x) {\\n\\quad \\quad \\quad \\quad case 3: \\n\\quad \\quad \\quad \\quad \\quad break; // This break\\n\\quad \\quad \\quad }\\n\\quad \\quad }\\n\\quad \\quad System.out.println(count);\\n\\quad }\\n}}",
+        "choices": {
+            "0": "0",
+            "1": "1",
+            "2": "3",
+            "3": "5"
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101108,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which of the following code snippets will fail to compile? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{if (true) { break; }}",
+            "1": "\\texttt{mylabel: if(true) { break mylabel; }}",
+            "2": "\\texttt{mylabel: if(true) { continue mylabel; }}",
+            "3": "\\texttt{for(int i=0; i<1; i++) { continue; }}",
+            "4": "\\texttt{mylabel: { break mylabel; }}"
+        },
+        "answers": [0, 2]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101109,
+        "difficulty": "medium",
+        "type": "multiple",
+        "question": "Which of these statements are true? (Choose all that apply)",
+        "choices": {
+            "0": "A label can be placed before any valid Java statement.",
+            "1": "An unlabeled `continue` can be used inside a `switch` statement that is not within a loop.",
+            "2": "`continue label;` is valid only if `label` refers to an enclosing loop.",
+            "3": "An unlabeled `break` will exit all nested loops at once.",
+            "4": "`break label;` can exit a labeled block that is not a loop."
+        },
+        "answers": [0, 2, 4]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101110,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the output of the following code?\\n\\texttt{public class DoWhileContinue {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int k = 0;\\n\\quad \\quad do {\\n\\quad \\quad \\quad k++;\\n\\quad \\quad \\quad if (k == 2) {\\n\\quad \\quad \\quad \\quad continue;\\n\\quad \\quad \\quad }\\n\\quad \\quad \\quad System.out.print(k);\\n\\quad \\quad } while (k < 4);\\n\\quad }\\n}}",
+        "choices": {
+            "0": "134",
+            "1": "1234",
+            "2": "13",
+            "3": "1"
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101111,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What will be printed to the console?\\n\\texttt{public class PrintContinue {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad for (int i = 0; i < 3; i++) {\\n\\quad \\quad \\quad System.out.print(\"A\");\\n\\quad \\quad \\quad if (i == 1) continue;\\n\\quad \\quad \\quad System.out.print(\"B\");\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "ABABAB",
+            "1": "ABAAB",
+            "2": "AAB",
+            "3": "ABAA"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101112,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the result of executing this code?\\n\\texttt{public class BreakBlock {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int x = 10;\\n\\quad \\quad myBlock: {\\n\\quad \\quad \\quad System.out.print(\"A\");\\n\\quad \\quad \\quad if (x == 10) {\\n\\quad \\quad \\quad \\quad break myBlock;\\n\\quad \\quad \\quad }\\n\\quad \\quad \\quad System.out.print(\"B\");\\n\\quad \\quad }\\n\\quad \\quad System.out.print(\"C\");\\n\\quad }\\n}}",
+        "choices": {
+            "0": "AC",
+            "1": "ABC",
+            "2": "A",
+            "3": "The code fails to compile."
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101113,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "Analyze the following code. What is the result?\\n\\texttt{public class ContinueToIfLabel {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad myLabel: if (true) {\\n\\quad \\quad \\quad for (int i = 0; i < 2; i++) {\\n\\quad \\quad \\quad \\quad if (i == 1) {\\n\\quad \\quad \\quad \\quad \\quad continue myLabel;\\n\\quad \\quad \\quad \\quad }\\n\\quad \\quad \\quad }\\n\\quad \\quad }\\n\\quad \\quad System.out.println(\"Done\");\\n\\quad }\\n}}",
+        "choices": {
+            "0": "Done",
+            "1": "The code runs but prints nothing.",
+            "2": "The code enters an infinite loop.",
+            "3": "The code does not compile."
+        },
+        "answers": [3]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101114,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the final value of `x`?\\n\\texttt{public class ComplexContinue {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int x = 0;\\n\\quad \\quad L1: for (int i = 5; i > 0; i--) {\\n\\quad \\quad \\quad int j = 0;\\n\\quad \\quad \\quad L2: while (j++ < 5) {\\n\\quad \\quad \\quad \\quad x++;\\n\\quad \\quad \\quad \\quad if (j == 2) continue L1;\\n\\quad \\quad \\quad }\\n\\quad \\quad }\\n\\quad \\quad System.out.println(x);\\n\\quad }\\n}}",
+        "choices": {
+            "0": "5",
+            "1": "10",
+            "2": "25",
+            "3": "9"
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101115,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "How many times will `X` be printed?\\n\\texttt{public class TrickyLoops {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int count = 0;\\n\\quad \\quad L1: for (int i = 0; i < 3; i++) {\\n\\quad \\quad \\quad L2: for (int j = 0; j < 3; j++) {\\n\\quad \\quad \\quad \\quad L3: for (int k = 0; k < 3; k++) {\\n\\quad \\quad \\quad \\quad \\quad if (k == 1) continue L2;\\n\\quad \\quad \\quad \\quad \\quad if (j == 2) break L2;\\n\\quad \\quad \\quad \\quad \\quad System.out.print(\"X\");\\n\\quad \\quad \\quad \\quad \\quad count++;\\n\\quad \\quad \\quad \\quad }\\n\\quad \\quad \\quad }\\n\\quad \\quad }\\n\\quad \\quad System.out.println(count);\\n\\quad }\\n}}",
+        "choices": {
+            "0": "3",
+            "1": "6",
+            "2": "9",
+            "3": "27"
+        },
+        "answers": [0]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101116,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Which lines will be printed by the following code? (Choose all that apply)\\n\\texttt{public class TraceExecution {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad L1: for (int i = 0; i < 2; i++) {\\n\\quad \\quad \\quad System.out.println(\"A\");\\n\\quad \\quad \\quad for (int j = 0; j < 2; j++) {\\n\\quad \\quad \\quad \\quad if (i == 0) {\\n\\quad \\quad \\quad \\quad \\quad System.out.println(\"B\");\\n\\quad \\quad \\quad \\quad \\quad continue L1;\\n\\quad \\quad \\quad \\quad }\\n\\quad \\quad \\quad \\quad System.out.println(\"C\");\\n\\quad \\quad \\quad }\\n\\quad \\quad \\quad System.out.println(\"D\");\\n\\quad \\quad }\\n\\quad }\\n}}",
+        "choices": {
+            "0": "A",
+            "1": "B",
+            "2": "C",
+            "3": "D"
+        },
+        "answers": [0, 1, 2, 3]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101117,
+        "difficulty": "hard",
+        "type": "multiple",
+        "question": "Which of the following lines of code are syntactically invalid in Java? (Choose all that apply)",
+        "choices": {
+            "0": "\\texttt{int x = myLabel: 5;}",
+            "1": "\\texttt{myLabel: public void test() {}}",
+            "2": "\\texttt{for(;;) { myLabel: break; }}",
+            "3": "\\texttt{myLabel: ;}",
+            "4": "\\texttt{if (true) continue;}",
+            "5": "\\texttt{Object o = new Object(); continue o;}"
+        },
+        "answers": [0, 1, 2, 4, 5]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101118,
+        "difficulty": "medium",
+        "type": "single",
+        "question": "What is the final value of the `count` variable after this code executes?\\n\\texttt{public class ForContinue {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad int count = 0;\\n\\quad \\quad for (int i = 0; i < 5; i++) {\\n\\quad \\quad \\quad count++;\\n\\quad \\quad \\quad if (i < 10) {\\n\\quad \\quad \\quad \\quad continue;\\n\\quad \\quad \\quad }\\n\\quad \\quad \\quad count++;\\n\\quad \\quad }\\n\\quad \\quad System.out.println(count);\\n\\quad }\\n}}",
+        "choices": {
+            "0": "0",
+            "1": "5",
+            "2": "10",
+            "3": "The code enters an infinite loop."
+        },
+        "answers": [1]
+    },
+    {
+        "topicId": 1011,
+        "topic": "Break, Continue, and Labels",
+        "questionID": 101119,
+        "difficulty": "hard",
+        "type": "single",
+        "question": "What is the output when the following code is run? This question tests the interaction between labeled breaks and `try-finally` blocks.\\n\\texttt{public class BreakWithFinally {\\n\\quad public static void main(String[] args) {\\n\\quad \\quad StringBuilder sb = new StringBuilder();\\n\\quad \\quad \\quad OUTER: for (int i = 0; i < 3; i++) {\\n\\quad \\quad \\quad \\quad try {\\n\\quad \\quad \\quad \\quad \\quad for (int j = 0; j < 2; j++) {\\n\\quad \\quad \\quad \\quad \\quad \\quad if (i == 1) {\\n\\quad \\quad \\quad \\quad \\quad \\quad \\quad break OUTER;\\n\\quad \\quad \\quad \\quad \\quad \\quad }\\n\\quad \\quad \\quad \\quad \\quad \\quad sb.append(\"A\");\\n\\quad \\quad \\quad \\quad \\quad }\\n\\quad \\quad \\quad \\quad } finally {\\n\\quad \\quad \\quad \\quad \\quad sb.append(\"F\");\\n\\quad \\quad \\quad \\quad }\\n\\quad \\quad \\quad \\quad sb.append(\"O\");\\n\\quad \\quad \\quad }\\n\\quad \\quad System.out.println(sb.toString());\\n\\quad }\\n}}",
+        "choices": {
+            "0": "AAFOF",
+            "1": "AAFO",
+            "2": "AAF",
+            "3": "AA"
+        },
+        "answers": [0]
+    }
+
+]

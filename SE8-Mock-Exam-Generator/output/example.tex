@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{1Z0-808 Mock Exam}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Mock Exam}}
+\author{ExamId: *insert id* \\ Items: *insert item count* \\ Duration: 2 Hours}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+Which component is responsible for converting Java bytecode into machine-specific code during execution?
+What is the primary purpose of the \verb|javac| command?
+Which of the following is the correct and most standard signature for the main method in a Java application?
+What is the file extension of a compiled Java file?
+If you want to run a Java application, which of the following must be installed on the system?
+Which of the following are components of the Java Development Kit (JDK)? (Choose all that apply)
+Given the following code:
+\begin{verbatim}
+public class Welcome {
+    public static void main(String[] args) {
+        System.out.println("Welcome to Java");
+    }
+}
+\end{verbatim}
+What is the result of compiling and running this code?
+What is the output of the following command, assuming \verb|MyApp.java| exists and contains a valid main method?
+\begin{verbatim}
+java MyApp.java
+\end{verbatim}
+You have a file named \verb|Test.java|:
+\begin{verbatim}
+public class test {
+    public static void main(String[] args) {
+        System.out.println("Test");
+    }
+}
+\end{verbatim}
+What happens when you try to compile this file with \verb|javac Test.java|?
+Consider the code:
+\begin{verbatim}
+public class Runner {
+    public static void main(String... a) {
+        System.out.println(a[0]);
+    }
+}
+\end{verbatim}
+What is the result of running the class with the command: \verb|java Runner Hello World|?
+What is the primary role of the Java classpath?
+What is the result of the following code?
+\begin{verbatim}
+public class Main {
+    public static void main(String[] args) {
+        // My first Java program
+        System.out.println("Hello");
+    }
+}
+\end{verbatim}
+Which statement best describes the relationship between JDK, JRE, and JVM?
+Which of these is NOT a valid Java identifier?
+A Java source file contains two classes, \verb|A| and \verb|B|. Class \verb|A| is public. What must the name of the source file be?
+What happens if a semicolon is omitted at the end of a Java statement?
+Given the command: \verb|java com.example.Main arg1 arg2|, what is the value of \verb|args.length| inside the main method?
+Which of the following are valid declarations for the main method? (Choose all that apply)
+Which statements about Java's platform independence are true? (Choose all that apply)
+Which of the following are reserved keywords in Java? (Choose all that apply)
+
+
+\end{document}
