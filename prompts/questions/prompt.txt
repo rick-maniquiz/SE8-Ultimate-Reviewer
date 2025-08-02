@@ -15,17 +15,17 @@ It’s not impossible, but it does demand focus, patience, and a sharp eye. Pass
 
 The following is the topic you want to cover for now:
 {
-    "topicId": 1011,
-    "topic": "Break, Continue, and Labels",
-    "description": "Explains control flow statements like `break` and `continue` for altering loop execution. It also covers the use of labels for breaking or continuing specific nested loops."
-  }
+    "topicId": int,
+    "topic": str,
+    "description": str
+}
 
 Task/Goal:
 You want to make a comprehensive mock exam, answer/solution sheets and reviewers to mimic the 1Z0-808 Java SE8 exam.
 Along with that, you also want to teach them all the basics about OOP (the four pillars), and other Java Nuances and programming concepts.
 So your next task is to create mock exam question for the specific topic so you can systematically check the strength/weaknesses of your students on a particular topic.
 Your goal is to make a list of topics based on the context and situation you have. You can also add more details/nuances as you see fit.
-Create 4 easy questions, 10 medium, and 6 hard. 
+Create 6 easy questions, 15 medium, and 9 hard. 
 There are 2 types of questions, one with a single correct choice and one with multiple correct choices. keep the ratio of about 3 (single) : 1 (multiple).
 
 Output/Format:
@@ -37,7 +37,7 @@ Your output will be a list of JSON objects that represents questions, choices, a
         "questionID": <integer starting at (topicId * 100)>,
         "difficulty": "<easy, medium, hard> (lowercase strings)",
         "type": "<single, multiple> (single-only once correct choice or most correct, multiple-multople correct choices)",
-        "question": "<question>", (questions are in latex readable/compileable format. that is, when  this string is pasted in a latex document, it will work)
+        "question": "<question>", (questions are in latex readable/compileable format. that is, when  this string is pasted in a latex document, it will work. use verbatim (assume that it is already imported))
         "choices": {
             (int) 0 : "<choice>",
             (int) 1 : "<choice>",
@@ -57,14 +57,14 @@ Example:
     "questionID": 100014,
     "difficulty": "hard",
     "type": "single",
-    "question": "Consider the following directory structure and files:\n\\texttt{\n/project\n\\quad /src\n\\quad \\quad /com\n\\quad \\quad \\quad /example\n\\quad \\quad \\quad \\quad MyClass.java\n\\quad /bin\n}\n\\texttt{MyClass.java} contains:\n\\texttt{\npackage com.example;\npublic class MyClass \{\n\\quad public static void main(String[] args) \{\n\\quad \\quad System.out.println(\"Running MyClass\");\n\\quad \}\n\}\n}\nYou are currently in the \\texttt{/project} directory. Which sequence of commands will successfully compile and run \\texttt{MyClass}?",
+    "question": "Consider the following directory structure and files:\n\\begin{verbatim}\n/project\n    /src\n        /com\n            /example\n                MyClass.java\n    /bin\n\\end{verbatim}\nThe file \\verb|MyClass.java| contains:\n\\begin{verbatim}\npackage com.example;\n\npublic class MyClass {\n    public static void main(String[] args) {\n        System.out.println(\"Running MyClass\");\n    }\n}\n\\end{verbatim}\nYou are currently in the \\verb|/project| directory. Which sequence of commands will successfully compile and run \\verb|MyClass|?",
     "choices": {
-      "0": "\\texttt{javac src/com/example/MyClass.java}\n\\texttt{java -cp src com.example.MyClass}",
-      "1": "\\texttt{javac src/com/example/MyClass.java}\n\\texttt{java -cp bin com.example.MyClass}",
-      "2": "\\texttt{javac -d bin src/com/example/MyClass.java}\n\\texttt{java -cp bin com.example.MyClass}",
-      "3": "\\texttt{javac -d bin src/com/example/MyClass.java}\n\\texttt{java com.example.MyClass}"
-    },
+            "0": "\\begin{verbatim}\njavac src/com/example/MyClass.java\njava -cp src com.example.MyClass\n\\end{verbatim}",
+            "1": "\\begin{verbatim}\njavac src/com/example/MyClass.java\njava -cp bin com.example.MyClass\n\\end{verbatim}",
+            "2": "\\begin{verbatim}\njavac -d bin src/com/example/MyClass.java\njava -cp bin com.example.MyClass\n\\end{verbatim}",
+            "3": "\\begin{verbatim}\njavac -d bin src/com/example/MyClass.java\njava com.example.MyClass\n\\end{verbatim}"
+        },
     "answers": [2]
-  },
+    },
   ...
 ]
