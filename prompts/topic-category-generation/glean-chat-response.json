@@ -1,0 +1,82 @@
+[
+    {
+        "topicId": 1000,
+        "topic": "Introduction to Java",
+        "description": "Learn the basics of Java programming, including terminology, history, JDK, JVM, and JRE."
+    },
+    {
+        "topicId": 1001,
+        "topic": "Java Class Structure",
+        "description": "Define the structure of a Java class, create executable applications, and run Java programs from the command line."
+    },
+    {
+        "topicId": 1002,
+        "topic": "Variables and Data Types",
+        "description": "Declare and initialize variables, understand different data types in Java, including wrapper classes."
+    },
+    {
+        "topicId": 1003,
+        "topic": "Object-Oriented Programming",
+        "description": "Understand the four pillars of OOP: Encapsulation, Inheritance, Polymorphism, and Abstraction."
+    },
+    {
+        "topicId": 1004,
+        "topic": "Operators and Decision Constructs",
+        "description": "Use Java operators, understand their precedence, and apply decision constructs like if/else and switch statements."
+    },
+    {
+        "topicId": 1005,
+        "topic": "Arrays and Collections",
+        "description": "Work with one-dimensional and multi-dimensional arrays, ArrayList, and other collection types in Java."
+    },
+    {
+        "topicId": 1006,
+        "topic": "Loop Constructs",
+        "description": "Understand and apply looping constructs like while, do-while, for loops, and advanced flow control."
+    },
+    {
+        "topicId": 1007,
+        "topic": "Exception Handling",
+        "description": "Understand checked and unchecked exceptions, use try/catch/finally blocks, and create custom exceptions."
+    },
+    {
+        "topicId": 1008,
+        "topic": "Methods and Encapsulation",
+        "description": "Design methods, apply access modifiers, use static methods and fields, and understand method overloading and encapsulation."
+    },
+    {
+        "topicId": 1009,
+        "topic": "String Handling",
+        "description": "Create and manipulate Strings, understand StringBuilder, and learn about string immutability."
+    },
+    {
+        "topicId": 1010,
+        "topic": "Date and Time API",
+        "description": "Work with the new Date and Time API introduced in Java 8, including LocalDate, LocalTime, and DateTimeFormatter."
+    },
+    {
+        "topicId": 1011,
+        "topic": "Lambda Expressions",
+        "description": "Learn about functional interfaces, write lambda expressions, and understand their use cases."
+    },
+    {
+        "topicId": 1012,
+        "topic": "Interfaces and Abstract Classes",
+        "description": "Understand the use of interfaces and abstract classes, and learn about modifiers and inheritance in interfaces."
+    },
+    {
+        "topicId": 1013,
+        "topic": "Static and Scope",
+        "description": "Understand static variables/methods, initialization blocks, and scope of variables in Java."
+    },
+    {
+        "topicId": 1014,
+        "topic": "Garbage Collection",
+        "description": "Learn about garbage collection in Java, including how it works and how to write code that facilitates efficient garbage collection."
+    },
+    {
+        "topicId": 1015,
+        "topic": "Java Packages",
+        "description": "Learn about organizing Java classes into packages, setting the classpath, and creating JAR files."
+    }
+]
