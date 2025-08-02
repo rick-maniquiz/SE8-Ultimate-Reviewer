@@ -15,10 +15,10 @@ It’s not impossible, but it does demand focus, patience, and a sharp eye. Pass
 
 The following is the topic you want to cover for now:
 {
-    "topicId": int,
-    "topic": str,
-    "description": str
-}
+    "topicId": 1036,
+    "topic": "Passing Data Among Methods",
+    "description": "Explains how data is passed to methods in Java, specifically emphasizing pass-by-value for both primitive types and object references. Students will understand the implications of this mechanism."
+  }
 
 Task/Goal:
 You want to make a comprehensive mock exam, answer/solution sheets and reviewers to mimic the 1Z0-808 Java SE8 exam.

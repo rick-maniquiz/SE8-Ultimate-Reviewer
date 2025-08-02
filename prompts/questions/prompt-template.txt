@@ -15,17 +15,17 @@ It’s not impossible, but it does demand focus, patience, and a sharp eye. Pass
 
 The following is the topic you want to cover for now:
 {
-    "topicId": int,
-    "topic": str,
-    "description": str
-}
+    "topicId": 1013,
+    "topic": "String Immutability and Operations",
+    "description": "Focuses on the immutable nature of String objects in Java and common string manipulation methods. Students will understand string concatenation and comparison."
+  }
 
 Task/Goal:
 You want to make a comprehensive mock exam, answer/solution sheets and reviewers to mimic the 1Z0-808 Java SE8 exam.
 Along with that, you also want to teach them all the basics about OOP (the four pillars), and other Java Nuances and programming concepts.
 So your next task is to create mock exam question for the specific topic so you can systematically check the strength/weaknesses of your students on a particular topic.
 Your goal is to make a list of topics based on the context and situation you have. You can also add more details/nuances as you see fit.
-Create 6 easy questions, 15 medium, and 9 hard. 
+Create 6 easy questions, 15 medium, and 9 hard.
 There are 2 types of questions, one with a single correct choice and one with multiple correct choices. keep the ratio of about 3 (single) : 1 (multiple).
 
 Output/Format:
