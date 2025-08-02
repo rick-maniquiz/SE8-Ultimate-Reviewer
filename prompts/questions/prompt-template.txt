@@ -34,7 +34,7 @@ Your output will be a list of JSON objects that represents questions, choices, a
     {
         "topicId": <integer starting at 1000>
         "topic": "<topic>",
-        "questionID": <integer starting at (topicId * 100)>,
+        "questionId": <integer starting at (topicId * 100)>,
         "difficulty": "<easy, medium, hard> (lowercase strings)",
         "type": "<single, multiple> (single-only once correct choice or most correct, multiple-multople correct choices)",
         "question": "<question>", (questions are in latex readable/compileable format. that is, when  this string is pasted in a latex document, it will work. use verbatim (assume that it is already imported))
@@ -54,7 +54,7 @@ Example:
     {
     "topicId": 1000,
     "topic": "Java Environment and Fundamentals",
-    "questionID": 100014,
+    "questionId": 100014,
     "difficulty": "hard",
     "type": "single",
     "question": "Consider the following directory structure and files:\n\\begin{verbatim}\n/project\n    /src\n        /com\n            /example\n                MyClass.java\n    /bin\n\\end{verbatim}\nThe file \\verb|MyClass.java| contains:\n\\begin{verbatim}\npackage com.example;\n\npublic class MyClass {\n    public static void main(String[] args) {\n        System.out.println(\"Running MyClass\");\n    }\n}\n\\end{verbatim}\nYou are currently in the \\verb|/project| directory. Which sequence of commands will successfully compile and run \\verb|MyClass|?",
