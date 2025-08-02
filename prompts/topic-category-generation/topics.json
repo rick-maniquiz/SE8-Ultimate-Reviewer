@@ -1,187 +1,187 @@
 [
   {
     "topicId": 1000,
-    "topic": "Java Environment and Fundamentals",
+    "topicName": "Java Environment and Fundamentals",
     "description": "This section covers the core components of the Java ecosystem, including JDK, JRE, and JVM. Students will learn about the compilation and execution process of Java programs."
   },
   {
     "topicId": 1001,
-    "topic": "Main Method and Command Line Arguments",
+    "topicName": "Main Method and Command Line Arguments",
     "description": "Focuses on defining the structure of a Java class with a main method. Students will practice running Java applications from the command line and handling input arguments."
   },
   {
     "topicId": 1002,
-    "topic": "Packages, Classpath, and JARs",
+    "topicName": "Packages, Classpath, and JARs",
     "description": "Explores how to organize Java classes into packages and manage dependencies using the classpath. It also covers the creation and usage of JAR files for deployment."
   },
   {
     "topicId": 1003,
-    "topic": "Java Coding Conventions and Javadoc",
+    "topicName": "Java Coding Conventions and Javadoc",
     "description": "Introduces standard Java coding practices for readability and maintainability. Students will learn to use comments and generate documentation with Javadoc."
   },
   {
     "topicId": 1004,
-    "topic": "Primitive Data Types and Literals",
+    "topicName": "Primitive Data Types and Literals",
     "description": "Covers all primitive data types in Java, their memory allocation, and various literal forms. This includes understanding their ranges and default values."
   },
   {
     "topicId": 1005,
-    "topic": "Type Conversion and Casting",
+    "topicName": "Type Conversion and Casting",
     "description": "Explains implicit and explicit type conversions between primitive data types. Students will learn about widening and narrowing conversions, including potential data loss."
   },
   {
     "topicId": 1006,
-    "topic": "Wrapper Classes and Autoboxing/Unboxing",
+    "topicName": "Wrapper Classes and Autoboxing/Unboxing",
     "description": "Details the use of wrapper classes for primitive types and their role in object-oriented contexts. It also covers the automatic conversion features of autoboxing and unboxing."
   },
   {
     "topicId": 1007,
-    "topic": "Variable Scope and Lifetime",
+    "topicName": "Variable Scope and Lifetime",
     "description": "Defines the different scopes for variables, including local, instance, and static variables. Students will understand variable visibility and lifetime within a Java program."
   },
   {
     "topicId": 1008,
-    "topic": "Java Operators and Precedence",
+    "topicName": "Java Operators and Precedence",
     "description": "Covers all types of Java operators, such as arithmetic, relational, logical, and assignment operators. Emphasis is placed on understanding operator precedence and associativity."
   },
   {
     "topicId": 1009,
-    "topic": "Conditional Statements (if/else, switch)",
+    "topicName": "Conditional Statements (if/else, switch)",
     "description": "Explores decision-making constructs like `if`, `if-else`, `if-else-if`, and `switch` statements. Students will learn to apply these for controlling program flow based on conditions."
   },
   {
     "topicId": 1010,
-    "topic": "Looping Constructs (for, while, do-while)",
+    "topicName": "Looping Constructs (for, while, do-while)",
     "description": "Introduces various looping mechanisms including `for`, `while`, `do-while`, and the enhanced `for` loop. This section focuses on iterating over data and repeating code blocks."
   },
   {
     "topicId": 1011,
-    "topic": "Break, Continue, and Labels",
+    "topicName": "Break, Continue, and Labels",
     "description": "Explains control flow statements like `break` and `continue` for altering loop execution. It also covers the use of labels for breaking or continuing specific nested loops."
   },
   {
     "topicId": 1012,
-    "topic": "Enums",
+    "topicName": "Enums",
     "description": "Covers the definition and usage of enumerations in Java for representing a fixed set of constants. Students will learn about enum methods and their practical applications."
   },
   {
     "topicId": 1013,
-    "topic": "String Immutability and Operations",
+    "topicName": "String Immutability and Operations",
     "description": "Focuses on the immutable nature of String objects in Java and common string manipulation methods. Students will understand string concatenation and comparison."
   },
   {
     "topicId": 1014,
-    "topic": "StringBuilder and StringBuffer",
+    "topicName": "StringBuilder and StringBuffer",
     "description": "Introduces mutable alternatives to String for efficient string manipulation, particularly in multi-threaded environments. Students will learn when to use `StringBuilder` versus `StringBuffer`."
   },
   {
     "topicId": 1015,
-    "topic": "Classes and Objects Fundamentals",
+    "topicName": "Classes and Objects Fundamentals",
     "description": "This section introduces the core concepts of Object-Oriented Programming (OOP), including defining classes and creating objects. It lays the foundation for understanding the four pillars: Encapsulation, Inheritance, Polymorphism, and Abstraction."
   },
   {
     "topicId": 1016,
-    "topic": "Constructors and Initialization Blocks",
+    "topicName": "Constructors and Initialization Blocks",
     "description": "Explains how objects are initialized using constructors, including default, no-arg, and overloaded constructors. It also covers instance and static initialization blocks for complex setup."
   },
   {
     "topicId": 1017,
-    "topic": "Static Members and 'this' Keyword",
+    "topicName": "Static Members and 'this' Keyword",
     "description": "Covers the `static` keyword for class-level variables and methods, and the `this` keyword for referring to the current object instance. Students will understand their appropriate usage and implications."
   },
   {
     "topicId": 1018,
-    "topic": "Garbage Collection and Object Lifecycle",
+    "topicName": "Garbage Collection and Object Lifecycle",
     "description": "Details the process of automatic memory management in Java through garbage collection. Students will learn about object states and when objects become eligible for collection."
   },
   {
     "topicId": 1019,
-    "topic": "Encapsulation and Access Modifiers",
+    "topicName": "Encapsulation and Access Modifiers",
     "description": "Explains the OOP principle of encapsulation, focusing on data hiding and controlled access to class members. Students will master the use of `public`, `protected`, `default`, and `private` access modifiers."
   },
   {
     "topicId": 1020,
-    "topic": "Inheritance and Method Overriding",
+    "topicName": "Inheritance and Method Overriding",
     "description": "Covers the OOP principle of inheritance using the `extends` keyword for code reusability. Students will learn about method overriding, constructor chaining, and the `super` keyword."
   },
   {
     "topicId": 1021,
-    "topic": "Polymorphism and Type Casting",
+    "topicName": "Polymorphism and Type Casting",
     "description": "Introduces the OOP principle of polymorphism, allowing objects to take on many forms. Students will understand method overloading, runtime polymorphism, and safe object type casting with `instanceof`."
   },
   {
     "topicId": 1022,
-    "topic": "Abstract Classes and Interfaces",
+    "topicName": "Abstract Classes and Interfaces",
     "description": "Explores abstract classes and methods for defining common behavior without full implementation. It also covers interfaces for achieving complete abstraction and multiple inheritance of type."
   },
   {
     "topicId": 1023,
-    "topic": "The 'final' Keyword",
+    "topicName": "The 'final' Keyword",
     "description": "Details the various uses of the `final` keyword for variables, methods, and classes. Students will understand how `final` enforces immutability and prevents overriding or inheritance."
   },
   {
     "topicId": 1024,
-    "topic": "One-Dimensional and Multi-Dimensional Arrays",
+    "topicName": "One-Dimensional and Multi-Dimensional Arrays",
     "description": "Covers the declaration, initialization, and manipulation of single and multi-dimensional arrays. Students will learn about array length and common array operations."
   },
   {
     "topicId": 1025,
-    "topic": "ArrayList and Basic Collections",
+    "topicName": "ArrayList and Basic Collections",
     "description": "Introduces the `ArrayList` as a dynamic array and provides an overview of the Java Collections Framework. Students will understand the basic `Collection` interface and its common methods."
   },
   {
     "topicId": 1026,
-    "topic": "Generics",
+    "topicName": "Generics",
     "description": "Explains the concept of generics for creating type-safe collections and classes. Students will learn how generics improve code reusability and prevent runtime errors."
   },
   {
     "topicId": 1027,
-    "topic": "Sorting and Searching Collections (Comparable, Comparator)",
+    "topicName": "Sorting and Searching Collections (Comparable, Comparator)",
     "description": "Covers how to sort and search elements within collections using natural ordering and custom ordering. Students will learn to implement `Comparable` and `Comparator` interfaces."
   },
   {
     "topicId": 1028,
-    "topic": "Exception Hierarchy and Types",
+    "topicName": "Exception Hierarchy and Types",
     "description": "Introduces the `Throwable` class hierarchy, distinguishing between `Error`, `Exception`, and `RuntimeException`. Students will understand checked versus unchecked exceptions."
   },
   {
     "topicId": 1029,
-    "topic": "Try-Catch-Finally Blocks",
+    "topicName": "Try-Catch-Finally Blocks",
     "description": "Explains the fundamental structure for handling exceptions using `try`, `catch`, and `finally` blocks. Students will learn about the execution flow within these blocks."
   },
   {
     "topicId": 1030,
-    "topic": "Throwing and Creating Exceptions",
+    "topicName": "Throwing and Creating Exceptions",
     "description": "Covers how to explicitly throw exceptions using the `throw` keyword and declare them with `throws`. Students will also learn to create custom exception classes."
   },
   {
     "topicId": 1031,
-    "topic": "Try-with-Resources",
+    "topicName": "Try-with-Resources",
     "description": "Introduces the `try-with-resources` statement for automatically managing resources that implement `AutoCloseable`. This simplifies resource cleanup and prevents common errors."
   },
   {
     "topicId": 1032,
-    "topic": "Lambda Expressions and Functional Interfaces",
+    "topicName": "Lambda Expressions and Functional Interfaces",
     "description": "Explores Java 8's lambda expressions for concise representation of anonymous functions. Students will learn about functional interfaces and their role in enabling lambda usage."
   },
   {
     "topicId": 1033,
-    "topic": "Date and Time API (java.time)",
+    "topicName": "Date and Time API (java.time)",
     "description": "Covers the modern Date and Time API introduced in Java 8, including `LocalDate`, `LocalTime`, `LocalDateTime`, `Period`, and `Duration`. Students will learn about formatting and parsing dates and times."
   },
   {
     "topicId": 1034,
-    "topic": "Static Imports",
+    "topicName": "Static Imports",
     "description": "Explains how static imports allow direct access to static members of a class without qualifying them with the class name. This can improve code readability for frequently used static members."
   },
   {
     "topicId": 1035,
-    "topic": "Method Design and Variable Arguments",
+    "topicName": "Method Design and Variable Arguments",
     "description": "Focuses on best practices for designing methods, including return types, parameters, and access modifiers. It also covers the use of variable arguments (`varargs`) for flexible method signatures."
   },
   {
     "topicId": 1036,
-    "topic": "Passing Data Among Methods",
+    "topicName": "Passing Data Among Methods",
     "description": "Explains how data is passed to methods in Java, specifically emphasizing pass-by-value for both primitive types and object references. Students will understand the implications of this mechanism."
   }
 ]
