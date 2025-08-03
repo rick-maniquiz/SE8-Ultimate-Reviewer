@@ -3,7 +3,7 @@ package org.example.exammodels;
 import java.util.List;
 import java.util.Map;
 
-public class QuestionEntry {
+public class QuestionEntry implements Answerable {
     private int topicId;
     private String topic;
     private int questionId;
@@ -12,6 +12,10 @@ public class QuestionEntry {
     private String question;
     private Map<String, String> choices;
     private List<String> answers;
+
+    private boolean isAttempted = false;
+    private boolean isAnswered = false;
+    private int attempts = 0;
 
     public QuestionEntry(){
 
@@ -89,5 +93,30 @@ public class QuestionEntry {
 
     public void setAnswers(List<String> answers) {
         this.answers = answers;
+    }
+
+    @Override
+    public void correct(){
+        isAnswered = true;
+        isAttempted = true;
+        attempts +=1;
+    }
+
+    @Override
+    public void wrong(){
+        isAttempted = true;
+        attempts +=1;
+    }
+
+    public boolean isAttempted() {
+        return isAttempted;
+    }
+
+    public boolean isAnswered() {
+        return isAnswered;
+    }
+
+    public int getAttempts() {
+        return attempts;
     }
 }
