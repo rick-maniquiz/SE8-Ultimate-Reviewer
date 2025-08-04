@@ -1,5 +1,6 @@
 package org.example.exammodels;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -13,13 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class QuestionRepository {
-    private static List<QuestionEntry> questions;
-    private static QuestionRepository instance = new QuestionRepository();
+public class QuestionRepository implements Savable{
+
+//    private static QuestionRepository instance = new QuestionRepository();
+    private List<QuestionEntry> questions;
+    private static final String persistentFilePath = "persistent/question-repository-persistent.json";
+
 
     public QuestionRepository(){
         ObjectMapper mapper = new ObjectMapper();
-        File jsonFile = new File("questions/question-repository-verbatim.json");
+        File jsonFile = (new File(persistentFilePath)).exists()? new File(persistentFilePath) : new File("questions/question-repository-verbatim.json");
         try {
             questions = mapper.readValue(jsonFile, new TypeReference<List<QuestionEntry>>() {});
 //            System.out.println( "IT WENT HERE" + questions.size());
@@ -44,11 +48,18 @@ public class QuestionRepository {
         }
     }
 
-    public static QuestionRepository getInstance() {
-        return instance;
+    @Override
+    public void saveProgress() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+//        String jsonString = mapper.writeValueAsString(instance);
+        mapper.writeValue(new File(persistentFilePath), questions);
     }
 
-    public static List<QuestionEntry> getQuestions() {
+//    public static QuestionRepository getInstance() {
+//        return instance;
+//    }
+
+    public List<QuestionEntry> getQuestions() {
         return questions;
     }
 }

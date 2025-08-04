@@ -2,6 +2,7 @@ package org.example.exammodels;
 
 import org.example.topicmodels.Topic;
 import org.example.topicmodels.TopicRepository;
+import org.example.utils.LaTeXProcessor;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -9,8 +10,20 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Exam {
-    private static int examGenerated = 0;
+import static org.example.utils.LaTeXProcessor.fixVerbatimString;
+
+public class Exam implements Printable{
+
+
+
+
+    private static TopicRepository topicRepository = new TopicRepository();
+    private static QuestionRepository questionRepository = new QuestionRepository();
+    private static SolutionRepository solutionRepository = new SolutionRepository();
+    private static ExamRepository examRepository = new ExamRepository();
+
+
+    private static int examGenerated = ExamRepository.getExams().size();
 
     private final int examId;
     public int questionCount;
@@ -21,7 +34,11 @@ public class Exam {
         examId = 100 + examGenerated++;
     }
 
-    public Exam(int questionCount, String difficulty){
+    public Exam(){
+
+    }
+
+    public Exam(int questionCount, String difficulty) throws IOException {
         this.questionCount = questionCount;
         this.difficulty = difficulty;
 //        TopicRepository topicRepository = new TopicRepository();
@@ -31,8 +48,12 @@ public class Exam {
             for (Topic topic : TopicRepository.getTopics()){
 //            System.out.println(topic);
                 for (QuestionEntry questionEntry : topic.getTopicQuestions()){
-                    if (!questionEntry.isAnswered() && questionEntry.getDifficulty().equalsIgnoreCase(this.difficulty)){
+                    if (!questionEntry.isAttempted()
+                            && questionEntry
+                            .getDifficulty()
+                            .equalsIgnoreCase(this.difficulty)){
                         if (questionCount < ++i || j == questionCount*2) break;
+                        questionEntry.attempted();
                         examQuestions.add(questionEntry);
 //                        i++;
 //                        System.out.println(i);
@@ -42,41 +63,23 @@ public class Exam {
                 j++;
             }
         }
-
         examGenerated += 1;
+        ExamRepository.addExam(this);
+        examRepository.saveProgress();
+        questionRepository.saveProgress();
     };
 
-    private String fixVerbatimString(String string){
-        Pattern pattern = Pattern.compile(
-                "\\\\begin\\{verbatim\\}(.*?)\\\\end\\{verbatim\\}",
-                Pattern.DOTALL
-        );
-
-        Matcher matcher = pattern.matcher(string);
-        StringBuffer result = new StringBuffer();
-
-        while (matcher.find()){
-            String verbatimContent = matcher.group(1);
-            String fixedContent = verbatimContent.replace("\\n", "\n");
-//            System.out.println("\nFIXED" + fixedContent);
-//            System.out.println("\nNOT FIXED" + verbatimContent);
-
-
-            String replacement = "\\begin{verbatim}" + fixedContent + "\\end{verbatim}";
-            matcher.appendReplacement(result, Matcher.quoteReplacement(replacement));
-        }
-        matcher.appendTail(result);
-        return result.toString();
-//        return string;
-    }
-
+    @Override
     public void generatePDF(){
         String texFileName = "mock-exam-" + examId + ".tex";
         String outputDir = "output";
         StringBuilder content = new StringBuilder();
 
         for (QuestionEntry questionEntry : examQuestions){
-            content.append("\\item ")
+            content.append("\\item (")
+                    .append("questionId: ")
+                    .append(questionEntry.getQuestionId())
+                    .append(") ")
                     .append(fixVerbatimString(questionEntry.getQuestion()))
                     .append("\n");
             if (questionEntry.getType().equalsIgnoreCase("single")){
@@ -88,19 +91,24 @@ public class Exam {
             for (String choice : questionEntry.getChoices().keySet()){
                 String choiceString = questionEntry.getChoices().get(choice);
 
-                if (!choiceString.trim().startsWith("\\begin") && choiceString.indexOf('_') != -1)
+//                if (!choiceString.trim().startsWith("\\begin") && choiceString.indexOf('_') != -1)
+//                content.append("\\item ")
+//                        .append(choice)
+//                        .append(") ")
+//                        .append("\\begin{verbatim}")
+//                        .append(choiceString)
+//                        .append("\\end{verbatim}")
+//                        .append("\n");
+//                else content.append("\\item ")
+//                            .append(choice)
+//                            .append(") ")
+//                            .append(choiceString)
+//                            .append("\n");
                 content.append("\\item ")
                         .append(choice)
                         .append(") ")
-                        .append("\\begin{verbatim}")
-                        .append(choiceString)
-                        .append("\\end{verbatim}")
+                        .append(LaTeXProcessor.fixUnderscoreFormat(choiceString))
                         .append("\n");
-                else content.append("\\item ")
-                            .append(choice)
-                            .append(") ")
-                            .append(choiceString)
-                            .append("\n");
 
 
             }
@@ -139,7 +147,7 @@ public class Exam {
                         "\\begin{document}\n" +
                         "\n" +
                         "\\maketitle\n" +
-                        "\n" +
+                        "\\newpage" +
                         "\\begin{enumerate}[label=(\\arabic*)]\n" +
                         content.toString() +
                         "\n" +
@@ -183,14 +191,35 @@ public class Exam {
             }
 
             int exitCode = process.waitFor();
-            if (exitCode == 0) {
-                System.out.println("✅ PDF generated successfully.");
-            } else {
-                System.out.println("❌ PDF generation failed. Exit code: " + exitCode);
-            }
+//            if (exitCode == 0) {
+//                System.out.println("✅ PDF generated successfully.");
+//            } else {
+//                System.out.println("❌ PDF generation failed. Exit code: " + exitCode);
+//            }
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
+
+    public List<QuestionEntry> getExamQuestions() {
+        return examQuestions;
+    }
+
+    public int getExamId(){
+        return examId;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public void setExamQuestions(List<QuestionEntry> examQuestions) {
+        this.examQuestions = examQuestions;
+    }
+
 }

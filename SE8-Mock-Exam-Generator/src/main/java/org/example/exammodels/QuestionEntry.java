@@ -17,19 +17,19 @@ public class QuestionEntry implements Answerable {
     private boolean isAnswered = false;
     private int attempts = 0;
 
-    public QuestionEntry(){
-
-    }
-
-    public QuestionEntry(int topicId, int questionId, String difficulty, String type, String question, Map<String, String> choices, List<String> answers) {
-        this.topicId = topicId;
-        this.questionId = questionId;
-        this.difficulty = difficulty;
-        this.type = type;
-        this.question = question;
-        this.choices = choices;
-        this.answers = answers;
-    }
+//    public QuestionEntry(){
+//
+//    }
+//
+//    public QuestionEntry(int topicId, int questionId, String difficulty, String type, String question, Map<String, String> choices, List<String> answers) {
+//        this.topicId = topicId;
+//        this.questionId = questionId;
+//        this.difficulty = difficulty;
+//        this.type = type;
+//        this.question = question;
+//        this.choices = choices;
+//        this.answers = answers;
+//    }
 
     public int getTopicId() {
         return topicId;
@@ -103,7 +103,7 @@ public class QuestionEntry implements Answerable {
     }
 
     @Override
-    public void wrong(){
+    public void attempted(){
         isAttempted = true;
         attempts +=1;
     }
@@ -118,5 +118,17 @@ public class QuestionEntry implements Answerable {
 
     public int getAttempts() {
         return attempts;
+    }
+
+    public void setAttempted(boolean attempted) {
+        isAttempted = attempted;
+    }
+
+    public void setAnswered(boolean answered) {
+        isAnswered = answered;
+    }
+
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
     }
 }
