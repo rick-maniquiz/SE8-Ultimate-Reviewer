@@ -11,8 +11,7 @@ import java.nio.file.*;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-
-        Exam exam = new Exam(56, "easy");
+        Exam exam = new Exam(56, "hard");
         SolutionSheet solutionSheet = new SolutionSheet(exam);
         exam.generatePDF();
         solutionSheet.generatePDF();

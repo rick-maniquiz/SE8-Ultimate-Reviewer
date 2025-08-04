@@ -17,7 +17,7 @@ public class SolutionSheet implements Printable{
     @Override
     public void generatePDF(){
         String texFileName = "mock-exam-solutions-" + solutionSheetId + ".tex";
-        String outputDir = "output";
+        String outputDir = "output/solutions";
         StringBuilder content = new StringBuilder();
 
         for (QuestionEntry questionEntry : exam.getExamQuestions()){

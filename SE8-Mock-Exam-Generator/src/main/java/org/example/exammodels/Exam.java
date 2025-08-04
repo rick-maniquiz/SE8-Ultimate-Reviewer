@@ -6,6 +6,8 @@ import org.example.utils.LaTeXProcessor;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -47,6 +49,7 @@ public class Exam implements Printable{
             if (questionCount < i || j == questionCount*2) break;
             for (Topic topic : TopicRepository.getTopics()){
 //            System.out.println(topic);
+                Collections.shuffle(topic.getTopicQuestions());
                 for (QuestionEntry questionEntry : topic.getTopicQuestions()){
                     if (!questionEntry.isAttempted()
                             && questionEntry
@@ -63,6 +66,7 @@ public class Exam implements Printable{
                 j++;
             }
         }
+        Collections.shuffle(examQuestions);
         examGenerated += 1;
         ExamRepository.addExam(this);
         examRepository.saveProgress();
@@ -72,7 +76,7 @@ public class Exam implements Printable{
     @Override
     public void generatePDF(){
         String texFileName = "mock-exam-" + examId + ".tex";
-        String outputDir = "output";
+        String outputDir = "output/exams";
         StringBuilder content = new StringBuilder();
 
         for (QuestionEntry questionEntry : examQuestions){
