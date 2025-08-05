@@ -1,5 +1,5 @@
 # Java SE8 Mock Exam & Solution Sheet Generator
-### Created by: Rafael Nico T. Maniquiz
+### By: Rick
 
 This tool generates a printable PDF mock exam and its corresponding solution sheet using LaTeX. It is built with **Java 8 (SE)** and uses **Maven**.
 
