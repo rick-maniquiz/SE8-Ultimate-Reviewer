@@ -1,0 +1,1278 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{1Z0-808 Mock Exam}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Mock Exam}}
+\author{ExamId: 100 \\ Items: 56 \\ Dificulty: HARD}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\item (questionId: 100127) Which of the following `main` method signatures will cause a `java.lang.NoSuchMethodError: main` exception at runtime, assuming the class is compiled successfully? (Choose all that apply)
+Choose all the correct answer.\begin{itemize}
+\item 0) `public static void main(String... args)`
+
+\item 1) `public void main(String[] args)`
+
+\item 2) `public static void Main(String[] args)`
+
+\item 3) `public static void main(String args)`
+
+\item 4) `public static int main(String[] args)`
+
+\end{itemize}
+\item (questionId: 100926) Examine this code carefully. What is the result?\n\begin{verbatim}
+public class Test {
+    public static void main(String[] args) {
+        Integer i = 128;
+        Integer j = 128;
+        int k = 128;
+
+        if (i == j) {
+            System.out.print("A");
+        }
+        if (i == k) {
+            System.out.print("B");
+        }
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) A
+
+\item 1) B
+
+\item 2) AB
+
+\item 3) No output is produced.
+
+\end{itemize}
+\item (questionId: 102427) What is the final value of \verb|sum|?\begin{verbatim}
+long[][] arr = new long[2][2];
+arr[0] = new long[]{1, 2};
+arr[1] = arr[0];
+arr[0][0] = 5;
+long sum = arr[0][0] + arr[1][0];
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) 6
+
+\item 1) 7
+
+\item 2) 10
+
+\item 3) Compilation fails.
+
+\end{itemize}
+\item (questionId: 101026) What will be printed after this code executes?\n\begin{verbatim}
+String[] data = {"a", "b", "c"};
+int x = 0;
+for(;;){
+    try {
+        System.out.print(data[x++]);
+    } catch (ArrayIndexOutOfBoundsException e) {
+        break;
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) abc
+
+\item 1) ab
+
+\item 2) a
+
+\item 3) An infinite loop occurs.
+
+\end{itemize}
+\item (questionId: 101129) Given the following code, which statements are true? (Choose all that apply)\n\begin{verbatim}
+public class Test {
+    public static void main(String... args) {
+        String result = "";
+        loop:
+        for (int i=0; i<4; i++) {
+            if (i % 2 == 0) {
+                continue;
+            }
+            switch(i) {
+                case 1: result += "A"; break;
+                case 3: result += "B"; break loop;
+                case 5: result += "C";
+            }
+            result += "D";
+        }
+        System.out.println(result);
+    }
+}
+\end{verbatim}
+Choose all the correct answer.\begin{itemize}
+\item 0) The `continue` statement is executed when `i` is 0 and 2.
+
+\item 1) The code enters the `switch` statement when `i` is 1 and 3.
+
+\item 2) The string `"D"` is appended to `result` exactly once.
+
+\item 3) The `break loop;` statement is executed.
+
+\item 4) The final output is `ABD`.
+
+\item 5) The final output is `AB`.
+
+\end{itemize}
+\item (questionId: 102223) What is the result of attempting to access `MyDevice.NAME` in another class?\n\begin{verbatim}
+interface Device {
+    String NAME = "Device";
+}
+interface Gadget {
+    String NAME = "Gadget";
+}
+class MyDevice implements Device, Gadget {
+    // Some code
+}
+// In another class:
+// System.out.println(MyDevice.NAME);
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) It prints "Device".
+
+\item 1) It prints "Gadget".
+
+\item 2) It results in a compile-time error due to an ambiguous field.
+
+\item 3) It prints `null`.
+
+\end{itemize}
+\item (questionId: 100029) Which of these are valid command line argument arrays in a main method signature? (Choose all that apply)
+Choose all the correct answer.\begin{itemize}
+\item 0) \verb|String args[]|
+
+\item 1) \verb|String... args|
+
+\item 2) \verb|String[] myArgs|
+
+\item 3) \verb|String[] _args|
+
+\item 4) \verb|String..._args|
+
+\end{itemize}
+\item (questionId: 101826) Select all lines of code after which at least one `Gadget` object becomes eligible for garbage collection.
+\begin{verbatim}
+class Gadget {}
+public class GadgetFactory {
+    static Gadget staticGadget = new Gadget(); // Line 1
+    Gadget instanceGadget = new Gadget();      // Line 2
+
+    public static void main(String[] args) {
+        GadgetFactory gf = new GadgetFactory(); // Line 3
+        Gadget g1 = new Gadget();               // Line 4
+        gf.build(g1);
+        g1 = null;                              // Line 5
+        gf = null;                              // Line 6
+    }
+
+    void build(Gadget g) {
+        Gadget g2 = new Gadget();               // Line 7
+    } // End of build method is effectively Line 8
+}
+\end{verbatim}
+Choose all the correct answer.\begin{itemize}
+\item 0) Line 5
+
+\item 1) Line 6
+
+\item 2) Line 8
+
+\item 3) The line after the `main` method completes.
+
+\item 4) Line 3
+
+\end{itemize}
+\item (questionId: 102722) What is the result of this code?
+\begin{verbatim}
+Comparator<Integer> c = (i1, i2) -> i1 - i2;
+List<Integer> list = Arrays.asList(Integer.MAX_VALUE, Integer.MIN_VALUE);
+Collections.sort(list, c);
+System.out.println(list);
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) `[-2147483648, 2147483647]`
+
+\item 1) `[2147483647, -2147483648]`
+
+\item 2) An `ArithmeticException` is thrown.
+
+\item 3) The list remains unchanged.
+
+\end{itemize}
+\item (questionId: 100723) Consider the following class. What is the outcome?\n\begin{verbatim}
+public class Test {
+    static {
+        i = 20; // Forward reference is ok in assignment
+    }
+    static int i = 10;
+
+    public static void main(String[] args) {
+        System.out.println(i);
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) 20
+
+\item 1) 10
+
+\item 2) Compilation fails due to illegal forward reference.
+
+\item 3) 0
+
+\end{itemize}
+\item (questionId: 102126) What is the result of attempting to compile this code snippet?\n\begin{verbatim}
+import java.util.*;
+
+public class GenericsTest {
+    public static void main(String[] args) {
+        List<String> stringList = new ArrayList<>();
+        if (stringList instanceof List<Integer>) {
+            System.out.println("It's a list of Integers");
+        }
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) The code compiles and runs, but the `if` block is never executed.
+
+\item 1) The code compiles and throws a `ClassCastException` at runtime.
+
+\item 2) A compile-time error occurs.
+
+\item 3) The code compiles and runs, and the `if` block is executed due to type erasure.
+
+\end{itemize}
+\item (questionId: 100421) What is the result of attempting to compile the following code snippet?
+\begin{verbatim}
+int i = 10;
+byte b = i;
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) It compiles successfully because the value of `i` (10) is within the range of a `byte`.
+
+\item 1) It fails to compile because `i` is an `int` variable, and assigning it to a `byte` requires an explicit cast.
+
+\item 2) It compiles, but will throw a runtime exception if `i` were greater than 127.
+
+\item 3) It compiles because the compiler can determine the constant value of `i` at compile time.
+
+\end{itemize}
+\item (questionId: 101227) Which of the following are true about enums in Java? (Choose all that apply)
+Choose all the correct answer.\begin{itemize}
+\item 0) An enum can be a generic type, e.g., `public enum MyEnum<T> { ... }`
+
+\item 1) Enum constants are implicitly `public`, `static`, and `final`.
+
+\item 2) An enum can contain a `main` method and can be executed as a standalone program.
+
+\item 3) An enum type cannot be a subtype of another enum.
+
+\end{itemize}
+\item (questionId: 101622) What is the output of this program?\n\begin{verbatim}
+public class ForwardReference {
+    {
+        System.out.print(value + " ");
+    }
+    private int value = 1;
+    {
+        System.out.print(value + " ");
+    }
+
+    public ForwardReference() {
+        System.out.print(value);
+    }
+
+    public static void main(String... args) {
+        new ForwardReference();
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) 1 1 1
+
+\item 1) 0 1 1
+
+\item 2) 0 0 1
+
+\item 3) The code fails to compile.
+
+\end{itemize}
+\item (questionId: 102022) What is the result?
+\begin{verbatim}
+class SuperClass {
+    static String ID = "Super";
+    void printID() { System.out.println(ID); }
+}
+
+class SubClass extends SuperClass {
+    static String ID = "Sub";
+    void printID() { System.out.println(ID); }
+}
+
+public class TestHiding {
+    public static void main(String[] args) {
+        SuperClass sup = new SubClass();
+        System.out.println(sup.ID);
+        sup.printID();
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) Super\nSub
+
+\item 1) Sub\nSub
+
+\item 2) Super\nSuper
+
+\item 3) Sub\nSuper
+
+\item 4) Compilation fails.
+
+\end{itemize}
+\item (questionId: 103122) An exception is thrown from a `try-with-resources` block, another from the resource's `close()` method, and a third from the `finally` block. Which exception is ultimately propagated to the caller?
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) The exception from the `try` block.
+
+\item 1) The exception from the `close()` method.
+
+\item 2) The exception from the `finally` block.
+
+\item 3) A new wrapper exception containing all three.
+
+\end{itemize}
+\item (questionId: 100424) What value is stored in the variable `result` after this code is executed?
+\begin{verbatim}
+long result = 2_147_483_647 + 1;
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) `2147483648`
+
+\item 1) `-2147483648`
+
+\item 2) The code fails to compile.
+
+\item 3) `21474836471`
+
+\end{itemize}
+\item (questionId: 103452) What is the output of the following code, which uses a statically imported nested class?
+\begin{verbatim}
+// File: Encloser.java
+public class Encloser {
+    public static class Nested {
+        public void hi() { System.out.println("Hi"); }
+    }
+}
+
+// File: Main.java
+import static Encloser.Nested;
+
+public class Main {
+    public static void main(String[] args) {
+        Nested n = new Nested();
+        n.hi();
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) `Hi`
+
+\item 1) The code fails to compile because you cannot statically import a class.
+
+\item 2) The code fails to compile because `Nested` must be instantiated via `Encloser.Nested`.
+
+\item 3) The code fails to compile for a different reason.
+
+\end{itemize}
+\item (questionId: 100722) What will the following code print?\n\begin{verbatim}
+public class ScopePuzzle {
+    int x = 5;
+
+    public static void main(String[] args) {
+        ScopePuzzle p = new ScopePuzzle();
+        p.go();
+    }
+
+    void go() {
+        int x;
+        go2();
+        // System.out.println(x); // Line X
+    }
+
+    void go2() {
+        x = 10;
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) If Line X is uncommented, the code will print 10.
+
+\item 1) If Line X is uncommented, the code will print 5.
+
+\item 2) If Line X is uncommented, the code will fail to compile.
+
+\item 3) The code as is will compile and run without error.
+
+\end{itemize}
+\item (questionId: 102320) What is the output of the following code?\n\begin{verbatim}
+public class Finalizer {
+    private final int value;
+    public Finalizer(int v) {
+        this.value = v;
+    }
+    public int getValue() {
+        return this.value;
+    }
+    public static void main(String[] args) {
+        final Finalizer f = new Finalizer(20);
+        // Line X
+        System.out.println(f.getValue());
+    }
+    public void modify(Finalizer fin) {
+        fin = new Finalizer(30);
+    }
+}
+\end{verbatim}
+What would happen if `modify(f);` was inserted at 'Line X'?
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) The code would fail to compile because `f` is final.
+
+\item 1) The code would print 30.
+
+\item 2) The code would print 20.
+
+\item 3) The code would throw a runtime exception.
+
+\end{itemize}
+\item (questionId: 100924) What are the final values of `x` and `y` after this code snippet runs?\n\begin{verbatim}
+int x = 10;
+int y = 20;
+if (++x <= 10 && --y > 15) {
+    x++;
+    y++;
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) `x` is 11, `y` is 20
+
+\item 1) `x` is 11, `y` is 19
+
+\item 2) `x` is 12, `y` is 20
+
+\item 3) `x` is 10, `y` is 20
+
+\end{itemize}
+\item (questionId: 101627) What is the result of compiling this class? \n\begin{verbatim}
+public class FinalChallenge {
+    private final int value;
+
+    public FinalChallenge() {
+        this(10);
+        // value = 20; // Line A
+    }
+
+    public FinalChallenge(int value) {
+        this.value = value;
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) The code compiles successfully as is.
+
+\item 1) The code fails to compile because a final field is assigned in one constructor but not the other.
+
+\item 2) If Line A is uncommented, the code will fail to compile.
+
+\item 3) The code fails to compile because a final field cannot be assigned in a constructor that uses `this()`.
+
+\end{itemize}
+\item (questionId: 101729) Given `public class Test { static int x = 1; int y = 2; }`, which of the following lines of code are valid if placed inside the `main` method of another class? (Choose all that apply)
+Choose all the correct answer.\begin{itemize}
+\item 0) `System.out.println(Test.x);`
+
+\item 1) `System.out.println(Test.y);`
+
+\item 2) `Test t = new Test(); System.out.println(t.x);`
+
+\item 3) `Test t = new Test(); System.out.println(t.y);`
+
+\item 4) `Test t = null; System.out.println(t.x);`
+
+\item 5) `Test t = null; System.out.println(t.y);`
+
+\end{itemize}
+\item (questionId: 100524) What is the final value of `s`?
+\begin{verbatim}
+short s = 32767;
+s++;
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) `32768`
+
+\item 1) `-32768`
+
+\item 2) `0`
+
+\item 3) The code does not compile.
+
+\end{itemize}
+\item (questionId: 100827) Which statement best describes the evaluation of the following expression?\n\begin{verbatim}
+int a = 1, b = 2, c = 3, d = 4;
+int result = a + b * c / d > a ? b + c : d - a;
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) The expression evaluates to 5.
+
+\item 1) The expression evaluates to 3.
+
+\item 2) The multiplication `b*c` is performed first.
+
+\item 3) The ternary operator `? :` has higher precedence than `>`.
+
+\end{itemize}
+\item (questionId: 101924) Given the code:
+\begin{verbatim}
+// In package company.parts
+package company.parts;
+public class Engine {
+    // package-private constructor
+    Engine() {}
+}
+
+// In package company.parts
+package company.parts;
+public class PartsFactory {
+    public static Engine getEngine() {
+        return new Engine();
+    }
+}
+
+// In package company.vehicles
+package company.vehicles;
+import company.parts.*;
+public class Car {
+    public static void main(String[] args) {
+        Engine e = PartsFactory.getEngine(); // Line X
+        System.out.println("Engine acquired");
+    }
+}
+\end{verbatim}
+What is the result?
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) Compilation fails at Line X because `Engine`'s constructor is not visible.
+
+\item 1) Compilation fails at Line X because the `Engine` class is not visible.
+
+\item 2) Compilation succeeds, and "Engine acquired" is printed.
+
+\item 3) Compilation fails because `PartsFactory.getEngine()` returns a type whose constructor is not public.
+
+\end{itemize}
+\item (questionId: 101528) Which statements are true regarding the initialization of a new object? (Choose all that apply)
+Choose all the correct answer.\begin{itemize}
+\item 0) The constructor body is executed before instance initializers.
+
+\item 1) If present, a call to another constructor using `this()` must be the very first statement in a constructor.
+
+\item 2) Static variables are initialized after the constructor completes.
+
+\item 3) Instance variables are assigned their default values (e.g., 0, false, null) before any instance initializers or constructors are run.
+
+\item 4) Instance initializers are executed in the order they appear in the source code.
+
+\item 5) It is valid for a class to have multiple instance initializer blocks.
+
+\end{itemize}
+\item (questionId: 102520) What is the result of executing the following code?\begin{verbatim}
+import java.util.List;
+import java.util.ArrayList;
+
+public class Test {
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.remove(2);
+        System.out.println(list);
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) [1, 2]
+
+\item 1) [1, 3]
+
+\item 2) [2, 3]
+
+\item 3) An `IndexOutOfBoundsException` is thrown.
+
+\end{itemize}
+\item (questionId: 101425) Which line of code, when inserted at `// INSERT`, will result in both `boolean` variables being `true`?
+\begin{verbatim}
+StringBuilder sb1 = new StringBuilder("A");
+StringBuilder sb2 = new StringBuilder("A");
+String s1 = new String("A");
+
+// INSERT
+
+boolean b1 = sb1.toString().equals(s1);
+boolean b2 = sb1 == sb2;
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) `sb2 = sb1;`
+
+\item 1) `sb1 = new StringBuilder(s1);`
+
+\item 2) `s1 = sb1.toString(); sb2 = sb1;`
+
+\item 3) It's impossible to make both `true`.
+
+\end{itemize}
+\item (questionId: 102928) What is the final output of this program?
+\begin{verbatim}
+public class Test {
+    public static void main(String[] args) {
+        try {
+            System.out.print("A");
+            danger();
+        } catch (Exception e) {
+            System.out.print("B");
+        } finally {
+            System.out.print("C");
+        }
+    }
+    static void danger() {
+        try {
+            throw new Error();
+        } finally {
+            System.out.print("D");
+        }
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) `ADBC`
+
+\item 1) `ADC`
+
+\item 2) `AD` followed by an `Error` being thrown.
+
+\item 3) `A` followed by an `Error` being thrown.
+
+\end{itemize}
+\item (questionId: 100125) Consider the following code:
+\begin{verbatim}
+package com.test;
+public class Runner {
+    public static void main(String[] args) {
+        System.out.println("OK");
+    }
+}
+\end{verbatim}
+After compiling with `javac -d . com/test/Runner.java`, you are in the `com/test` directory. You execute `java Runner`. What is the result?
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) It prints "OK".
+
+\item 1) A `ClassNotFoundException` is thrown.
+
+\item 2) A `NoClassDefFoundError` is thrown.
+
+\item 3) A `SecurityException` is thrown.
+
+\end{itemize}
+\item (questionId: 100227) Which of the following statements about `import` declarations are true? (Choose all that apply)
+Choose all the correct answer.\begin{itemize}
+\item 0) `import` statements are required to use any class outside the current package.
+
+\item 1) A static import can import all static members of a class using a wildcard (`*`).
+
+\item 2) Importing a package, such as `java.util.*`, also imports its subpackages, like `java.util.concurrent`.
+
+\item 3) Importing a class with the same simple name from two different packages requires one of them to be referred to by its fully qualified name.
+
+\item 4) `import` statements increase the size of the final `.class` file.
+
+\end{itemize}
+\item (questionId: 100327) What is the result of compiling and running this code?
+\begin{verbatim}
+public class TrickyScope {
+    public static void main(String[] args) {
+        int i = 0;
+        if (true) {
+            // The following comment looks like it closes the block
+            /*
+                System.out.println("Inside comment");
+            }
+            */
+            i = 1;
+        } 
+        System.out.println(i);
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) It fails to compile due to a syntax error with braces.
+
+\item 1) It compiles and prints `0`.
+
+\item 2) It compiles and prints `1`.
+
+\item 3) It compiles but throws a runtime exception.
+
+\end{itemize}
+\item (questionId: 103229) Which of the following functional interface declarations will compile successfully? (Choose all that apply)
+Choose all the correct answer.\begin{itemize}
+\item 0) `@FunctionalInterface interface A { int m(); default int n() {return 0;} }`
+
+\item 1) `@FunctionalInterface interface B extends A { }`
+
+\item 2) `@FunctionalInterface interface C { <T> T m(T t); }`
+
+\item 3) `@FunctionalInterface interface D extends java.util.Comparator { }`
+
+\item 4) `@FunctionalInterface interface E { void m(); String toString(); }`
+
+\end{itemize}
+\item (questionId: 101529) You have an encapsulated `MutableDate` class. Which of the following getter method implementations for a `Person` class would risk breaking the encapsulation of the `Person` object's state? (Choose all that apply)\n\begin{verbatim}
+// Assume MutableDate is a class like java.util.Date
+// with public methods to change its state.
+class MutableDate { /* ... setters ... */ }
+
+class Person {
+    private String name;
+    private MutableDate birthDate;
+
+    public Person(String name, MutableDate birthDate) {
+        this.name = name;
+        this.birthDate = birthDate;
+    }
+
+    // ... getters ...
+}
+\end{verbatim}
+Choose all the correct answer.\begin{itemize}
+\item 0) `public MutableDate getBirthDate() { return this.birthDate; }`
+
+\item 1) `public String getName() { return this.name; }`
+
+\item 2) `public MutableDate getBirthDate() { return new MutableDate(this.birthDate.getTime()); }`
+
+\item 3) `public MutableDate getBirthDate() { return (MutableDate) this.birthDate.clone(); }` (Assume `clone()` is implemented correctly for a deep copy).
+
+\item 4) `public void printBirthDate() { System.out.println(this.birthDate); }`
+
+\end{itemize}
+\item (questionId: 100823) What is the result of this code snippet?\n\begin{verbatim}
+int mask = 0x000F;
+int value = 0x2222;
+System.out.println(value & mask);
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) 15
+
+\item 1) 2
+
+\item 2) 0
+
+\item 3) 2222
+
+\end{itemize}
+\item (questionId: 101327) Which statements are true about string concatenation using the `+` operator in a loop? (Choose all that apply)
+\begin{verbatim}
+String result = "";
+for (int i=0; i<100; i++) {
+    result += i; // Line 3
+}
+\end{verbatim}
+Choose all the correct answer.\begin{itemize}
+\item 0) A new `String` object is created in each iteration of the loop.
+
+\item 1) The compiler automatically replaces this code with `StringBuilder` for efficiency.
+
+\item 2) This is the most memory-efficient way to build a string.
+
+\item 3) After the loop, the original `result` object (the empty string) has been modified to contain the final value.
+
+\end{itemize}
+\item (questionId: 101828) Analyze the following code. At Point Y, how many `java.lang.String` objects are eligible for GC, assuming no string pooling optimizations for literals?
+\begin{verbatim}
+public class StringGC {
+    public static void main(String[] args) {
+        String s1 = "one";
+        String s2 = new String("two");
+        String s3 = "three";
+        s3 = s1;
+        s1 = s2;
+        s2 = null;
+
+        // What about the object referred to by s1 originally ("one")?
+        // What about the object referred to by s2 originally ("two")?
+        // What about the object referred to by s3 originally ("three")?
+        // Point Y
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) 0
+
+\item 1) 1
+
+\item 2) 2
+
+\item 3) 3
+
+\end{itemize}
+\item (questionId: 103022) What is the result of attempting to compile and run the following code?
+\begin{verbatim}
+public class StaticFail {
+    static {
+        if (true) {
+            throw new RuntimeException("Initialization failed");
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Hello");
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) The code compiles and prints `Hello`.
+
+\item 1) The code does not compile.
+
+\item 2) The code compiles, but throws a `RuntimeException` when run.
+
+\item 3) The code compiles, but throws an `ExceptionInInitializerError` when run.
+
+\item 4) The code compiles, but throws a `NoClassDefFoundError` when run.
+
+\end{itemize}
+\item (questionId: 101325) What is the output of the following code?
+\begin{verbatim}
+String text = "a.b.c";
+String[] parts = text.split(".");
+System.out.println(parts.length);
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) 0
+
+\item 1) 1
+
+\item 2) 3
+
+\item 3) An exception is thrown at runtime.
+
+\end{itemize}
+\item (questionId: 103653) What is the output of this code which passes and returns references?
+\begin{verbatim}
+class Num { public int val; }
+
+public class ReturnTest {
+    public static void main(String[] args) {
+        Num a = new Num(); a.val = 1;
+        Num b = new Num(); b.val = 2;
+        b = process(a, b);
+        System.out.println(a.val + "," + b.val);
+    }
+
+    public static Num process(Num x, Num y) {
+        x.val = y.val;
+        y = new Num();
+        y.val = 3;
+        return y;
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) `1,2`
+
+\item 1) `2,3`
+
+\item 2) `2,2`
+
+\item 3) `1,3`
+
+\end{itemize}
+\item (questionId: 103357) Which of the following lines of code, if executed independently, will result in a runtime exception? (Choose all that apply)
+\begin{verbatim}
+// Assume all necessary imports from java.time and java.time.temporal
+\end{verbatim}
+Choose all the correct answer.\begin{itemize}
+\item 0) `LocalDate.of(2025, 13, 1);`
+
+\item 1) `Duration.between(LocalDate.now(), LocalDateTime.now());`
+
+\item 2) `Period.of(1, 1, 1).plus(Duration.ofHours(1));`
+
+\item 3) `LocalTime.now().truncatedTo(ChronoUnit.DAYS);`
+
+\item 4) `Period.ofMonths(12).normalized();`
+
+\end{itemize}
+\item (questionId: 100021) Consider the following directory structure and files:
+\begin{verbatim}
+/project
+    /src
+        /com
+            /example
+                MyClass.java
+    /bin
+\end{verbatim}
+The file \verb|MyClass.java| contains:
+\begin{verbatim}
+package com.example;
+
+public class MyClass {
+    public static void main(String[] args) {
+        System.out.println("Running MyClass");
+    }
+}
+\end{verbatim}
+You are currently in the \verb|/project| directory. Which sequence of commands will successfully compile and run \verb|MyClass|?
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) \begin{verbatim}
+javac src/com/example/MyClass.java
+java -cp src com.example.MyClass
+\end{verbatim}
+
+\item 1) \begin{verbatim}
+javac src/com/example/MyClass.java
+java -cp bin com.example.MyClass
+\end{verbatim}
+
+\item 2) \begin{verbatim}
+javac -d bin src/com/example/MyClass.java
+java -cp bin com.example.MyClass
+\end{verbatim}
+
+\item 3) \begin{verbatim}
+javac -d bin src/com/example/MyClass.java
+java com.example.MyClass
+\end{verbatim}
+
+\end{itemize}
+\item (questionId: 100525) Which of the following code snippets will compile successfully? (Choose all that apply)
+Choose all the correct answer.\begin{itemize}
+\item 0) \begin{verbatim}
+short s = 10;
+s = s + 5;
+\end{verbatim}
+
+\item 1) \begin{verbatim}
+char c = 'a';
+c += 5;
+\end{verbatim}
+
+\item 2) \begin{verbatim}
+final byte b1 = 10;
+final byte b2 = 20;
+byte b3 = b1 + b2;
+\end{verbatim}
+
+\item 3) \begin{verbatim}
+float f = 1.0f;
+double d = f;
+\end{verbatim}
+
+\end{itemize}
+\item (questionId: 100623) Which of the following lines will compile without errors? (Choose all that apply)
+Choose all the correct answer.\begin{itemize}
+\item 0) \verb|Integer i = new Integer(null);|
+
+\item 1) \verb|Double d = null; double d2 = d;|
+
+\item 2) \verb|Byte b = 25; |
+
+\item 3) \verb|Short s = new Short((short)10);|
+
+\item 4) \verb|long l = new Integer(100);|
+
+\end{itemize}
+\item (questionId: 101222) Examine the following code. What is the result?
+\begin{verbatim}
+public enum Operation {
+    PLUS {
+        public double apply(double x, double y) { return x + y; }
+    },
+    MINUS {
+        public double apply(double x, double y) { return x - y; }
+    };
+    public abstract double apply(double x, double y);
+}
+
+class Test {
+    public static void main(String[] args) {
+        System.out.println(Operation.PLUS.apply(5, 3));
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) `8.0`
+
+\item 1) The code fails to compile because an enum cannot be `abstract`.
+
+\item 2) The code fails to compile because `apply` is not defined for the `Operation` enum itself.
+
+\item 3) The code fails to compile because an enum constant cannot provide a method implementation.
+
+\end{itemize}
+\item (questionId: 100328) Which of the following code snippets will fail to compile due to issues with comment syntax? (Choose all that apply)
+Choose all the correct answer.\begin{itemize}
+\item 0) \begin{verbatim}
+int x = 10; //* A special comment */
+\end{verbatim}
+
+\item 1) \begin{verbatim}
+String s = "This contains a comment end: */";
+\end{verbatim}
+
+\item 2) \begin{verbatim}
+/* Is this /* nested comment */ valid? */
+int y = 20;
+\end{verbatim}
+
+\item 3) \begin{verbatim}
+// Another comment \
+int z = 30;
+\end{verbatim}
+
+\end{itemize}
+\item (questionId: 102622) Which of these lines causes a compilation error?\begin{verbatim}
+import java.util.*;
+
+class Mammal {}
+class Primate extends Mammal {}
+class Human extends Primate {}
+
+public class Test {
+    public static void main(String[] args) {
+        List<? super Primate> primates = new ArrayList<Mammal>(); // Line 1
+        primates.add(new Human());                                // Line 2
+        primates.add(new Primate());                              // Line 3
+        primates.add(new Mammal());                               // Line 4
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) Line 1
+
+\item 1) Line 2
+
+\item 2) Line 3
+
+\item 3) Line 4
+
+\end{itemize}
+\item (questionId: 101025) What is the output of the following code?\n\begin{verbatim}
+int[] a = {1, 2, 3};
+int[] b = {4, 5, 6};
+for (int i : a, j : b) {
+    System.out.print(i + j);
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) 579
+
+\item 1) 142536
+
+\item 2) The code does not compile.
+
+\item 3) The code throws a runtime exception.
+
+\end{itemize}
+\item (questionId: 103558) Which of the following method declarations are valid in a concrete (non-abstract) class? (Choose all that apply)
+Choose all the correct answer.\begin{itemize}
+\item 0) `private final static void methodA();`
+
+\item 1) `protected abstract void methodB();`
+
+\item 2) `public final synchronized void methodC(String... s) {}`
+
+\item 3) `void methodD(final int... x) {}`
+
+\item 4) `static { System.out.println("I am not a method."); }`
+
+\end{itemize}
+\item (questionId: 101122) What is the result of attempting to compile this code?\n\begin{verbatim}
+public class InvalidContinue {
+    public static void main(String[] args) {
+        myLabel: {
+            if (true) {
+                continue myLabel; 
+            }
+        }
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) It compiles successfully.
+
+\item 1) It fails to compile because `myLabel` is not on a loop.
+
+\item 2) It fails to compile because a label cannot be on a simple block.
+
+\item 3) It fails to compile because of an unreachable statement.
+
+\end{itemize}
+\item (questionId: 100625) What is the output of the following code?\n\begin{verbatim}
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test {
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.remove(new Integer(2));
+        System.out.println(list);
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) \verb|[1, 2]|
+
+\item 1) \verb|[1, 3]|
+
+\item 2) \verb|[2, 3]|
+
+\item 3) An \verb|IndexOutOfBoundsException| occurs.
+
+\end{itemize}
+\item (questionId: 101725) What is the output of this code? This tests understanding of `this` within inner classes.\n\begin{verbatim}
+public class Outer {
+    String name = "Outer";
+
+    class Inner {
+        String name = "Inner";
+        void printNames() {
+            System.out.println(name);
+            System.out.println(this.name);
+            System.out.println(Outer.this.name);
+        }
+    }
+
+    public static void main(String[] args) {
+        new Outer().new Inner().printNames();
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) Inner\nInner\nOuter
+
+\item 1) Outer\nOuter\nOuter
+
+\item 2) Inner\nOuter\nOuter
+
+\item 3) The code fails to compile.
+
+\end{itemize}
+\item (questionId: 100223) The classpath is set to `-cp dirA:dirB`. `dirA` contains `com/test/Tool.class` version 1. `dirB` contains `com/test/Tool.class` version 2. A program uses `com.test.Tool`. Which version of the class will be loaded by the JVM?
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) Version 1 from `dirA`.
+
+\item 1) Version 2 from `dirB`.
+
+\item 2) A compilation error will occur.
+
+\item 3) A runtime error will occur due to the conflict.
+
+\end{itemize}
+\item (questionId: 101428) Which of these method calls can throw a `StringIndexOutOfBoundsException`? (Choose all that apply)
+\begin{verbatim}
+StringBuilder sb = new StringBuilder("abc");
+\end{verbatim}
+Choose all the correct answer.\begin{itemize}
+\item 0) `sb.delete(1, 4);`
+
+\item 1) `sb.insert(4, "d");`
+
+\item 2) `sb.replace(0, 5, "x");`
+
+\item 3) `sb.setCharAt(3, 'd');`
+
+\end{itemize}
+\item (questionId: 102824) What is the result of attempting to compile this code?
+\begin{verbatim}
+public class Test {
+    public static void main(String[] args) {
+        throw new String("This is an error");
+    }
+}
+\end{verbatim}
+Choose the most correct answer. 
+\begin{itemize}
+\item 0) It compiles, but throws a `ClassCastException` at runtime.
+
+\item 1) It compiles, but throws a `RuntimeException` at runtime.
+
+\item 2) It compiles, but throws an `Error` at runtime.
+
+\item 3) It does not compile.
+
+\end{itemize}
+
+\end{enumerate}
+
+\end{document}
