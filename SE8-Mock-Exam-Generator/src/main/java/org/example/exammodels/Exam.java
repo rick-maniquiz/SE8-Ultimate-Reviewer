@@ -45,6 +45,7 @@ public class Exam implements Printable {
         int i = 0, j=0;
         while (true){
             if (questionCount < i || j == questionCount*2) break;
+            Collections.shuffle(TopicRepository.getTopics());
             for (Topic topic : TopicRepository.getTopics()){
 //            System.out.println(topic);
                 Collections.shuffle(topic.getTopicQuestions());
@@ -64,7 +65,7 @@ public class Exam implements Printable {
                 j++;
             }
         }
-        Collections.shuffle(examQuestions);
+//        Collections.shuffle(examQuestions);
         examGenerated += 1;
         ExamRepository.addExam(this);
         examRepository.saveProgress();

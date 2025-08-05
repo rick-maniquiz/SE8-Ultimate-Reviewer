@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2025.8.2)  5 AUG 2025 16:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2025.8.2)  5 AUG 2025 21:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -647,14 +647,24 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-! Undefined control sequence.
-l.28 ...e output of the following code fragment?\n
-                                                  \begin{verbatim}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.39 \\ \noindent
+                  Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (27.70221pt too wide) in paragraph at lines 53--56
+\OT1/cmr/m/n/12 WRONG - The code is valid. It cor-rectly im-ports [][]\OT1/cmtt
+/m/n/12 java.util.function.Predicate[]\OT1/cmr/m/n/12 ,
+ []
 
 
 ! LaTeX Error: There's no line here to end.
@@ -663,25 +673,11 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.41 \\ \noindent
+l.64 \\ \noindent
                   Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
-
-
-Overfull \hbox (40.31194pt too wide) in paragraph at lines 60--67
-\OT1/cmr/m/n/12 You are in the di-rec-tory [][]\OT1/cmtt/m/n/12 /root[]\OT1/cmr
-/m/n/12 . You have the fol-low-ing files: [][]\OT1/cmtt/m/n/12 /root/com/exampl
-e/App.java
- []
-
-
-Overfull \hbox (1.74997pt too wide) in paragraph at lines 60--67
-[]\OT1/cmtt/m/n/12 /root/lib/helper.jar []\OT1/cmr/m/n/12 The class [][]\OT1/cm
-tt/m/n/12 App []\OT1/cmr/m/n/12 de-pends on a class in-side [][]\OT1/cmtt/m/n/1
-2 helper.jar[]\OT1/cmr/m/n/12 . Which
- []
 
 
 
@@ -700,7 +696,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.118 \\ \noindent
+l.121 \\ \noindent
                    Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -723,30 +719,11 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.147 \\ \noindent
+l.173 \\ \noindent
                    Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
-
-
-Overfull \hbox (93.22684pt too wide) in paragraph at lines 157--160
-\OT1/cmr/m/n/12 WRONG - A [][]\OT1/cmtt/m/n/12 NullPointerException []\OT1/cmr/
-m/n/12 would be thrown if you used [][]\OT1/cmtt/m/n/12 Comparator.naturalOrder
-()
- []
-
-
-Overfull \hbox (24.73373pt too wide) in paragraph at lines 157--160
-[]\OT1/cmr/m/n/12 di-rectly on a list con-tain-ing nulls. The en-tire pur-pose 
-of [][]\OT1/cmtt/m/n/12 Comparator.nullsFirst()
- []
-
-
-Overfull \hbox (3.74983pt too wide) in paragraph at lines 174--177
-\OT1/cmr/m/n/12 WRONG - A [][]\OT1/cmtt/m/n/12 ClassNotFoundException []\OT1/cm
-r/m/n/12 is a checked ex-cep-tion typ-i-cally thrown
- []
 
 
 
@@ -758,10 +735,27 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [4]
-Overfull \hbox (2.2219pt too wide) in paragraph at lines 178--181
-[]\OT1/cmr/m/n/12 2) A `No-Class-D-ef-FoundEr-ror` is thrown with a mes-sage ab
-out `com/corp/Main`
- []
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.199 \\ \noindent
+                   Multiple correct choices.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.219 ...ult of attempting to compile this code?\n
+                                                  \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
 ! LaTeX Error: There's no line here to end.
@@ -770,7 +764,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.206 \\ \noindent
+l.224 \\ \noindent
                    Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -786,6 +780,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [5]
+! Undefined control sequence.
+l.251 \item 1) `'\n
+                   '`
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.253 CORRECT - `'\n
+                    '` is a valid `char` literal using an escape sequence fo...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 
 ! LaTeX Error: There's no line here to end.
 
@@ -793,8 +805,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.258 \\ \noindent
-                   Only one correct choice.
+l.276 \\ \noindent
+                   Multiple correct choices.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -809,101 +821,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [6]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.296 \\ \noindent
-                   Only one correct choice.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.300 C
-       ORRECT - 1. The code attempts to create resource \verb|r|. 2. The con...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.300 ...rows an \verb|Exception| with message 'R_
-                                                  INIT'. 3. Because the reso...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 300.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 300.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 300.
-! Missing $ inserted.
-<inserted text> 
-                $
-l.301 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.301 
-      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-
-Overfull \hbox (1243.4373pt too wide) in paragraph at lines 300--301
-[][]\OT1/cmtt/m/n/12 new R() []\OT1/cmr/m/n/12 im-me-di-ately throws an [][]\OT
-1/cmtt/m/n/12 Exception []\OT1/cmr/m/n/12 with mes-sage 'R$[]\OML/cmm/m/it/12 N
-IT[]:\OT1/cmr/m/n/12 3\OML/cmm/m/it/12 :Becausetheresourcewasnotsuccessfullyini
-tialized; the[]blockbodyisneverentered; andthe[]methodisnevercalled:\OT1/cmr/m/
-n/12 4\OML/cmm/m/it/12 :Theexceptioniscaughtbythe[]block; whichprintsthemessage
-[]R[]NIT[]:\OT1/cmr/m/n/12 5\OML/cmm/m/it/12 :Finally; the[]blockexecutes; prin
-ting[]INAL[]:[]$ 
+Overfull \hbox (2.51439pt too wide) in paragraph at lines 283--288
+\OT1/cmr/m/n/12 `im-port java.util.List;` for the `List` type. `im-port static 
+java.util.Arrays.asList;`
  []
 
-! Extra }, or forgotten \endgroup.
-\@par ... \@noitemerr {\@@par }\fi \else {\@@par }
-                                                  \fi 
-l.301 
-      
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.304 W
-       RONG - The \verb|try| block is never entered and \verb|close()| is ne...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+Overfull \hbox (9.0408pt too wide) in paragraph at lines 289--294
+\OT1/cmr/m/n/12 CORRECT - This set also works. The wild-card `im-port static ja
+va.util.Arrays.*;`
+ []
 
 
 
@@ -922,53 +849,33 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.308 W
-       RONG - The \verb|close()| method is not called if the resource constr...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.312 W
-       RONG - The \verb|finally| block is guaranteed to execute.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.334 \\ \noindent
+l.342 \\ \noindent
                    Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-
-Overfull \hbox (82.81667pt too wide) in paragraph at lines 336--339
-\OT1/cmr/m/n/12 crete im-ple-men-ta-tion in a constant-specific class body. The
- call [][]\OT1/cmtt/m/n/12 Operation.PLUS.apply(5, 3)
- []
-
 ! Undefined control sequence.
-l.354 What is the output of this program?\n
-                                           \begin{verbatim}
+l.362 ...result of executing the following code?\n
+                                                  \begin{verbatim}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.377 \\ \noindent
+                   Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 
 
@@ -980,6 +887,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [8]
+! Undefined control sequence.
+l.397 ...mpiling and running the following code?\n
+                                                  \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 
 ! LaTeX Error: There's no line here to end.
 
@@ -987,11 +903,20 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.374 \\ \noindent
+l.409 \\ \noindent
                    Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.429 ... result of executing this code snippet?\n
+                                                  \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
 
@@ -1010,20 +935,30 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.421 \\ \noindent
+l.439 \\ \noindent
                    Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-! Undefined control sequence.
-l.441 ...ode? This question tests method hiding.\n
-                                                  \begin{verbatim}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+
+Overfull \hbox (45.70703pt too wide) in paragraph at lines 464--464
+ []\OT1/cmtt/m/n/12 System.out.println(s.equals(sb.toString()) + " " + sb.toStr
+ing().equals(s));[] 
+ []
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.465 \\ \noindent
+                   Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 
 
@@ -1042,7 +977,55 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.455 \\ \noindent
+l.491 \\ \noindent
+                   Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (15.94849pt too wide) in paragraph at lines 493--496
+[]\OT1/cmr/m/n/12 0) `Com-para-tor<Animal> c1 = (a1, a2) -> a1.getAge() - a2.ge
+tAge(); dogs.sort(c1);` 
+ []
+
+
+Overfull \hbox (14.81029pt too wide) in paragraph at lines 493--496
+\OT1/cmr/m/n/12 WRONG - The [][]\OT1/cmtt/m/n/12 sort []\OT1/cmr/m/n/12 method 
+on a [][]\OT1/cmtt/m/n/12 List<Dog> []\OT1/cmr/m/n/12 takes a [][]\OT1/cmtt/m/n
+/12 Comparator<? super Dog>[]\OT1/cmr/m/n/12 .
+ []
+
+
+Overfull \hbox (1.7528pt too wide) in paragraph at lines 497--500
+[]\OT1/cmr/m/n/12 1) `Com-para-tor<Dog> c2 = (d1, d2) -> d1.getAge() - d2.getAg
+e(); dogs.sort(c2);` 
+ []
+
+
+Overfull \hbox (7.6791pt too wide) in paragraph at lines 497--500
+\OT1/cmr/m/n/12 WRONG - A [][]\OT1/cmtt/m/n/12 Comparator<Dog> []\OT1/cmr/m/n/1
+2 is ob-vi-ously a valid com-para-tor for a [][]\OT1/cmtt/m/n/12 List<Dog>[]\OT
+1/cmr/m/n/12 .
+ []
+
+! Undefined control sequence.
+l.511 What is the output of the following code?\n
+                                                 \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.520 \\ \noindent
                    Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1055,8 +1038,9 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.495 \\ \noindent
-                   Multiple correct choices.
+l.524 W
+       RONG - \verb|MAX_VALUE| is a variable name, not a string literal. The...
+
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1071,10 +1055,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [11]
-Overfull \hbox (11.94609pt too wide) in paragraph at lines 509--512
-\OT1/cmr/m/n/12 may be un-loaded, at which point the static vari-able is gone a
-nd the [][]\OT1/cmtt/m/n/12 staticGadget
- []
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.536 W
+       RONG - There are no other variables named \verb|MAX_VALUE| in scope, ...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 
 ! LaTeX Error: There's no line here to end.
@@ -1083,8 +1076,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.532 \\ \noindent
-                   Only one correct choice.
+l.559 \\ \noindent
+                   Multiple correct choices.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1100,7 +1093,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [12]
 ! Undefined control sequence.
-l.552 ...de are correct? (Choose all that apply)\n
+l.604 ...owing code snippet. What is the output?\n
                                                   \begin{verbatim}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1115,8 +1108,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.572 \\ \noindent
-                   Multiple correct choices.
+l.615 \\ \noindent
+                   Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1131,18 +1124,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [13]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.604 \\ \noindent
-                   Only one correct choice.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+! Undefined control sequence.
+l.681 ...e result of the following code snippet?\n
+                                                  \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
 
@@ -1161,20 +1150,17 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.637 \\ \noindent
+l.693 \\ \noindent
                    Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-! Undefined control sequence.
-l.657 What is the output of the code below?\n
-                                             \begin{verbatim}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+
+Overfull \hbox (39.53203pt too wide) in paragraph at lines 716--716
+ []\OT1/cmtt/m/n/12 public List<String> processFile(String filename) throws jav
+a.io.IOException[] 
+ []
 
 
 ! LaTeX Error: There's no line here to end.
@@ -1183,38 +1169,11 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.662 \\ \noindent
-                   Only one correct choice.
+l.717 \\ \noindent
+                   Multiple correct choices.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
-
-! Undefined control sequence.
-l.678 ...1111111 11111111 11111111 11111111`.\nThe
-                                                   unsigned right shift oper...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.678 ...egardless of the original sign.\nShifting
-                                                   `...1111` right by 30 pos...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.682 ...nal` instance variable `ID` is correct?\n
-                                                  \begin{verbatim}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
 
 
@@ -1226,6 +1185,32 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [15]
+Overfull \hbox (2.0922pt too wide) in paragraph at lines 740--744
+\OT1/cmr/m/n/12 Which of the fol-low-ing in-ter-faces di-rectly ex-tend `java.l
+ang.AutoCloseable`? (Choose
+ []
+
+
+Overfull \hbox (4.88637pt too wide) in paragraph at lines 748--751
+\OT1/cmr/m/n/12 is [][]\OT1/cmtt/m/n/12 public interface Stream<T> extends Base
+Stream<T, Stream<T>>[]\OT1/cmr/m/n/12 . Fol-
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[16]
+Overfull \hbox (64.23204pt too wide) in paragraph at lines 800--800
+ []        \OT1/cmtt/m/n/12 LocalDateTime dt2 = LocalDateTime.of(2025, 8, 2, 10
+, 0, 30, 500000000);[] 
+ []
+
 
 ! LaTeX Error: There's no line here to end.
 
@@ -1233,15 +1218,21 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.696 \\ \noindent
+l.801 \\ \noindent
                    Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
+
+Overfull \hbox (1.51634pt too wide) in paragraph at lines 811--814
+\OT1/cmr/m/n/12 CORRECT - The du-ra-tion be-tween the two times is 30 sec-onds 
+and 500,000,000
+ []
+
 ! Undefined control sequence.
-l.716 ...ttempting to compile and run this code?\n
-                                                  \begin{verbatim}
+l.821 Which statement about this code is true?\n
+                                                \begin{verbatim}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1255,30 +1246,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.728 \\ \noindent
-                   Only one correct choice.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[16]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.770 \\ \noindent
+l.828 \\ \noindent
                    Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1294,31 +1262,38 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [17]
-Overfull \hbox (2.48201pt too wide) in paragraph at lines 805--805
- []        \OT1/cmtt/m/n/12 List<String> list1 = new ArrayList<>(Arrays.asList(
-"A","B"));[] 
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.864 \\ \noindent
+                   Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (60.66429pt too wide) in paragraph at lines 866--869
+\OT1/cmr/m/n/12 WRONG - The pro-gram ter-mi-nates with an ex-cep-tion be-cause 
+the [][]\OT1/cmtt/m/n/12 NullPointerException
  []
 
 
-Overfull \hbox (2.48201pt too wide) in paragraph at lines 805--805
- []        \OT1/cmtt/m/n/12 List<String> list2 = new ArrayList<>(Arrays.asList(
-"B","A"));[] 
+Overfull \hbox (78.70078pt too wide) in paragraph at lines 870--873
+\OT1/cmr/m/n/12 WRONG - The [][]\OT1/cmtt/m/n/12 catch []\OT1/cmr/m/n/12 block 
+is for [][]\OT1/cmtt/m/n/12 IllegalArgumentException[]\OT1/cmr/m/n/12 , but a [
+][]\OT1/cmtt/m/n/12 NullPointerException
  []
 
 
-Overfull \hbox (2.48201pt too wide) in paragraph at lines 805--805
- []        \OT1/cmtt/m/n/12 List<String> list3 = new ArrayList<>(Arrays.asList(
-"A","B"));[] 
+Overfull \hbox (93.96243pt too wide) in paragraph at lines 874--877
+\OT1/cmr/m/n/12 thrown. 3. The JVM looks for a match-ing [][]\OT1/cmtt/m/n/12 c
+atch []\OT1/cmr/m/n/12 block. [][]\OT1/cmtt/m/n/12 catch (IllegalArgumentExcept
+ion e)
  []
-
-! Undefined control sequence.
-l.826 ...e following class. What is the outcome?\n
-                                                  \begin{verbatim}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
 
 
@@ -1330,41 +1305,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [18]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.838 \\ \noindent
-                   Only one correct choice.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Undefined control sequence.
-l.861 ...result of compiling the following code?\n
-                                                  \begin{verbatim}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[19]
-Overfull \hbox (21.00702pt too wide) in paragraph at lines 940--940
- []    \OT1/cmtt/m/n/12 public static void main(String[] args) throws Interrupt
-edException {[] 
+Overfull \hbox (5.82045pt too wide) in paragraph at lines 907--910
+\OT1/cmr/m/n/12 ever, when you try to run it, the JVM looks for a `pub-lic stat
+ic void main(String[]
  []
 
 
@@ -1376,7 +1319,75 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[19]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.944 \\ \noindent
+                   Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.964 What is the output of the following code?\n
+                                                 \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.980 \\ \noindent
+                   Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
 [20]
+! Undefined control sequence.
+l.1000 What values are printed by this code?\n
+                                              \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1006 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1393,8 +1404,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.978 \\ \noindent
-                   Only one correct choice.
+l.1048 \\ \noindent
+                    Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1409,15 +1420,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [22]
-! Undefined control sequence.
-l.1019 ...ollowing code? (Choose all that apply)\n
-                                                  \begin{verbatim}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 
 ! LaTeX Error: There's no line here to end.
 
@@ -1425,8 +1427,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1032 \\ \noindent
-                    Multiple correct choices.
+l.1129 \\ \noindent
+                    Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1441,30 +1443,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [23]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1069 \begin
-             {verbatim}CORRECT - This fails to compile. The literal `1_00L` ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (719.93204pt too wide) in paragraph at lines 1069--1069
- []\OT1/cmtt/m/n/12 CORRECT - This fails to compile. The literal `1_00L` is a `
-long` literal. Assigning a `long` to an `int` is a narrowing conversion and req
-uires an explicit cast, e.g., `(int)1_00L`. 
- []
-
 ! Undefined control sequence.
-l.1073 What is the output of the following code?\n
-                                                  \begin{verbatim}
+l.1149 What is the result of this code?\n
+                                         \begin{verbatim}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1472,13 +1453,19 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
+Overfull \hbox (2.48201pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/12 class PowerCalculator extends SuperCalculator implements Ca
+lculable {[] 
+ []
+
+
 ! LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1094 \\ \noindent
+l.1166 \\ \noindent
                     Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1495,7 +1482,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [24]
 ! Undefined control sequence.
-l.1114 ...ing to compile and run the Test class?\n
+l.1186 ... result of the following code snippet?\n
                                                   \begin{verbatim}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1510,7 +1497,20 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1132 \\ \noindent
+l.1195 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1223 \\ \noindent
                     Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1526,6 +1526,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [25]
+Overfull \hbox (14.45996pt too wide) in paragraph at lines 1256--1259
+\OT1/cmr/m/n/12 sub-type of an ex-cep-tion thrown by the su-per-class method. [
+][]\OT1/cmtt/m/n/12 java.io.IOException
+ []
+
 
 ! LaTeX Error: There's no line here to end.
 
@@ -1533,20 +1538,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1174 \\ \noindent
-                    Only one correct choice.
+l.1280 W
+        RONG - This fails to compile. An `int` cannot be used as a boolean c...
+
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
-
-! Undefined control sequence.
-l.1198 ...tempting to compile and run this code?\n
-                                                  \begin{verbatim}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
 
 
@@ -1565,7 +1562,64 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1212 \\ \noindent
+l.1285 C
+        ORRECT - This compiles. The expression `b=false` is a boolean *assig...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1290 C
+        ORRECT - This is a valid "dangling else" construct. The `else` belon...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1295 W
+        RONG - This fails to compile. According to the Java Language Specifi...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.1299 ... will be called by `test.method(10);`?\n
+                                                  \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (15.54114pt too wide) in paragraph at lines 1298--1299
+\OT1/cmr/m/n/12 Given the fol-low-ing over-loaded meth-ods, which one will be c
+alled by `test.method(10);`? 
+ []
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1314 \\ \noindent
                     Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1588,9 +1642,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1262 C
-        ORRECT - This fails to compile. Since `b1` is not `final`, the expre...
-
+l.1340 \\ \noindent
+                    Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1602,37 +1655,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1269 W
-        RONG - This compiles. The compound assignment operator `+=` includes...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1276 C
-        ORRECT - This fails to compile. Assigning a `char` to a `short` requ...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1283 C
-        ORRECT - This fails to compile. Assigning a `float` to a `long` is a...
-
+l.1371 \\ \noindent
+                    Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1654,20 +1678,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1301 \\ \noindent
-                    Only one correct choice.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1327 \\ \noindent
+l.1411 \\ \noindent
                     Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1683,15 +1694,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [29]
-! Undefined control sequence.
-l.1347 ...l be printed after this code executes?\n
-                                                  \begin{verbatim}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 
 ! LaTeX Error: There's no line here to end.
 
@@ -1699,7 +1701,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1358 \\ \noindent
+l.1460 \\ \noindent
                     Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1716,20 +1718,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [30]
 
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1424 \\ \noindent
-                    Only one correct choice.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1738,32 +1726,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [31]
-Overfull \hbox (20.46834pt too wide) in paragraph at lines 1438--1441
-\OT1/cmr/m/n/12 WRONG - The enum class must be ini-tial-ized *be-fore* the ref-
-er-ence [][]\OT1/cmtt/m/n/12 MyEnum.FIRST
- []
-
 ! Undefined control sequence.
-l.1444 ...ion tests static initialization order.\n
+l.1579 ...s when the following code is executed?\n
                                                   \begin{verbatim}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1456 \\ \noindent
-                    Only one correct choice.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
 
 
 
@@ -1775,29 +1745,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [32]
-Overfull \hbox (39.53203pt too wide) in paragraph at lines 1491--1491
- []        \OT1/cmtt/m/n/12 List<? super Primate> primates = new ArrayList<Mamm
-al>(); // Line 1[] 
- []
-
-
-Overfull \hbox (39.53203pt too wide) in paragraph at lines 1491--1491
- []        \OT1/cmtt/m/n/12 primates.add(new Human());                         
-       // Line 2[] 
- []
-
-
-Overfull \hbox (39.53203pt too wide) in paragraph at lines 1491--1491
- []        \OT1/cmtt/m/n/12 primates.add(new Primate());                       
-       // Line 3[] 
- []
-
-
-Overfull \hbox (39.53203pt too wide) in paragraph at lines 1491--1491
- []        \OT1/cmtt/m/n/12 primates.add(new Mammal());                        
-       // Line 4[] 
- []
-
 
 ! LaTeX Error: There's no line here to end.
 
@@ -1805,20 +1752,24 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1492 \\ \noindent
+l.1588 \\ \noindent
                     Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-! Undefined control sequence.
-l.1512 What is the output of the following code?\n
-                                                  \begin{verbatim}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+
+Overfull \hbox (34.47496pt too wide) in paragraph at lines 1615--1618
+\OT1/cmr/m/n/12 CORRECT - The [][]\OT1/cmtt/m/n/12 Main-Class []\OT1/cmr/m/n/12
+ at-tribute in the man-i-fest file ([][]\OT1/cmtt/m/n/12 META-INF/MANIFEST.MF[]
+\OT1/cmr/m/n/12 )
+ []
+
+
+Overfull \hbox (27.00163pt too wide) in paragraph at lines 1615--1618
+\OT1/cmr/m/n/12 spec-i-fies the en-try point of the ap-pli-ca-tion. When you ru
+n [][]\OT1/cmtt/m/n/12 java -jar someapp.jar[]\OT1/cmr/m/n/12 ,
+ []
 
 
 
@@ -1837,24 +1788,20 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1534 \\ \noindent
+l.1640 \\ \noindent
                     Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1572 \\ \noindent
-                    Only one correct choice.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+! Undefined control sequence.
+l.1660 What is the output of the following code?\n
+                                                  \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
 
@@ -1866,14 +1813,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [34]
-! Undefined control sequence.
-l.1622 What is the output of the following code?\n
-                                                  \begin{verbatim}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1674 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (11.54854pt too wide) in paragraph at lines 1705--1708
+\OT1/cmr/m/n/12 WRONG - [][]\OT1/cmtt/m/n/12 getClass() []\OT1/cmr/m/n/12 is an
+ in-stance method in-her-ited from [][]\OT1/cmtt/m/n/12 java.lang.Object[]\OT1/
+cmr/m/n/12 .
+ []
 
 
 
@@ -1892,7 +1850,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1642 \\ \noindent
+l.1727 \\ \noindent
                     Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1909,6 +1867,29 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [36]
 
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1787 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.1828 ...ate files, `Key.java` and `Lock.java`?\n
+                                                  \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1924,40 +1905,20 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1719 \\ \noindent
+l.1843 \\ \noindent
                     Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-
-Overfull \hbox (36.03018pt too wide) in paragraph at lines 1729--1732
-\OT1/cmr/m/n/12 ex-cep-tion thrown from a static ini-tial-izer block in an [][]
-\OT1/cmtt/m/n/12 ExceptionInInitializerError[]\OT1/cmr/m/n/12 . 
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1747 \\ \noindent
-                    Only one correct choice.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Misplaced alignment tab character &.
-l.1761 ...It causes a compilation error because `&
-                                                  ` is not a valid character...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
+! Undefined control sequence.
+l.1863 What is the output of the following code?\n
+                                                  \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
 
@@ -1969,8 +1930,66 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [38]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1878 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1905 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[39]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[40]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1983 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
 ! Undefined control sequence.
-l.1788 ...is code carefully. What is the result?\n
+l.2003 ...esult of trying to compile this class?\n
                                                   \begin{verbatim}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1985,29 +2004,11 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1804 \\ \noindent
+l.2012 \\ \noindent
                     Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
-
-! Undefined control sequence.
-l.1812 ...sts autoboxing and `Integer` caching. \n
-                                                  1. `if (i == j)`: Java cac...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.1812 ...ifferent, so the condition is `false`.\n
-                                                  2. `if (i == k)`: This com...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
 
 
@@ -2018,7 +2019,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[39]
+[41]
 
 ! LaTeX Error: There's no line here to end.
 
@@ -2026,25 +2027,182 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1829 \\ \noindent
+l.2062 W
+        RONG - This code compiles. Underscores can be placed between digits ...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 2066.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 2066.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 2066.
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2070 R
+        IGHT - This code fails to compile. According to the rules for using ...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[42]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2089 \\ \noindent
                     Only one correct choice.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1835--1837
-
+Overfull \hbox (67.29202pt too wide) in paragraph at lines 2103--2106
+\OT1/cmr/m/n/12 WRONG - [][]\OT1/cmtt/m/n/12 ClassCastException []\OT1/cmr/m/n/
+12 is for in-valid type casts (e.g., [][]\OT1/cmtt/m/n/12 (String) new Integer(
+5)[]\OT1/cmr/m/n/12 ),
  []
 
+! Undefined control sequence.
+l.2109 ...will be printed by the following code?\n
+                                                  \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-Overfull \hbox (1924.05763pt too wide) in paragraph at lines 1837--1837
- []\OT1/cmtt/m/n/12 RIGHT - The `++` operator is a compound assignment operator
-, equivalent here to `s = (short)(s + 1)`. The value of `s` is `32767` (`Short.
-MAX_VALUE`). The expression `s + 1` is promoted to `int`, resulting in `32768`.
- The implicit cast `(short)` then attempts to fit this value into a short, caus
-ing an overflow. The value wraps around to `Short.MIN_VALUE`, which is `-32768`
-. 
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2122 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[43]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2170 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[44]
+Overfull \hbox (6.54958pt too wide) in paragraph at lines 2180--2183
+\OT1/cmr/m/n/12 WRONG - This would be the out-put if the last line was [][]\OT1
+/cmtt/m/n/12 s2 = s2.concat("3");[]\OT1/cmr/m/n/12 . 
+ []
+
+! Undefined control sequence.
+l.2190 ...me of compiling and running this code?\n
+                                                  \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2207 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.2227 ...llowing code. Which statement is true?\n
+                                                  \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[45]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2238 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (13.166pt too wide) in paragraph at lines 2244--2247
+\OT1/cmr/m/n/12 ob-ject is of the same type. Since [][]\OT1/cmtt/m/n/12 i1 []\O
+T1/cmr/m/n/12 is an [][]\OT1/cmtt/m/n/12 Integer []\OT1/cmr/m/n/12 and not a []
+[]\OT1/cmtt/m/n/12 Long[]\OT1/cmr/m/n/12 , [][]\OT1/cmtt/m/n/12 l1.equals(i1)
  []
 
 
@@ -2056,7 +2214,440 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[40] (./mock-exam-solutions-100.aux)
+[46]
+! Undefined control sequence.
+l.2287 What is printed by this nested loop?\n
+                                             \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2301 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[47]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2345 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[48]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2427 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[49]
+! Undefined control sequence.
+l.2447 ...ment about the following code is true?\n
+                                                  \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2454 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[50]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2490 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[51]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2580 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.2582 \item 0) Parent\nChild
+                             
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[52]
+! Undefined control sequence.
+l.2586 \item 1) Child\nChild
+                            
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.2590 \item 2) Parent\nParent
+                              
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.2594 \item 3) Child\nParent
+                             
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[53]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2647 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[54]
+! Undefined control sequence.
+l.2688 ...piling and running the following code?\n
+                                                  \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2698 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (0.61293pt too wide) in paragraph at lines 2700--2703
+[][]\OT1/cmtt/m/n/12 sa.GREETING []\OT1/cmr/m/n/12 to [][]\OT1/cmtt/m/n/12 Stat
+icAccess.GREETING[]\OT1/cmr/m/n/12 . Be-cause the ob-ject in-stance is never
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[55]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2744 V
+        ALID - An enum can have methods. A semicolon is required after the l...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2748 V
+        ALID - All enums implicitly implement \verb|Serializable|. Stating i...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2752 V
+        ALID - Enum constructors are implicitly private. Making it explicitl...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (4.33994pt too wide) in paragraph at lines 2752--2753
+\OT1/cmr/m/n/12 VALID - Enum con-struc-tors are im-plic-itly pri-vate. Mak-ing 
+it ex-plic-itly [][]\OT1/cmtt/m/n/12 private
+ []
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2756 C
+        OMPILATION ERROR - This is the key restriction on enums. The compile...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[56]
+Overfull \hbox (1.72012pt too wide) in paragraph at lines 2796--2799
+\OT1/cmr/m/n/12 WRONG - [][]\OT1/cmtt/m/n/12 thenComparing() []\OT1/cmr/m/n/12 
+is a de-fault in-stance method, not a static method.
+ []
+
+! Undefined control sequence.
+l.2802 ...t of compiling and running this class?\n
+                                                  \begin{verbatim}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2816 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[57]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[58]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2896 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[59]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2928 \\ \noindent
+                    Only one correct choice.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (9.90782pt too wide) in paragraph at lines 2930--2933
+[]\OT1/cmr/m/n/12 0) Com-pi-la-tion fails be-cause `main` must de-clare `throws
+ java.sql.SQLException`. 
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[60] (./mock-exam-solutions-100.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -2073,24 +2664,23 @@ Package rerunfilecheck Info: Checksums for `mock-exam-solutions-100.out':
 (rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 20498 strings out of 475178
- 381656 string characters out of 5766540
+ 20563 strings out of 475178
+ 382120 string characters out of 5766540
  763904 words of memory out of 5000000
- 43097 multiletter control sequences out of 15000+600000
- 563598 words of font info for 52 fonts, out of 8000000 for 9000
+ 43098 multiletter control sequences out of 15000+600000
+ 563905 words of font info for 53 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 102i,11n,107p,1212b,816s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,11n,107p,1212b,894s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/rick/.texlive2025/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600p
 k></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on mock-exam-solutions-100.pdf (40 pages, 166849 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on mock-exam-solutions-100.pdf (60 pages, 194663 bytes).
 PDF statistics:
- 294 PDF objects out of 1000 (max. 8388607)
- 236 compressed objects within 3 object streams
- 97 named destinations out of 1000 (max. 500000)
+ 429 PDF objects out of 1000 (max. 8388607)
+ 352 compressed objects within 4 object streams
+ 161 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
