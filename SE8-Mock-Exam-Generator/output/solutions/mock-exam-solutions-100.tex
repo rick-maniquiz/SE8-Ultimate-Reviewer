@@ -1,0 +1,1836 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{1Z0-808 Mock Exam Solution}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Mock Exam Solutions}}
+\author{ExamId: 100}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\item (questionId: 100127, topic: Main Method and Command Line Arguments) \\ 
+Which of the following `main` method signatures will cause a `java.lang.NoSuchMethodError: main` exception at runtime, assuming the class is compiled successfully? (Choose all that apply)
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) `public static void main(String... args)`
+ \\ 
+WRONG - This is a valid entry-point signature using varargs. It will run successfully.
+
+\item 1) `public void main(String[] args)`
+ \\ 
+CORRECT - This signature is missing the `static` keyword. The class will compile, but the JVM will not recognize this instance method as the entry point.
+
+\item 2) `public static void Main(String[] args)`
+ \\ 
+CORRECT - Java is case-sensitive. The method name must be `main`, not `Main`. This will compile but not run.
+
+\item 3) `public static void main(String args)`
+ \\ 
+CORRECT - The parameter must be an array of `String` (`String[]` or `String...`), not a single `String`. This will compile but not run.
+
+\item 4) `public static int main(String[] args)`
+ \\ 
+CORRECT - The return type must be `void`, not `int`. This will compile but not run.
+
+\end{itemize}
+\item (questionId: 100926, topic: Conditional Statements (if/else, switch)) \\ 
+Examine this code carefully. What is the result?\n\begin{verbatim}
+public class Test {
+    public static void main(String[] args) {
+        Integer i = 128;
+        Integer j = 128;
+        int k = 128;
+
+        if (i == j) {
+            System.out.print("A");
+        }
+        if (i == k) {
+            System.out.print("B");
+        }
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) A
+ \\ 
+WRONG - The first `if` condition is false.
+
+\item 1) B
+ \\ 
+CORRECT - This question tests autoboxing and `Integer` caching. \n1. `if (i == j)`: Java caches `Integer` objects for values from -128 to 127. Since 128 is outside this range, `i` and `j` are two separate `Integer` objects on the heap. The `==` operator compares their memory references, which are different, so the condition is `false`.\n2. `if (i == k)`: This compares an `Integer` object (`i`) with a primitive `int` (`k`). When this happens, the `Integer` object is automatically unboxed to its primitive `int` value. The comparison becomes a primitive comparison: `128 == 128`, which is `true`. `"B"` is printed.
+
+\item 2) AB
+ \\ 
+WRONG - The first condition `i == j` evaluates to `false`, so `"A"` is not printed.
+
+\item 3) No output is produced.
+ \\ 
+WRONG - The second condition `i == k` evaluates to `true`, so there is output.
+
+\end{itemize}
+\item (questionId: 102427, topic: One-Dimensional and Multi-Dimensional Arrays) \\ 
+What is the final value of \verb|sum|?\begin{verbatim}
+long[][] arr = new long[2][2];
+arr[0] = new long[]{1, 2};
+arr[1] = arr[0];
+arr[0][0] = 5;
+long sum = arr[0][0] + arr[1][0];
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) 6
+ \\ 
+WRONG - This assumes `arr[1][0]` kept its original default value.
+
+\item 1) 7
+ \\ 
+WRONG - This likely results from adding the modified `arr[0][0]` (5) and the original `arr[0][1]` (2).
+
+\item 2) 10
+ \\ 
+CORRECT - This is a question about object references. The line \verb|arr[1] = arr[0];| makes the reference `arr[1]` point to the *exact same* inner array object as `arr[0]`. When \verb|arr[0][0]| is set to 5, the single underlying array is modified. Since `arr[1]` points to that same array, `arr[1][0]` is also 5. The sum is `5 + 5 = 10`.
+
+\item 3) Compilation fails.
+ \\ 
+WRONG - The code is syntactically valid.
+
+\end{itemize}
+\item (questionId: 101026, topic: Looping Constructs (for, while, do-while)) \\ 
+What will be printed after this code executes?\n\begin{verbatim}
+String[] data = {"a", "b", "c"};
+int x = 0;
+for(;;){
+    try {
+        System.out.print(data[x++]);
+    } catch (ArrayIndexOutOfBoundsException e) {
+        break;
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) abc
+ \\ 
+CORRECT - The code uses an infinite `for(;;)` loop, meaning termination must occur via `break`, `return`, or an unhandled exception. The loop prints elements from the `data` array. It prints `data[0]` (`a`), `data[1]` (`b`), and `data[2]` (`c`). In the next iteration, `x` is 3, and `data[3]` throws an `ArrayIndexOutOfBoundsException`. This exception is caught by the `catch` block, which then executes `break`, terminating the loop.
+
+\item 1) ab
+ \\ 
+WRONG - The loop successfully processes `data[2]` (`c`) before the exception is thrown.
+
+\item 2) a
+ \\ 
+WRONG - The loop processes more than just the first element.
+
+\item 3) An infinite loop occurs.
+ \\ 
+WRONG - The loop is not infinite because the `break` statement in the `catch` block provides a guaranteed exit condition.
+
+\end{itemize}
+\item (questionId: 101129, topic: Break, Continue, and Labels) \\ 
+Given the following code, which statements are true? (Choose all that apply)\n\begin{verbatim}
+public class Test {
+    public static void main(String... args) {
+        String result = "";
+        loop:
+        for (int i=0; i<4; i++) {
+            if (i % 2 == 0) {
+                continue;
+            }
+            switch(i) {
+                case 1: result += "A"; break;
+                case 3: result += "B"; break loop;
+                case 5: result += "C";
+            }
+            result += "D";
+        }
+        System.out.println(result);
+    }
+}
+\end{verbatim}
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) The `continue` statement is executed when `i` is 0 and 2.
+ \\ 
+CORRECT - The `if (i % 2 == 0)` check is true for `i=0` and `i=2`, causing the `continue` statement to be executed in those iterations.
+
+\item 1) The code enters the `switch` statement when `i` is 1 and 3.
+ \\ 
+CORRECT - Because of the `continue` for even numbers, the `switch` statement is only reached when `i` is odd, which is `i=1` and `i=3`.
+
+\item 2) The string `"D"` is appended to `result` exactly once.
+ \\ 
+CORRECT - The line `result += "D";` is only reached if the `switch` statement completes without a `break loop`. This happens when `i=1`. The `break` in `case 1:` only exits the `switch`, not the loop, so `"D"` is appended. When `i=3`, `break loop;` is executed, so the line is not reached. Thus, `"D"` is appended only once.
+
+\item 3) The `break loop;` statement is executed.
+ \\ 
+CORRECT - When `i=3`, `case 3` is executed, which contains the `break loop;` statement. This statement terminates the entire `for` loop.
+
+\item 4) The final output is `ABD`.
+ \\ 
+WRONG - Let's trace the `result` string. When `i=1`, `result` becomes `"A"`, then `"AD"`. When `i=3`, `result` becomes `"ADB"`. The final output is `ADB`.
+
+\item 5) The final output is `AB`.
+ \\ 
+WRONG - The final output is `ADB`.
+
+\end{itemize}
+\item (questionId: 102223, topic: Abstract Classes and Interfaces) \\ 
+What is the result of attempting to access `MyDevice.NAME` in another class?\n\begin{verbatim}
+interface Device {
+    String NAME = "Device";
+}
+interface Gadget {
+    String NAME = "Gadget";
+}
+class MyDevice implements Device, Gadget {
+    // Some code
+}
+// In another class:
+// System.out.println(MyDevice.NAME);
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) It prints "Device".
+ \\ 
+WRONG - The reference is ambiguous.
+
+\item 1) It prints "Gadget".
+ \\ 
+WRONG - The reference is ambiguous.
+
+\item 2) It results in a compile-time error due to an ambiguous field.
+ \\ 
+RIGHT - The class `MyDevice` implements both `Device` and `Gadget`. Both interfaces define a `public static final` field named `NAME`. Because `MyDevice` inherits both fields, a reference to `MyDevice.NAME` is ambiguous. The compiler does not know whether to use the `NAME` from `Device` or the one from `Gadget`. This results in a compile-time error. The ambiguity must be resolved by being more specific, e.g., `Device.NAME` or `Gadget.NAME`.
+
+\item 3) It prints `null`.
+ \\ 
+WRONG - The issue is an ambiguity error at compile time, not a `null` value.
+
+\end{itemize}
+\item (questionId: 100029, topic: Java Environment and Fundamentals) \\ 
+Which of these are valid command line argument arrays in a main method signature? (Choose all that apply)
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) \verb|String args[]|
+ \\ 
+CORRECT - This is the classic C-style array declaration syntax, which is perfectly valid in Java.
+
+\item 1) \verb|String... args|
+ \\ 
+CORRECT - This is the varargs (variable arguments) syntax, introduced in Java 5. It is a valid and common way to declare the main method's parameter.
+
+\item 2) \verb|String[] myArgs|
+ \\ 
+CORRECT - The standard Java array declaration syntax is \verb|Type[] name|. The name of the parameter can be any valid identifier, like \verb|myArgs|.
+
+\item 3) \verb|String[] _args|
+ \\ 
+CORRECT - \verb|_args| is a valid identifier in Java, so this declaration is syntactically correct.
+
+\item 4) \verb|String..._args|
+ \\ 
+WRONG - The varargs ellipsis (\verb|...|) must be separated from the parameter name by whitespace. \verb|..._args| is a syntax error.
+
+\end{itemize}
+\item (questionId: 101826, topic: Garbage Collection and Object Lifecycle) \\ 
+Select all lines of code after which at least one `Gadget` object becomes eligible for garbage collection.
+\begin{verbatim}
+class Gadget {}
+public class GadgetFactory {
+    static Gadget staticGadget = new Gadget(); // Line 1
+    Gadget instanceGadget = new Gadget();      // Line 2
+
+    public static void main(String[] args) {
+        GadgetFactory gf = new GadgetFactory(); // Line 3
+        Gadget g1 = new Gadget();               // Line 4
+        gf.build(g1);
+        g1 = null;                              // Line 5
+        gf = null;                              // Line 6
+    }
+
+    void build(Gadget g) {
+        Gadget g2 = new Gadget();               // Line 7
+    } // End of build method is effectively Line 8
+}
+\end{verbatim}
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) Line 5
+ \\ 
+CORRECT - After \verb|Line 5|, the local reference \verb|g1| is nulled. The \verb|Gadget| object it was pointing to (created on Line 4) now has no more references and becomes eligible for GC.
+
+\item 1) Line 6
+ \\ 
+CORRECT - After \verb|Line 6|, the local reference \verb|gf| is nulled. This makes the \verb|GadgetFactory| object eligible for GC. Because the \verb|instanceGadget| was an instance member of that object, it also becomes unreachable and eligible for GC.
+
+\item 2) Line 8
+ \\ 
+CORRECT - The variable \verb|g2| is local to the \verb|build| method. When the method execution ends (at Line 8), \verb|g2| goes out of scope. The \verb|Gadget| object it referenced (created on Line 7) becomes eligible for GC.
+
+\item 3) The line after the `main` method completes.
+ \\ 
+CORRECT - The \verb|staticGadget| is referenced by a static variable of the \verb|GadgetFactory| class. This reference will persist as long as the class is loaded. When the \verb|main| method completes and the application terminates, the class may be unloaded, at which point the static variable is gone and the \verb|staticGadget| becomes eligible for collection.
+
+\item 4) Line 3
+ \\ 
+WRONG - At Line 3, the \verb|GadgetFactory| object is created and is actively referenced by \verb|gf|. Nothing becomes eligible for GC at this point.
+
+\end{itemize}
+\item (questionId: 102722, topic: Sorting and Searching Collections (Comparable, Comparator)) \\ 
+What is the result of this code?
+\begin{verbatim}
+Comparator<Integer> c = (i1, i2) -> i1 - i2;
+List<Integer> list = Arrays.asList(Integer.MAX_VALUE, Integer.MIN_VALUE);
+Collections.sort(list, c);
+System.out.println(list);
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) `[-2147483648, 2147483647]`
+ \\ 
+WRONG - This would be the correct, numerically sorted order. However, the provided comparator has a subtle bug.
+
+\item 1) `[2147483647, -2147483648]`
+ \\ 
+RIGHT - This question tests your knowledge of integer overflow. The lambda \verb|(i1, i2) -> i1 - i2| is a common but unsafe way to write a comparator for integers. When the sort algorithm compares \verb|Integer.MAX_VALUE| and \verb|Integer.MIN_VALUE|, the expression becomes \verb|Integer.MAX_VALUE - Integer.MIN_VALUE|. This calculation overflows the maximum value an \verb|int| can hold and wraps around to become a negative number. Because \verb|compare(MAX_VALUE, MIN_VALUE)| returns a negative value, the sort algorithm incorrectly concludes that \verb|MAX_VALUE| is 'less than' \verb|MIN_VALUE|, resulting in the wrong sort order.
+
+\item 2) An `ArithmeticException` is thrown.
+ \\ 
+WRONG - Integer overflow does not throw an \verb|ArithmeticException| in Java; it silently wraps around.
+
+\item 3) The list remains unchanged.
+ \\ 
+WRONG - The list will be sorted, but incorrectly due to the flawed comparator.
+
+\end{itemize}
+\item (questionId: 100723, topic: Variable Scope and Lifetime) \\ 
+Consider the following class. What is the outcome?\n\begin{verbatim}
+public class Test {
+    static {
+        i = 20; // Forward reference is ok in assignment
+    }
+    static int i = 10;
+
+    public static void main(String[] args) {
+        System.out.println(i);
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) 20
+ \\ 
+WRONG - The final assignment to \verb|i| overrides the value set in the static block.
+
+\item 1) 10
+ \\ 
+CORRECT - This is a tricky question about the order of static initializers. The rules are executed top-to-bottom.
+1. The static block \verb|static { i = 20; }| is executed first. Assigning to a static field before its declaration (a forward reference) is legal for simple assignments. After this, \verb|i| holds the value 20.
+2. The static variable declaration \verb|static int i = 10;| is executed next. This is also an assignment operation, and it *re-initializes* \verb|i| to 10.
+3. Static initialization is complete, and the final value of \verb|i| is 10. The \verb|main| method then prints this value.
+
+\item 2) Compilation fails due to illegal forward reference.
+ \\ 
+WRONG - An 'illegal forward reference' error occurs when you try to *read* a variable before it's declared (e.g., \verb|System.out.println(i);| in the static block). A simple assignment is permitted.
+
+\item 3) 0
+ \\ 
+WRONG - The variable \verb|i| does not retain its default value of 0.
+
+\end{itemize}
+\item (questionId: 102126, topic: Polymorphism and Type Casting) \\ 
+What is the result of attempting to compile this code snippet?\n\begin{verbatim}
+import java.util.*;
+
+public class GenericsTest {
+    public static void main(String[] args) {
+        List<String> stringList = new ArrayList<>();
+        if (stringList instanceof List<Integer>) {
+            System.out.println("It's a list of Integers");
+        }
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) The code compiles and runs, but the `if` block is never executed.
+ \\ 
+WRONG - The code does not compile.
+
+\item 1) The code compiles and throws a `ClassCastException` at runtime.
+ \\ 
+WRONG - The error is caught at compile time.
+
+\item 2) A compile-time error occurs.
+ \\ 
+RIGHT - Due to a process called type erasure, the generic type parameters (like \verb|<String>| or \verb|<Integer>|) are removed by the compiler and are not present at runtime. At runtime, the object is just a raw \verb|List|. Because the specific type information is unavailable, the \verb|instanceof| operator cannot test against a parameterized type. The Java compiler enforces this by making any use of \verb|instanceof| with a generic type parameter a compile-time error.
+
+\item 3) The code compiles and runs, and the `if` block is executed due to type erasure.
+ \\ 
+WRONG - Type erasure is the reason for the compile-time error; it does not cause the code to run and enter the \verb|if| block.
+
+\end{itemize}
+\item (questionId: 100421, topic: Primitive Data Types and Literals) \\ 
+What is the result of attempting to compile the following code snippet?
+\begin{verbatim}
+int i = 10;
+byte b = i;
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) It compiles successfully because the value of `i` (10) is within the range of a `byte`.
+ \\ 
+WRONG - This is a common misunderstanding. The rule for implicit narrowing applies only to compile-time constant *literals*, not variables.
+
+\item 1) It fails to compile because `i` is an `int` variable, and assigning it to a `byte` requires an explicit cast.
+ \\ 
+RIGHT - This is a crucial distinction for the exam. While `byte b = 10;` compiles (assigning a literal), `byte b = i;` does not. When the right side of the assignment is a variable (here, the `int` variable `i`), the compiler enforces the type-checking rules strictly. Assigning an `int` to a `byte` is a narrowing conversion and requires an explicit cast, `byte b = (byte)i;`, regardless of the value held by the variable.
+
+\item 2) It compiles, but will throw a runtime exception if `i` were greater than 127.
+ \\ 
+WRONG - The issue is a compile-time error, not a runtime exception.
+
+\item 3) It compiles because the compiler can determine the constant value of `i` at compile time.
+ \\ 
+WRONG - Even though a modern compiler can often determine the value of `i`, the Java Language Specification mandates that this type of assignment requires a cast.
+
+\end{itemize}
+\item (questionId: 101227, topic: Enums) \\ 
+Which of the following are true about enums in Java? (Choose all that apply)
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) An enum can be a generic type, e.g., `public enum MyEnum<T> { ... }`
+ \\ 
+WRONG - Enums cannot be generic. A declaration like \verb|public enum MyEnum<T>| is a syntax error. The enum type itself is the type.
+
+\item 1) Enum constants are implicitly `public`, `static`, and `final`.
+ \\ 
+CORRECT - The constants declared in an enum are effectively \verb|public static final| fields of that enum type. \verb|public| so they are accessible, \verb|static| so they belong to the type, and \verb|final| so they cannot be reassigned.
+
+\item 2) An enum can contain a `main` method and can be executed as a standalone program.
+ \\ 
+CORRECT - An enum is a special type of class. It can have a \verb|main| method and be run from the command line like any other Java application.
+
+\item 3) An enum type cannot be a subtype of another enum.
+ \\ 
+CORRECT - All enums implicitly extend \verb|java.lang.Enum|. Due to Java's single-inheritance model for classes, an enum cannot extend another class, which includes other enums.
+
+\end{itemize}
+\item (questionId: 101622, topic: Constructors and Initialization Blocks) \\ 
+What is the output of this program?\n\begin{verbatim}
+public class ForwardReference {
+    {
+        System.out.print(value + " ");
+    }
+    private int value = 1;
+    {
+        System.out.print(value + " ");
+    }
+
+    public ForwardReference() {
+        System.out.print(value);
+    }
+
+    public static void main(String... args) {
+        new ForwardReference();
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) 1 1 1
+ \\ 
+WRONG - The first print statement occurs before the explicit initialization of \verb|value|.
+
+\item 1) 0 1 1
+ \\ 
+RIGHT - This demonstrates a 'legal forward reference'. The initialization sequence is: \newline 1. Instance variables get default values. \verb|value| becomes 0. \newline 2. The first instance block executes. It prints the current value of \verb|value|, which is 0. \newline 3. The instance variable initializer runs. \verb|value| is set to 1. \newline 4. The second instance block executes. It prints the current value of \verb|value|, which is 1. \newline 5. The constructor body executes. It prints the current value of \verb|value|, which is 1. \newline The final output is `0 1 1`.
+
+\item 2) 0 0 1
+ \\ 
+WRONG - The second instance block runs after \verb|value| has been initialized to 1.
+
+\item 3) The code fails to compile.
+ \\ 
+WRONG - While it may seem like an error to reference a variable before its declaration, Java allows this for instance variables within instance initializers, using the default value.
+
+\end{itemize}
+\item (questionId: 102022, topic: Inheritance and Method Overriding) \\ 
+What is the result?
+\begin{verbatim}
+class SuperClass {
+    static String ID = "Super";
+    void printID() { System.out.println(ID); }
+}
+
+class SubClass extends SuperClass {
+    static String ID = "Sub";
+    void printID() { System.out.println(ID); }
+}
+
+public class TestHiding {
+    public static void main(String[] args) {
+        SuperClass sup = new SubClass();
+        System.out.println(sup.ID);
+        sup.printID();
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) Super\nSub
+ \\ 
+CORRECT - This question tests the difference between static field hiding and instance method overriding. 1) `sup.ID`: `ID` is a static field. Static members are resolved at compile time based on the reference type. `sup` is a `SuperClass` reference, so this resolves to `SuperClass.ID`, which is 'Super'. 2) `sup.printID()`: `printID` is an instance method. Its resolution is polymorphic, based on the runtime object type, which is `SubClass`. Therefore, the overridden `printID` in `SubClass` is called. It prints the `ID` field that is visible in its scope, which is the `ID` from `SubClass` ('Sub').
+
+\item 1) Sub\nSub
+ \\ 
+WRONG - The static field access `sup.ID` resolves to the `SuperClass` version.
+
+\item 2) Super\nSuper
+ \\ 
+WRONG - The instance method call `sup.printID()` resolves to the `SubClass` version.
+
+\item 3) Sub\nSuper
+ \\ 
+WRONG - This reverses both results.
+
+\item 4) Compilation fails.
+ \\ 
+WRONG - Hiding static fields and overriding instance members are both valid Java concepts.
+
+\end{itemize}
+\item (questionId: 103122, topic: Try-with-Resources) \\ 
+An exception is thrown from a `try-with-resources` block, another from the resource's `close()` method, and a third from the `finally` block. Which exception is ultimately propagated to the caller?
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) The exception from the `try` block.
+ \\ 
+WRONG - The exception from the \verb|try| block would be suppressed by the exception from the \verb|finally| block.
+
+\item 1) The exception from the `close()` method.
+ \\ 
+WRONG - The exception from the \verb|close()| method would be suppressed by the exception from the \verb|finally| block.
+
+\item 2) The exception from the `finally` block.
+ \\ 
+CORRECT - This is a critical rule of exception handling. An exception thrown from a \verb|finally| block will always take precedence, suppressing any exception that was already thrown from the \verb|try| block or the resource's \verb|close()| method. The exception from the \verb|finally| block is the one that the caller will see.
+
+\item 3) A new wrapper exception containing all three.
+ \\ 
+WRONG - Java's mechanism suppresses the older exceptions in favor of the newest one from the \verb|finally| block; it does not wrap them all.
+
+\end{itemize}
+\item (questionId: 100424, topic: Primitive Data Types and Literals) \\ 
+What value is stored in the variable `result` after this code is executed?
+\begin{verbatim}
+long result = 2_147_483_647 + 1;
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) `2147483648`
+ \\ 
+WRONG - This would be the result if the calculation were done using `long` arithmetic, e.g., `2147483647L + 1`.
+
+\item 1) `-2147483648`
+ \\ 
+\begin{verbatim}RIGHT - This is a tricky question about order of operations and integer overflow. The expression `2_147_483_647 + 1` is evaluated *before* the assignment to `result`. Both operands are `int` literals, so the addition is performed using 32-bit integer arithmetic. `2_147_483_647` is `Integer.MAX_VALUE`. Adding 1 to it causes an overflow, which wraps around to `Integer.MIN_VALUE`, which is `-2147483648`. Only after this calculation is the resulting `int` value (`-2147483648`) widened and assigned to the `long` variable `result`.\end{verbatim}
+
+\item 2) The code fails to compile.
+ \\ 
+WRONG - The code compiles, but the result is not what it appears to be due to overflow.
+
+\item 3) `21474836471`
+ \\ 
+WRONG - This is not how integer addition works.
+
+\end{itemize}
+\item (questionId: 103452, topic: Static Imports) \\ 
+What is the output of the following code, which uses a statically imported nested class?
+\begin{verbatim}
+// File: Encloser.java
+public class Encloser {
+    public static class Nested {
+        public void hi() { System.out.println("Hi"); }
+    }
+}
+
+// File: Main.java
+import static Encloser.Nested;
+
+public class Main {
+    public static void main(String[] args) {
+        Nested n = new Nested();
+        n.hi();
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) `Hi`
+ \\ 
+CORRECT - A `public static` nested class is considered a static member and can be imported using `import static`. This allows the nested class to be referenced by its simple name (`Nested`) without the enclosing class name prefix (`Encloser.`). The code correctly instantiates `Nested` and calls a method on it.
+
+\item 1) The code fails to compile because you cannot statically import a class.
+ \\ 
+WRONG - This statement is too general. While you cannot statically import a *top-level* class, you can statically import a *static nested* class.
+
+\item 2) The code fails to compile because `Nested` must be instantiated via `Encloser.Nested`.
+ \\ 
+WRONG - The very purpose of the static import is to allow the use of the simple name `Nested` instead of `Encloser.Nested`.
+
+\item 3) The code fails to compile for a different reason.
+ \\ 
+WRONG - The code is valid.
+
+\end{itemize}
+\item (questionId: 100722, topic: Variable Scope and Lifetime) \\ 
+What will the following code print?\n\begin{verbatim}
+public class ScopePuzzle {
+    int x = 5;
+
+    public static void main(String[] args) {
+        ScopePuzzle p = new ScopePuzzle();
+        p.go();
+    }
+
+    void go() {
+        int x;
+        go2();
+        // System.out.println(x); // Line X
+    }
+
+    void go2() {
+        x = 10;
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) If Line X is uncommented, the code will print 10.
+ \\ 
+WRONG - The local variable \verb|x| in \verb|go()| is never initialized.
+
+\item 1) If Line X is uncommented, the code will print 5.
+ \\ 
+WRONG - The local variable \verb|x| in \verb|go()| is not affected by the assignment in \verb|go2()|, which modifies the instance variable.
+
+\item 2) If Line X is uncommented, the code will fail to compile.
+ \\ 
+CORRECT - In method \verb|go()|, a local variable \verb|int x;| is declared but never initialized. The call to \verb|go2()| modifies the *instance* variable \verb|x| because that's the only \verb|x| visible within \verb|go2()|'s scope. When execution returns to \verb|go()|, its local variable \verb|x| remains uninitialized. Attempting to print it with \verb|System.out.println(x);| would refer to this uninitialized local variable, causing a definite assignment compilation error.
+
+\item 3) The code as is will compile and run without error.
+ \\ 
+WRONG - The code as is, with Line X commented out, does compile. But the question is about the *result* or implication of the code structure, best described by what would happen if Line X were active.
+
+\end{itemize}
+\item (questionId: 102320, topic: The 'final' Keyword) \\ 
+What is the output of the following code?\n\begin{verbatim}
+public class Finalizer {
+    private final int value;
+    public Finalizer(int v) {
+        this.value = v;
+    }
+    public int getValue() {
+        return this.value;
+    }
+    public static void main(String[] args) {
+        final Finalizer f = new Finalizer(20);
+        // Line X
+        System.out.println(f.getValue());
+    }
+    public void modify(Finalizer fin) {
+        fin = new Finalizer(30);
+    }
+}
+\end{verbatim}
+What would happen if `modify(f);` was inserted at 'Line X'?
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) The code would fail to compile because `f` is final.
+ \\ 
+WRONG - The code compiles. Calling a method and passing a `final` reference is perfectly fine.
+
+\item 1) The code would print 30.
+ \\ 
+WRONG - The `modify` method only changes its local copy of the reference, not the original `f` variable in `main`.
+
+\item 2) The code would print 20.
+ \\ 
+RIGHT - This question tests `final` and Java's pass-by-value semantics. When `modify(f)` is called, a **copy** of the reference `f` is passed to the method. Inside `modify`, the line `fin = new Finalizer(30);` reassigns this **local copy** (`fin`) to a new object. This action has no effect on the original `f` variable in the `main` method, which remains `final` and continues to point to the original object with `value = 20`. Therefore, the output is 20.
+
+\item 3) The code would throw a runtime exception.
+ \\ 
+WRONG - The code runs without any exceptions.
+
+\end{itemize}
+\item (questionId: 100924, topic: Conditional Statements (if/else, switch)) \\ 
+What are the final values of `x` and `y` after this code snippet runs?\n\begin{verbatim}
+int x = 10;
+int y = 20;
+if (++x <= 10 && --y > 15) {
+    x++;
+    y++;
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) `x` is 11, `y` is 20
+ \\ 
+CORRECT - The code tests pre-increment and short-circuiting. \n1. The left operand of `&&` is evaluated first: `++x <= 10`. The pre-increment operator changes `x` to 11. The comparison `11 <= 10` is `false`.\n2. Since the left operand of a logical AND (`&&`) is `false`, the entire expression must be `false`. The `&&` operator short-circuits, and the right operand (`--y > 15`) is never evaluated.\n3. The `if` block is skipped. \n4. The final value of `x` is 11, and the final value of `y` remains unchanged at 20.
+
+\item 1) `x` is 11, `y` is 19
+ \\ 
+WRONG - This would be the result if the right side of the `&&` were evaluated, but it is not due to short-circuiting.
+
+\item 2) `x` is 12, `y` is 20
+ \\ 
+WRONG - This implies the `if` block was entered, which is incorrect.
+
+\item 3) `x` is 10, `y` is 20
+ \\ 
+WRONG - The `++x` expression was evaluated, so `x` cannot be 10.
+
+\end{itemize}
+\item (questionId: 101627, topic: Constructors and Initialization Blocks) \\ 
+What is the result of compiling this class? \n\begin{verbatim}
+public class FinalChallenge {
+    private final int value;
+
+    public FinalChallenge() {
+        this(10);
+        // value = 20; // Line A
+    }
+
+    public FinalChallenge(int value) {
+        this.value = value;
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) The code compiles successfully as is.
+ \\ 
+WRONG - While the code does compile as is, this is not the best answer in an exam context, as choice 2 points out a critical rule violation in a 'what-if' scenario, which is a common testing pattern.
+
+\item 1) The code fails to compile because a final field is assigned in one constructor but not the other.
+ \\ 
+WRONG - The code does compile. The no-arg constructor properly delegates initialization to the one-arg constructor, so all paths lead to the final field being initialized.
+
+\item 2) If Line A is uncommented, the code will fail to compile.
+ \\ 
+RIGHT - This is the best answer because it tests a critical rule. If Line A were uncommented, the code would be \verb|this(10); value = 20;|. This fails to compile for two reasons: 1) the call to \verb|this()| would no longer be the first statement, and 2) the \verb|final| variable \verb|value| would be assigned twice on this construction path (once in the called constructor, and again at Line A). This is illegal.
+
+\item 3) The code fails to compile because a final field cannot be assigned in a constructor that uses `this()`.
+ \\ 
+WRONG - It is perfectly legal for a constructor to delegate initialization of a final field using \verb|this()|. The error only occurs if that constructor also tries to assign a value to the field itself.
+
+\end{itemize}
+\item (questionId: 101729, topic: Static Members and 'this' Keyword) \\ 
+Given `public class Test { static int x = 1; int y = 2; }`, which of the following lines of code are valid if placed inside the `main` method of another class? (Choose all that apply)
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) `System.out.println(Test.x);`
+ \\ 
+CORRECT - \verb|x| is a public/default static variable and can be accessed via its class name.
+
+\item 1) `System.out.println(Test.y);`
+ \\ 
+WRONG - This is a compile error. \verb|y| is an instance variable and cannot be accessed in a static way via the class name.
+
+\item 2) `Test t = new Test(); System.out.println(t.x);`
+ \\ 
+CORRECT - This is valid but discouraged. The compiler allows accessing a static variable via an instance reference. It resolves the access based on the reference type, not the object itself.
+
+\item 3) `Test t = new Test(); System.out.println(t.y);`
+ \\ 
+CORRECT - This is the standard way to access an instance variable: through a valid reference to an object instance.
+
+\item 4) `Test t = null; System.out.println(t.x);`
+ \\ 
+CORRECT - This is the tricky case. Since \verb|x| is static, the compiler resolves \verb|t.x| to \verb|Test.x| and does not need to dereference the null pointer \verb|t|. No \verb|NullPointerException| is thrown.
+
+\item 5) `Test t = null; System.out.println(t.y);`
+ \\ 
+WRONG - This line compiles, but it will throw a \verb|NullPointerException| at runtime because it attempts to access an instance variable \verb|y| through a \verb|null| reference. The question requires that the code not cause a runtime exception.
+
+\end{itemize}
+\item (questionId: 100524, topic: Type Conversion and Casting) \\ 
+What is the final value of `s`?
+\begin{verbatim}
+short s = 32767;
+s++;
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) `32768`
+ \\ 
+WRONG - The value `32768` cannot be stored in a `short`.
+
+\item 1) `-32768`
+ \\ 
+\begin{verbatim}RIGHT - The `++` operator is a compound assignment operator, equivalent here to `s = (short)(s + 1)`. The value of `s` is `32767` (`Short.MAX_VALUE`). The expression `s + 1` is promoted to `int`, resulting in `32768`. The implicit cast `(short)` then attempts to fit this value into a short, causing an overflow. The value wraps around to `Short.MIN_VALUE`, which is `-32768`.\end{verbatim}
+
+\item 2) `0`
+ \\ 
+WRONG - The value wraps around to the minimum value, not zero.
+
+\item 3) The code does not compile.
+ \\ 
+WRONG - The code compiles because the `++` operator includes an implicit cast, which makes the narrowing conversion valid.
+
+\end{itemize}
+\item (questionId: 100827, topic: Java Operators and Precedence) \\ 
+Which statement best describes the evaluation of the following expression?\n\begin{verbatim}
+int a = 1, b = 2, c = 3, d = 4;
+int result = a + b * c / d > a ? b + c : d - a;
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) The expression evaluates to 5.
+ \\ 
+WRONG - While the final result is indeed 5, this choice only describes the outcome, not the evaluation process. The question asks for the *best description of the evaluation*, which usually refers to the rules being applied, such as operator precedence.
+
+\item 1) The expression evaluates to 3.
+ \\ 
+WRONG - The expression evaluates to 5. 3 would be the result if the ternary condition were false (`d - a` equals `4 - 1 = 3`).
+
+\item 2) The multiplication `b*c` is performed first.
+ \\ 
+CORRECT - This statement accurately describes the first step in evaluating the expression according to Java's operator precedence rules. Multiplicative operators (`*`, `/`) have higher precedence than additive (`+`), relational (`>`), and ternary (`? :`) operators. Therefore, `b * c` is the first calculation performed.
+
+\item 3) The ternary operator `? :` has higher precedence than `>`.
+ \\ 
+WRONG - This is incorrect. Relational operators like `>` have higher precedence than the ternary operator `? :`. The entire expression to the left of the `?` is evaluated first to serve as the boolean condition for the ternary operator.
+
+\end{itemize}
+\item (questionId: 101924, topic: Encapsulation and Access Modifiers) \\ 
+Given the code:
+\begin{verbatim}
+// In package company.parts
+package company.parts;
+public class Engine {
+    // package-private constructor
+    Engine() {}
+}
+
+// In package company.parts
+package company.parts;
+public class PartsFactory {
+    public static Engine getEngine() {
+        return new Engine();
+    }
+}
+
+// In package company.vehicles
+package company.vehicles;
+import company.parts.*;
+public class Car {
+    public static void main(String[] args) {
+        Engine e = PartsFactory.getEngine(); // Line X
+        System.out.println("Engine acquired");
+    }
+}
+\end{verbatim}
+What is the result?
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) Compilation fails at Line X because `Engine`'s constructor is not visible.
+ \\ 
+WRONG - The call to the constructor happens inside \verb|PartsFactory|, where it is visible. The \verb|Car| class does not call the constructor directly.
+
+\item 1) Compilation fails at Line X because the `Engine` class is not visible.
+ \\ 
+WRONG - The \verb|Engine| class is \verb|public|, so it is visible to the \verb|Car| class.
+
+\item 2) Compilation succeeds, and "Engine acquired" is printed.
+ \\ 
+CORRECT - This demonstrates the Factory Pattern. The \verb|Engine| class is \verb|public| and visible everywhere. Its constructor is package-private, restricting direct instantiation to its own package. The \verb|PartsFactory|, being in the same package, can legally call \verb|new Engine()|. The factory's \verb|getEngine()| method is \verb|public|, so any class (like \verb|Car|) can call it. The \verb|Car| class receives a valid \verb|Engine| object without needing access to its constructor. The code compiles and runs successfully.
+
+\item 3) Compilation fails because `PartsFactory.getEngine()` returns a type whose constructor is not public.
+ \\ 
+WRONG - The compiler does not check the visibility of the constructor of the return type. It only checks that the factory method itself is accessible and that the returned type is visible.
+
+\end{itemize}
+\item (questionId: 101528, topic: Classes and Objects Fundamentals) \\ 
+Which statements are true regarding the initialization of a new object? (Choose all that apply)
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) The constructor body is executed before instance initializers.
+ \\ 
+WRONG - Instance initializers and variable initializers run *before* the constructor body is executed.
+
+\item 1) If present, a call to another constructor using `this()` must be the very first statement in a constructor.
+ \\ 
+CORRECT - This is a strict rule. A call to \verb|this()| or \verb|super()| can only appear as the very first statement inside a constructor.
+
+\item 2) Static variables are initialized after the constructor completes.
+ \\ 
+WRONG - Static variables are initialized once, when the class is first loaded by the JVM, which happens long before any specific object is created and its constructor runs.
+
+\item 3) Instance variables are assigned their default values (e.g., 0, false, null) before any instance initializers or constructors are run.
+ \\ 
+CORRECT - The very first step of instantiation, after memory allocation, is that the JVM assigns all instance fields their default values (e.g., 0 for \verb|int|, \verb|false| for \verb|boolean|, \verb|null| for objects).
+
+\item 4) Instance initializers are executed in the order they appear in the source code.
+ \\ 
+CORRECT - If there are multiple instance initializers and instance variable declarations, they are executed in the sequence they appear in the source code, from top to bottom.
+
+\item 5) It is valid for a class to have multiple instance initializer blocks.
+ \\ 
+CORRECT - A class can have more than one instance initializer block. They are executed in the order they are written in the file.
+
+\end{itemize}
+\item (questionId: 102520, topic: ArrayList and Basic Collections) \\ 
+What is the result of executing the following code?\begin{verbatim}
+import java.util.List;
+import java.util.ArrayList;
+
+public class Test {
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.remove(2);
+        System.out.println(list);
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) [1, 2]
+ \\ 
+CORRECT - This is a classic trick question about method overloading. The list `[1, 2, 3]` contains `Integer` objects. However, the call is `list.remove(2)`, where `2` is a primitive `int`. Java will choose the `remove(int index)` method signature over `remove(Object o)`. Therefore, it removes the element at index 2, which is the value `3`. The final list is `[1, 2]`.
+
+\item 1) [1, 3]
+ \\ 
+WRONG - This would be the result if `list.remove(Integer.valueOf(2))` were called, which would remove the object with the value `2`.
+
+\item 2) [2, 3]
+ \\ 
+WRONG - This would be the result if the element at index 0 were removed.
+
+\item 3) An `IndexOutOfBoundsException` is thrown.
+ \\ 
+WRONG - Index 2 is a valid index for a list of size 3, so no exception is thrown.
+
+\end{itemize}
+\item (questionId: 101425, topic: StringBuilder and StringBuffer) \\ 
+Which line of code, when inserted at `// INSERT`, will result in both `boolean` variables being `true`?
+\begin{verbatim}
+StringBuilder sb1 = new StringBuilder("A");
+StringBuilder sb2 = new StringBuilder("A");
+String s1 = new String("A");
+
+// INSERT
+
+boolean b1 = sb1.toString().equals(s1);
+boolean b2 = sb1 == sb2;
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) `sb2 = sb1;`
+ \\ 
+CORRECT - The line `sb2 = sb1;` makes `sb2` point to the exact same object as `sb1`. After this line executes: `b1` checks if `sb1.toString()` (`"A"`) equals `s1` (`"A"`), which is `true`. `b2` checks if `sb1` and `sb2` refer to the same object (`sb1 == sb2`), which is also `true` because of the assignment.
+
+\item 1) `sb1 = new StringBuilder(s1);`
+ \\ 
+WRONG - This reassigns `sb1` but leaves `sb2` pointing to its original object, so `sb1 == sb2` would be false.
+
+\item 2) `s1 = sb1.toString(); sb2 = sb1;`
+ \\ 
+WRONG - This works, but it's more complex than necessary. The simplest line that achieves the goal is option 0.
+
+\item 3) It's impossible to make both `true`.
+ \\ 
+WRONG - Option 0 demonstrates that it is possible.
+
+\end{itemize}
+\item (questionId: 102928, topic: Try-Catch-Finally Blocks) \\ 
+What is the final output of this program?
+\begin{verbatim}
+public class Test {
+    public static void main(String[] args) {
+        try {
+            System.out.print("A");
+            danger();
+        } catch (Exception e) {
+            System.out.print("B");
+        } finally {
+            System.out.print("C");
+        }
+    }
+    static void danger() {
+        try {
+            throw new Error();
+        } finally {
+            System.out.print("D");
+        }
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) `ADBC`
+ \\ 
+WRONG - The `catch` block in `main` is never entered.
+
+\item 1) `ADC`
+ \\ 
+WRONG - The `finally` block in `main` is also executed.
+
+\item 2) `AD` followed by an `Error` being thrown.
+ \\ 
+RIGHT - The flow is: 1) `main` prints 'A'. 2) `danger()` is called. 3) `danger()` throws an `Error`. 4) `danger()`'s `finally` block executes, printing 'D'. 5) The `Error` propagates from `danger()` back to `main`. 6) The `catch (Exception e)` block in `main` does NOT catch the `Error` (they are siblings). 7) `main`'s `finally` block executes, printing 'C'. 8) The uncaught `Error` is then thrown from `main`, terminating the thread. The total output before termination is `ADC`.
+
+\item 3) `A` followed by an `Error` being thrown.
+ \\ 
+WRONG - Both `finally` blocks are executed before the program terminates.
+
+\end{itemize}
+\item (questionId: 100125, topic: Main Method and Command Line Arguments) \\ 
+Consider the following code:
+\begin{verbatim}
+package com.test;
+public class Runner {
+    public static void main(String[] args) {
+        System.out.println("OK");
+    }
+}
+\end{verbatim}
+After compiling with `javac -d . com/test/Runner.java`, you are in the `com/test` directory. You execute `java Runner`. What is the result?
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) It prints "OK".
+ \\ 
+WRONG - This command will fail.
+
+\item 1) A `ClassNotFoundException` is thrown.
+ \\ 
+WRONG - A `ClassNotFoundException` occurs when the JVM cannot find the requested class file on the classpath. Here, the JVM finds `Runner.class`, but the internal package name doesn't match the request, leading to a different error.
+
+\item 2) A `NoClassDefFoundError` is thrown.
+ \\ 
+CORRECT - This is a tricky classpath issue. When you are in `com/test` and run `java Runner`, you are telling the JVM to load a class named `Runner` from the default (unnamed) package. The JVM finds `Runner.class` in the current directory. However, upon loading it, it reads the bytecode and sees that the class is declared to be in the package `com.test`. This mismatch between the requested package (default) and the actual package (`com.test`) causes a `NoClassDefFoundError`. To run it correctly, you must be at the root of the classpath (`.` in this case) and execute `java com.test.Runner`.
+
+\item 3) A `SecurityException` is thrown.
+ \\ 
+WRONG - This is a class loading issue, not a security issue.
+
+\end{itemize}
+\item (questionId: 100227, topic: Packages, Classpath, and JARs) \\ 
+Which of the following statements about `import` declarations are true? (Choose all that apply)
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) `import` statements are required to use any class outside the current package.
+ \\ 
+WRONG - \verb|import| statements are a convenience. You can always use the fully qualified name of a class (e.g., \verb|java.util.ArrayList|) instead of importing it. Also, classes in \verb|java.lang| never need to be imported.
+
+\item 1) A static import can import all static members of a class using a wildcard (`*`).
+ \\ 
+CORRECT - The statement \verb|import static com.example.MyConstants.*;| will import all accessible static members (fields and methods) from the \verb|MyConstants| class, allowing them to be used without the class name qualifier.
+
+\item 2) Importing a package, such as `java.util.*`, also imports its subpackages, like `java.util.concurrent`.
+ \\ 
+WRONG - A wildcard import (\verb|*|) is not recursive. It imports types from the specified package only, not from any of its subpackages.
+
+\item 3) Importing a class with the same simple name from two different packages requires one of them to be referred to by its fully qualified name.
+ \\ 
+CORRECT - If you try to import two classes with the same simple name from different packages (e.g., \verb|import java.util.Date;| and \verb|import java.sql.Date;|), the compiler will report an error if you try to use the simple name \verb|Date|. You must use the fully qualified name for at least one of them to resolve the ambiguity.
+
+\item 4) `import` statements increase the size of the final `.class` file.
+ \\ 
+WRONG - \verb|import| statements are only instructions for the compiler. They are not included in the compiled bytecode and do not affect the size of the final \verb|.class| file.
+
+\end{itemize}
+\item (questionId: 100327, topic: Java Coding Conventions and Javadoc) \\ 
+What is the result of compiling and running this code?
+\begin{verbatim}
+public class TrickyScope {
+    public static void main(String[] args) {
+        int i = 0;
+        if (true) {
+            // The following comment looks like it closes the block
+            /*
+                System.out.println("Inside comment");
+            }
+            */
+            i = 1;
+        } 
+        System.out.println(i);
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) It fails to compile due to a syntax error with braces.
+ \\ 
+WRONG - The code is syntactically correct because the closing brace inside the comment is ignored.
+
+\item 1) It compiles and prints `0`.
+ \\ 
+WRONG - The code inside the \verb|if| block is executed.
+
+\item 2) It compiles and prints `1`.
+ \\ 
+CORRECT - The compiler ignores all content inside the \verb|/* ... */| block. This includes the line `System.out.println("Inside comment");` and the closing brace `}`. The actual code flow is: \verb|i| is set to 0. The \verb|if(true)| block is entered. The comment is skipped. The line \verb|i = 1;| is executed. The `if` block is closed by the real brace. Finally, `System.out.println(i)` prints the current value of \verb|i|, which is 1.
+
+\item 3) It compiles but throws a runtime exception.
+ \\ 
+WRONG - The code is simple and contains no operations that would cause a runtime exception.
+
+\end{itemize}
+\item (questionId: 103229, topic: Lambda Expressions and Functional Interfaces) \\ 
+Which of the following functional interface declarations will compile successfully? (Choose all that apply)
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) `@FunctionalInterface interface A { int m(); default int n() {return 0;} }`
+ \\ 
+CORRECT - Interface `A` has one abstract method (`m`) and one `default` method. Default methods don't count towards the abstract method total, so this is a valid functional interface.
+
+\item 1) `@FunctionalInterface interface B extends A { }`
+ \\ 
+CORRECT - Interface `B` extends `A` and does not add any new abstract methods. It inherits the single abstract method from `A`, so it remains a valid functional interface.
+
+\item 2) `@FunctionalInterface interface C { <T> T m(T t); }`
+ \\ 
+CORRECT - A functional interface can have a generic abstract method. Interface `C` has only one abstract method, `<T> T m(T t)`, making it a valid functional interface.
+
+\item 3) `@FunctionalInterface interface D extends java.util.Comparator { }`
+ \\ 
+WRONG - This is a trick. The `java.util.Comparator` interface is itself a functional interface (its single abstract method is `compare`). An interface `D` that merely extends `Comparator` without adding new abstract methods would also be a valid functional interface. Therefore, this code *should* compile. Its inclusion as an incorrect choice in some mock exams is often considered a flaw in the question, as there is no rule preventing this.
+
+\item 4) `@FunctionalInterface interface E { void m(); String toString(); }`
+ \\ 
+CORRECT - Interface `E` declares one abstract method, `m()`. It also re-declares `toString()`. However, since `toString()` is a public method in `java.lang.Object`, it does not count towards the abstract method limit. Thus, `E` is a valid functional interface.
+
+\end{itemize}
+\item (questionId: 101529, topic: Classes and Objects Fundamentals) \\ 
+You have an encapsulated `MutableDate` class. Which of the following getter method implementations for a `Person` class would risk breaking the encapsulation of the `Person` object's state? (Choose all that apply)\n\begin{verbatim}
+// Assume MutableDate is a class like java.util.Date
+// with public methods to change its state.
+class MutableDate { /* ... setters ... */ }
+
+class Person {
+    private String name;
+    private MutableDate birthDate;
+
+    public Person(String name, MutableDate birthDate) {
+        this.name = name;
+        this.birthDate = birthDate;
+    }
+
+    // ... getters ...
+}
+\end{verbatim}
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) `public MutableDate getBirthDate() { return this.birthDate; }`
+ \\ 
+CORRECT - This is known as 'leaking a reference'. The getter returns a direct reference to the internal, mutable \verb|birthDate| object. The caller who receives this reference can then call methods on it to change its state (e.g., \verb|person.getBirthDate().setMonth(10)|), thereby modifying the \verb|Person| object's internal state without going through its methods. This breaks encapsulation.
+
+\item 1) `public String getName() { return this.name; }`
+ \\ 
+WRONG - \verb|String| objects in Java are immutable. Returning a reference to a \verb|String| is safe because the caller cannot change the object. Encapsulation is preserved.
+
+\item 2) `public MutableDate getBirthDate() { return new MutableDate(this.birthDate.getTime()); }`
+ \\ 
+WRONG - This implementation performs a 'defensive copy'. It creates a brand new \verb|MutableDate| object that is a copy of the internal one. The caller gets a reference to the copy, not the original. Any modifications to the returned object do not affect the \verb|Person|'s internal state. This preserves encapsulation.
+
+\item 3) `public MutableDate getBirthDate() { return (MutableDate) this.birthDate.clone(); }` (Assume `clone()` is implemented correctly for a deep copy).
+ \\ 
+WRONG - Similar to the previous option, using a proper \verb|clone()| method to create a copy is another form of defensive copying that preserves encapsulation.
+
+\item 4) `public void printBirthDate() { System.out.println(this.birthDate); }`
+ \\ 
+WRONG - This method does not return anything, so it does not provide the caller with a reference to the internal object. Encapsulation is preserved.
+
+\end{itemize}
+\item (questionId: 100823, topic: Java Operators and Precedence) \\ 
+What is the result of this code snippet?\n\begin{verbatim}
+int mask = 0x000F;
+int value = 0x2222;
+System.out.println(value & mask);
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) 15
+ \\ 
+WRONG - 15 is the decimal representation of the mask `0x000F`, not the result of the `&` operation.
+
+\item 1) 2
+ \\ 
+CORRECT - This question tests bitwise operators and hexadecimal literals. The `&` operator performs a bitwise AND.\n- `mask = 0x000F` in binary is `...0000 1111`.\n- `value = 0x2222` in binary is `...0010 0010 0010 0010`.\nPerforming a bitwise AND means the resulting bit is 1 only if the corresponding bits in both operands are 1.\n   `...0010 0010 0010 0010` (`value`)\n`&`  `...0000 0000 0000 1111` (`mask`)\n`=`  `...0000 0000 0000 0010`\nThe result in binary is `10`, which is 2 in decimal.
+
+\item 2) 0
+ \\ 
+WRONG - The result would be 0 only if the last four bits of `value` were all 0 (e.g., `0x2220`).
+
+\item 3) 2222
+ \\ 
+WRONG - This is the original `value`, not the result of the bitwise AND operation.
+
+\end{itemize}
+\item (questionId: 101327, topic: String Immutability and Operations) \\ 
+Which statements are true about string concatenation using the `+` operator in a loop? (Choose all that apply)
+\begin{verbatim}
+String result = "";
+for (int i=0; i<100; i++) {
+    result += i; // Line 3
+}
+\end{verbatim}
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) A new `String` object is created in each iteration of the loop.
+ \\ 
+CORRECT - From a theoretical, pre-optimization perspective, each `+=` operation creates a new String object. The expression `result + i` would create a new string, and the reference `result` would be updated to point to it, leaving the old string for garbage collection. This is conceptually correct and highlights the inefficiency.
+
+\item 1) The compiler automatically replaces this code with `StringBuilder` for efficiency.
+ \\ 
+CORRECT - In practice, modern Java compilers are smart enough to optimize this specific pattern. The compiler rewrites the loop to use a single `StringBuilder` instance, appending to it in each iteration and then converting it to a `String` once after the loop. This is a crucial real-world detail. The question is tricky because both statements describe the situation from different but valid perspectives (theoretical vs. actual compiled code).
+
+\item 2) This is the most memory-efficient way to build a string.
+ \\ 
+WRONG - Without compiler optimization, this is one of the *least* memory-efficient ways. Using an explicit `StringBuilder` is far better.
+
+\item 3) After the loop, the original `result` object (the empty string) has been modified to contain the final value.
+ \\ 
+WRONG - `String` objects are immutable. The original empty string object is never modified. The `result` *reference* is repeatedly reassigned to point to new `String` objects.
+
+\end{itemize}
+\item (questionId: 101828, topic: Garbage Collection and Object Lifecycle) \\ 
+Analyze the following code. At Point Y, how many `java.lang.String` objects are eligible for GC, assuming no string pooling optimizations for literals?
+\begin{verbatim}
+public class StringGC {
+    public static void main(String[] args) {
+        String s1 = "one";
+        String s2 = new String("two");
+        String s3 = "three";
+        s3 = s1;
+        s1 = s2;
+        s2 = null;
+
+        // What about the object referred to by s1 originally ("one")?
+        // What about the object referred to by s2 originally ("two")?
+        // What about the object referred to by s3 originally ("three")?
+        // Point Y
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) 0
+ \\ 
+WRONG - This would be the answer if standard String pooling were in effect, as all literals would be retained in the pool. However, the question explicitly tells you to ignore this optimization.
+
+\item 1) 1
+ \\ 
+CORRECT - The question requires you to ignore string pooling, meaning each literal declaration acts like \verb|new String(...)|. Let's trace: 1. \verb|s1| points to an object for 'one' (O1). 2. \verb|s2| points to an object for 'two' (O2). 3. \verb|s3| points to an object for 'three' (O3). 4. \verb|s3 = s1| makes \verb|s3| point to O1. The only reference to O3 is now gone, so the 'three' object is eligible for GC. 5. \verb|s1 = s2| makes \verb|s1| point to O2. 6. \verb|s2 = null|. At Point Y, only the original 'three' object is unreferenced.
+
+\item 2) 2
+ \\ 
+WRONG - Only the 'three' object has lost all its references.
+
+\item 3) 3
+ \\ 
+WRONG - The 'one' and 'two' objects are still referenced by \verb|s3| and \verb|s1| respectively.
+
+\end{itemize}
+\item (questionId: 103022, topic: Throwing and Creating Exceptions) \\ 
+What is the result of attempting to compile and run the following code?
+\begin{verbatim}
+public class StaticFail {
+    static {
+        if (true) {
+            throw new RuntimeException("Initialization failed");
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Hello");
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) The code compiles and prints `Hello`.
+ \\ 
+WRONG - The static initializer runs before the \verb|main| method is called. Since it fails, \verb|main| never executes.
+
+\item 1) The code does not compile.
+ \\ 
+WRONG - The code is syntactically correct and will compile successfully. The error occurs at runtime.
+
+\item 2) The code compiles, but throws a `RuntimeException` when run.
+ \\ 
+WRONG - While a \verb|RuntimeException| is the initial cause, the JVM wraps any exception thrown from a static initializer block in an \verb|ExceptionInInitializerError|.
+
+\item 3) The code compiles, but throws an `ExceptionInInitializerError` when run.
+ \\ 
+CORRECT - When a class is first used, the JVM runs its static initializer block. If an exception is thrown from this block, the JVM catches it and throws a new \verb|ExceptionInInitializerError|, which signals that a failure occurred during static initialization. This error prevents the class from being used and the \verb|main| method from running.
+
+\item 4) The code compiles, but throws a `NoClassDefFoundError` when run.
+ \\ 
+WRONG - A \verb|NoClassDefFoundError| typically occurs on a *second* attempt to use a class that previously failed to initialize. The first failure is always an \verb|ExceptionInInitializerError|.
+
+\end{itemize}
+\item (questionId: 101325, topic: String Immutability and Operations) \\ 
+What is the output of the following code?
+\begin{verbatim}
+String text = "a.b.c";
+String[] parts = text.split(".");
+System.out.println(parts.length);
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) 0
+ \\ 
+CORRECT - This is a common trap. The \verb|split()| method takes a regular expression (regex) as its argument. In regex, a single dot (`.`) is a special metacharacter that matches *any character*. Therefore, `text.split(".")` is splitting the string on every single character. This results in an array of empty strings. By default, trailing empty strings are removed, resulting in an empty array of length 0. To split on a literal dot, you must escape it: `text.split("\\.")`.
+
+\item 1) 1
+ \\ 
+WRONG - The split does not produce one part.
+
+\item 2) 3
+ \\ 
+WRONG - This would be the result if you correctly split on the literal dot using `text.split("\\.")`.
+
+\item 3) An exception is thrown at runtime.
+ \\ 
+WRONG - No exception is thrown, this is valid (though likely unintended) behavior.
+
+\end{itemize}
+\item (questionId: 103653, topic: Passing Data Among Methods) \\ 
+What is the output of this code which passes and returns references?
+\begin{verbatim}
+class Num { public int val; }
+
+public class ReturnTest {
+    public static void main(String[] args) {
+        Num a = new Num(); a.val = 1;
+        Num b = new Num(); b.val = 2;
+        b = process(a, b);
+        System.out.println(a.val + "," + b.val);
+    }
+
+    public static Num process(Num x, Num y) {
+        x.val = y.val;
+        y = new Num();
+        y.val = 3;
+        return y;
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) `1,2`
+ \\ 
+WRONG - Both `a` and `b` are changed.
+
+\item 1) `2,3`
+ \\ 
+CORRECT - 1. `main` has `a` (val=1) and `b` (val=2). 2. `process` is called. `x` points to `a`, `y` points to `b`. 3. `x.val = y.val;` copies the value from `b`'s object to `a`'s object. `a.val` is now 2. 4. `y = new Num(); y.val = 3;` creates a new `Num` object and makes the local `y` parameter point to it. 5. `return y;` returns this new object. 6. Back in `main`, `b = process(...)` reassigns `b` to the returned object. `b.val` is now 3. Final state: `a.val` is 2, `b.val` is 3.
+
+\item 2) `2,2`
+ \\ 
+WRONG - The variable `b` in `main` is reassigned to the new object returned by the method.
+
+\item 3) `1,3`
+ \\ 
+WRONG - The state of the object `a` is modified inside the `process` method via the `x` reference.
+
+\end{itemize}
+\item (questionId: 103357, topic: Date and Time API (java.time)) \\ 
+Which of the following lines of code, if executed independently, will result in a runtime exception? (Choose all that apply)
+\begin{verbatim}
+// Assume all necessary imports from java.time and java.time.temporal
+\end{verbatim}
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) `LocalDate.of(2025, 13, 1);`
+ \\ 
+CORRECT - Throws `DateTimeException` because 13 is not a valid month.
+
+\item 1) `Duration.between(LocalDate.now(), LocalDateTime.now());`
+ \\ 
+CORRECT - Throws `DateTimeException` or `UnsupportedTemporalTypeException`. `Duration` measures time-based amounts (like seconds) and requires nanosecond precision. `LocalDate` does not contain time information, so a `Duration` cannot be calculated between it and a `LocalDateTime`.
+
+\item 2) `Period.of(1, 1, 1).plus(Duration.ofHours(1));`
+ \\ 
+CORRECT - Throws `UnsupportedTemporalTypeException`. A `Period` is date-based. You cannot add a time-based `Duration` to it.
+
+\item 3) `LocalTime.now().truncatedTo(ChronoUnit.DAYS);`
+ \\ 
+CORRECT - Throws `UnsupportedTemporalTypeException`. A `LocalTime` has no concept of `DAYS`. You cannot truncate a time object to a unit that is larger than the units it contains.
+
+\item 4) `Period.ofMonths(12).normalized();`
+ \\ 
+WRONG - This code is valid. It creates a `Period` of 12 months, and `normalized()` converts it to `P1Y` (1 year). No exception is thrown.
+
+\end{itemize}
+\item (questionId: 100021, topic: Java Environment and Fundamentals) \\ 
+Consider the following directory structure and files:
+\begin{verbatim}
+/project
+    /src
+        /com
+            /example
+                MyClass.java
+    /bin
+\end{verbatim}
+The file \verb|MyClass.java| contains:
+\begin{verbatim}
+package com.example;
+
+public class MyClass {
+    public static void main(String[] args) {
+        System.out.println("Running MyClass");
+    }
+}
+\end{verbatim}
+You are currently in the \verb|/project| directory. Which sequence of commands will successfully compile and run \verb|MyClass|?
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) \begin{verbatim}
+javac src/com/example/MyClass.java
+java -cp src com.example.MyClass
+\end{verbatim}
+ \\ 
+WRONG - This sequence is not standard practice. The first command places the compiled \verb|.class| file inside the \verb|src| directory, mixing source files with binaries. While the second command would correctly run it from there, this approach is discouraged. Option 2 represents the correct, professional separation of concerns.
+
+\item 1) \begin{verbatim}
+javac src/com/example/MyClass.java
+java -cp bin com.example.MyClass
+\end{verbatim}
+ \\ 
+WRONG - The first command compiles the class and places the output in \verb|src/com/example/MyClass.class|. The second command then looks for the class in the \verb|bin| directory, where it does not exist. This will result in a \verb|ClassNotFoundException|.
+
+\item 2) \begin{verbatim}
+javac -d bin src/com/example/MyClass.java
+java -cp bin com.example.MyClass
+\end{verbatim}
+ \\ 
+CORRECT - This is the standard and correct procedure. The \verb|javac -d bin| command compiles the source file and places the resulting \verb|.class| file in the specified destination directory (\verb|bin|), creating the necessary package subdirectories (\verb|com/example|). The \verb|java -cp bin| command then correctly sets the classpath to the \verb|bin| directory, allowing the JVM to find and run \verb|com.example.MyClass|.
+
+\item 3) \begin{verbatim}
+javac -d bin src/com/example/MyClass.java
+java com.example.MyClass
+\end{verbatim}
+ \\ 
+WRONG - The compilation command is correct. However, the run command fails because it doesn't specify a classpath. The JVM defaults to the current directory (\verb|.|), where it looks for \verb|./com/example/MyClass.class|, which does not exist. The classpath must be set to \verb|bin| using the \verb|-cp| flag.
+
+\end{itemize}
+\item (questionId: 100525, topic: Type Conversion and Casting) \\ 
+Which of the following code snippets will compile successfully? (Choose all that apply)
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) \begin{verbatim}
+short s = 10;
+s = s + 5;
+\end{verbatim}
+ \\ 
+WRONG - This fails to compile. `s + 5` results in an `int`. Assigning an `int` back to a `short` requires an explicit cast.
+
+\item 1) \begin{verbatim}
+char c = 'a';
+c += 5;
+\end{verbatim}
+ \\ 
+CORRECT - This compiles. The compound assignment operator `+=` includes an implicit cast, so this is equivalent to `c = (char)(c + 5);`.
+
+\item 2) \begin{verbatim}
+final byte b1 = 10;
+final byte b2 = 20;
+byte b3 = b1 + b2;
+\end{verbatim}
+ \\ 
+CORRECT - This compiles. Since both `b1` and `b2` are `final` variables initialized with literals, they are compile-time constants. The expression `b1 + b2` is a constant expression evaluated by the compiler to `30`. Since `30` fits in a `byte`, the assignment is allowed without a cast.
+
+\item 3) \begin{verbatim}
+float f = 1.0f;
+double d = f;
+\end{verbatim}
+ \\ 
+CORRECT - This compiles. Assigning a `float` to a `double` is a widening conversion and is always allowed.
+
+\end{itemize}
+\item (questionId: 100623, topic: Wrapper Classes and Autoboxing/Unboxing) \\ 
+Which of the following lines will compile without errors? (Choose all that apply)
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) \verb|Integer i = new Integer(null);|
+ \\ 
+WRONG (Will not compile) - The call \verb|new Integer(null)| is ambiguous. The compiler cannot decide whether to call the \verb|Integer(int)| constructor or the \verb|Integer(String)| constructor, so it results in a compilation error.
+
+\item 1) \verb|Double d = null; double d2 = d;|
+ \\ 
+CORRECT (Will compile) - The syntax is valid. \verb|Double d = null;| is fine. \verb|double d2 = d;| is also syntactically valid; the compiler allows the unboxing assignment. Note: This line would throw a \verb|NullPointerException| at *runtime*, but the question asks about compilation, and it compiles successfully.
+
+\item 2) \verb|Byte b = 25; |
+ \\ 
+CORRECT (Will compile) - This is a special case of autoboxing. While you can't box an \verb|int| variable into a \verb|Byte|, you *can* assign an \verb|int| literal if it's a compile-time constant that fits within the range of a \verb|byte| (-128 to 127). The compiler performs an implicit narrowing conversion before boxing.
+
+\item 3) \verb|Short s = new Short((short)10);|
+ \\ 
+CORRECT (Will compile) - This is a straightforward and valid use of the \verb|Short| constructor, which takes a primitive \verb|short| as an argument. The cast \verb|(short)10| is valid.
+
+\item 4) \verb|long l = new Integer(100);|
+ \\ 
+CORRECT (Will compile) - This demonstrates unboxing followed by widening. The \verb|new Integer(100)| object is first unboxed to a primitive \verb|int 100|. Then, this \verb|int| is widened to a \verb|long| to be assigned to the variable \verb|l|. This is a valid sequence of conversions.
+
+\end{itemize}
+\item (questionId: 101222, topic: Enums) \\ 
+Examine the following code. What is the result?
+\begin{verbatim}
+public enum Operation {
+    PLUS {
+        public double apply(double x, double y) { return x + y; }
+    },
+    MINUS {
+        public double apply(double x, double y) { return x - y; }
+    };
+    public abstract double apply(double x, double y);
+}
+
+class Test {
+    public static void main(String[] args) {
+        System.out.println(Operation.PLUS.apply(5, 3));
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) `8.0`
+ \\ 
+CORRECT - This pattern is a valid and powerful use of enums. The enum declares an \verb|abstract| method, which forces every enum constant to provide a concrete implementation in a constant-specific class body. The call \verb|Operation.PLUS.apply(5, 3)| invokes the specific implementation for the \verb|PLUS| constant, returning \verb|5 + 3|, which is \verb|8.0|.
+
+\item 1) The code fails to compile because an enum cannot be `abstract`.
+ \\ 
+WRONG - An enum itself cannot be declared \verb|abstract|, but it *can* contain abstract methods as long as all of its constants provide implementations.
+
+\item 2) The code fails to compile because `apply` is not defined for the `Operation` enum itself.
+ \\ 
+WRONG - The code compiles precisely because every constant *does* provide an implementation, fulfilling the abstract contract.
+
+\item 3) The code fails to compile because an enum constant cannot provide a method implementation.
+ \\ 
+WRONG - An enum constant can, and in this case must, provide a method implementation.
+
+\end{itemize}
+\item (questionId: 100328, topic: Java Coding Conventions and Javadoc) \\ 
+Which of the following code snippets will fail to compile due to issues with comment syntax? (Choose all that apply)
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) \begin{verbatim}
+int x = 10; //* A special comment */
+\end{verbatim}
+ \\ 
+WRONG - This will compile. The \verb|//*| starts a single-line comment. The subsequent characters, \verb|*| and \verb|*/|, are just part of the ignored comment text.
+
+\item 1) \begin{verbatim}
+String s = "This contains a comment end: */";
+\end{verbatim}
+ \\ 
+WRONG - This will compile. The \verb|*/| sequence is inside a string literal, so the compiler treats it as part of the string's text, not as a comment terminator.
+
+\item 2) \begin{verbatim}
+/* Is this /* nested comment */ valid? */
+int y = 20;
+\end{verbatim}
+ \\ 
+CORRECT - This will fail to compile. Java does not support nested multi-line comments. The first \verb|*/| encountered (after 'comment') closes the entire comment block. This leaves the text ` valid? */` as un-commented, syntactically invalid code.
+
+\item 3) \begin{verbatim}
+// Another comment \
+int z = 30;
+\end{verbatim}
+ \\ 
+WRONG - This will compile. The backslash \verb|\| at the end of the line is simply the last character in the single-line comment. It has no special meaning like line continuation. The next line, \verb|int z = 30;|, is treated as a separate, valid statement.
+
+\end{itemize}
+\item (questionId: 102622, topic: Generics) \\ 
+Which of these lines causes a compilation error?\begin{verbatim}
+import java.util.*;
+
+class Mammal {}
+class Primate extends Mammal {}
+class Human extends Primate {}
+
+public class Test {
+    public static void main(String[] args) {
+        List<? super Primate> primates = new ArrayList<Mammal>(); // Line 1
+        primates.add(new Human());                                // Line 2
+        primates.add(new Primate());                              // Line 3
+        primates.add(new Mammal());                               // Line 4
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) Line 1
+ \\ 
+WRONG - Line 1 is a valid lower-bounded wildcard assignment because `Mammal` is a superclass of `Primate`.
+
+\item 1) Line 2
+ \\ 
+WRONG - Line 2 is valid. The list is guaranteed to accept `Primate` or any subtype, and `Human` is a subtype of `Primate`.
+
+\item 2) Line 3
+ \\ 
+WRONG - Line 3 is valid. The list can accept `Primate` itself.
+
+\item 3) Line 4
+ \\ 
+CORRECT - This is a compilation error. `List<? super Primate>` is a 'consumer' that can accept `Primate` and its subtypes. It cannot accept a `Mammal`, which is a supertype. The compiler prevents this because the actual list object could be an `ArrayList<Primate>`, into which you cannot add a `Mammal`.
+
+\end{itemize}
+\item (questionId: 101025, topic: Looping Constructs (for, while, do-while)) \\ 
+What is the output of the following code?\n\begin{verbatim}
+int[] a = {1, 2, 3};
+int[] b = {4, 5, 6};
+for (int i : a, j : b) {
+    System.out.print(i + j);
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) 579
+ \\ 
+WRONG - The code does not compile, so it cannot produce any output.
+
+\item 1) 142536
+ \\ 
+WRONG - The code does not compile.
+
+\item 2) The code does not compile.
+ \\ 
+CORRECT - The syntax of the enhanced for loop (`for-each`) is `for (Type variable : arrayOrIterable)`. It does not support declaring multiple loop variables or iterating over multiple collections in a single statement as shown. This is a syntax error, so the code fails to compile.
+
+\item 3) The code throws a runtime exception.
+ \\ 
+WRONG - This is a compile-time error, not a runtime exception.
+
+\end{itemize}
+\item (questionId: 103558, topic: Method Design and Variable Arguments) \\ 
+Which of the following method declarations are valid in a concrete (non-abstract) class? (Choose all that apply)
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) `private final static void methodA();`
+ \\ 
+WRONG - This is an illegal declaration. A method declared with a semicolon instead of a body `{}` is implicitly `abstract`. However, `static` methods cannot be `abstract`.
+
+\item 1) `protected abstract void methodB();`
+ \\ 
+WRONG - This is an `abstract` method declaration. A concrete (non-abstract) class cannot contain any `abstract` methods.
+
+\item 2) `public final synchronized void methodC(String... s) {}`
+ \\ 
+CORRECT - This is a valid method declaration. It combines `public`, `final`, and `synchronized` modifiers, has a `void` return type, and a valid varargs parameter with a method body `{}`.
+
+\item 3) `void methodD(final int... x) {}`
+ \\ 
+CORRECT - This is a valid method declaration. It uses default (package-private) access, and correctly declares a `final` varargs parameter. The `final` keyword on a varargs parameter makes the array reference itself final (i.e., you cannot reassign the parameter to a new array).
+
+\item 4) `static { System.out.println("I am not a method."); }`
+ \\ 
+WRONG - This is a `static initializer block`, which is a valid construct in a class, but it is not a *method declaration*.
+
+\end{itemize}
+\item (questionId: 101122, topic: Break, Continue, and Labels) \\ 
+What is the result of attempting to compile this code?\n\begin{verbatim}
+public class InvalidContinue {
+    public static void main(String[] args) {
+        myLabel: {
+            if (true) {
+                continue myLabel; 
+            }
+        }
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) It compiles successfully.
+ \\ 
+WRONG - The code contains a compilation error related to the use of `continue`.
+
+\item 1) It fails to compile because `myLabel` is not on a loop.
+ \\ 
+CORRECT - The `continue` statement, whether labeled or not, can only be used inside a loop. Its function is to proceed to the next iteration, which is a concept that doesn't apply to a simple code block. Since `myLabel` is not attached to a `for`, `while`, or `do-while` loop, the `continue myLabel;` statement is a compilation error.
+
+\item 2) It fails to compile because a label cannot be on a simple block.
+ \\ 
+WRONG - A label *can* be placed on a simple block. The error is with the `continue`, not the label.
+
+\item 3) It fails to compile because of an unreachable statement.
+ \\ 
+WRONG - While `continue` does create an unconditional jump, the primary compilation error is the illegal context for `continue`, not unreachable code.
+
+\end{itemize}
+\item (questionId: 100625, topic: Wrapper Classes and Autoboxing/Unboxing) \\ 
+What is the output of the following code?\n\begin{verbatim}
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test {
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.remove(new Integer(2));
+        System.out.println(list);
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) \verb|[1, 2]|
+ \\ 
+WRONG - This would be the result if the element at index 2 (the value 3) were removed.
+
+\item 1) \verb|[1, 3]|
+ \\ 
+CORRECT - The code calls \verb|list.remove(new Integer(2));|. Because the argument is an \verb|Integer| object, Java invokes the \verb|remove(Object o)| method, not the \verb|remove(int index)| method. This method searches the list for the first element that is \verb|.equals()| to the given object and removes it. The list contains \verb|[1, 2, 3]|, and the object \verb|Integer(2)| is found and removed, resulting in the list \verb|[1, 3]|.
+
+\item 2) \verb|[2, 3]|
+ \\ 
+WRONG - This would be the result if the element at index 0 (the value 1) were removed.
+
+\item 3) An \verb|IndexOutOfBoundsException| occurs.
+ \\ 
+WRONG - An \verb|IndexOutOfBoundsException| would occur if we tried to call \verb|remove(int)| with an index that is too large, for example \verb|list.remove(3)|. The call here is valid and successful.
+
+\end{itemize}
+\item (questionId: 101725, topic: Static Members and 'this' Keyword) \\ 
+What is the output of this code? This tests understanding of `this` within inner classes.\n\begin{verbatim}
+public class Outer {
+    String name = "Outer";
+
+    class Inner {
+        String name = "Inner";
+        void printNames() {
+            System.out.println(name);
+            System.out.println(this.name);
+            System.out.println(Outer.this.name);
+        }
+    }
+
+    public static void main(String[] args) {
+        new Outer().new Inner().printNames();
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) Inner\nInner\nOuter
+ \\ 
+RIGHT - This question tests name shadowing and the special \verb|Outer.this| syntax. In \verb|printNames()|: \newline 1. \verb|name|: Refers to the name in the closest scope, the \verb|Inner| class's field. Prints "Inner". \newline 2. \verb|this.name|: \verb|this| refers to the current \verb|Inner| object. This also prints "Inner". \newline 3. \verb|Outer.this.name|: This is the special syntax required to access a member of the enclosing \verb|Outer| instance from within the \verb|Inner| instance. It prints "Outer".
+
+\item 1) Outer\nOuter\nOuter
+ \\ 
+WRONG - This would be the case if there were no shadowing.
+
+\item 2) Inner\nOuter\nOuter
+ \\ 
+WRONG - The unqualified \verb|name| refers to the inner class's field, not the outer's.
+
+\item 3) The code fails to compile.
+ \\ 
+WRONG - The syntax is valid for inner classes.
+
+\end{itemize}
+\item (questionId: 100223, topic: Packages, Classpath, and JARs) \\ 
+The classpath is set to `-cp dirA:dirB`. `dirA` contains `com/test/Tool.class` version 1. `dirB` contains `com/test/Tool.class` version 2. A program uses `com.test.Tool`. Which version of the class will be loaded by the JVM?
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) Version 1 from `dirA`.
+ \\ 
+CORRECT - The JVM searches for classes by iterating through the classpath entries from left to right. It will first search in \verb|dirA|. It will find \verb|dirA/com/test/Tool.class|, load it, and stop searching. The version in \verb|dirB| will be ignored.
+
+\item 1) Version 2 from `dirB`.
+ \\ 
+WRONG - The class will be found and loaded from \verb|dirA| before the JVM ever gets to search in \verb|dirB|.
+
+\item 2) A compilation error will occur.
+ \\ 
+WRONG - This is a runtime class loading behavior, not a compilation error. The compiler would also use the first version it finds.
+
+\item 3) A runtime error will occur due to the conflict.
+ \\ 
+WRONG - The JVM does not consider this a conflict or an error. It deterministically loads the first version of the class it finds based on the classpath order. This can cause hard-to-diagnose bugs but is not a runtime error.
+
+\end{itemize}
+\item (questionId: 101428, topic: StringBuilder and StringBuffer) \\ 
+Which of these method calls can throw a `StringIndexOutOfBoundsException`? (Choose all that apply)
+\begin{verbatim}
+StringBuilder sb = new StringBuilder("abc");
+\end{verbatim}
+\\ \noindent Multiple correct choices. 
+\begin{itemize}
+\item 0) `sb.delete(1, 4);`
+ \\ 
+CORRECT - For `delete(start, end)`, the `end` index cannot be greater than the length. `sb` has length 3. An `end` of 4 is out of bounds.
+
+\item 1) `sb.insert(4, "d");`
+ \\ 
+CORRECT - For `insert(offset, str)`, the `offset` cannot be greater than the length. `sb` has length 3. An `offset` of 4 is out of bounds.
+
+\item 2) `sb.replace(0, 5, "x");`
+ \\ 
+CORRECT - For `replace(start, end, str)`, the `end` index cannot be greater than the length. `sb` has length 3. An `end` of 5 is out of bounds.
+
+\item 3) `sb.setCharAt(3, 'd');`
+ \\ 
+CORRECT - For `setCharAt(index, ch)`, the `index` must be less than the length. `sb` has length 3. An `index` of 3 is out of bounds (valid indices are 0, 1, 2).
+
+\end{itemize}
+\item (questionId: 102824, topic: Exception Hierarchy and Types) \\ 
+What is the result of attempting to compile this code?
+\begin{verbatim}
+public class Test {
+    public static void main(String[] args) {
+        throw new String("This is an error");
+    }
+}
+\end{verbatim}
+\\ \noindent Only one correct choice. 
+\begin{itemize}
+\item 0) It compiles, but throws a `ClassCastException` at runtime.
+ \\ 
+WRONG - The error is caught at compile time.
+
+\item 1) It compiles, but throws a `RuntimeException` at runtime.
+ \\ 
+WRONG - The error is caught at compile time.
+
+\item 2) It compiles, but throws an `Error` at runtime.
+ \\ 
+WRONG - The error is caught at compile time.
+
+\item 3) It does not compile.
+ \\ 
+RIGHT - The \verb|throw| statement requires an object that is an instance of \verb|java.lang.Throwable| or one of its subclasses. The class \verb|java.lang.String| does not extend \verb|Throwable|. Therefore, this is a syntax error that the compiler will catch, resulting in a compilation failure.
+
+\end{itemize}
+
+\end{enumerate}
+
+\end{document}
