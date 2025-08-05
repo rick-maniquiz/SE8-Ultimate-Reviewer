@@ -15,7 +15,7 @@ This tool generates a printable PDF mock exam and its corresponding solution she
 
 ## Setup Instructions
 
-### Install a LaTeX for macOS
+### Install pdflatex (a LaTeX Compiler) for macOS
 
 ```bash
 brew install --cask basictex
