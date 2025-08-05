@@ -1,0 +1,132 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Wrapper Classes and Autoboxing/Unboxing}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1006 \\ Topic: Wrapper Classes and Autoboxing/Unboxing}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Topic 1006: Wrapper Classes and Autoboxing/Unboxing}
+
+\subsection*{Thinking Like the Compiler: Primitives in a World of Objects}
+We've established that primitives are fast and simple. However, much of Java's power, like the Collections Framework (e.g., \texttt{ArrayList}), is built to work with objects, not primitives. How do we bridge this gap? With Wrapper Classes. Java 5 introduced automatic conversion features—autoboxing and unboxing—which are convenient but hide behaviors the exam will absolutely test you on.
+
+\subsection*{What are Wrapper Classes?}
+For each of the eight primitive types, there is a corresponding class in the \texttt{java.lang} package. These classes "wrap" a primitive value inside an object.
+
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Primitive Type} & \textbf{Wrapper Class} \\
+\hline
+\texttt{byte} & \texttt{Byte} \\
+\texttt{short} & \texttt{Short} \\
+\texttt{int} & \texttt{Integer} \\
+\texttt{long} & \texttt{Long} \\
+\texttt{float} & \texttt{Float} \\
+\texttt{double} & \texttt{Double} \\
+\texttt{char} & \texttt{Character} \\
+\texttt{boolean} & \texttt{Boolean} \\
+\hline
+\end{tabular}
+
+Notice the full spelling for \texttt{Integer} and \texttt{Character}. Since they are in \texttt{java.lang}, you never need to import them.
+
+\subsection*{Autoboxing and Unboxing}
+This is the automatic conversion process that makes using wrappers seamless.
+\begin{itemize}
+\item \textbf{Autoboxing:} Automatic conversion from a primitive to its wrapper object.
+\item \textbf{Unboxing:} Automatic conversion from a wrapper object to its primitive value.
+\end{itemize}
+
+\begin{verbatim}
+// Autoboxing: the primitive int 10 is converted to an Integer object
+Integer wrapperInt = 10;
+
+// Unboxing: the Integer object is converted to a primitive int
+int primitiveInt = wrapperInt;
+
+// A practical example with a list:
+java.util.List<Integer> numbers = new java.util.ArrayList<>();
+numbers.add(1); // Autoboxing: int 1 -> Integer object
+numbers.add(Integer.valueOf(2)); // Same as above, but explicit
+
+int first = numbers.get(0); // Unboxing: Integer object -> int primitive
+\end{verbatim}
+
+\subsubsection*{The Ultimate Exam Trap: NullPointerException}
+What happens when you try to unbox a wrapper that is \texttt{null}? This is a classic exam question because it compiles perfectly but fails at runtime.
+\begin{verbatim}
+Integer myValue = null;
+int primitiveValue = myValue; // Throws NullPointerException at runtime!
+
+// It's equivalent to writing:
+// int primitiveValue = myValue.intValue();
+// Calling a method on a null reference causes the NPE.
+\end{verbatim}
+If you see a \texttt{null} wrapper being assigned to a primitive, suspect a \texttt{NullPointerException}.
+
+\subsection*{Object Caching: The Wrapper Pool}
+To improve performance, Java reuses common wrapper objects. You MUST know this for the exam. The behavior of the equality operator (\texttt{==}) changes based on the value being wrapped.
+
+\begin{itemize}
+\item \textbf{The Rule:} By default, \texttt{Integer} objects created through autoboxing or \texttt{Integer.valueOf()} for values from \textbf{-128 to 127} are cached. This means the JVM will return the \textit{same exact object} for these values.
+\item \textbf{The Consequence:} For values in this range, \texttt{==} will return \texttt{true}. For values outside this range, the JVM creates new objects, so \texttt{==} will return \texttt{false}.
+\end{itemize}
+
+\begin{verbatim}
+// In the cache range [-128, 127]
+Integer a = 100;
+Integer b = 100;
+System.out.println(a == b); // true (same object from cache)
+
+// Outside the cache range
+Integer x = 128;
+Integer y = 128;
+System.out.println(x == y); // false (different objects created)
+
+// Using 'new' always creates a new object, ignoring the cache
+Integer p = new Integer(100);
+Integer q = new Integer(100);
+System.out.println(p == q); // false (new objects)
+
+// The correct way to compare wrapper values
+System.out.println(x.equals(y)); // true
+\end{verbatim}
+\textbf{Golden Rule for the Exam:} Always use \texttt{.equals()} to compare the values of wrapper objects. Use \texttt{==} only for comparing primitives or checking if two references point to the same object.
+
+\subsection*{Key Wrapper Methods: \texttt{parseXxx()} vs. \texttt{valueOf()}}
+You need to know the difference between these two ways of converting a \texttt{String} to a number.
+\begin{itemize}
+\item \texttt{public static primitive parseXxx(String s)}: Returns a \textbf{primitive}. Example: \texttt{int i = Integer.parseInt("123");}
+\item \texttt{public static Wrapper valueOf(String s)}: Returns a \textbf{wrapper object}. Example: \texttt{Integer i = Integer.valueOf("123");}
+\end{itemize}
+Both can throw a \texttt{NumberFormatException} if the string is not a valid number.
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+\item \textbf{The NPE Trap:} Unboxing a \texttt{null} wrapper is a runtime \texttt{NullPointerException}, not a compile error.
+\item \textbf{Integer Pool:} Memorize the range \textbf{-128 to 127}. Understand why \texttt{==} works for values inside it and fails for values outside it.
+\item \textbf{Always use \texttt{.equals()}:} To compare wrapper objects by their content, never use \texttt{==} unless you specifically want to check for reference identity.
+\item \textbf{\texttt{parseInt} vs \texttt{valueOf}}: Know that one returns a primitive and the other returns a wrapper object.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

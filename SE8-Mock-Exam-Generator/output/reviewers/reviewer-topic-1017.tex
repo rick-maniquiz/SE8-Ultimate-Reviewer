@@ -1,0 +1,141 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Static Members and 'this' Keyword}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1017 \\ Topic: Static Members and 'this' Keyword}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Class vs. Instance: The Meaning of \texttt{static}}
+Alright team, let's clarify one of the most fundamental concepts in Java: the difference between members that belong to a class (the blueprint) and members that belong to an object (the instance). This distinction is controlled by a single keyword: \texttt{static}.
+
+\subsection*{Instance Members (Non-Static)}
+Without the \texttt{static} keyword, a field or method is an \textbf{instance member}. 
+\begin{itemize}
+    \item \textbf{Instance Fields:} Each object gets its own separate copy. If you have 100 \texttt{Car} objects, you have 100 different \texttt{color} fields in memory.
+    \item \textbf{Instance Methods:} These methods operate on the state of a specific object. They have access to the instance's fields.
+\end{itemize}
+
+\section{The \texttt{static} Keyword}
+When you add the \texttt{static} keyword, the member now belongs to the \textbf{class itself}, not to any individual object.
+
+\subsection*{Static Variables (Class Variables)}
+\begin{itemize}
+    \item There is only \textbf{one copy} of a static variable, and it is shared among all instances of the class.
+    \item If any object modifies a static variable, the change is visible to all other objects of that class.
+    \item They are accessed using the class name, e.g., \texttt{ClassName.variableName}.
+\end{itemize}
+\begin{verbatim}
+class Car {
+    String color; // Instance variable
+    static int carCount = 0; // Static variable
+
+    public Car() {
+        carCount++; // Increment the shared count for each new car
+    }
+}
+
+// Usage:
+System.out.println("Cars created: " + Car.carCount); // Prints 0
+Car c1 = new Car();
+Car c2 = new Car();
+System.out.println("Cars created: " + Car.carCount); // Prints 2
+\end{verbatim}
+
+\subsection*{Static Methods}
+\begin{itemize}
+    \item A static method is called on the class, not on an instance, e.g., \texttt{Math.random()}.
+    \item \textbf{The Most Important Rule:} A static method is not associated with any particular object instance. Therefore, it \textbf{cannot access instance members} (non-static fields or methods) directly.
+\end{itemize}
+
+\begin{verbatim}
+public class Calculator {
+    int lastResult; // Instance field
+
+    // Instance method - CAN access instance field 'lastResult'
+    public int add(int a, int b) {
+        lastResult = a + b;
+        return lastResult;
+    }
+
+    // Static method - CANNOT access 'lastResult'
+    public static int multiply(int a, int b) {
+        // lastResult = a * b; // COMPILE ERROR! 
+        return a * b;
+    }
+}
+\end{verbatim}
+Why the error? The \texttt{multiply} method is called via \texttt{Calculator.multiply(5, 10)}. It doesn't know \textit{which} object's \texttt{lastResult} field it should access. There is no associated object.
+
+\section{The \texttt{this} Keyword: A Reference to the Current Object}
+The \texttt{this} keyword is a reference to the \textbf{current object instance}. It's an implicit variable available inside any non-static method or constructor.
+
+\subsection*{Primary Uses of \texttt{this}}
+\begin{enumerate}
+    \item \textbf{To resolve ambiguity} between instance variables and parameters:
+    \begin{verbatim}
+public Person(String name) {
+    this.name = name; // this.name is the field, name is the parameter
+}
+    \end{verbatim}
+    \item \textbf{To call another constructor} from a constructor (constructor chaining):
+    \begin{verbatim}
+public Person() {
+    this("Unknown"); // Calls the Person(String) constructor
+}
+    \end{verbatim}
+\end{enumerate}
+
+\section{The Inevitable Collision: \texttt{static} and \texttt{this}}
+This is a guaranteed exam concept. Since a \texttt{static} method belongs to the class and not to any object, there is no "current object" when a static method is running.
+
+Therefore, you \textbf{cannot use the \texttt{this} keyword} from within a static context (a static method or static initializer block). Doing so will result in a compilation error: \textit{`non-static variable this cannot be referenced from a static context`}.
+
+\begin{verbatim}
+public class MyClass {
+    String instanceName = "Instance";
+
+    public void printInstanceName() {
+        System.out.println(this.instanceName); // OKAY - 'this' exists here.
+    }
+
+    public static void tryToPrint() {
+        // System.out.println(this.instanceName); // COMPILE ERROR!
+        // 'this' does not exist in a static context.
+    }
+
+    public static void main(String[] args) {
+        // tryToPrint();
+    }
+}
+\end{verbatim}
+
+\section{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{\texttt{static} means "one per class".} Non-static means "one per object".
+    \item \textbf{Static Access Rule:} A static method can access other static members, but \textbf{cannot} access instance members.
+    \item \textbf{Instance Access Rule:} An instance method can access both instance members (using an implicit `this`) and static members.
+    \item \textbf{\texttt{this} is for instances only.} It is a reference to the current object and is not available in a static context. The exam will test this directly.
+    \item You can access static members through an instance variable (e.g., \texttt{c1.carCount}), but this is bad practice. The exam may show this valid code to confuse you. The correct way is to use the class name (\texttt{Car.carCount}).
+\end{itemize}
+\end{enumerate}
+
+\end{document}

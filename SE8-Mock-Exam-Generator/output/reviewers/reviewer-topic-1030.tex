@@ -1,0 +1,90 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Throwing and Creating Exceptions}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1030 \\ Topic: Throwing and Creating Exceptions}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Taking Control: Throwing and Creating Exceptions}
+Alright team, we've learned how to catch exceptions that the Java API throws at us. Now it's time to take control. Sometimes, your own application logic will encounter an error state that cannot be resolved within the current method. In these cases, your method needs to signal this problem to the caller. We do this by explicitly creating and throwing an exception object.
+
+\subsection{\texttt{throw} vs. \texttt{throws}: The Ultimate Showdown}
+This is one of the most confused pairs of keywords in Java. The exam will absolutely test your understanding of their different roles. Do not mix them up.
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Feature} & \textbf{\texttt{throw}} & \textbf{\texttt{throws}} \\
+\hline
+Purpose & An \textbf{action} to programmatically throw an exception. & A \textbf{declaration} in a method signature. \\
+\hline
+Usage & Inside a method body. & As part of the method signature. \\
+\hline
+Argument & A single exception \textit{instance} (object). & One or more exception \textit{classes} (types). \\
+\hline
+Example & \texttt{throw new IOException();} & \texttt{void method() throws IOException} \\
+\hline
+\end{tabular}
+
+Let's see them in action:
+\begin{verbatim}
+// The 'throws' keyword is a warning to the caller.
+public void processFile(String fileName) throws FileNotFoundException {
+    if (fileName == null) {
+        // The 'throw' keyword is the action of throwing the exception.
+        throw new FileNotFoundException("File name cannot be null!");
+    }
+    // ... more code
+}
+\end{verbatim}
+The \texttt{throws} clause here is necessary because \texttt{FileNotFoundException} is a \textit{checked} exception. This forces any method that calls \texttt{processFile()} to either handle it with a \texttt{try-catch} block or declare it in its own \texttt{throws} clause.
+
+\subsection{Creating Your Own Exceptions}
+Sometimes, built-in exceptions like \texttt{IllegalArgumentException} aren't specific enough. You can create your own custom exception classes to make your code more readable and your error conditions more precise.
+\begin{itemize}
+    \item \textbf{To create a CHECKED exception}, extend \texttt{java.lang.Exception}.
+\begin{verbatim}
+public class InsufficientFundsException extends Exception {
+    public InsufficientFundsException(String message) {
+        super(message);
+    }
+}
+\end{verbatim}
+    \item \textbf{To create an UNCHECKED exception}, extend \texttt{java.lang.RuntimeException}.
+\begin{verbatim}
+public class InvalidTransactionIdException extends RuntimeException {
+    public InvalidTransactionIdException(String message) {
+        super(message);
+    }
+}
+\end{verbatim}
+\end{itemize}
+The choice of parent class is critical. If you extend \texttt{Exception}, the compiler will enforce the "handle or declare" rule on any method that throws your custom exception. If you extend \texttt{RuntimeException}, it becomes an unchecked exception, and the compiler will not force the caller to handle it.
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{\texttt{throw}} is an action inside a method that throws a single exception \textit{object}.
+    \item \textbf{\texttt{throws}} is a declaration in a method signature that lists the checked exception \textit{types} it might throw.
+    \item You can only throw objects that are instances of \texttt{Throwable} or one of its subclasses.
+    \item When creating custom exceptions, extend \texttt{Exception} for checked exceptions and \texttt{RuntimeException} for unchecked exceptions.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

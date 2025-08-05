@@ -1,0 +1,132 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Packages, Classpath, and JARs}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1002 \\ Topic: Packages, Classpath, and JARs}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Organizing Your Code: Beyond a Single File}
+Alright team, let's level up. So far, we've dealt with single Java files. In any real-world project, and certainly on the exam, you'll work with code organized into logical units. This lesson is about the nuts and bolts of that organization: packages for structure, the classpath for finding your code, and JAR files for deploying it. Mastering this is non-negotiable.
+
+\section{Packages: The Java Filing System}
+A package serves two primary purposes: organizing your classes into a manageable namespace and controlling access to them. Think of it like folders on your computer.
+
+\subsection{Declaration and Directory Structure}
+\begin{itemize}
+    \item \textbf{Declaration:} You declare a class's package with the \texttt{package} keyword. This \textbf{must} be the first non-comment statement in the file.
+    \begin{verbatim}
+    // File: src/com/mycorp/utils/Calculator.java
+    package com.mycorp.utils;
+
+    public class Calculator { ... }
+    \end{verbatim}
+
+    \item \textbf{Directory Mapping (Crucial Exam Point):} The package name maps \textit{directly} to a directory structure. The compiler (\texttt{javac}) and runtime (\texttt{java}) enforce this rule strictly. For the package \texttt{com.mycorp.utils}, your file system must look like this:
+    \begin{verbatim}
+    src/
+    └── com/
+        └── mycorp/
+            └── utils/
+                └── Calculator.java
+    \end{verbatim}
+    A mismatch between the package name and the folder path will result in a compile-time or runtime error.
+\end{itemize}
+
+\subsection{Compiling and Running Packaged Code}
+Your commands must now be aware of this structure.
+\begin{itemize}
+    \item \textbf{Compiling:} You should run \texttt{javac} from the root directory of your source code (e.g., the \texttt{src} folder in the example above).
+    \begin{verbatim}
+    // Assume we are inside the 'src' directory
+    javac com/mycorp/utils/Calculator.java
+    \end{verbatim}
+    This creates \texttt{Calculator.class} inside \texttt{src/com/mycorp/utils/}.
+
+    \item \textbf{A Better Way (Using -d):} To keep source and compiled files separate, use the \texttt{-d} flag to specify a destination directory.
+    \begin{verbatim}
+    // From inside 'src', compile into a 'bin' directory
+    // The 'bin' directory is at the same level as 'src'
+    javac -d ../bin com/mycorp/utils/Calculator.java
+    \end{verbatim}
+    This will automatically create the \texttt{com/mycorp/utils} structure inside \texttt{bin} and place \texttt{Calculator.class} there.
+
+    \item \textbf{Running:} To run the code, you use the \textbf{Fully Qualified Class Name (FQCN)}, which is \texttt{packageName.ClassName}. You also need to tell Java where to find the compiled files.
+    \begin{verbatim}
+    // Assume we are in the project root (parent of 'src' and 'bin')
+    // We must tell Java to look inside the 'bin' directory
+    java -cp bin com.mycorp.utils.Calculator
+    \end{verbatim}
+\end{itemize}
+
+\section{The CLASSPATH: Telling Java Where to Look}
+The classpath is a list of directories and JAR files that the JVM searches for your compiled \texttt{.class} files. If a class isn't found on the classpath, you'll get a \texttt{ClassNotFoundException} or \texttt{NoClassDefFoundError}.
+\begin{itemize}
+    \item \textbf{Default:} If you don't set it, the classpath defaults to the current directory (\texttt{.}).
+    \item \textbf{Setting it:} The \texttt{-cp} (or \texttt{-classpath}) flag is the standard way to set it for both \texttt{javac} and \texttt{java}.
+    \item \textbf{Syntax:} Paths are separated by \texttt{;} on Windows and \texttt{:} on Linux/macOS.
+    \begin{verbatim}
+    // Look in the 'bin' directory AND in an external library 'libs/utils.jar'
+    java -cp "bin;libs/utils.jar" com.mycorp.Main  // Windows
+    java -cp "bin:libs/utils.jar" com.mycorp.Main  // Linux/macOS
+    \end{verbatim}
+
+\end{itemize}
+
+\section{JAR Files: Bundling Your Application}
+A JAR (Java ARchive) file is essentially a ZIP file that bundles all your project's \texttt{.class} files, resources, and metadata into a single distributable unit.
+\begin{itemize}
+    \item \textbf{Creating a JAR:} Use the \texttt{jar} tool from the JDK. The flags \texttt{c} (create) and \texttt{f} (file) are common.
+    \begin{verbatim}
+    // Assume 'bin' contains our compiled classes
+    // Create a file called 'app.jar' with the contents of 'bin'
+    jar -cf app.jar -C bin .
+    \end{verbatim}
+    The \texttt{-C bin .} part is a tricky but useful pattern: it means ``change directory to \texttt{bin}, then grab everything (\texttt{.}).'' This prevents the \texttt{bin} folder itself from being inside the JAR.
+
+    \item \textbf{Making it Executable:} To run a JAR with \texttt{java -jar}, you need a \textbf{manifest file} that specifies the entry point.
+    \begin{enumerate}
+        \item Create a text file, e.g., \texttt{manifest.mf}, with this content (\textbf{the file MUST end with a newline character!}):
+        \begin{verbatim}
+        Main-Class: com.mycorp.Main
+        \end{verbatim}
+        \item Create the JAR using the \texttt{m} (manifest) flag.
+        \begin{verbatim}
+        jar -cfm app.jar manifest.mf -C bin .
+        \end{verbatim}
+    \end{enumerate}
+    \item \textbf{Running the JAR:} Now it's simple.
+    \begin{verbatim}
+    java -jar app.jar
+    \end{verbatim}
+    When using \texttt{-jar}, the \texttt{-cp} flag is \textit{ignored}. The classpath is defined inside the JAR's manifest if needed.
+\end{itemize}
+
+\section{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{Package vs. Path:} The package declaration \texttt{package a.b;} must correspond to the directory structure \texttt{a/b/}.
+    \item \textbf{FQCN:} Run packaged classes with their full name, e.g., \texttt{java a.b.MyClass}.
+    \item \textbf{Compiler/Runtime Flags:} Know \texttt{javac -d <outdir>}, \texttt{java -cp <path>}, and \texttt{java -jar <jarfile>}.
+    \item \textbf{JARs:} An executable JAR requires a manifest with a \texttt{Main-Class} attribute. \texttt{java -jar} ignores the external classpath.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

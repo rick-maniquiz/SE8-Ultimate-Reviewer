@@ -1,0 +1,159 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Main Method and Command Line Arguments}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1001 \\ Topic: Main Method and Command Line Arguments}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Anatomy of a Basic Java Application}
+Let's dissect a simple "Hello, World!" program to understand its components before diving into the main method itself.
+
+\begin{verbatim}
+// 1. Optional Package Declaration
+package com.mycompany.app;
+
+// 2. Optional Import Statements
+import java.util.Date;
+
+// 3. Class Definition
+// The file MUST be named HelloWorld.java
+public class HelloWorld {
+
+    // 4. The main method - The entry point of the application
+    public static void main(String[] args) {
+        // 5. A statement to execute
+        System.out.println("Hello, World!");
+    }
+}
+\end{verbatim}
+
+\begin{itemize}
+    \item \textbf{Package:} Organizes your classes into a namespace. Must be the first line of code.
+    \item \textbf{Import:} Brings in classes from other packages so you can use them without specifying their full name (e.g., \texttt{Date} instead of \texttt{java.util.Date}).
+    \item \textbf{Class:} The blueprint for objects. A file can have multiple classes, but only \textbf{one} can be \texttt{public}, and its name must match the file name.
+    \item \textbf{main method:} The special method the JVM looks for to start execution. We will focus on this now.
+\end{itemize}
+
+\section{The \texttt{main} Method: The Gateway to Your Application}
+The signature of the \texttt{main} method is a very common source of exam questions. You must know it perfectly.
+
+\subsection{The Canonical Signature}
+\begin{verbatim}
+public static void main(String[] args)
+\end{verbatim}
+\begin{itemize}
+    \item \texttt{public}: It must be accessible to the JVM, which exists outside your project's scope.
+    \item \texttt{static}: The method belongs to the class, not an instance of the class. The JVM calls this method without creating an object of your class first.
+    \item \texttt{void}: It does not return a value.
+    \item \texttt{main}: This specific name is the identifier the JVM looks for. It is case-sensitive.
+    \item \texttt{String[] args}: It accepts a single argument: an array of \texttt{String} objects. These are the command-line arguments passed to your program.
+\end{itemize}
+
+\subsection{Valid Variations and Exam Traps}
+The exam will test you on variations. Memorize these!
+\begin{itemize}
+    \item The order of modifiers \texttt{public} and \texttt{static} can be swapped: \texttt{static public void...} is \textbf{valid}.
+    \item The name of the parameter array can be anything: \texttt{args}, \texttt{myArgs}, \texttt{params} are all \textbf{valid}.
+    \item The array syntax can be C-style: \texttt{String args[]} is \textbf{valid}.
+    \item Varargs syntax can be used: \texttt{String... args} is \textbf{valid}.
+\end{itemize}
+
+\textbf{Example Valid Signatures:}
+\begin{verbatim}
+public static void main(String[] args)
+static public void main(String[] arguments)
+public static void main(String... options)
+public static void main(String commandLine[])
+\end{verbatim}
+
+\textbf{Example INVALID Signatures (Common Traps):}
+\begin{verbatim}
+// Not static - The JVM can't call it without an object.
+public void main(String[] args)
+
+// Wrong return type - Must be void.
+public static int main(String[] args)
+
+// Wrong method name - Must be 'main'.
+public static void Main(String[] args)
+
+// Wrong parameter type - Must be a String array.
+public static void main(String args)
+\end{verbatim}
+
+\section{Command-Line Arguments}
+Arguments passed after the class name on the command line are put into the \texttt{String[]} array of the \texttt{main} method.
+
+Consider this code in \texttt{ArgTester.java}:
+\begin{verbatim}
+public class ArgTester {
+    public static void main(String[] args) {
+        // Check if any arguments were passed
+        if (args.length > 0) {
+            System.out.println("First argument: " + args[0]);
+        } else {
+            System.out.println("No arguments provided.");
+        }
+    }
+}
+\end{verbatim}
+
+\textbf{Compilation and Execution Scenarios:}
+\begin{enumerate}
+    \item Run with one argument:
+    \begin{verbatim}
+javac ArgTester.java
+java ArgTester Hello
+    \end{verbatim}
+    \textbf{Output:} \texttt{First argument: Hello}
+
+    \item Run with multiple arguments (with spaces):
+    \begin{verbatim}
+java ArgTester "First Argument" Second
+    \end{verbatim}
+    \textbf{Output:} \texttt{First argument: First Argument} \\ (Note: Only \texttt{args[0]} is printed)
+
+    \item Run with no arguments:
+    \begin{verbatim}
+java ArgTester
+    \end{verbatim}
+    \textbf{Output:} \texttt{No arguments provided.}
+
+\end{enumerate}
+
+\textbf{Key Points & Exam Traps:}
+\begin{itemize}
+    \item Arguments are separated by spaces. To treat a value with spaces as a single argument, enclose it in quotes (e.g., \texttt{"Hello World"}).
+    \item The array of arguments is \textbf{never null}. If no arguments are passed, \texttt{args} is an empty array with \texttt{length == 0}.
+    \item Accessing an index that doesn't exist (e.g., \texttt{args[0]} when no arguments are passed) will throw an \texttt{ArrayIndexOutOfBoundsException} at runtime. This is a classic exam trap.
+\end{itemize}
+
+\section{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{Implicit Import:} The \texttt{java.lang} package is always imported automatically. You never need to write \texttt{import java.lang.String;}.
+    \item \textbf{File Naming:} A file can only have one \texttt{public} class, and the file must be named after it (e.g., \texttt{MyClass.java}).
+    \item \textbf{\texttt{main} method:} Memorize the valid signatures and the reasons behind each keyword (\texttt{public}, \texttt{static}, \texttt{void}). Be ready for tricky variations.
+    \item \textbf{Command-Line Args:} Remember that \texttt{args} is an empty array (not null) if no arguments are given. Be vigilant about potential \texttt{ArrayIndexOutOfBoundsException}.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

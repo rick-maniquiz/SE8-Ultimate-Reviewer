@@ -1,0 +1,107 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Break, Continue, and Labels}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1011 \\ Topic: Break, Continue, and Labels}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Topic 1011: Break, Continue, and Labels}
+
+\subsection*{Thinking Like the Compiler: Altering the Flow}
+Once a loop starts, it doesn't have to run to completion. Java provides tools to exit a loop early (\texttt{break}) or skip an iteration (\texttt{continue}). For complex nested loops, labels give you precise control over which loop to alter. The exam tests your ability to trace these jumps in execution flow accurately.
+
+\subsection*{The \texttt{break} Statement}
+When the JVM encounters a \texttt{break} statement, it immediately terminates the innermost loop (or \texttt{switch}) statement it's in. Execution continues at the first statement \textit{after} the terminated loop.
+
+\begin{verbatim}
+for (int i = 0; i < 10; i++) {
+    if (i == 3) {
+        break; // Exits the for loop entirely
+    }
+    System.out.print(i); // Prints 012
+}
+System.out.print(" End"); // Prints " End"
+// FINAL OUTPUT: 012 End
+\end{verbatim}
+
+\subsection*{The \texttt{continue} Statement}
+The \texttt{continue} statement immediately ends the \textit{current iteration} and proceeds to the next one.
+\begin{itemize}
+    \item In a \textbf{\texttt{for}} loop, \texttt{continue} jumps to the \textbf{update} expression.
+    \item In a \textbf{\texttt{while}} or \textbf{\texttt{do-while}} loop, \texttt{continue} jumps to the \textbf{condition} check.
+\end{itemize}
+
+\begin{verbatim}
+for (int i = 0; i < 5; i++) {
+    if (i == 2) {
+        continue; // Skips printing 2, jumps to i++
+    }
+    System.out.print(i); // Prints 0134
+}
+\end{verbatim}
+\textbf{Exam Trap:} A poorly placed \texttt{continue} in a \texttt{while} loop can cause an infinite loop by skipping the update statement.
+
+\subsection*{Labels: Controlling Nested Loops}
+Labels give you the power to direct \texttt{break} and \texttt{continue} to a specific outer loop instead of just the innermost one.
+
+\textbf{Syntax:} A label is a valid identifier followed by a colon, placed before a loop. \texttt{myLabel: for(...)}
+
+\subsubsection*{Labeled \texttt{break}}
+Exits the loop that has the specified label.
+\begin{verbatim}
+OUTER: for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+        if (i == 1 && j == 1) {
+            break OUTER; // Exits the OUTER loop, not just the inner one
+        }
+        System.out.print(i + "," + j + " | ");
+    }
+}
+// OUTPUT: 0,0 | 0,1 | 0,2 | 1,0 | 
+\end{verbatim}
+
+\subsubsection*{Labeled \texttt{continue}}
+Skips the current iteration of the labeled loop and proceeds to its next iteration.
+\begin{verbatim}
+OUTER: for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+        if (i == 1 && j == 1) {
+            continue OUTER; // Skips rest of inner loop and goes to OUTER's update (i++)
+        }
+        System.out.print(i + "," + j + " | ");
+    }
+}
+// OUTPUT: 0,0 | 0,1 | 0,2 | 1,0 | 2,0 | 2,1 | 2,2 | 
+\end{verbatim}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{\texttt{do-while} vs. \texttt{while}:} The \texttt{do-while} loop body is guaranteed to execute at least once.
+    \item \textbf{\texttt{for} Loop Flexibility:} Remember that the three parts of a basic \texttt{for} loop are optional. \texttt{for(;;)} is a valid infinite loop.
+    \item \textbf{Enhanced \texttt{for}:} The loop variable is a copy. Reassigning it (e.g., \texttt{var = ...}) does not change the source collection, but calling methods on it (e.g., \texttt{var.setValue()}) can.
+    \item \textbf{\texttt{break}:} Exits the loop completely.
+    \item \textbf{\texttt{continue}:} Skips the current iteration. In a \texttt{for} loop, it jumps to the update statement.
+    \item \textbf{Labels:} When you see a labeled \texttt{break} or \texttt{continue}, carefully identify which loop is being targeted and trace the jump in execution.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

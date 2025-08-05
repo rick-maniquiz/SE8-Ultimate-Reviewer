@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Exception Hierarchy and Types}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1028 \\ Topic: Exception Hierarchy and Types}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Exception Handling: Preparing for the Unexpected}
+Good afternoon. So far, we've written code that we assume works perfectly. But in the real world, and especially on the 1Z0-808 exam, things go wrong. Networks fail, files don't exist, users input invalid data. Exception handling is Java's structured way of managing these errors. For your exam, you must know the class hierarchy like the back of your hand and understand the strict rules the compiler enforces.
+
+\subsection{The \texttt{Throwable} Hierarchy}
+Every error condition you can handle or that can crash your program is an object of a class that descends from \texttt{java.lang.Throwable}.
+\begin{verbatim}
+        Object
+           |
+       Throwable
+       /       \
+    Error     Exception
+                 |
+          RuntimeException
+\end{verbatim}
+\begin{itemize}
+    \item \textbf{\texttt{Throwable}:} The superclass of everything that can be thrown. You almost never interact with it directly.
+    \item \textbf{\texttt{Error}:} Represents severe, abnormal problems that your application should not try to handle. These are typically related to the JVM itself. Examples: \texttt{StackOverflowError}, \texttt{OutOfMemoryError}. You are not expected to catch these.
+    \item \textbf{\texttt{Exception}:} This is the parent class for all "normal" exceptions that a well-written application should anticipate and recover from. This class is the key to understanding the most important concept in this topic.
+\end{itemize}
+
+\subsection{Checked vs. Unchecked Exceptions: The Compiler Is Your Boss}
+The single most critical concept for the exam is the difference between checked and unchecked exceptions. This distinction determines whether the compiler forces you to handle a potential problem.
+
+\subsubsection{Checked Exceptions}
+These are exceptions that a method is expected to handle. They represent predictable, though not ideal, situations (like a file not being found).
+\begin{itemize}
+    \item \textbf{Who are they?}: Any direct subclass of \texttt{Exception}, \textbf{excluding} \texttt{RuntimeException} and its subclasses.
+    \item \textbf{Examples:} \texttt{IOException}, \texttt{SQLException}, \texttt{FileNotFoundException}.
+    \item \textbf{The Rule (Handle or Declare):} The compiler \textit{checks} your code. If you call a method that can throw a checked exception, you \textbf{must} do one of two things:
+    \begin{enumerate}
+        \item Handle it using a \texttt{try-catch} block.
+        \item Declare it in your method signature using the \texttt{throws} keyword.
+    \end{enumerate}
+    Failure to do so results in a \textbf{COMPILE ERROR}. This is not optional.
+\end{itemize}
+
+\subsubsection{Unchecked Exceptions}
+These represent bugs or logic errors in your code. They are "unchecked" because the compiler does not force you to handle them.
+\begin{itemize}
+    \item \textbf{Who are they?}: All subclasses of \texttt{RuntimeException} and all subclasses of \texttt{Error}.
+    \item \textbf{Examples:} \texttt{NullPointerException}, \texttt{ArrayIndexOutOfBoundsException}, \texttt{ArithmeticException}, \texttt{ClassCastException}, \texttt{NumberFormatException}.
+    \item \textbf{The Rule:} You \textit{can} handle them with a \texttt{try-catch} block, but you are not required to. They signal that you, the programmer, have made a mistake that should be fixed.
+\end{itemize}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item Memorize the hierarchy: \texttt{Throwable} is the parent of \texttt{Error} and \texttt{Exception}. \texttt{RuntimeException} is a child of \texttt{Exception}.
+    \item \textbf{Checked Exceptions} are children of \texttt{Exception} (but not \texttt{RuntimeException}). You MUST handle or declare them.
+    \item \textbf{Unchecked Exceptions} are children of \texttt{RuntimeException} or \texttt{Error}. You are NOT required to handle them.
+    \item Be able to classify common exceptions: \texttt{IOException} is checked, \texttt{NullPointerException} is unchecked.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

@@ -1,11 +1,12 @@
 package org.example.exammodels;
 
 import org.example.utils.LaTeXProcessor;
+import org.example.utils.Printable;
 
 import java.io.*;
 import java.util.Optional;
 
-public class SolutionSheet implements Printable{
+public class SolutionSheet implements Printable {
     private final int solutionSheetId;
     private final Exam exam;
 

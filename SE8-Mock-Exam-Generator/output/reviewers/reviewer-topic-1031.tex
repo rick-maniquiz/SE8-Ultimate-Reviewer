@@ -1,0 +1,96 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Try-with-Resources}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1031 \\ Topic: Try-with-Resources}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Try-with-Resources: The Modern Way to Clean Up}
+One of the most common sources of bugs in older Java code is resource leaks—forgetting to close a file, a network socket, or a database connection. The traditional way to handle this was a verbose and often clumsy \texttt{finally} block. Since Java 7, we have a much more elegant and safer solution: the try-with-resources statement.
+
+\subsection{The Old Way: A Verbose \texttt{finally}}
+Let's appreciate the problem first. Look at the code required to safely read from a file before try-with-resources:
+\begin{verbatim}
+FileReader fr = null;
+try {
+    fr = new FileReader("myFile.txt");
+    //... read from the file ...
+} catch (IOException e) {
+    e.printStackTrace();
+} finally {
+    if (fr != null) {
+        try {
+            fr.close(); // Closing can also throw an exception!
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+\end{verbatim}
+This is ugly and easy to get wrong. The nested \texttt{try-catch} inside the \texttt{finally} is particularly nasty.
+
+\subsection{The \texttt{AutoCloseable} Interface and the New Way}
+The try-with-resources statement simplifies this immensely. It works with any object whose class implements the \texttt{java.lang.AutoCloseable} interface (or its ancestor, \texttt{java.io.Closeable}).
+\begin{itemize}
+    \item \textbf{The Interface:} \texttt{AutoCloseable} has just one method: \texttt{void close() throws Exception;}.
+    \item \textbf{The Syntax:} You declare and initialize your resource(s) inside parentheses after the \texttt{try} keyword.
+\end{itemize}
+\begin{verbatim}
+// The new, clean way
+try (FileReader fr = new FileReader("myFile.txt")) {
+    //... read from the file ...
+} catch (IOException e) {
+    e.printStackTrace();
+}
+// No 'finally' block needed! The fr.close() method is called automatically.
+\end{verbatim}
+The compiler generates the necessary \texttt{finally} block behind the scenes to ensure \texttt{close()} is always called.
+
+\subsection{Multiple Resources and Suppressed Exceptions}
+These are key details for the exam.
+\begin{itemize}
+    \item \textbf{Multiple Resources:} You can declare multiple resources, separated by a semicolon. They will be closed in the \textbf{reverse order} of declaration.
+\begin{verbatim}
+try (FileInputStream fis = new FileInputStream("in.txt");
+     FileOutputStream fos = new FileOutputStream("out.txt")) {
+    // ... copy data ...
+}
+// fos.close() is called first, then fis.close()
+\end{verbatim}
+    \item \textbf{Suppressed Exceptions:} This is a huge advantage over manual \texttt{finally} blocks. What if an exception is thrown inside the \texttt{try} block, AND the \texttt{close()} method also throws an exception?
+    \begin{itemize}
+        \item In a manual \texttt{finally}, the second exception would hide the first one.
+        \item With try-with-resources, the first exception is the one that gets propagated. The second exception (from \texttt{close()}) is "suppressed" and attached to the first one.
+    \end{itemize}
+    You don't lose any information. The primary cause of the error is preserved.
+\end{itemize}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item Use try-with-resources for any object that implements \texttt{AutoCloseable}.
+    \item It simplifies code and prevents resource leaks.
+    \item Resources are closed automatically in the reverse order of declaration.
+    \item Understand that try-with-resources correctly handles suppressed exceptions, preserving the original exception, which is a major improvement over manual \texttt{finally} blocks.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

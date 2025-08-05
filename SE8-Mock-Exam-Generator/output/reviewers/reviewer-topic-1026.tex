@@ -1,0 +1,101 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Generics}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1026 \\ Topic: Generics}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Generics: Writing Type-Safe Code}
+Alright class, let's discuss Generics. Before Java 5, collections like \texttt{ArrayList} were a bit like a wild party—anyone could get in. You could put a \texttt{String}, an \texttt{Integer}, and a \texttt{Cat} object into the same list. This led to chaos at runtime when you tried to pull things out and cast them. Generics impose order. They are Java's way of creating type-safe containers, ensuring you only put the right kind of objects into a collection and eliminating the need for messy casts and runtime errors.
+
+\subsection{The Power of Type Safety}
+Generics add a type parameter to a class or interface, specified in angle brackets \texttt{<>}.
+\begin{verbatim}
+// Before Generics (dangerous)
+List list = new ArrayList();
+list.add("text");
+list.add(123); // No error here...
+String s = (String) list.get(1); // ...but ClassCastException at RUNTIME!
+
+// With Generics (safe)
+List<String> stringList = new ArrayList<>(); // Diamond operator <>
+stringList.add("text");
+// stringList.add(123); // COMPILE ERROR! Problem caught early.
+String s2 = stringList.get(0); // No cast needed.
+\end{verbatim}
+Generics turn runtime exceptions into compile-time errors, which are always better.
+
+\subsection{Generic Classes and Methods}
+You can create your own generic classes and methods.
+\begin{itemize}
+    \item \textbf{Generic Class:} A class that can work with any object type. \texttt{T} is a type parameter that will be replaced by a real type when an object is created.
+\begin{verbatim}
+public class Crate<T> {
+    private T contents;
+    public void pack(T contents) { this.contents = contents; }
+    public T unpack() { return contents; }
+}
+Crate<Apple> appleCrate = new Crate<>();
+\end{verbatim}
+    \item \textbf{Generic Method:} A method with its own type parameter. The type parameter is declared before the return type.
+\begin{verbatim}
+public <E> void printElements(E[] elements) {
+    for (E element : elements) {
+        System.out.println(element);
+    }
+}
+\end{verbatim}
+\end{itemize}
+
+\subsection{Bounded Wildcards: The Exam's Favorite Trap}
+This is where you must focus. A wildcard \texttt{?} represents an unknown type. Bounded wildcards restrict that unknown type.
+\begin{itemize}
+    \item \textbf{Upper Bound - \texttt{<? extends Type>}:} Represents \texttt{Type} or any of its subclasses. Think of it as "read-only." You can retrieve elements (they are guaranteed to be at least of \texttt{Type}), but you \textbf{cannot add} elements (except \texttt{null}) because the compiler doesn't know the exact subtype.
+\begin{verbatim}
+// This method can accept List<Number>, List<Integer>, List<Double>, etc.
+public void processNumbers(List<? extends Number> list) {
+    for (Number n : list) { /* read is OK */ }
+    // list.add(Integer.valueOf(5)); // COMPILE ERROR!
+}
+\end{verbatim}
+    \item \textbf{Lower Bound - \texttt{<? super Type>}:} Represents \texttt{Type} or any of its superclasses. Think of it as "write-only." You \textbf{can add} elements of type \texttt{Type} or its subclasses, but when you read from it, you can only be sure you're getting an \texttt{Object}.
+\begin{verbatim}
+// This method can accept List<Integer>, List<Number>, List<Object>
+public void addIntegers(List<? super Integer> list) {
+    list.add(Integer.valueOf(5)); // OK
+    list.add(10); // OK
+    // Integer i = list.get(0); // COMPILE ERROR! Could be a Number or Object.
+}
+\end{verbatim}
+\end{itemize}
+Remember the mnemonic \textbf{PECS}: \textbf{P}roducer \textbf{E}xtends, \textbf{C}onsumer \textbf{S}uper.
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item Generics provide compile-time type safety and eliminate the need for casting.
+    \item The diamond operator \texttt{<>} simplifies instantiation of generic classes.
+    \item Master bounded wildcards. Use \texttt{extends} for read-only access to a hierarchy. Use \texttt{super} for write-only access.
+    \item Understand that due to \textbf{type erasure}, generic type information is not available at runtime. The compiler handles all the checks.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

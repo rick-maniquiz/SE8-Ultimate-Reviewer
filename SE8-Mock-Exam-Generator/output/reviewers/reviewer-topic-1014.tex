@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{StringBuilder and StringBuffer}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1014 \\ Topic: StringBuilder and StringBuffer}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{The Need for Mutable Strings}
+Alright class, we've established the golden rule: \texttt{String} objects are immutable. This is fantastic for predictability and safety. But what happens when you need to build a string piece by piece, perhaps in a loop? 
+\begin{verbatim}
+String result = "";
+for (char c : someCharArray) {
+    result += c; // Inefficient!
+}
+\end{verbatim}
+Every time the \texttt{+=} operator is used here, the JVM creates a brand new \texttt{String} object, copying the old contents and appending the new character. For a large number of iterations, this is incredibly wasteful in terms of memory and performance. This is the exact problem that \texttt{StringBuilder} and \texttt{StringBuffer} were created to solve. They provide a \textbf{mutable} sequence of characters.
+
+\section{The Core Difference: Mutability}
+Unlike \texttt{String}, methods of \texttt{StringBuilder} and \texttt{StringBuffer} that modify the characters do so \textbf{in place}. They modify the internal state of the same object, rather than returning a new one.
+\begin{verbatim}
+// Using StringBuilder
+StringBuilder sb = new StringBuilder("Hello");
+System.out.println("Before: " + sb + " (object id: " + System.identityHashCode(sb) + ")");
+
+sb.append(" World"); // Modifies the existing object
+
+System.out.println("After: " + sb + " (object id: " + System.identityHashCode(sb) + ")");
+
+// The output will show the same object identity hash code, proving it's the same object.
+\end{verbatim}
+
+\section{The Big Question: \texttt{StringBuilder} vs. \texttt{StringBuffer}}
+This is a classic exam topic. They have virtually identical APIs, but one key difference: \textbf{thread safety}.
+
+\subsection*{\texttt{StringBuilder}}
+\begin{itemize}
+    \item \textbf{Not Thread-Safe:} Its methods are not \texttt{synchronized}. This means if multiple threads try to modify the same \texttt{StringBuilder} instance at the same time, you can get unexpected results or errors.
+    \item \textbf{Faster:} Because it doesn't have the performance overhead of acquiring and releasing locks for synchronization, it is significantly faster.
+    \item \textbf{When to use:} This is your default choice. In any single-threaded context (which is the vast majority of cases), you should prefer \texttt{StringBuilder}.
+\end{itemize}
+
+\subsection*{\texttt{StringBuffer}}
+\begin{itemize}
+    \item \textbf{Thread-Safe:} Its key methods, like \texttt{append()} and \texttt{insert()}, are \texttt{synchronized}. This guarantees that only one thread can modify the buffer at a time, preventing data corruption.
+    \item \textbf{Slower:} The synchronization adds performance overhead, making it slower than \texttt{StringBuilder}.
+    \item \textbf{When to use:} Only use \texttt{StringBuffer} when you are certain that the same instance will be accessed and modified by multiple threads.
+\end{itemize}
+
+\textbf{Exam Mantra:} For the 1Z0-808, think: \texttt{StringBuilder} = Single-Thread, Fast. \texttt{StringBuffer} = Multi-Thread, Slow.
+
+\section{Essential API Methods}
+These methods work for both classes. A key feature is that they return a reference to the current object (\texttt{this}), which allows for \textbf{method chaining}.
+\begin{itemize}
+    \item \texttt{append(...)}: Adds content to the end. It's overloaded for all primitive types and for \texttt{String}, \texttt{Object}, etc.
+    \item \texttt{insert(int offset, ...)}: Inserts content at a specified index.
+    \item \texttt{delete(int start, int end)}: Deletes the sequence of characters from \texttt{start} to \texttt{end-1}.
+    \item \texttt{reverse()}: Reverses the characters in place.
+    \item \texttt{toString()}: Returns a new, immutable \texttt{String} object with the same character sequence. This is how you convert back to a standard string.
+    \item \texttt{length()}: Returns the number of characters currently stored.
+    \item \texttt{capacity()}: Returns the total number of characters that can be stored before the object must be resized.
+\end{itemize}
+
+\textbf{Method Chaining Example:}
+\begin{verbatim}
+StringBuilder sb = new StringBuilder();
+sb.append("Java ").append(8).insert(0, "I love ").delete(2, 7);
+System.out.println(sb.toString()); // Prints: I Java 8
+\end{verbatim}
+
+\section{A Critical Exam Trap: The \texttt{equals()} Method}
+This is one of the trickiest parts of these classes. \textbf{\texttt{StringBuilder} and \texttt{StringBuffer} DO NOT override the \texttt{equals()} method from \texttt{Object}.}
+
+This means that \texttt{sb1.equals(sb2)} behaves exactly the same as \texttt{sb1 == sb2}. It only returns \texttt{true} if \texttt{sb1} and \texttt{sb2} are references to the very same object.
+
+\begin{verbatim}
+StringBuilder sb1 = new StringBuilder("test");
+StringBuilder sb2 = new StringBuilder("test");
+
+System.out.println(sb1 == sb2);      // false - different objects
+System.out.println(sb1.equals(sb2)); // ALSO false! 
+
+// The CORRECT way to compare their contents:
+System.out.println(sb1.toString().equals(sb2.toString())); // true
+\end{verbatim}
+
+\section{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{Mutability is Key:} These classes modify their own state and do not create new objects on each call.
+    \item \textbf{Thread-Safety is the Difference:} Use \texttt{StringBuilder} unless you explicitly need the thread-safety of \texttt{StringBuffer}.
+    \item \textbf{Equality Trap:} Remember that \texttt{.equals()} compares references, not content. To compare content, you must use \texttt{.toString()} on both and then call \texttt{.equals()}.
+    \item \textbf{Method Chaining:} Be comfortable reading and understanding chained method calls.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

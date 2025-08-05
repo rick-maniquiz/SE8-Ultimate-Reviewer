@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{ArrayList and Basic Collections}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1025 \\ Topic: ArrayList and Basic Collections}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Beyond Arrays: The Power of \texttt{ArrayList}}
+Arrays are powerful but rigid. Their biggest limitation is their fixed size. To solve this, Java provides the Collections Framework, and your go-to class from this framework will be \texttt{ArrayList}. It's essentially a resizable array on steroids. For the exam, you need to understand how it differs from an array and how to use its core methods.
+
+\subsection{Array vs. \texttt{ArrayList}}
+Let's get this straight, as the exam will test the differences.
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Feature} & \textbf{Array} & \textbf{ArrayList} \\
+\hline
+Size & Fixed, defined at instantiation & Dynamic, grows as you add elements \\
+\hline
+Data Types & Primitives and Objects & Objects only (uses wrappers like \texttt{Integer} for primitives) \\
+\hline
+Type Safety & Compile-time check & Uses Generics for type safety, e.g., \texttt{ArrayList<String>} \\
+\hline
+Get Size & \texttt{length} property & \texttt{size()} method \\
+\hline
+API & Basic access via \texttt{[]} & Rich set of methods (\texttt{add}, \texttt{remove}, \texttt{contains}, etc.) \\
+\hline
+\end{tabular}
+
+\subsection{Working with \texttt{ArrayList}}
+To use \texttt{ArrayList}, you must import it: \texttt{import java.util.ArrayList;}.
+\begin{verbatim}
+// The diamond operator <> infers the type.
+ArrayList<String> names = new ArrayList<>();
+List<Integer> numbers = new ArrayList<>(); // Also valid, programming to the interface
+
+names.add("Alice"); // Adds to the end
+names.add(0, "Bob"); // Adds "Bob" at index 0, shifts "Alice" to index 1
+
+System.out.println(names.get(1)); // Prints "Alice"
+
+String oldName = names.set(0, "Bill"); // Replaces "Bob" with "Bill", returns "Bob"
+
+System.out.println(names.size()); // Prints 2
+\end{verbatim}
+
+\subsection{The \texttt{remove()} Method Trap}
+This is a classic source of confusion and a perfect exam question. \texttt{ArrayList} has two \texttt{remove} methods:
+\begin{itemize}
+    \item \texttt{E remove(int index)}: Removes the element at the specified position.
+    \item \texttt{boolean remove(Object o)}: Removes the first occurrence of the specified element.
+\end{itemize}
+When you have an \texttt{ArrayList<Integer>}, the compiler gets confused. Which one should it call?
+\begin{verbatim}
+List<Integer> list = new ArrayList<>();
+list.add(10);
+list.add(20);
+list.add(30);
+
+list.remove(1); // Calls remove(int index). Removes element at index 1 (the 20).
+// List is now [10, 30]
+
+// To remove by object value, you must cast or wrap it:
+list.remove(Integer.valueOf(10)); // Calls remove(Object o). Removes the 10.
+// List is now [30]
+\end{verbatim}
+Be extremely careful with this distinction.
+
+\subsection{Important Utility Methods}
+A few other methods you must know:
+\begin{itemize}
+    \item \texttt{clear()}: Removes all elements.
+    \item \texttt{isEmpty()}: Returns \texttt{true} if the list has no elements.
+    \item \texttt{contains(Object o)}: Returns \texttt{true} if the list contains the specified element.
+    \item \textbf{\texttt{Arrays.asList()}:} A handy but tricky utility.
+\begin{verbatim}
+String[] array = {"A", "B"};
+List<String> list = Arrays.asList(array); // Creates a List view of the array
+// list.remove("A"); // Throws UnsupportedOperationException!
+// list.add("C");    // Also throws UnsupportedOperationException!
+list.set(0, "Z");   // This is OK. The original array becomes {"Z", "B"}.
+\end{verbatim}
+The list returned by \texttt{Arrays.asList()} is \textbf{not} a \texttt{java.util.ArrayList}. It's a fixed-size list backed by the original array. You cannot change its size.
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item Know the key differences between Array and ArrayList (size, type, API).
+    \item Memorize the core \texttt{ArrayList} methods: \texttt{add}, \texttt{get}, \texttt{set}, \texttt{remove}, \texttt{size}.
+    \item Understand the \texttt{remove(index)} vs. \texttt{remove(Object)} ambiguity with \texttt{ArrayList<Integer>}.
+    \item Be aware of the fixed-size, backed nature of the \texttt{List} returned from \texttt{Arrays.asList()}.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

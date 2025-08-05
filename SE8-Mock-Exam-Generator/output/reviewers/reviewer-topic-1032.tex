@@ -1,0 +1,183 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Lambda Expressions and Functional Interfaces}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1032 \\ Topic: Lambda Expressions and Functional Interfaces}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Introduction: The Functional Revolution in Java}
+Welcome, everyone. Before Java 8, handling events or passing behavior to a method often required creating bulky anonymous inner classes. It worked, but it was verbose. Java 8 introduced lambda expressions to provide a clear, concise way to represent anonymous functions, paving the way for a more functional style of programming. For the 1Z0-808 exam, mastering lambdas is not optional---it's fundamental. They are the gateway to the powerful Streams API and are tested extensively.
+
+\section{What is a Lambda Expression?}
+A lambda expression is essentially a short, anonymous method. It has no name, but it does have parameters, a body, and an optional return type. Its primary purpose is to implement the single abstract method of a functional interface.
+
+\subsection{Lambda Syntax: The Rules of Conciseness}
+The core syntax is simple: \textbf{(parameters) -> expression} or \textbf{(parameters) -> \{ statements; \}}.
+
+Let's break down the variations. The compiler is smart, so you can often omit redundant information.
+\begin{itemize}
+    \item \textbf{Full Syntax:} The types of the parameters are explicitly declared.
+    \begin{verbatim}
+(String s1, String s2) -> s1.concat(s2)
+    \end{verbatim}
+
+    \item \textbf{Type Inference:} Most of the time, the compiler can infer the parameter types from the context (the functional interface).
+    \begin{verbatim}
+(s1, s2) -> s1.concat(s2)
+    \end{verbatim}
+
+    \item \textbf{Single Parameter:} If there is only one parameter (and its type is inferred), you can omit the parentheses.
+    \begin{verbatim}
+// Represents a function that takes a String and returns its length
+s -> s.length()
+    \end{verbatim}
+
+    \item \textbf{No Parameters:} If there are no parameters, you must use empty parentheses.
+    \begin{verbatim}
+// Represents an action that prints to the console
+() -> System.out.println("Executing!")
+    \end{verbatim}
+
+    \item \textbf{Body Syntax:} 
+    \begin{itemize}
+        \item For a single expression, curly braces and the \texttt{return} keyword are optional. The result of the expression is implicitly returned.
+        \begin{verbatim}
+(int a, int b) -> a + b
+        \end{verbatim}
+        \item For a body with multiple statements, you \textbf{must} use curly braces, and if the method needs to return a value, you \textbf{must} use an explicit \texttt{return} statement.
+        \begin{verbatim}
+(int a, int b) -> {
+    int sum = a + b;
+    System.out.println("Sum is: " + sum);
+    return sum;
+}
+        \end{verbatim}
+    \end{itemize}
+\end{itemize}
+
+\section{Functional Interfaces: The Target for Lambdas}
+A lambda expression, by itself, doesn't have a type. It only gets a type when it's assigned to a \textit{functional interface}. 
+
+\begin{itemize}
+    \item \textbf{Definition:} A functional interface is any interface that contains \textbf{exactly one abstract method} (SAM).
+    \item \textbf{Exam Trap:} Methods from \texttt{java.lang.Object} (like \texttt{equals()}, \texttt{hashCode()}, \texttt{toString()}) that are declared in an interface do \textbf{not} count towards the single abstract method limit.
+    \item \textbf{Default and Static Methods:} An interface can have multiple \texttt{default} or \texttt{static} methods and still be a functional interface.
+\end{itemize}
+
+\subsection{The \texttt{@FunctionalInterface} Annotation}
+This annotation is like \texttt{@Override}. It's not mandatory, but it's a best practice. It tells the compiler to verify that the interface meets the SAM requirement. If it doesn't, a compile-time error is generated. Using it prevents someone from accidentally adding another abstract method later and breaking existing lambdas.
+\begin{verbatim}
+@FunctionalInterface
+interface Speaker {
+    void speak(String message); // The single abstract method
+
+    // This is ok!
+    default void shout() {
+        System.out.println("LOUD NOISES!");
+    }
+}
+
+// Usage:
+Speaker s = msg -> System.out.println("I say: " + msg);
+s.speak("Hello"); // Prints "I say: Hello"
+\end{verbatim}
+
+\section{Standard Built-In Functional Interfaces}
+Java provides a set of common functional interfaces in the \texttt{java.util.function} package. You \textbf{must} know these for the exam.
+\begin{itemize}
+    \item \texttt{\textbf{Predicate<T>}} \\
+    Abstract Method: \texttt{boolean test(T t)}\
+    Use: Evaluates a condition. Example: \texttt{s -> s.isEmpty()}
+
+    \item \texttt{\textbf{Consumer<T>}} \\
+    Abstract Method: \texttt{void accept(T t)}\
+    Use: Performs an action with an object, returns nothing. Example: \texttt{s -> System.out.println(s)}
+
+    \item \texttt{\textbf{Supplier<T>}} \\
+    Abstract Method: \texttt{T get()}\
+    Use: Provides an object, takes no input. Example: \texttt{() -> new ArrayList<>()}
+
+    \item \texttt{\textbf{Function<T, R>}} \\
+    Abstract Method: \texttt{R apply(T t)}\
+    Use: Transforms an object of type T into one of type R. Example: \texttt{s -> s.length()}
+
+    \item \texttt{\textbf{UnaryOperator<T>}} (extends \texttt{Function<T, T>}) \\
+    Abstract Method: \texttt{T apply(T t)}\
+    Use: A special \texttt{Function} where input and output types are the same. Example: \texttt{s -> s.toUpperCase()}
+
+    \item \texttt{\textbf{BinaryOperator<T>}} (extends \texttt{BiFunction<T, T, T>}) \\
+    Abstract Method: \texttt{T apply(T t1, T t2)}\
+    Use: Combines two objects of the same type into a single object of that same type. Example: \texttt{(i1, i2) -> i1 + i2}
+\end{itemize}
+\textbf{Note:} There are also primitive specializations like \texttt{IntPredicate}, \texttt{LongSupplier}, \texttt{DoubleFunction} to avoid the performance cost of boxing and unboxing primitives.
+
+\section{Lambdas and Variable Scope: The Final Rule}
+This is a major source of tricky exam questions. Lambdas can \textit{capture} variables from their enclosing scope. 
+
+\begin{itemize}
+    \item \textbf{Local Variables:} A lambda can access local variables from the enclosing method, but only if they are \textbf{final} or \textbf{effectively final}.
+    \item \textbf{Effectively Final:} This means the variable's value is never changed after it's initialized. You don't need to write the \texttt{final} keyword, but you must treat it as if it were there.
+    \item \textbf{Instance/Static Variables:} Lambdas can freely access and modify instance or static variables of the class. The `final` restriction does not apply to them.
+\end{itemize}
+
+\textbf{Example (Exam Focus):}
+\begin{verbatim}
+public class ScopeTest {
+    int instanceVar = 10; // Instance variable
+    static int staticVar = 100; // Static variable
+
+    public void testScope() {
+        int localFinalVar = 1; // final
+        int localEffectivelyFinalVar = 2; // effectively final
+        int localMutableVar = 3; // NOT effectively final
+
+        // VALID: can access final local var
+        Consumer<String> c1 = s -> System.out.println(s + localFinalVar);
+
+        // VALID: can access effectively final local var
+        Consumer<String> c2 = s -> System.out.println(s + localEffectivelyFinalVar);
+
+        // COMPILER ERROR: localMutableVar is modified later
+        // Consumer<String> c3 = s -> System.out.println(s + localMutableVar);
+        localMutableVar++;
+
+        // VALID: can access and modify instance/static variables
+        Consumer<String> c4 = s -> {
+            instanceVar++;
+            staticVar++;
+            System.out.println("instanceVar is now " + instanceVar);
+        };
+        c4.accept("");
+    }
+}
+\end{verbatim}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item Know the lambda syntax variations cold. When are \texttt{()}, \texttt{\{\}}, and \texttt{return} required or optional?
+    \item A functional interface has exactly one abstract method. \texttt{default}, \texttt{static}, and \texttt{Object} methods don't count.
+    \item Memorize the main functional interfaces from \texttt{java.util.function}: \texttt{Predicate}, \texttt{Consumer}, \texttt{Supplier}, \texttt{Function}, and the two operators.
+    \item The most critical rule: Lambdas can only capture \textbf{final} or \textbf{effectively final} local variables. This rule does not apply to instance or static fields.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

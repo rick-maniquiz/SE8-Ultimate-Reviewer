@@ -1,0 +1,129 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Primitive Data Types and Literals}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1004 \\ Topic: Primitive Data Types and Literals}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Topic 1004: Primitive Data Types and Literals}
+
+\subsection*{Thinking Like the Compiler: The Building Blocks}
+Welcome back. The exam will test your understanding of the absolute basics with surprising depth. Primitive types are Java's fundamental data building blocks. They are not objects, which means they don't have methods and are stored directly in memory (stack for local variables, heap for instance variables). Understanding their precise rules is non-negotiable.
+
+\subsection*{The Eight Primitives: Your Core Toolkit}
+You must memorize these eight types, their sizes, and their default values. Default values apply to \textit{instance} and \textit{static} variables only. \textbf{Local variables are never given a default value.} This is a critical distinction for the exam.
+
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Type} & \textbf{Size} & \textbf{Default Value} & \textbf{Example Range} \\
+\hline
+\texttt{boolean} & JVM Specific & \texttt{false} & \texttt{true}, \texttt{false} \\
+\texttt{char} & 16-bit & \texttt{'\u0000'} & 0 to 65,535 \\
+\hline
+\texttt{byte} & 8-bit & \texttt{(byte)0} & -128 to 127 \\
+\texttt{short} & 16-bit & \texttt{(short)0} & -32,768 to 32,767 \\
+\texttt{int} & 32-bit & \texttt{0} & Approx -2.1 billion to 2.1 billion \\
+\texttt{long} & 64-bit & \texttt{0L} & Very large \\
+\hline
+\texttt{float} & 32-bit & \texttt{0.0f} & Single-precision floating point \\
+\texttt{double} & 64-bit & \texttt{0.0d} & Double-precision floating point \\
+\hline
+\end{tabular}
+
+\subsection*{Literals: How You Write Values}
+A literal is a fixed value written directly in your code. The exam loves to trick you on the rules for writing them.
+
+\subsubsection*{Integer Literals}
+By default, any whole number you type is an \texttt{int} literal.
+\begin{itemize}
+\item \textbf{Decimal (base 10):} \texttt{int x = 100;}
+\item \textbf{Octal (base 8):} Must start with a \texttt{0}. Valid digits are 0-7.
+\begin{verbatim}
+int octal = 017; // This is 15 in decimal
+// int invalidOctal = 08; // COMPILE ERROR!
+\end{verbatim}
+\item \textbf{Hexadecimal (base 16):} Must start with \texttt{0x} or \texttt{0X}. Digits are 0-9 and A-F.
+\begin{verbatim}
+int hex = 0xFF; // This is 255 in decimal
+\end{verbatim}
+\item \textbf{Binary (base 2):} Must start with \texttt{0b} or \texttt{0B}. Digits are 0 and 1.
+\begin{verbatim}
+int binary = 0b1010; // This is 10 in decimal
+\end{verbatim}
+\item \textbf{Long Literals:} To specify a \texttt{long}, you must add an \texttt{L} or \texttt{l} suffix. The compiler will complain if a number is outside the \texttt{int} range and doesn't have an \texttt{L}.
+\begin{verbatim}
+long value1 = 2147483647; // Max int, OK
+// long value2 = 2147483648; // COMPILE ERROR: Integer too large
+long value3 = 2147483648L; // OK, it's a long literal
+\end{verbatim}
+\end{itemize}
+
+\subsubsection*{Floating-Point Literals}
+By default, any number with a decimal point is a \texttt{double}.
+\begin{itemize}
+\item \textbf{Double:} \texttt{double d = 99.5;} or \texttt{double d = 99.5d;}
+\item \textbf{Float:} You MUST use an \texttt{f} or \texttt{F} suffix.
+\begin{verbatim}
+// float f = 99.5; // COMPILE ERROR: Lossy conversion from double to float
+float f = 99.5f; // OK, it's a float literal
+\end{verbatim}
+\item \textbf{Scientific Notation:} \texttt{double sci = 1.23e4; // 1.23 * 10^4}
+\end{itemize}
+
+\subsubsection*{Character and Boolean Literals}
+\begin{itemize}
+\item \textbf{Character (\texttt{char}):} A single character in single quotes \texttt{' '}. A \texttt{char} is technically a 16-bit unsigned integer.
+\begin{verbatim}
+char letter = 'A';
+char unicode = '\u0041'; // 'A' using unicode escape
+char number = 65; // 'A' using its ASCII/Unicode value
+\end{verbatim}
+\item \textbf{Boolean (\texttt{boolean}):} Only two possible values: \texttt{true} and \texttt{false}.
+\end{itemize}
+
+\subsection*{Exam Trap: Underscores in Numeric Literals}
+Java 7 introduced the ability to use underscores to improve readability. The rules are strict and perfect for exam questions.
+\begin{verbatim}
+// VALID uses:
+int million = 1_000_000;
+long creditCard = 1234_5678_9012_3456L;
+double pi = 3.14_159_265;
+int binary = 0b1101_0101;
+
+// INVALID uses (WILL CAUSE COMPILE ERRORS):
+// float f1 = _100.0f;     // Cannot start with _
+// float f2 = 100.0_f;     // Cannot be at the end
+// float f3 = 100_.0f;     // Cannot be next to the decimal point
+// long l1 = 9876543210_L; // Cannot be just before suffix
+// int x = 0_x_123;       // Cannot be next to a radix prefix
+\end{verbatim}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+\item \textbf{Local vs. Instance Variables:} Local variables have NO default value. Instance/static variables do. A program that tries to use an uninitialized local variable will not compile.
+\item \textbf{Number Systems:} Be comfortable reading octal (\texttt{0}), hex (\texttt{0x}), and binary (\texttt{0b}). Know that \texttt{08} is invalid.
+\item \textbf{Literal Suffixes:} An integer literal is an \texttt{int} unless it has an \texttt{L}. A floating-point literal is a \texttt{double} unless it has an \texttt{f}.
+\item \textbf{Underscore Rules:} Memorize where underscores CANNOT go: beginning, end, next to decimal point, or next to prefix/suffix.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

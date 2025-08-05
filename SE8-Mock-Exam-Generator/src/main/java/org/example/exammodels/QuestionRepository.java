@@ -1,20 +1,19 @@
 package org.example.exammodels;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.topicmodels.Topic;
 import org.example.topicmodels.TopicRepository;
+import org.example.utils.Savable;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class QuestionRepository implements Savable{
+public class QuestionRepository implements Savable {
 
 //    private static QuestionRepository instance = new QuestionRepository();
     private List<QuestionEntry> questions;

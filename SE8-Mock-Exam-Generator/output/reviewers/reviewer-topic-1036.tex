@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Passing Data Among Methods}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1036 \\ Topic: Passing Data Among Methods}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Introduction: The Great Debate - Pass-by-Value}
+Class, let's settle one of the most misunderstood concepts in Java, one that the 1Z0-808 exam loves to test: how data is passed to methods. You will hear people talk about `pass-by-reference`, but let me be perfectly clear: \textbf{Java is always, 100\% of the time, pass-by-value}. Understanding what this truly means is the key to correctly predicting the outcome of many exam questions.
+
+What ``pass-by-value'' means is that when you pass a variable to a method, a \textbf{copy} of the variable's value is made, and that copy is what the method receives.
+The confusion arises because the ``value'' of a primitive is different from the ``value'' of an object reference.
+
+\section{Passing Primitive Types}
+This is the simple case. The value of a primitive variable is the data itself.
+When you pass a primitive (like an \texttt{int}, \texttt{double}, or \texttt{boolean}) to a method, a copy of its literal value is passed.
+
+\begin{itemize}
+    \item Any changes made to the parameter inside the method have \textbf{no effect} on the original variable in the calling code.
+    \item The method works on its own private copy.
+\end{itemize}
+
+\textbf{Example:}
+\begin{verbatim}
+public class PrimitiveTester {
+    public static void main(String[] args) {
+        int myNumber = 10;
+        System.out.println("Before call, myNumber is: " + myNumber);
+        tryToModify(myNumber);
+        System.out.println("After call, myNumber is: " + myNumber);
+    }
+
+    public static void tryToModify(int numberParam) {
+        // numberParam is a COPY of myNumber's value (10)
+        numberParam = 20; // This only changes the copy
+        System.out.println("Inside method, parameter is: " + numberParam);
+    }
+}
+\end{verbatim}
+
+\textbf{Output:}
+\begin{verbatim}
+Before call, myNumber is: 10
+Inside method, parameter is: 20
+After call, myNumber is: 10
+\end{verbatim}
+
+\section{Passing Object References}
+This is where the confusion begins. Let's be precise. The ``value'' of a reference variable is \textbf{not the object itself}, but the \textbf{memory address} where the object is stored on the heap. 
+
+So, when you pass an object to a method, you are passing a \textbf{copy of the memory address}.
+
+This means that both the original reference variable (in the caller) and the method's parameter now hold identical copies of a memory address. They both \textit{point to the same single object on the heap}.
+
+This has two critical implications:
+
+\subsection{Case 1: Modifying the Object's State (The Insides)}
+Because the method parameter points to the \textit{same object}, if you use that reference to change the object's internal state (e.g., by calling a setter method or modifying a public field), the changes \textbf{will be visible} outside the method. There is only one object, and you just modified it.
+
+\textbf{Example:}
+\begin{verbatim}
+public class ReferenceTester {
+    public static void main(String[] args) {
+        StringBuilder name = new StringBuilder("Alice");
+        System.out.println("Before call, name is: " + name);
+        modifyState(name);
+        System.out.println("After call, name is: " + name);
+    }
+
+    public static void modifyState(StringBuilder builderParam) {
+        // builderParam is a COPY of the reference, pointing to the SAME object
+        builderParam.append(" in Wonderland");
+    }
+}
+\end{verbatim}
+\textbf{Output:}
+\begin{verbatim}
+Before call, name is: Alice
+After call, name is: Alice in Wonderland
+\end{verbatim}
+
+\subsection{Case 2: Reassigning the Reference Itself (The Pointer)}
+What if, inside the method, you try to reassign the parameter to a \texttt{new} object? Remember, the method only has a \textit{copy} of the reference. Reassigning the parameter only changes this local copy. It does \textbf{not} change the original reference variable in the calling code.
+
+\textbf{Example:}
+\begin{verbatim}
+public class ReferenceTester {
+    public static void main(String[] args) {
+        StringBuilder name = new StringBuilder("Bob");
+        System.out.println("Before call, name is: " + name);
+        reassignReference(name);
+        System.out.println("After call, name is: " + name);
+    }
+
+    public static void reassignReference(StringBuilder builderParam) {
+        // This changes the method's local copy 'builderParam' to point
+        // to a brand new object. The original 'name' reference is unaffected.
+        builderParam = new StringBuilder("Charlie");
+    }
+}
+\end{verbatim}
+\textbf{Output:}
+\begin{verbatim}
+Before call, name is: Bob
+After call, name is: Bob
+\end{verbatim}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item Java is \textbf{always pass-by-value}. No exceptions.
+    \item For primitives, a \textbf{copy of the value} is passed. Changes inside the method are isolated.
+    \item For objects, a \textbf{copy of the reference (memory address)} is passed.
+    \item This allows a method to \textbf{change the state} of the object that was passed in.
+    \item This does \textbf{NOT} allow a method to make the original variable refer to a different object.
+    \item To ace these questions, ask yourself: Is the code changing the object's internal data, or is it trying to reassign the reference variable itself?
+\end{itemize}
+\end{enumerate}
+
+\end{document}

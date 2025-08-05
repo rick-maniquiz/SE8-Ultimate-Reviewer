@@ -1,0 +1,122 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{String Immutability and Operations}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1013 \\ Topic: String Immutability and Operations}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{The Golden Rule: Strings are Immutable}
+If there is one thing you must burn into your memory for the 1Z0-808 exam, it's this: \textbf{Objects of the \texttt{String} class are immutable}. This means that once a \texttt{String} object is created, its internal state (the sequence of characters) cannot be changed. Ever.
+
+Many students get tripped up by this. They see code like \texttt{myString.toUpperCase();} and assume it changes \texttt{myString}. It does not. Any method that appears to modify a \texttt{String} will always \textbf{return a new \texttt{String} object} containing the modification. The original string is left untouched.
+
+\subsection*{A Classic Exam Trap}
+Analyze this code snippet. What does it print?
+\begin{verbatim}
+String name = "Java";
+name.concat(" SE 8"); // This returns a new String, which is ignored.
+name.toUpperCase();   // This also returns a new String, which is ignored.
+System.out.println(name);
+\end{verbatim}
+The output is simply \textbf{Java}. The original \texttt{name} object was never reassigned. To make the changes stick, you must reassign the reference:
+\begin{verbatim}
+String name = "Java";
+name = name.concat(" SE 8"); // name now refers to "Java SE 8"
+name = name.toUpperCase();   // name now refers to "JAVA SE 8"
+System.out.println(name); // Prints: JAVA SE 8
+\end{verbatim}
+
+\section{The String Constant Pool}
+To save memory, the JVM maintains a special area called the String Constant Pool. 
+\begin{itemize}
+    \item \textbf{String Literals:} When you create a string with a literal like \texttt{String s1 = "hello";}, the JVM looks for the string "hello" in the pool. If found, it returns a reference to the existing object. If not, it creates a new \texttt{String} object in the pool and returns a reference to it.
+    \item \textbf{\texttt{new} Keyword:} When you use \texttt{String s2 = new String("hello");}, you are explicitly telling the JVM: "\textit{Create a brand new object in the heap memory, regardless of what's in the pool.}" 
+\end{itemize}
+
+This distinction is critical for understanding the difference between \texttt{==} and \texttt{.equals()}.
+
+\subsection*{\texttt{==} vs. \texttt{.equals()}}
+\begin{verbatim}
+String s1 = "Test"; // Goes into the pool
+String s2 = "Test"; // Reuses the object from the pool
+String s3 = new String("Test"); // Creates a new object in the heap
+
+System.out.println(s1 == s2);      // true: s1 and s2 refer to the same object in the pool
+System.out.println(s1 == s3);      // false: s1 is in the pool, s3 is in the heap
+System.out.println(s1.equals(s3)); // true: their character sequences are identical
+\end{verbatim}
+\begin{itemize}
+    \item \texttt{==}: Compares object references. It checks if two variables point to the exact same object in memory.
+    \item \texttt{.equals()}: Compares the actual character sequences. For Strings, this is almost always what you want.
+\end{itemize}
+
+\section{Essential String Methods}
+You must be familiar with the common \texttt{String} API methods. Remember, they all return a new string!
+\begin{itemize}
+    \item \texttt{int length()}: Returns the number of characters.
+    \item \texttt{char charAt(int index)}: Returns the character at a given index (0-based). Can throw \texttt{StringIndexOutOfBoundsException}.
+    \item \texttt{String substring(int beginIndex, int endIndex)}: Extracts a portion of the string. The character at \texttt{beginIndex} is included, but the character at \texttt{endIndex} is \textbf{excluded}. Forgetting this is a common mistake.
+    \item \texttt{String toLowerCase()} / \texttt{String toUpperCase()}: Returns a new string with the case changed.
+    \item \texttt{boolean equalsIgnoreCase(String anotherString)}: Compares two strings, ignoring case differences.
+    \item \texttt{boolean startsWith(String prefix)} / \texttt{boolean endsWith(String suffix)}: Checks for prefix or suffix.
+    \item \texttt{String replace(char oldChar, char newChar)}: Replaces all occurrences of a character.
+    \item \texttt{String trim()}: Returns a new string with leading and trailing whitespace removed. It does not affect whitespace in the middle of the string.
+\end{itemize}
+
+\section{String Concatenation: \texttt{+} vs. \texttt{concat()}}
+There are two primary ways to join strings, and the exam tests their subtle differences.
+\begin{itemize}
+    \item \textbf{The \texttt{+} Operator:} This is the most common way. The Java compiler is smart and often optimizes this by using \texttt{StringBuilder} behind the scenes. Its most important rule is that if \textit{any} operand in a `+` expression is a `String`, all other operands are converted to strings. Pay close attention to the order of operations.
+    \begin{verbatim}
+// Numbers are added first, then converted to String
+System.out.println(1 + 2 + "a"); // Prints "3a"
+
+// "a" makes the whole expression a String concatenation
+System.out.println("a" + 1 + 2); // Prints "a12"
+    \end{verbatim}
+    \item \textbf{The \texttt{concat()} Method:} This method is stricter. It only accepts a \texttt{String} as an argument and is called on a \texttt{String} object. A key difference tested on the exam is handling of \texttt{null}.
+    \begin{verbatim}
+String s = "x";
+System.out.println(s + null); // Prints "xnull"
+
+s.concat(null); // Throws a NullPointerException
+    \end{verbatim}
+\end{itemize}
+
+\section{Mutable Alternatives: \texttt{StringBuilder} and \texttt{StringBuffer}}
+When you need to perform many string modifications (e.g., building a string in a loop), using immutable \texttt{String}s is very inefficient, as it creates a new object for every change. For these scenarios, use a mutable alternative:
+\begin{itemize}
+    \item \texttt{StringBuilder}: The \textbf{preferred} choice for mutable strings. It is fast because its methods are not synchronized. Use it when you are in a single-threaded context (which is most of the time).
+    \item \texttt{StringBuffer}: An older, thread-safe version. All its modification methods (like \texttt{append}, \texttt{insert}, \texttt{delete}) are \texttt{synchronized}. This makes it slower, and it should only be used if you need to modify a string from multiple threads.
+\end{itemize}
+For the exam, remember: \textbf{StringBuilder is fast and not thread-safe; StringBuffer is slow and thread-safe}.
+
+\section{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{Immutability First:} Always think, "This method returns a NEW string." Don't fall for code that seems to modify a string in place.
+    \item \textbf{Pool vs. Heap:} Understand \texttt{"literal"} vs. \texttt{new String("literal")} and its implication for the \texttt{==} operator.
+    \item \textbf{Concatenation Rules:} Know the order of operations for the \texttt{+} operator and the difference in \texttt{null} handling between \texttt{+} and \texttt{concat()}.
+    \item \textbf{Mutable Means \texttt{StringBuilder}:} If the question involves building a string through multiple modifications, the efficient answer is \texttt{StringBuilder}.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

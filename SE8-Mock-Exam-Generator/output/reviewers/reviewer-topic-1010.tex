@@ -1,0 +1,104 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Looping Constructs (for, while, do-while)}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1010 \\ Topic: Looping Constructs (for, while, do-while)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Topic 1010: Looping Constructs (for, while, do-while)}
+
+\subsection*{Thinking Like the Compiler: Controlling Repetition}
+Loops are the workhorses of programming, designed to execute a block of code repeatedly. The 1Z0-808 exam won't just ask you to write a simple loop. It will test your understanding of their precise execution order, termination conditions, variable scope, and the subtle differences between each type. Questions often involve infinite loops or loops with unusual syntax—code a developer might not write, but which is perfectly valid for the compiler.
+
+\subsection*{The \texttt{while} Loop}
+This is the simplest form of loop. It repeats a block of code as long as a condition is true.
+
+\textbf{Syntax:} \texttt{while (booleanExpression) \{ ... \}}
+\begin{itemize}
+    \item \textbf{Execution Flow:} The \texttt{booleanExpression} is evaluated \textit{before} each iteration. If it's false to begin with, the loop body is never executed.
+    \item \textbf{Exam Trap (Infinite Loop):} If the condition never becomes false, you have an infinite loop. The exam will test this by presenting loops where the update logic is flawed or missing.
+    \item \textbf{Exam Trap (Unreachable Code):} A condition that is a compile-time constant \texttt{false} will cause a compile error because the loop body is unreachable. E.g., \texttt{while(false) \{...\}}
+\end{itemize}
+
+\subsection*{The \texttt{do-while} Loop}
+This is a variation of the \texttt{while} loop where the condition is checked at the end.
+
+\textbf{Syntax:} \texttt{do \{ ... \} while (booleanExpression);}
+\begin{itemize}
+    \item \textbf{Execution Flow:} The loop body executes once, \textit{then} the \texttt{booleanExpression} is evaluated. This guarantees the body runs \textbf{at least one time}.
+    \item \textbf{Exam Trap (The Semicolon):} A \texttt{do-while} loop must end with a semicolon. Forgetting it is a compile error, and a likely trick question.
+\end{itemize}
+
+\begin{verbatim}
+// Example: while vs. do-while
+int x = 10;
+while (x < 10) { System.out.println("while loop"); } // Prints nothing
+
+do {
+    System.out.println("do-while loop"); // Prints "do-while loop" once
+} while (x < 10);
+\end{verbatim}
+
+\subsection*{The Basic \texttt{for} Loop}
+The most structured loop, with three distinct parts in its declaration.
+
+\textbf{Syntax:} \texttt{for (initialization; condition; update) \{ ... \}}
+\begin{itemize}
+    \item \textbf{Initialization:} Executes \textbf{once} when the loop starts. You can declare variables here; their scope is limited to the loop itself.
+    \item \textbf{Condition:} A boolean expression evaluated \textbf{before} each iteration. The loop continues as long as this is true.
+    \item \textbf{Update:} Executed \textbf{at the end} of each iteration, after the body runs.
+\end{itemize}
+
+\subsubsection*{Exam Traps for Basic \texttt{for} Loops}
+\begin{itemize}
+    \item \textbf{Optional Parts:} All three sections are optional. \texttt{for( ; ; ) \{...\}} is a valid, infinite loop.
+    \item \textbf{Multiple Statements:} The initialization and update sections can contain multiple statements, separated by commas.
+    \begin{verbatim}
+for (int i=0, j=5; i < j; i++, j--) {
+    System.out.println(i + " " + j);
+}
+    \end{verbatim}
+    \item \textbf{Variable Scope:} A variable declared in the initialization section cannot be accessed after the loop.
+    \begin{verbatim}
+for (int k = 0; k < 3; k++) { ... } 
+// System.out.println(k); // COMPILE ERROR: cannot find symbol 'k'
+    \end{verbatim}
+\end{itemize}
+
+\subsection*{The Enhanced \texttt{for} Loop (For-Each)}
+This provides a simpler syntax for iterating through all elements of an array or a collection.
+
+\textbf{Syntax:} \texttt{for (Type var : iterableCollectionOrArray) \{ ... \}}
+\begin{itemize}
+    \item \textbf{Exam Trap (Variable is a Copy):} For each iteration, the loop variable \texttt{var} gets a copy of the element. If you reassign the loop variable itself, it has no effect on the original array or collection. However, you \textit{can} call methods on an object reference to change its state.
+    \begin{verbatim}
+StringBuilder[] names = { new StringBuilder("A"), new StringBuilder("B") };
+for (StringBuilder name : names) {
+    name.append("X"); // This WORKS, modifies the object in the array
+    name = new StringBuilder(); // This has NO effect on the array itself
+}
+// After loop, names array contains ["AX", "BX"]
+    \end{verbatim}
+\end{itemize}
+\end{enumerate}
+
+\end{document}

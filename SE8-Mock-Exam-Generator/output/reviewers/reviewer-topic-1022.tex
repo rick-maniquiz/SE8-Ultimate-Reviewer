@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Abstract Classes and Interfaces}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1022 \\ Topic: Abstract Classes and Interfaces}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Abstraction: Hiding the Details}
+Alright team, let's talk about Abstraction. This is the OOP principle of hiding complex implementation details and showing only the necessary features of an object. In Java, we achieve this primarily through two tools: Abstract Classes and Interfaces. The exam will expect you to know exactly when and why to use each, especially with the changes introduced in Java 8.
+
+\subsection{Abstract Classes: The Partial Blueprint}
+An abstract class is a class that cannot be instantiated. Think of it as an incomplete template that provides common features for a group of subclasses.
+\begin{itemize}
+    \item It's declared with the \texttt{abstract} keyword.
+    \item It can contain both \textbf{abstract methods} (methods without a body, ending in a semicolon) and \textbf{concrete methods} (regular methods with a body).
+    \item If a class contains even one abstract method, the class itself \textit{must} be declared abstract.
+    \item It can have instance variables, static variables, and constructors. The constructors are called by subclasses using \texttt{super()}.
+    \item A concrete class that \texttt{extends} an abstract class \textbf{must} provide an implementation for all inherited abstract methods.
+\end{itemize}
+\begin{verbatim}
+public abstract class Vehicle {
+    private int speed;
+    public Vehicle() { this.speed = 0; }
+    public abstract void startEngine(); // Abstract method - no body
+    public void stop() { // Concrete method
+        System.out.println("Vehicle stopped.");
+    }
+}
+public class Car extends Vehicle {
+    @Override
+    public void startEngine() { // Must implement this
+        System.out.println("Car engine started.");
+    }
+}
+\end{verbatim}
+
+\subsection{Interfaces: The Pure Contract}
+An interface is a reference type that is a collection of abstract methods and constants. It defines a "contract" of behaviors that a class must adhere to if it \texttt{implements} the interface.
+\begin{itemize}
+    \item A class can \textbf{implement multiple interfaces}, which is how Java achieves a form of multiple inheritance (of type/behavior).
+    \item Before Java 8, all methods were implicitly \texttt{public abstract}.
+    \item All variables are implicitly \texttt{public static final} (they are constants).
+\end{itemize}
+
+\subsection{Java 8 Interfaces: A Game Changer}
+The 1Z0-808 exam will definitely test you on the new features added to interfaces in Java 8.
+\begin{itemize}
+    \item \textbf{\texttt{default} Methods:} These are methods with a concrete implementation directly in the interface. They allow you to add new methods to an interface without breaking existing implementing classes. A class can override a default method if it needs to.
+    \item \textbf{\texttt{static} Methods:} These are also methods with implementation, but they belong to the interface itself, not to the implementing class. You must call them using the interface name, e.g., \texttt{MyInterface.myStaticMethod()}.
+\end{itemize}
+\begin{verbatim}
+public interface Flyable {
+    String PLANET = "Earth"; // public static final
+    void fly(); // public abstract
+    default void land() { // default method
+        System.out.println("Landing on " + PLANET);
+    }
+    static int getAltitude() { // static method
+        return 10000;
+    }
+}
+\end{verbatim}
+
+\subsection*{Abstract Class vs. Interface: The Showdown}
+Memorize this table. It's a goldmine for exam questions.
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Feature} & \textbf{Abstract Class} & \textbf{Interface} \\
+\hline
+Multiple Inheritance & No (extends one class) & Yes (implements many) \\
+\hline
+Variables & Instance & static & final & public static final only \\
+\hline
+Constructors & Yes & No \\
+\hline
+Methods & Abstract & concrete & Abstract, default, static \\
+\hline
+Usage & To share common code & To define a contract/type \\
+\hline
+\end{tabular}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item You cannot create an instance of an abstract class or an interface.
+    \item A concrete class must implement all abstract methods from its superclass and interfaces.
+    \item Know the Java 8 interface changes: \texttt{default} and \texttt{static} methods are fair game.
+    \item Choose an abstract class when you want to share code among closely related classes. Choose an interface when you want to define a role that disparate classes can play.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

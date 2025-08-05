@@ -1,0 +1,140 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Classes and Objects Fundamentals}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1015 \\ Topic: Classes and Objects Fundamentals}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{The Foundation of OOP: Classes and Objects}
+Welcome to the heart of Java. Everything we do from this point on is built on the concepts of Object-Oriented Programming (OOP). To master Java, you must think in terms of objects. As my colleague said, the exam tests your deep understanding, and it all starts here.
+
+Let's use a simple, powerful analogy:
+\begin{itemize}
+    \item A \textbf{Class} is a \textit{blueprint}. It defines the properties (state) and behaviors that all objects of that type will have. Think of the architectural drawings for a car.
+    \item An \textbf{Object} is an \textit{instance} of a class. It is a concrete entity created from the blueprint. It's the actual car that you can drive, which was built from the plans.
+\end{itemize}
+From one class (blueprint), you can create many objects (instances).
+
+\section{Defining a Class}
+A class definition consists of members, which are primarily fields and methods.
+\begin{itemize}
+    \item \textbf{Fields (Instance Variables):} These variables define the \textbf{state} of an object. Each object created from the class has its own distinct copy of these fields. 
+    \item \textbf{Methods:} These functions define the \textbf{behavior} of an object. They operate on the object's fields to perform actions.
+\end{itemize}
+
+\begin{verbatim}
+// This is the blueprint for a Dog object.
+public class Dog {
+    // Fields (State)
+    String name;
+    String breed;
+    int age;
+
+    // Method (Behavior)
+    void bark() {
+        System.out.println(name + " says: Woof!");
+    }
+}
+\end{verbatim}
+
+\section{Creating and Using an Object}
+Creating an object is called \textbf{instantiation}. This is done using the \texttt{new} keyword, which does two things: allocates memory for the new object and calls its constructor to initialize it.
+
+\begin{verbatim}
+public class PetStore {
+    public static void main(String[] args) {
+        // 1. Declaration: 'myDog' is a reference variable that can point to a Dog object.
+        Dog myDog;
+
+        // 2. Instantiation & Initialization: Create a new Dog object and assign it to myDog.
+        myDog = new Dog();
+
+        // You can access members (fields and methods) using the dot (.) operator.
+        myDog.name = "Buddy";
+        myDog.age = 3;
+
+        // Call the object's method
+        myDog.bark(); // Output: Buddy says: Woof!
+
+        // Create another, separate object
+        Dog anotherDog = new Dog();
+        anotherDog.name = "Lucy";
+        anotherDog.bark(); // Output: Lucy says: Woof!
+    }
+}
+\end{verbatim}
+
+\section{Constructors: Initializing Your Objects}
+A constructor is a special block of code that is called when an object is created. Its primary job is to initialize the object's state.
+
+\subsection*{Rules for Constructors}
+\begin{itemize}
+    \item A constructor's name must be \textbf{exactly the same} as the class name.
+    \item A constructor has \textbf{no return type}, not even \texttt{void}.
+\end{itemize}
+
+\subsection*{The Default Constructor}
+If you do not define any constructor in your class, the Java compiler provides one for you automatically. This is the \textbf{default constructor}. It takes no arguments and initializes instance variables to their default values (e.g., \texttt{0} for \texttt{int}, \texttt{null} for objects like \texttt{String}, \texttt{false} for \texttt{boolean}). This is a very common exam topic.
+
+\subsection*{Custom Constructors and the \texttt{this} Keyword}
+You can write your own constructors to provide specific initial values. When a parameter name is the same as a field name, you use the \texttt{this} keyword to refer to the \textit{current object's field}.
+\begin{verbatim}
+public class Dog {
+    String name;
+    String breed;
+
+    // A constructor to initialize the Dog object.
+    public Dog(String name, String breed) {
+        // 'this.name' refers to the instance field.
+        // 'name' refers to the method parameter.
+        this.name = name;
+        this.breed = breed;
+    }
+
+    void bark() { ... }
+}
+
+// Usage:
+Dog d1 = new Dog("Rex", "German Shepherd");
+\end{verbatim}
+Once you define ANY constructor (even one with arguments), the compiler \textbf{no longer provides the default no-argument constructor}. If you still need a no-arg constructor, you must define it yourself.
+
+\section{Setting the Stage for the Four Pillars of OOP}
+This fundamental concept of classes and objects is the launchpad for the four pillars of OOP. You don't need to master them yet, but you must know what they are and how they relate to classes.
+\begin{itemize}
+    \item \textbf{Encapsulation:} Bundling data (fields) and methods together. We protect data by making fields \texttt{private} and providing \texttt{public} methods (getters/setters) to access them. This hides internal complexity.
+    \item \textbf{Inheritance:} Creating a new class (e.g., \texttt{GoldenRetriever}) from an existing one (\texttt{Dog}). The new class inherits the fields and methods, promoting code reuse.
+    \item \textbf{Polymorphism:} An object's ability to be treated as an instance of its parent class. A \texttt{GoldenRetriever} object is also a \texttt{Dog} object.
+    \item \textbf{Abstraction:} Hiding implementation details and exposing only the necessary functionality, often through \texttt{abstract} classes and \texttt{interfaces}.
+\end{itemize}
+
+\section{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{Distinguish Class and Object:} A class is a template; an object is a runtime instance.
+    \item \textbf{Default Values:} Know the default initialization values for instance variables (\texttt{0}, \texttt{false}, \texttt{null}). A question might show code that reads an uninitialized field, and you need to know what value it holds.
+    \item \textbf{Constructors:} Memorize the rules. Remember that defining any constructor removes the default one.
+    \item \textbf{The \texttt{new} keyword} is for creating objects.
+    \item \textbf{The \texttt{this} keyword} is a reference to the current object instance.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

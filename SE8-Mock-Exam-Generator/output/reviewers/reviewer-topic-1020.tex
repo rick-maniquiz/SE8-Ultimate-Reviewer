@@ -1,0 +1,136 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Inheritance and Method Overriding}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1020 \\ Topic: Inheritance and Method Overriding}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Inheritance: The ``is-a'' Relationship}
+Welcome back. Today we're tackling Inheritance, one of the four main pillars of Object-Oriented Programming. For the 1Z0-808 exam, this isn't just theory---it's a minefield of tricky questions related to constructors, access rules, and method signatures. Pay close attention. Inheritance models an ``is-a'' relationship. A \texttt{Dog} is-an \texttt{Animal}. This allows us to reuse code and create a logical hierarchy, but the compiler enforces strict rules.
+
+\subsection{The \texttt{extends} Keyword and Code Reusability}
+We use the \texttt{extends} keyword to create a subclass (or child class) from a superclass (or parent class). The subclass inherits all \texttt{public} and \texttt{protected} members (fields and methods) from its superclass.
+\begin{verbatim}
+// Superclass
+public class Animal {
+    String name;
+    public void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+// Subclass
+public class Dog extends Animal {
+    public void bark() {
+        System.out.println("Woof!");
+    }
+}
+\end{verbatim}
+Here, a \texttt{Dog} object can call both \texttt{bark()} and the inherited \texttt{eat()} method. \textbf{Exam Trap:} Java does not support multiple inheritance for classes. A class can only \texttt{extends} one other class. 
+
+\subsection{Constructor Chaining: The First Rule of Subclassing}
+This is one of the most tested areas of inheritance. The rule is simple: \textbf{A constructor's very first action must be to call another constructor}. It can be a call to another constructor in the same class using \texttt{this()} or a call to a superclass constructor using \texttt{super()}.
+\begin{itemize}
+    \item \textbf{Implicit Call:} If you do NOT provide an explicit call to \texttt{super()} or \texttt{this()}, the compiler will automatically insert a no-argument \texttt{super();} call for you.
+    \item \textbf{Compile Error Trap:} If the superclass does \textit{not} have a no-argument constructor (e.g., it only has a constructor that takes parameters), and you fail to explicitly call that constructor with the required arguments from the subclass constructor, your code will \textbf{fail to compile}.
+\end{itemize}
+\textbf{Example of a Compile Error:}
+\begin{verbatim}
+class Vehicle {
+    String type;
+    // No-argument constructor is NOT present.
+    public Vehicle(String type) {
+        this.type = type;
+    }
+}
+class Car extends Vehicle {
+    // This constructor implicitly tries to call super()
+    // but Vehicle() does not exist!
+    public Car() { // COMPILE ERROR!
+        System.out.println("Car created");
+    }
+}
+\end{verbatim}
+\textbf{Correct Implementation:}
+\begin{verbatim}
+class Car extends Vehicle {
+    public Car() {
+        super("Sedan"); // Explicitly call the parent constructor
+        System.out.println("Car created");
+    }
+}
+\end{verbatim}
+
+\subsection{Method Overriding: Changing Behavior}
+Overriding allows a subclass to provide its own implementation of a method inherited from its superclass. To correctly override a method, you must follow these rules precisely. The exam will test every single one.
+\begin{itemize}
+    \item \textbf{Method Signature:} Must be identical (same name, same number and type of parameters).
+    \item \textbf{Return Type:} Must be the same or a \textbf{covariant return type}. A covariant return is a subtype of the original return type.
+\begin{verbatim}
+// Superclass
+class Shape {
+    public Object getInfo() { return new Object(); }
+}
+// Subclass with covariant return (String is a subtype of Object)
+class Circle extends Shape {
+    @Override
+    public String getInfo() { return "A circle"; } // VALID
+}
+\end{verbatim}
+    \item \textbf{Access Modifier:} Cannot be more restrictive. The visibility must be the same or wider. (\texttt{public} > \texttt{protected} > \texttt{default} > \texttt{private})
+    \item \textbf{Exceptions:} May throw fewer or narrower checked exceptions (subclasses of the original exception). Cannot throw new or broader checked exceptions.
+    \item \textbf{\texttt{final} Methods:} Cannot be overridden.
+    \item \textbf{\texttt{static} Methods:} Cannot be overridden. This is called \textbf{method hiding}. The subclass method just hides the parent one. We will explore this more with Polymorphism.
+    \item \textbf{\texttt{private} Methods:} Cannot be overridden because they are not visible to the subclass.
+\end{itemize}
+The \texttt{@Override} annotation is your friend. It asks the compiler to check if you've correctly followed the rules. If not, you get a compile error. The exam may show code without it to trick you.
+
+\subsection{The \texttt{super} Keyword: Accessing Parent Members}
+The \texttt{super} keyword is a reference to the immediate parent class object.
+\begin{itemize}
+    \item \texttt{super()}: Calls the parent class constructor (as we saw).
+    \item \texttt{super.methodName()}: Calls the parent's version of an overridden method.
+    \item \texttt{super.fieldName}: Accesses a parent's field, especially useful if the subclass has a field with the same name (hiding).
+\end{itemize}
+\begin{verbatim}
+class Employee {
+    String getDetails() { return "Employee"; }
+}
+class Manager extends Employee {
+    @Override
+    String getDetails() {
+        return "Manager, " + super.getDetails(); // Calls Employee's getDetails()
+    }
+}
+\end{verbatim}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{Constructor Chaining is King:} Always check if a superclass has a no-arg constructor if you see a subclass that doesn't explicitly call \texttt{super(...)}.
+    \item \textbf{Memorize Override Rules:} Access modifiers, return types (covariant!), and exceptions are common traps.
+    \item \textbf{Static vs. Final:} \texttt{final} methods cannot be overridden. \texttt{static} methods cannot be overridden (they are hidden).
+    \item \textbf{The \texttt{super} keyword:} Know its two primary uses: calling parent constructors and calling parent members.
+\end{itemize}
+Master these rules. The exam will give you code that looks plausible but violates one of these principles. Your job is to be the compiler and spot the error.
+\end{enumerate}
+
+\end{document}

@@ -1,8 +1,5 @@
-package org.example.exammodels;
+package org.example.utils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.File;
 import java.io.IOException;
 
 public interface Savable {

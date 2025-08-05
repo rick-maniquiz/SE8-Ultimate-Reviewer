@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Garbage Collection and Object Lifecycle}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1018 \\ Topic: Garbage Collection and Object Lifecycle}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Java's Automatic Memory Management}
+Alright team, let's discuss one of Java's most celebrated features: automatic garbage collection. In languages like C++, you are responsible for manually allocating and deallocating memory. Forgetting to free memory leads to memory leaks; freeing it too early leads to crashes. Java saves us from this headache with its Garbage Collector (GC).
+
+The GC is a low-priority background process in the JVM that automatically identifies and reclaims memory from objects that are no longer in use. For the 1Z0-808 exam, you don't need to know the complex algorithms behind the GC. Your job is to know the answer to one critical question: \textbf{When does an object become eligible for garbage collection?}
+
+\section{Object Reachability: The Key to Eligibility}
+The entire concept boils down to \textit{reachability}. The JVM considers certain variables as "GC Roots"—these are special variables that are assumed to be reachable, such as local variables on the current thread's stack and static variables.
+\begin{itemize}
+    \item \textbf{Reachable Object:} An object is considered "alive" if the GC can trace a path of references to it, starting from any GC Root.
+    \item \textbf{Unreachable Object:} An object becomes \textbf{eligible for garbage collection} when it is no longer reachable. That is, there are no more reference paths from any GC Root to the object.
+\end{itemize}
+
+\subsection*{How an Object Becomes Unreachable}
+The exam will test your ability to spot when an object's last reference is lost. Here are the common scenarios:
+
+\begin{enumerate}
+    \item \textbf{Nullifying a Reference:} Explicitly setting a reference variable to \texttt{null} breaks the link to the object.
+    \begin{verbatim}
+String s = new String("Hello");
+// At this point, the "Hello" object is reachable via 's'.
+s = null; 
+// Now, if 's' was the only reference, the object is eligible for GC.
+    \end{verbatim}
+
+    \item \textbf{Re-assigning a Reference:} Pointing a reference variable to a different object abandons the original object.
+    \begin{verbatim}
+Person p1 = new Person("Alice");
+Person p2 = new Person("Bob");
+p1 = p2; // The object "Alice" is now eligible for GC (if p1 was the only reference).
+    \end{verbatim}
+
+    \item \textbf{Object Goes Out of Scope:} When a method finishes executing, all of its local variables are destroyed. Any objects that were only referenced by those local variables become eligible.
+    \begin{verbatim}
+public void process() {
+    Report r = new Report(); // The Report object is created.
+    r.generate();
+} // When process() ends, 'r' is destroyed. The Report object is now eligible for GC.
+    \end{verbatim}
+
+    \item \textbf{Island of Isolation:} This is a classic exam trap. Two or more objects can reference each other, but if they are not reachable from any GC Root, the entire group (or "island") is eligible for collection.
+    \begin{verbatim}
+class Island { Island i; }
+
+Island i1 = new Island();
+Island i2 = new Island();
+i1.i = i2; // i1 points to i2
+i2.i = i1; // i2 points to i1
+
+i1 = null;
+i2 = null;
+// Even though the two objects still reference each other, they form an
+// unreachable island and are both eligible for GC.
+    \end{verbatim}
+\end{enumerate}
+
+\section{Interacting with the GC}
+You have very limited control over the GC, and the exam loves to test these limits.
+
+\subsection*{\texttt{System.gc()}}
+This static method can be used to \textit{suggest} that the JVM run the garbage collector. 
+
+\textbf{Critical Exam Point:} Calling \texttt{System.gc()} provides \textbf{no guarantee whatsoever}. The JVM may choose to ignore the request entirely. The GC may or may not run, and if it does, there's no telling when. Any exam question that implies a guaranteed, immediate action from \texttt{System.gc()} is a trap.
+
+\subsection*{The \texttt{finalize()} Method}
+The \texttt{Object} class provides a method: \texttt{protected void finalize() throws Throwable}. The GC calls this method on an object just before it reclaims its memory.
+
+\textbf{Key Behaviors for the Exam:}
+\begin{itemize}
+    \item \textbf{No Guarantees:} Just like \texttt{System.gc()}, there is no guarantee that \texttt{finalize()} will ever be called for a given object. The program might exit before the object is collected.
+    \item \textbf{Called At Most Once:} The JVM will call \texttt{finalize()} at most one time for any given object.
+    \item \textbf{Resurrection:} An object can "save itself" from collection within its \texttt{finalize()} method by making itself reachable again (e.g., assigning \texttt{this} to a static variable). If it does this, the GC will not collect it in that cycle. If the object later becomes unreachable again, it will be collected \textit{without} \texttt{finalize()} being called a second time.
+    \item \textbf{Modern Practice:} The \texttt{finalize()} method is considered a poor mechanism for resource cleanup. Modern Java strongly prefers using \texttt{try-with-resources} statements for managing resources like files and network connections.
+\end{itemize}
+
+\section{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item An object is eligible for GC when it becomes \textbf{unreachable}.
+    \item Be able to spot the four main ways an object becomes unreachable.
+    \item \texttt{System.gc()} is only a \textbf{suggestion}.
+    \item \texttt{finalize()} is \textbf{not guaranteed to run} and runs \textbf{at most once}.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

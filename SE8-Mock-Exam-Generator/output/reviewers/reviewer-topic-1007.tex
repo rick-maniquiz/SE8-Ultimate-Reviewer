@@ -1,0 +1,137 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Variable Scope and Lifetime}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1007 \\ Topic: Variable Scope and Lifetime}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Topic 1007: Variable Scope and Lifetime}
+
+\subsection*{Thinking Like the Compiler: Where Variables Live and Die}
+Not all variables are created equal. Where you declare a variable determines where it can be used (its scope) and how long it exists in memory (its lifetime). The compiler is extremely strict about scope rules. Many exam questions are designed to look correct at a glance but contain a subtle scope violation that causes a compile error. Your job is to spot it.
+
+\subsection*{The Three Scopes of Data}
+Java has three primary types of variables based on where they are declared.
+
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Variable Type} & \textbf{Where Declared} & \textbf{Scope (Visibility)} & \textbf{Lifetime} \\
+\hline
+\textbf{Local} & Inside a method/block & From declaration to end of block & Lives on the \textbf{stack}; exists only while the block executes \\
+\hline
+\textbf{Instance} & Inside a class, outside methods & Throughout the class & Lives on the \textbf{heap}; tied to the object's life \\
+\hline
+\textbf{Static} & Inside a class, with \texttt{static} & Throughout the class & Lives in heap/metaspace; tied to the class's life \\
+\hline
+\end{tabular}
+
+\subsection*{1. Local Variables}
+These are temporary variables that exist only within the block of code where they are declared.
+\begin{itemize}
+\item \textbf{No Default Values:} This is the single most important rule. A local variable \textbf{must be initialized} before it is used. The compiler will stop you if you don't.
+\item \textbf{Scope:} A local variable's scope starts at the line it is declared and ends when its enclosing curly brace \texttt{\}} is reached. 
+\end{itemize}
+\begin{verbatim}
+public void calculate() {
+    int sum; // Declared, but not initialized
+    // System.out.println(sum); // COMPILE ERROR: variable sum might not have been initialized
+    
+    sum = 0; // Initialization
+    System.out.println(sum); // OK now
+    
+    for (int i = 0; i < 5; i++) {
+        int temp = i * 2; // 'temp' is local to the for loop block
+        System.out.println(temp);
+    }
+    // System.out.println(temp); // COMPILE ERROR: cannot find symbol 'temp'
+}
+\end{verbatim}
+
+\subsection*{2. Instance Variables (Non-Static Fields)}
+These variables belong to an instance (an object) of a class. Each object gets its own copy.
+\begin{itemize}
+\item \textbf{Default Values:} Instance variables are \textbf{always given a default value} if you don't provide one: \texttt{0} for numbers, \texttt{false} for booleans, \texttt{'\u0000'} for chars, and \texttt{null} for objects.
+\item \textbf{Lifetime:} They are created when an object is instantiated with \texttt{new} and are destroyed when the object is garbage collected.
+\end{itemize}
+
+\subsection*{3. Class Variables (Static Fields)}
+These variables are shared among all instances of a class. There is only one copy, no matter how many objects are created.
+\begin{itemize}
+\item \textbf{Default Values:} Like instance variables, static variables \textbf{always receive a default value}.
+\item \textbf{Lifetime:} They are created when the JVM loads the class and are destroyed when the program ends. They can be accessed using the class name, e.g., \texttt{MyClass.myStaticVar}.
+\end{itemize}
+
+\begin{verbatim}
+public class Counter {
+    int instanceCount = 0; // Instance variable, gets default value 0
+    static int staticCount = 0; // Static variable, gets default value 0
+
+    public Counter() {
+        instanceCount++;
+        staticCount++;
+    }
+}
+
+// In some other method:
+Counter c1 = new Counter();
+System.out.println(c1.instanceCount); // 1
+System.out.println(Counter.staticCount); // 1
+
+Counter c2 = new Counter();
+System.out.println(c2.instanceCount); // 1 (c2 has its own copy)
+System.out.println(Counter.staticCount); // 2 (staticCount is shared)
+\end{verbatim}
+
+\subsection*{Exam Trap: Variable Shadowing}
+When a local variable has the same name as an instance or static variable, it "shadows" (hides) the field. Within the local scope, the name refers to the local variable.
+
+\begin{verbatim}
+public class ShadowTest {
+    String name = "Instance"; // Instance variable
+
+    public void printName(String name) { // Local variable (parameter)
+        // 'name' here refers to the method parameter
+        System.out.println("Local name: " + name); 
+
+        // To access the shadowed instance variable, use 'this'
+        System.out.println("Instance name: " + this.name);
+    }
+}
+
+// Usage:
+ShadowTest st = new ShadowTest();
+st.printName("Local");
+// Output:
+// Local name: Local
+// Instance name: Instance
+\end{verbatim}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+\item \textbf{Initialization is Key:} Local variables have no default values. Instance and static variables do. The compiler enforces this for local variables.
+\item \textbf{Block Scope:} A variable declared inside any \texttt{\{...\}} block (if, for, while, or just a block) is only alive inside that block.
+\item \textbf{Shadowing:} A local variable beats an instance/static variable with the same name. Use \texttt{this.varName} for the instance variable and \texttt{ClassName.varName} for the static variable.
+\item \textbf{Order Matters:} A variable cannot be referenced before it is declared. This is true even for instance variables in some initialization scenarios, but is a strict rule for local variables.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

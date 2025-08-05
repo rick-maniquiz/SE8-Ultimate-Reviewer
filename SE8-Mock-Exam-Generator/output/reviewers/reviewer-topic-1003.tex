@@ -1,0 +1,121 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Java Coding Conventions and Javadoc}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1003 \\ Topic: Java Coding Conventions and Javadoc}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Professionalism in Code: Conventions and Documentation}
+Writing code that works is only half the battle. Writing code that is readable, maintainable, and understandable by others (including your future self) is what separates an amateur from a professional. The exam won't directly ask you ``Is this good style?'', but it will use these conventions, and understanding them prevents confusion. Furthermore, knowing how comments and Javadoc work can help you spot subtle syntax errors.
+
+\section{Java Coding Conventions}
+These are the widely accepted standards for formatting Java code. While the compiler doesn't enforce most of them, your team and your sanity will thank you for following them.
+
+\subsection{Identifier Naming Conventions}
+This is the most critical convention to know. The exam often uses unconventional (but legal) naming to trip you up.
+\begin{itemize}
+    \item \textbf{Classes & Interfaces:} UpperCamelCase (or PascalCase). Examples: \texttt{String}, \texttt{Runnable}, \texttt{ArrayList}.
+    \item \textbf{Methods & Variables:} lowerCamelCase. Examples: \texttt{toString()}, \texttt{calculatePrice()}, \texttt{userName}, \texttt{itemCount}.
+    \item \textbf{Constants (static final):} All uppercase, with words separated by underscores. Examples: \texttt{Integer.MAX_VALUE}, \texttt{Math.PI}.
+    \item \textbf{Packages:} All lowercase, with levels separated by dots. Examples: \texttt{java.util}, \texttt{java.time.format}.
+\end{itemize}
+
+\textbf{Exam Trap:} The compiler only cares about syntax, not style. All of the following are \textbf{100\% legal and will compile}, but they violate convention. Do not let them throw you off.
+\begin{verbatim}
+public class my_class { // Legal, but bad style
+    void MyMethod() {}   // Legal, but bad style
+    int My_Int = 10;     // Legal, but bad style
+}
+\end{verbatim}
+
+\section{Comments}
+Comments are ignored by the compiler. Their purpose is to explain the \textit{why} behind your code, not the \textit{what}.
+\begin{itemize}
+    \item \textbf{Single-line:} Starts with \texttt{//} and goes to the end of the line.
+    \item \textbf{Multi-line (or Block):} Starts with \texttt{/*} and ends with \texttt{*/}. Can span multiple lines.
+    \item \textbf{Javadoc:} A special multi-line comment that starts with \texttt{/**} and ends with \texttt{*/}. Used by the \texttt{javadoc} tool.
+\end{itemize}
+
+\textbf{Exam Trap:} Multi-line comments \textbf{do not nest}. The first \texttt{*/} encountered will end the comment, which can lead to compilation errors.
+\begin{verbatim}
+/* This is an outer comment.
+   /* This is a nested comment. */  <-- This ends the outer comment!
+   This text here will cause a COMPILE ERROR.
+*/
+\end{verbatim}
+
+\section{Javadoc: Generating API Documentation}
+The Javadoc tool (included in the JDK) parses these special comments to create professional HTML documentation for your code.
+
+\subsection{Structure and Placement}
+A Javadoc comment is placed immediately before the class, interface, method, or field it is describing.
+
+\subsection{Common Block Tags}
+These tags, identified by the \texttt{@} symbol, provide specific information.
+\begin{itemize}
+    \item \texttt{@param parameterName description}: Describes a method's parameter.
+    \item \texttt{@return description}: Describes a method's return value.
+    \item \texttt{@throws ExceptionType description}: Describes an exception that a method may throw.
+    \item \texttt{@since version}: Specifies the version the feature was added (e.g., \texttt{@since 1.2}).
+    \item \texttt{@author name}: Specifies the author.
+    \item \texttt{@version text}: Specifies the version of the class.
+\end{itemize}
+
+\subsection{Example}
+Here is a well-documented method using Javadoc.
+\begin{verbatim}
+/**
+ * Calculates the simple interest for a given principal.
+ * <p>
+ * This method does not handle negative values and assumes
+ * a non-compounding interest calculation.
+ *
+ * @param principal   The initial amount of money. Must be positive.
+ * @param rate        The annual interest rate as a decimal (e.g., 0.05 for 5%).
+ * @param years       The time in years. Must be non-negative.
+ * @return            The calculated simple interest.
+ * @throws IllegalArgumentException if principal or years are negative.
+ */
+public double calculateSimpleInterest(double principal, double rate, int years) {
+    if (principal < 0 || years < 0) {
+        throw new IllegalArgumentException("Inputs must be non-negative.");
+    }
+    return principal * rate * years;
+}
+\end{verbatim}
+
+\subsection{Generating Documentation}
+You use the \texttt{javadoc} command, which works very similarly to \texttt{javac}.
+\begin{verbatim}
+// Generate docs for one file into the 'docs' directory
+javadoc -d docs src/com/mycorp/utils/Calculator.java
+\end{verbatim}
+
+\section{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{Naming Conventions:} Know them cold. UpperCamelCase for types, lowerCamelCase for members, and ALL_CAPS for constants. Don't be fooled by legal-but-unconventional names.
+    \item \textbf{Comment Nesting:} Remember that \texttt{/* ... */} comments do not nest.
+    \item \textbf{Javadoc Syntax:} Recognize Javadoc comments (\texttt{/**...*/}) and know the purpose of the main tags: \texttt{@param}, \texttt{@return}, and \texttt{@throws}.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

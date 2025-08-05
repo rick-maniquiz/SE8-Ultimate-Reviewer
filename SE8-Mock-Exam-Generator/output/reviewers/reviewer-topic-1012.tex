@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Enums}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1012 \\ Topic: Enums}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Introduction to Enums: Type-Safe Constants}
+Alright team, let's talk about \texttt{enum}. Before Java 5, developers often defined constants like this:
+\begin{verbatim}
+public static final int SEASON_WINTER = 0;
+public static final int SEASON_SPRING = 1;
+// etc.
+\end{verbatim}
+This works, but it's not safe. What stops you from passing a value of `5` to a method expecting a season? Nothing. The compiler can't help you. Enums solve this problem by creating a special type that can only hold a fixed set of constant values. They provide compile-time type safety, which is a huge win for robust code. For the 1Z0-808 exam, you need to know not just how to declare them, but also their more advanced features, because that's where the tricky questions lie.
+
+\section{The Basics of Enum Declaration}
+An enum is a special kind of class. The simplest form looks like this:
+\begin{verbatim}
+public enum Season {
+    WINTER, SPRING, SUMMER, FALL
+}
+\end{verbatim}
+Here, \texttt{WINTER}, \texttt{SPRING}, \texttt{SUMMER}, and \texttt{FALL} are not just values; they are instances of the \texttt{Season} enum. They are implicitly \texttt{public}, \texttt{static}, and \texttt{final}. You don't need to, and cannot, instantiate an enum using the \texttt{new} keyword.
+
+\subsection*{Using Enums}
+You use them like any other variable. They are especially powerful in \texttt{switch} statements.
+\begin{verbatim}
+Season currentSeason = Season.SUMMER;
+
+switch (currentSeason) {
+    case WINTER: // Notice: No "Season.WINTER"
+        System.out.println("It's cold!");
+        break;
+    case SUMMER:
+        System.out.println("It's hot!");
+        break;
+    default:
+        System.out.println("It's a moderate season.");
+}
+\end{verbatim}
+
+\textbf{Critical Exam Trap:} Inside a \texttt{switch} statement, you refer to the enum constants directly (e.g., \texttt{WINTER}), not with their qualified name (\texttt{Season.WINTER}). Using the qualified name will cause a compilation error. The exam loves to test this.
+
+\section{Enums with Constructors, Fields, and Methods}
+This is where enums show their power and where the exam gets interesting. An enum can have instance variables, methods, and constructors, just like a regular class.
+
+\begin{verbatim}
+public enum Season {
+    WINTER("Low"),         // Calls constructor with "Low"
+    SPRING("Medium"),
+    SUMMER("High"),
+    FALL("Medium");
+
+    private final String expectedVisitors; // An instance field
+
+    // Constructor - must be private or package-private
+    private Season(String expectedVisitors) {
+        this.expectedVisitors = expectedVisitors;
+    }
+
+    // A regular method
+    public void printExpectedVisitors() {
+        System.out.println(expectedVisitors);
+    }
+}
+
+// Usage:
+Season.SUMMER.printExpectedVisitors(); // Prints "High"
+\end{verbatim}
+
+\subsection*{Key Rules for Enum Constructors}
+\begin{itemize}
+    \item The constructor is called once for each constant at the time the enum class is loaded. You never call it yourself.
+    \item The constructor \textbf{cannot be declared \texttt{public} or \texttt{protected}}. If you don't specify an access modifier, it is implicitly \texttt{private}. The compiler will reject a \texttt{public} constructor.
+    \item The list of enum constants (e.g., \texttt{WINTER("Low")}) \textbf{must} be the first thing declared in the enum body. A semicolon is required after the last constant if there are other members (fields, methods) in the enum.
+\end{itemize}
+
+\section{Essential Enum Methods}
+All enums implicitly extend the abstract class \texttt{java.lang.Enum}, so they inherit its methods. The compiler also adds a few special static methods.
+
+\begin{itemize}
+    \item \texttt{public static Season[] values()}: \\
+    Returns an array containing all of the enum constants in the order they are declared. You can use this for iteration:
+    \begin{verbatim}
+for (Season s : Season.values()) {
+    System.out.println(s);
+}
+    \end{verbatim}
+    \item \texttt{public static Season valueOf(String name)}: \\
+    Returns the enum constant with the specified name. It's case-sensitive. For example, \texttt{Season.valueOf("SUMMER")} returns \texttt{Season.SUMMER}. Passing an invalid name throws an \texttt{IllegalArgumentException}.
+    \item \texttt{public final String name()}: \\
+    Returns the name of the constant exactly as it's declared (e.g., \texttt{Season.WINTER.name()} returns \texttt{"WINTER"}).
+    \item \texttt{public final int ordinal()}: \\
+    Returns the zero-based position of the constant in its declaration. \texttt{Season.WINTER.ordinal()} is 0, \texttt{Season.SPRING.ordinal()} is 1, and so on. While useful for the exam, relying on this in real-world code is fragile, as reordering the constants will change the ordinal values.
+\end{itemize}
+
+\section{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{Comparison:} Use \texttt{==} to compare enum constants. It's safe and fast because each constant is a singleton. \texttt{.equals()} works too, but \texttt{==} is preferred.
+    \item \textbf{Inheritance:} An enum \textbf{cannot extend another class} because it implicitly extends \texttt{java.lang.Enum}. However, an enum \textbf{can implement interfaces}.
+    \item \textbf{Constructors:} They are implicitly \texttt{private} and are called only when the enum is initialized. You cannot invoke them with \texttt{new}.
+    \item \textbf{\texttt{switch} Syntax:} Remember to use the constant name directly (e.g., \texttt{case WINTER;}) inside a switch statement.
+    \item \textbf{Semicolon:} A semicolon is mandatory after the list of enum constants if the enum body contains any other members like methods or fields.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

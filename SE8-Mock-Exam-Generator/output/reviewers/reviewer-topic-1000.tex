@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Java Environment and Fundamentals}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1000 \\ Topic: Java Environment and Fundamentals}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Introduction: Thinking Like the Compiler}
+Welcome, future Java certified professionals! Our journey begins with the absolute fundamentals. As you heard from my colleague, the 1Z0-808 exam isn't just about writing code; it's about deeply understanding the rules of the Java language. Many questions will present code that looks strange but is perfectly valid. Your job is to act like the Java compiler and JVM---to analyze, not just assume. This module lays that critical foundation. Let's master the environment and the core mechanics of a Java program.
+
+\section{The Java Ecosystem: JDK, JRE, and JVM}
+The terms JVM, JRE, and JDK are often used interchangeably, but for the exam, you must know their precise differences.
+
+\subsection{Java Virtual Machine (JVM)}
+The JVM is an \textit{abstract machine}. It's a specification that provides a runtime environment in which Java bytecode can be executed.
+\begin{itemize}
+    \item \textbf{Role:} It loads, verifies, and executes bytecode. It also manages memory (Garbage Collection).
+    \item \textbf{Platform-Dependent:} While your Java code is platform-independent, the JVM itself is not. There are different JVM implementations for Windows, macOS, and Linux.
+    \item \textbf{Core Concept:} This is what enables Java's ``Write Once, Run Anywhere'' (WORA) principle. You compile your code once into universal bytecode, and the specific JVM on any machine knows how to run it.
+\end{itemize}
+
+\subsection{Java Runtime Environment (JRE)}
+The JRE is the \textit{implementation} of the JVM. It provides the minimum requirements for \textbf{running} a Java application.
+\begin{itemize}
+    \item \textbf{Contents:} It contains the JVM, core Java class libraries (like \texttt{java.lang}, \texttt{java.util}), and other supporting files.
+    \item \textbf{Purpose:} If you only want to run a pre-compiled Java program (e.g., a \texttt{.jar} file), you only need the JRE. You cannot compile code with just a JRE.
+\end{itemize}
+
+\subsection{Java Development Kit (JDK)}
+The JDK is a superset of the JRE. It contains everything needed to \textbf{develop}, compile, and run Java applications.
+\begin{itemize}
+    \item \textbf{Contents:} It includes the entire JRE plus development tools. The most important ones for the exam are:
+    \begin{itemize}
+        \item \texttt{javac}: The Java compiler.
+        \item \texttt{java}: The Java launcher (which starts the JVM).
+        \item \texttt{jar}: The archiver, for packaging files.
+        \item \texttt{javadoc}: The documentation generator.
+    \end{itemize}
+\end{itemize}
+
+\textbf{Hierarchical Relationship:} The relationship is simple: \textbf{JDK $\supset$ JRE $\supset$ JVM}.
+You develop with a JDK. You run with a JRE. The JRE uses a JVM.
+
+\section{The Life of a Java Program: From Source to Execution}
+Understanding this two-step process is fundamental.
+
+\begin{enumerate}
+    \item \textbf{Step 1: Writing Source Code} \\
+    You write your code in a plain text file with a \texttt{.java} extension. This file contains human-readable Java statements. For a public class named \texttt{MyApp}, the file must be named \texttt{MyApp.java}.
+
+    \item \textbf{Step 2: Compilation} \\
+    You use the Java compiler, \texttt{javac}, which is part of the JDK. The compiler reads your \texttt{.java} file, checks for syntax errors, and translates it into \textbf{bytecode}.
+    \begin{verbatim}
+    javac MyApp.java
+    \end{verbatim}
+    If successful, this creates a new file named \texttt{MyApp.class}. This file contains platform-independent bytecode, which is not human-readable.
+
+    \item \textbf{Step 3: Execution} \\
+    You use the Java launcher, \texttt{java}, which is part of the JRE. This command starts the JVM.
+    \begin{verbatim}
+    java MyApp
+    \end{verbatim}
+    \textbf{Crucial Exam Tip:} Notice there is \textbf{no} \texttt{.class} extension in the run command. Providing it (\texttt{java MyApp.class}) will result in an error. The JVM then performs several actions: loading the bytecode, verifying it for security, and finally executing it by converting the bytecode to native machine code.
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

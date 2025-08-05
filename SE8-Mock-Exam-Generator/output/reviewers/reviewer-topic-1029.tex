@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Try-Catch-Finally Blocks}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1029 \\ Topic: Try-Catch-Finally Blocks}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Handling Exceptions: The \texttt{try}, \texttt{catch}, and \texttt{finally} Structure}
+Now that we know the types of exceptions, let's look at the tools we use to handle them. The \texttt{try-catch-finally} structure is the fundamental mechanism for exception handling. The flow of control in these blocks is a favorite topic for exam questions.
+
+\subsection{The \texttt{try-catch} Flow}
+The basic structure involves a \texttt{try} block followed by one or more \texttt{catch} blocks.
+\begin{itemize}
+    \item \textbf{\texttt{try}:} You place your "risky" code inside this block. If an exception occurs on any line, execution of the \texttt{try} block halts \textit{immediately} and control transfers to the JVM to find a matching handler.
+    \item \textbf{\texttt{catch}:} This block executes only if an exception of a matching type is thrown in the \texttt{try} block. 
+\end{itemize}
+\begin{verbatim}
+try {
+    // Risky code
+    System.out.println("1");
+    int value = Integer.parseInt("abc"); // Throws NumberFormatException
+    System.out.println("2"); // This line is NEVER reached
+} catch (NumberFormatException e) {
+    System.out.println("3"); // This block executes
+} catch (Exception e) {
+    System.out.println("4"); // This block is skipped
+}
+System.out.println("5"); // Execution continues here
+// Output: 1, 3, 5
+\end{verbatim}
+
+\subsection{Catch Block Rules: Specificity and Multi-Catch}
+\begin{itemize}
+    \item \textbf{Order Matters (Crucial Exam Trap):} You must order multiple \texttt{catch} blocks from the most specific exception type (subclass) to the most general (superclass). Placing a superclass before a subclass makes the subclass's block unreachable, which is a \textbf{COMPILE ERROR}.
+\begin{verbatim}
+try { ... }
+catch (Exception e) { ... }
+// catch (IOException e) { ... } // COMPILE ERROR: Unreachable catch block
+\end{verbatim}
+    \item \textbf{Multi-Catch:} Since Java 7, you can catch multiple exception types in a single block using a pipe \texttt{|}. The exception variable in a multi-catch block is implicitly \texttt{final}.
+\begin{verbatim}
+try { ... }
+catch (IOException | SQLException e) {
+    // e = new IOException(); // COMPILE ERROR: e is final
+    // handle error
+}
+\end{verbatim}
+\end{itemize}
+
+\subsection{The Unstoppable \texttt{finally} Block}
+The \texttt{finally} block provides a mechanism to run code whether an exception occurs or not. It's for cleanup.
+\begin{itemize}
+    \item \textbf{Execution Guarantee:} The \texttt{finally} block will execute after the \texttt{try} block finishes, even if there was an uncaught exception, or a \texttt{return} statement in the \texttt{try} or \texttt{catch} block.
+    \item \textbf{When does it NOT run?} Only in extreme cases like a call to \texttt{System.exit()}, a fatal JVM error, or an infinite loop in the preceding blocks.
+    \item \textbf{Exception Masking:} If an exception is thrown from the \texttt{try} or \texttt{catch} block, and \textit{another} exception is thrown from the \texttt{finally} block, the exception from \texttt{finally} takes precedence and the original one is lost.
+\end{itemize}
+
+\subsection{Try-with-Resources: The Modern Approach}
+For resources that need to be closed (like streams or database connections), Java 7 introduced the try-with-resources statement. Any object whose class implements \texttt{AutoCloseable} can be used.
+\begin{verbatim}
+// The resource is declared inside the parentheses
+try (Scanner scanner = new Scanner(new File("test.txt"))) {
+    // use the scanner
+} catch (FileNotFoundException e) {
+    // handle the exception
+}
+// No finally block needed! The scanner's close() method is called automatically.
+\end{verbatim}
+This is safer and cleaner than using a manual \texttt{finally} block. It also handles suppressed exceptions correctly.
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item Execution in a \texttt{try} block stops immediately when an exception is thrown.
+    \item Order \texttt{catch} blocks from most specific to most general. A general catch block before a specific one is a compile error.
+    \item The \texttt{finally} block almost always runs. It's the place for cleanup code.
+    \item Prefer try-with-resources for any object that implements \texttt{AutoCloseable} to avoid resource leaks and write cleaner code.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

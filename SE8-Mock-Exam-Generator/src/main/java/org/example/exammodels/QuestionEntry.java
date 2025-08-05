@@ -1,5 +1,7 @@
 package org.example.exammodels;
 
+import org.example.utils.Answerable;
+
 import java.util.List;
 import java.util.Map;
 

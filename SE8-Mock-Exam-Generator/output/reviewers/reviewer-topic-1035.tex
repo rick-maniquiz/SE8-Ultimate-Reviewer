@@ -1,0 +1,126 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Method Design and Variable Arguments}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1035 \\ Topic: Method Design and Variable Arguments}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Introduction: Crafting Your Methods}
+Methods are the verbs of our Java programs---they perform the actions. For the 1Z0-808 exam, you need to be precise about how they are constructed. This includes everything from who can access them (access modifiers) to how they handle a varying number of inputs (varargs). Let's master the blueprint of a Java method.
+
+\section{Method Signature Components}
+A method's declaration has several parts, but for the purposes of uniqueness and overloading, the \textbf{signature} is defined by the \textbf{method name} and the \textbf{parameter list} (the number, type, and order of parameters). 
+
+\textbf{Exam Trap:} The return type, access modifier, and `throws` clause are \textbf{not} part of the signature for overloading. You cannot have two methods that differ only by their return type.
+\begin{verbatim}
+public int calculate();
+public String calculate(); // COMPILER ERROR: method calculate() is already defined
+\end{verbatim}
+
+\section{Access Modifiers: Controlling Visibility}
+You must know the four access levels cold. From most to least restrictive:
+\begin{itemize}
+    \item \texttt{\textbf{private}}: Accessible \textbf{only} within the same class.
+    \item \textbf{default} (Package-Private): No keyword is used. Accessible only by classes in the \textbf{same package}.
+    \item \texttt{\textbf{protected}}: Accessible within the \textbf{same package}, and also by \textbf{subclasses} outside the package.
+    \item \texttt{\textbf{public}}: Accessible from \textbf{anywhere}.
+\end{itemize}
+
+\section{Variable Arguments (Varargs)}
+Varargs provide a way to create methods that can be called with a variable number of arguments (from zero to many). This feature reduces the need for creating multiple overloaded methods or forcing the caller to manually create an array.
+
+\subsection{Syntax and Behavior}
+The syntax uses three dots (an ellipsis) after the data type.
+\begin{verbatim}
+// The 'numbers' parameter is a varargs parameter.
+public static void printNumbers(int... numbers) {
+    System.out.println("Number of arguments: " + numbers.length);
+    // Inside the method, 'numbers' is treated as an array: int[]
+    for (int num : numbers) {
+        System.out.print(num + " ");
+    }
+    System.out.println();
+}
+\end{verbatim}
+\textbf{Calling a varargs method:}
+\begin{verbatim}
+printNumbers();          // Called with zero arguments. length is 0.
+printNumbers(10);        // Called with one argument.
+printNumbers(1, 2, 3); // Called with three arguments.
+
+// You can also pass an array explicitly
+int[] data = {4, 5, 6};
+printNumbers(data);
+\end{verbatim}
+
+\subsection{The Two Golden Rules of Varargs}
+The exam will absolutely test you on these rules. Memorize them.
+
+\begin{enumerate}
+    \item \textbf{A method can have at most ONE varargs parameter.}
+    \begin{verbatim}
+// COMPILER ERROR: two varargs parameters
+void invalidMethod(int... nums, String... names) { }
+    \end{verbatim}
+
+    \item \textbf{The varargs parameter must be the LAST parameter in the method signature.}
+    \begin{verbatim}
+// COMPILER ERROR: varargs is not the last parameter
+void invalidMethod(String... names, int count) { }
+
+// VALID: varargs is the last parameter
+void validMethod(int count, String... names) { }
+    \end{verbatim}
+\end{enumerate}
+
+\subsection{Varargs and Overloading}
+When you have overloaded methods, one with a varargs parameter and one with a more specific parameter list, the compiler will always choose the most specific match available. The varargs method is the last resort.
+
+\begin{verbatim}
+public class OverloadTest {
+    public static void fly(int numMiles) {
+        System.out.println("int");
+    }
+
+    public static void fly(int... lengths) {
+        System.out.println("varargs");
+    }
+
+    public static void main(String[] args) {
+        fly(5);       // Prints "int". Exact match is preferred.
+        fly(5, 10);   // Prints "varargs". No exact match, so varargs is used.
+        fly(new int[]{2, 3}); // Prints "varargs". Explicit array is passed.
+    }
+}
+\end{verbatim}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item A method signature is its name and parameter list. Return type is not part of it.
+    \item Know the visibility rules: \texttt{private}, default, \texttt{protected}, \texttt{public}.
+    \item A varargs parameter is declared with \texttt{...} and is treated as an \textbf{array} inside the method.
+    \item The two varargs rules are non-negotiable: \textbf{only one} per method, and it \textbf{must be last}.
+    \item In overloading, the compiler prioritizes exact matches over varargs matches.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

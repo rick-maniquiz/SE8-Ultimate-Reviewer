@@ -1,0 +1,120 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Polymorphism and Type Casting}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1021 \\ Topic: Polymorphism and Type Casting}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Polymorphism: One Object, Many Forms}
+Polymorphism is the ability of an object to take on many forms. In practice, it means a reference variable of a superclass type can point to an object of any of its subclass types. This is the foundation of flexible and decoupled code, but for the exam, it's a topic that tests your understanding of the difference between reference type and object type.
+
+\subsection{Runtime Polymorphism: The Core Concept}
+This is the most common form of polymorphism, also known as dynamic method dispatch. The key principle to memorize is:
+\begin{itemize}
+    \item The \textbf{reference type} determines what methods you are \textit{allowed} to call at compile time.
+    \item The \textbf{actual object type} determines \textit{which version} of the method will be executed at runtime.
+\end{itemize}
+\begin{verbatim}
+class Animal {
+    public void makeSound() { System.out.println("Animal sound"); }
+}
+class Cat extends Animal {
+    @Override
+    public void makeSound() { System.out.println("Meow"); }
+    public void purr() { System.out.println("Purrrr"); }
+}
+public class Test {
+    public static void main(String[] args) {
+        Animal myPet = new Cat(); // Reference is Animal, Object is Cat
+        myPet.makeSound(); // OK. Prints "Meow".
+        // myPet.purr();  // COMPILE ERROR! The Animal reference does not know 'purr'.
+    }
+}
+\end{verbatim}
+In the example, even though the object is a \texttt{Cat}, the compiler only sees an \texttt{Animal} reference. Therefore, it only allows calls to methods defined in the \texttt{Animal} class. At runtime, the JVM sees the object is actually a \texttt{Cat} and executes the overridden \texttt{makeSound} method from the \texttt{Cat} class.
+
+\subsection{Overloading vs. Overriding: A Critical Distinction}
+The exam loves to confuse these two concepts. Do not fall for it. 
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Method Overriding (Runtime Polymorphism)} & \textbf{Method Overloading (Compile-time Polymorphism)} \\
+\hline
+Happens in two classes (superclass/subclass) & Occurs in the same class \\
+\hline
+Method signature must be identical & Method names are the same, but parameters must differ \\
+\hline
+Return type can be covariant & Return type can be different \\
+\hline
+Resolved at runtime by the JVM & Resolved at compile time by the compiler \\
+\hline
+\end{tabular}
+
+\subsection{Object Type Casting: Changing Perspectives}
+Casting allows you to convert a reference from one type to another. It's how we solve the problem in the previous example where we couldn't call the \texttt{purr()} method.
+\begin{itemize}
+    \item \textbf{Upcasting:} Casting from a subclass to a superclass. It's always safe and done implicitly.
+    \texttt{Cat myCat = new Cat(); Animal myAnimal = myCat; // Implicit upcast}
+    \item \textbf{Downcasting:} Casting from a superclass back to a subclass. It's risky and must be done explicitly. You are telling the compiler, "I know better than you; this object is really a subclass."
+\end{itemize}
+If you lie to the compiler and the object isn't what you claim it is, you get a \textbf{\texttt{ClassCastException}} at runtime.
+\begin{verbatim}
+Animal myPet = new Cat();
+Cat myCat = (Cat) myPet; // Explicit downcast. This is SAFE.
+myCat.purr(); // Now this is valid.
+
+Animal anotherPet = new Animal();
+// The object is an Animal, not a Cat.
+Cat anotherCat = (Cat) anotherPet; // Throws ClassCastException at RUNTIME.
+\end{verbatim}
+
+\subsection{The \texttt{instanceof} Operator: Your Safety Net}
+To avoid the dreaded \texttt{ClassCastException}, use the \texttt{instanceof} operator to check the actual type of an object before you cast it.
+\begin{verbatim}
+public void doAnimalStuff(Animal animal) {
+    animal.makeSound();
+    if (animal instanceof Cat) {
+        Cat cat = (Cat) animal; // This is now guaranteed to be safe.
+        cat.purr();
+    }
+}
+\end{verbatim}
+\textbf{Exam Traps for \texttt{instanceof}:}
+\begin{itemize}
+    \item \texttt{null instanceof AnyType} always evaluates to \texttt{false}.
+    \item The compiler is smart. If it can determine that a cast is impossible, it will throw a compile-time error. This happens when the two types are unrelated classes.
+\begin{verbatim}
+String s = "Hello";
+// A String can never be an Integer.
+if (s instanceof Integer) { ... } // COMPILE ERROR: Inconvertible types
+\end{verbatim}
+\end{itemize}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{Reference vs. Object:} Know what the compiler allows (based on reference type) versus what the JVM executes (based on object type). This is the essence of polymorphism.
+    \item \textbf{Overriding vs. Overloading:} Do not mix them up. Know the key differences from the comparison table.
+    \item \textbf{Casting Rules:} Upcasting is implicit and safe. Downcasting is explicit and risky.
+    \item \textbf{Safe Casting:} Always use \texttt{instanceof} before downcasting to prevent a \texttt{ClassCastException}. Be aware of compile-time cast checks.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

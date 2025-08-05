@@ -3,18 +3,16 @@ package org.example.exammodels;
 import org.example.topicmodels.Topic;
 import org.example.topicmodels.TopicRepository;
 import org.example.utils.LaTeXProcessor;
+import org.example.utils.Printable;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static org.example.utils.LaTeXProcessor.fixVerbatimString;
 
-public class Exam implements Printable{
+public class Exam implements Printable {
 
 
 

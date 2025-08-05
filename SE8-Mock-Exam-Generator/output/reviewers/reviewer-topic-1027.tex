@@ -1,0 +1,120 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Sorting and Searching Collections (Comparable, Comparator)}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1027 \\ Topic: Sorting and Searching Collections (Comparable, Comparator)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Sorting and Searching: Bringing Order to Collections}
+Now that we have our collections, how do we sort them? If you have a list of \texttt{String}s or \texttt{Integer}s, \texttt{Collections.sort()} works out of the box. But what about a list of your own custom objects, like \texttt{Employee}? Java needs you to define the comparison logic. This is done using one of two interfaces: \texttt{Comparable} or \texttt{Comparator}. Mastering these is essential.
+
+\subsection{\texttt{Comparable}: The Natural Order}
+Use the \texttt{Comparable} interface to define the \textbf{single, natural ordering} for an object. This is implemented \textit{inside} the class itself.
+\begin{itemize}
+    \item A class must \texttt{implements Comparable<Type>}.
+    \item It must implement one method: \texttt{public int compareTo(Type other)}.
+    \item \textbf{The Contract:} 
+        \begin{itemize}
+            \item returns $< 0$ if \texttt{this} object comes before \texttt{other}.
+            \item returns $0$ if \texttt{this} object is equal to \texttt{other}.
+            \item returns $> 0$ if \texttt{this} object comes after \texttt{other}.
+        \end{itemize}
+\end{itemize}
+\begin{verbatim}
+public class Product implements Comparable<Product> {
+    private int id;
+    private String name;
+    // constructor, getters...
+    @Override
+    public int compareTo(Product other) {
+        // Natural order is by id
+        return this.id - other.id;
+    }
+}
+// Usage:
+List<Product> products = ...;
+Collections.sort(products); // Sorts using the compareTo method.
+\end{verbatim}
+
+\subsection{\texttt{Comparator}: Custom and Multiple Orders}
+Use the \texttt{Comparator} interface when you need \textbf{multiple different sort orders}, or when you cannot modify the source code of the class you want to sort. This logic is defined in a \textit{separate class} or, more commonly in Java 8, a \textbf{lambda expression}.
+\begin{itemize}
+    \item A class \texttt{implements Comparator<Type>}.
+    \item It must implement one method: \texttt{public int compare(Type o1, Type o2)}.
+    \item The return value contract is the same as \texttt{compareTo}.
+\end{itemize}
+\begin{verbatim}
+// Using a separate class (pre-Java 8 style)
+public class SortProductByName implements Comparator<Product> {
+    @Override
+    public int compare(Product p1, Product p2) {
+        return p1.getName().compareTo(p2.getName());
+    }
+}
+// Usage:
+Collections.sort(products, new SortProductByName());
+
+// Using a lambda (Java 8 style - PREFERRED)
+Comparator<Product> byName = (p1, p2) -> p1.getName().compareTo(p2.getName());
+Collections.sort(products, byName);
+// Or even more concisely:
+products.sort((p1, p2) -> p1.getName().compareTo(p2.getName()));
+\end{verbatim}
+
+\subsection*{Comparable vs. Comparator: The Final Verdict}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Feature} & \textbf{Comparable} & \textbf{Comparator} \\
+\hline
+Package & \texttt{java.lang} & \texttt{java.util} \\
+\hline
+Method & \texttt{compareTo(T obj)} & \texttt{compare(T o1, T o2)} \\
+\hline
+Implementation & Inside the domain class & In a separate class or lambda \\
+\hline
+Purpose & Defines one natural order & Defines multiple custom orders \\
+\hline
+\end{tabular}
+
+\subsection{Searching with \texttt{Collections.binarySearch()}}
+Binary search is a fast way to find an element in a list, but it has one absolute requirement: \textbf{the list must be sorted first!}
+\begin{itemize}
+    \item If the list is not sorted, the result is undefined. Don't trust it.
+    \item If the element is found, it returns its index.
+    \item If the element is not found, it returns \texttt{(-(insertion point) - 1)}. The insertion point is the index where the element would be inserted to keep the list sorted. The exam loves to test this.
+\end{itemize}
+\begin{verbatim}
+List<Integer> list = Arrays.asList(2, 4, 6, 8); // Sorted!
+Collections.binarySearch(list, 6); // returns 2 (index of 6)
+Collections.binarySearch(list, 5); // returns -3. Insertion point is 2. -(2)-1 = -3.
+\end{verbatim}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item Use \texttt{Comparable} for a single, natural sort order defined inside your class.
+    \item Use \texttt{Comparator} for multiple, custom sort orders defined outside your class. Embrace lambdas for this in Java 8!
+    \item For \texttt{Collections.binarySearch()} to work correctly, the list \textbf{must be sorted}.
+    \item Know how to interpret the negative return value of \texttt{binarySearch()}.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

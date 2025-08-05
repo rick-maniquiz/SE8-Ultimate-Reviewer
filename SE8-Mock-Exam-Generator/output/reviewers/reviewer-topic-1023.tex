@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{The 'final' Keyword}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1023 \\ Topic: The 'final' Keyword}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{The \texttt{final} Keyword: No More Changes}
+The \texttt{final} keyword in Java is a modifier used to restrict the user. It can be applied to variables, methods, and classes. Its core meaning is "this cannot be changed," but what "this" refers to is key. The exam will test your precise understanding of its three different contexts.
+
+\subsection{\texttt{final} Variables: Creating Constants}
+A \texttt{final} variable can only be assigned a value once.
+\begin{itemize}
+    \item \textbf{Initialization:} A \texttt{final} instance variable must be initialized by the time the constructor completes. This can be done at declaration, in an instance initializer block, or in the constructor itself. A \texttt{final static} variable must be initialized at declaration or in a static block.
+    \item \textbf{Final Primitives:} The value itself is constant.
+\begin{verbatim}
+final int MAX_USERS = 100;
+// MAX_USERS = 101; // COMPILE ERROR
+\end{verbatim}
+    \item \textbf{Final Object References (CRITICAL EXAM TRAP):} This is the most misunderstood aspect. When a reference variable is declared \texttt{final}, it means the \textbf{reference cannot be changed} to point to a different object. However, the \textbf{state of the object it points to can be changed}.
+\end{itemize}
+\begin{verbatim}
+final StringBuilder sb = new StringBuilder("Hello");
+// sb = new StringBuilder("World"); // COMPILE ERROR: Cannot reassign final variable 'sb'
+
+// But this is perfectly legal!
+sb.append(" World"); // Modifies the internal state of the StringBuilder object.
+System.out.println(sb); // Prints "Hello World"
+\end{verbatim}
+Think of it as a constant pointer to a mutable object.
+
+\subsection{\texttt{final} Methods: Preventing Overrides}
+When you declare a method as \texttt{final}, you are forbidding any subclass from overriding it.
+\begin{itemize}
+    \item \textbf{Purpose:} To enforce a specific implementation that is critical to the class's function and should not be altered by subclasses.
+    \item \textbf{Rule:} A subclass cannot have a method with the same signature as a final method in its superclass.
+\end{itemize}
+\begin{verbatim}
+class SuperClass {
+    public final String getVersion() {
+        return "1.0";
+    }
+}
+class SubClass extends SuperClass {
+    // public String getVersion() { ... } // COMPILE ERROR: Cannot override final method
+}
+\end{verbatim}
+\textbf{Note:} \texttt{private} methods are implicitly \texttt{final} because they are not visible to subclasses and thus cannot be overridden.
+
+\subsection{\texttt{final} Classes: Preventing Inheritance}
+When you declare a class as \texttt{final}, you are making it impossible for any other class to extend it.
+\begin{itemize}
+    \item \textbf{Purpose:} Often used for security and to create immutable classes. If a class cannot be extended, you can guarantee its behavior.
+    \item \textbf{Famous Example:} The \texttt{java.lang.String} class is final. This is a key part of its immutability and security, preventing malicious subclasses from altering its behavior.
+\end{itemize}
+\begin{verbatim}
+public final class MyImmutableData {
+    // ... implementation details
+}
+// class MaliciousSubclass extends MyImmutableData { ... } // COMPILE ERROR
+\end{verbatim}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{Variables:} \texttt{final} means one-time assignment. For primitives, the value is constant. For objects, the \textit{reference} is constant, not the object's contents.
+    \item \textbf{Methods:} \texttt{final} means cannot be \textit{overridden}.
+    \item \textbf{Classes:} \texttt{final} means cannot be \textit{extended} (inherited).
+    \item Watch for illegal combinations. A method cannot be both \texttt{abstract} and \texttt{final}. A class cannot be both \texttt{abstract} and \texttt{final}. The compiler will catch these logical contradictions.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,133 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Type Conversion and Casting}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1005 \\ Topic: Type Conversion and Casting}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Topic 1005: Type Conversion and Casting}
+
+\subsection*{Thinking Like the Compiler: Shifting Shapes}
+You've mastered the primitive types. Now we explore how Java converts data from one type to another. This happens constantly in expressions. The compiler has strict rules for this, and understanding them is key to deconstructing many exam questions. These questions often look like simple arithmetic, but they are secretly testing your knowledge of type promotion and casting.
+
+\subsection*{Implicit Conversion (Widening)}
+This is an automatic and safe conversion. It happens when you assign a value from a "smaller" data type to a "larger" one. No data is lost in terms of magnitude.
+
+\textbf{The Widening Path:}
+
+\texttt{byte} $\rightarrow$ \texttt{short} $\rightarrow$ \texttt{int} $\rightarrow$ \texttt{long} $\rightarrow$ \texttt{float} $\rightarrow$ \texttt{double}
+
+A \texttt{char} can also be widened to an \texttt{int} and follow the path from there.
+\begin{verbatim}
+int myInt = 100;
+long myLong = myInt; // Implicit conversion from int to long
+float myFloat = myLong; // Implicit conversion from long to float
+\end{verbatim}
+
+\textbf{Exam Trap:} While widening from an integer type (\texttt{int}, \texttt{long}) to a floating-point type (\texttt{float}, \texttt{double}) doesn't lose magnitude, it can lose \textit{precision}. A very large \texttt{long} may not have an exact representation as a \texttt{float}. The exam is unlikely to ask you to calculate this, but you should be aware of the concept.
+
+\subsection*{Explicit Conversion (Narrowing / Casting)}
+This is a manual conversion from a "larger" type to a "smaller" one. You must explicitly tell the compiler to do it using the cast operator \texttt{(type)}. This is risky and can result in data loss.
+
+\begin{verbatim}
+double price = 299.99;
+// int roundedPrice = price; // COMPILE ERROR! Possible lossy conversion
+int truncatedPrice = (int) price; // OK. truncatedPrice is now 299
+\end{verbatim}
+\textbf{Key Point:} Casting from a floating-point to an integer type \textbf{truncates} the value (cuts off the decimal part). It does \textbf{not} round.
+
+\subsubsection*{Overflow in Narrowing}
+When you cast a value that is too large for the target type, it "overflows" or "wraps around". The result is calculated by taking the remainder of a division by the target type's range.
+\begin{verbatim}
+// A byte can hold values from -128 to 127.
+int i = 257;
+byte b = (byte) i; // 257 is too large for a byte.
+// Result is 257 % 256 = 1. So, b will be 1.
+System.out.println(b); // Prints 1
+\end{verbatim}
+
+\subsection*{Arithmetic Promotion Rules: The Core of the Trap}
+This is one of the most tested concepts in this area. When you perform an arithmetic operation, Java automatically promotes smaller types.
+
+\textbf{Rule 1:} If one operand is a \texttt{double}, the other is converted to a \texttt{double}.
+
+\textbf{Rule 2:} Otherwise, if one operand is a \texttt{float}, the other is converted to a \texttt{float}.
+
+\textbf{Rule 3:} Otherwise, if one operand is a \texttt{long}, the other is converted to a \texttt{long}.
+
+\textbf{Rule 4:} Otherwise, \textbf{both operands are converted to an \texttt{int}}.
+
+Rule 4 is the source of many errors. It means that any operation on types smaller than \texttt{int} (\texttt{byte}, \texttt{short}, \texttt{char}) will result in an \texttt{int}.
+\begin{verbatim}
+short s1 = 10;
+short s2 = 20;
+// short s3 = s1 + s2; // COMPILE ERROR!
+// Why? s1 and s2 are promoted to int. The result of s1 + s2 is an int.
+// You are trying to assign an int to a short, which is a narrowing conversion.
+
+// The fix is to cast:
+short s3 = (short) (s1 + s2); // OK
+\end{verbatim}
+
+\subsection*{Super-Trap: Compound Assignment Operators}
+The compound assignment operators (\texttt{+=, -=, *=, /=, \%=}) have a hidden, built-in cast. This is a deliberate "gotcha" on the exam.
+
+Let's revisit the previous example:
+\begin{verbatim}
+short s1 = 10;
+short s2 = 20;
+
+// s1 = s1 + s2; // Still a COMPILE ERROR.
+
+s1 += s2; // THIS WORKS!
+// The line above is equivalent to: s1 = (short) (s1 + s2);
+// The compound operator automatically casts the result back to the type
+// of the variable on the left.
+\end{verbatim}
+
+\subsection*{A Final Nuance: Compile-Time Constants}
+If you assign a literal or a \texttt{final} variable to a smaller type, the compiler is smart. If it can determine at compile time that the value fits, it will allow the assignment without an explicit cast.
+
+\begin{verbatim}
+// Example 1: Literals
+byte b1 = 100; // OK. 100 fits in a byte.
+// byte b2 = 200; // COMPILE ERROR. 200 is too large for a byte.
+
+// Example 2: final variables
+final int i = 50;
+byte b3 = i; // OK. Compiler knows i is 50 and it fits.
+
+int j = 50;
+// byte b4 = j; // COMPILE ERROR. 'j' is not final, its value could change.
+// So the compiler insists on a cast: byte b4 = (byte) j;
+\end{verbatim}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+\item \textbf{Casting Truncates:} Remember \texttt{(int) 99.99} is \texttt{99}.
+\item \textbf{Promotion to \texttt{int}:} Any arithmetic with \texttt{byte}, \texttt{short}, or \texttt{char} results in an \texttt{int}.
+\item \textbf{Compound Operators Cast:} \texttt{x += y} is not the same as \texttt{x = x + y}. The first one has an implicit cast.
+\item \textbf{Literals and \texttt{final}:} The compiler is lenient with assignments from literals and \texttt{final} variables if the value is known to fit.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

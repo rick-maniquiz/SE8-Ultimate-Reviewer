@@ -4,16 +4,14 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.topicmodels.Topic;
-import org.example.topicmodels.TopicRepository;
+import org.example.utils.Savable;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public class ExamRepository implements Savable{
+public class ExamRepository implements Savable {
     private static List<Exam> exams;
 //    private static ExamRepository instance = new ExamRepository();
     private static final String persistentFilePath = "persistent/exam-repository-persistent.json";

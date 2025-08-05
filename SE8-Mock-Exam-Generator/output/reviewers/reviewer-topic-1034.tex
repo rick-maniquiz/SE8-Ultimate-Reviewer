@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Static Imports}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1034 \\ Topic: Static Imports}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Introduction: Reducing the Clutter}
+Alright team, let's talk about a feature that can make your code cleaner, but can also be a source of tricky questions on the exam: static imports. We all know a regular import, like \texttt{import java.util.List;}, allows us to use \texttt{List} instead of \texttt{java.util.List}. A \textbf{static import} takes this one step further: it allows us to import the \textit{static members} (fields and methods) of a class directly into our file's namespace, so we can use them without referencing the class name at all.
+
+\section{The Syntax of Static Imports}
+The syntax is straightforward. It looks just like a regular import, but with the \texttt{static} keyword.
+
+\begin{itemize}
+    \item \textbf{Importing a single static member:}
+    \begin{verbatim}
+import static package.ClassName.staticMemberName;
+    \end{verbatim}
+
+    \item \textbf{Importing all static members of a class (wildcard):}
+    \begin{verbatim}
+import static package.ClassName.*;
+    \end{verbatim}
+\end{itemize}
+
+\textbf{Practical Example: Using \texttt{java.lang.Math}}
+
+Without static imports, using constants and methods from the \texttt{Math} class is verbose:
+\begin{verbatim}
+public class CircleCalculator {
+    public double calculateArea(double radius) {
+        return Math.PI * Math.pow(radius, 2);
+    }
+}
+\end{verbatim}
+
+With static imports, the code becomes much more readable:
+\begin{verbatim}
+import static java.lang.Math.PI;
+import static java.lang.Math.pow;
+
+// Or more commonly, using a wildcard:
+// import static java.lang.Math.*;
+
+public class CircleCalculator {
+    public double calculateArea(double radius) {
+        // We can now use PI and pow() directly!
+        return PI * pow(radius, 2);
+    }
+}
+\end{verbatim}
+
+\section{Exam Traps and Crucial Rules}
+This is where the exam will try to catch you. You must know these rules precisely.
+
+\subsection{Rule 1: Ambiguity Causes a Compiler Error}
+What happens if you import two static members with the same name from different classes?
+\begin{verbatim}
+package com.example;
+
+import static com.first.Constants.NAME;
+import static com.second.Constants.NAME;
+
+public class Test {
+    public static void main(String[] args) {
+        System.out.println(NAME); // COMPILER ERROR!
+    }
+}
+\end{verbatim}
+The compiler doesn't know which \texttt{NAME} to use. This is an ambiguous reference. To fix this, you \textbf{must} disambiguate by providing the class name:
+\begin{verbatim}
+System.out.println(com.first.Constants.NAME); // This is now valid
+\end{verbatim}
+This rule also applies if you use a wildcard import that brings in conflicting names. \textbf{Exam takeaway:} If a simple name could refer to more than one imported static member, the code will not compile.
+
+\subsection{Rule 2: Local Definitions Take Precedence (Shadowing)}
+If your class defines a static member with the same name as one you've imported, the one defined in your class always wins. It \textit{shadows} the imported one.
+\begin{verbatim}
+import static java.lang.Math.PI;
+
+public class MyMath {
+    // This PI shadows the imported java.lang.Math.PI
+    public static final double PI = 3.14;
+
+    public static void main(String[] args) {
+        // This will print 3.14, not the more precise value from Math.PI
+        System.out.println(PI);
+    }
+}
+\end{verbatim}
+
+\subsection{Rule 3: You Can Only Import Static Members}
+This might seem obvious, but it's a common mistake. You cannot use a static import for instance fields or methods. The compiler will reject it.
+\begin{verbatim}
+// Let's assume list.add() is an instance method
+import static java.util.ArrayList.add; // COMPILER ERROR!
+\end{verbatim}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item Static imports are for bringing \textbf{static fields and methods} into the local namespace.
+    \item If an unqualified name (like \texttt{PI} or \texttt{max}) is ambiguous due to multiple static imports, it's a \textbf{compiler error}.
+    \item A static member defined within your own class \textbf{shadows} any imported static member with the same name.
+    \item Regular imports and static imports can coexist. Their relative order doesn't matter, as long as they appear after the \texttt{package} statement.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

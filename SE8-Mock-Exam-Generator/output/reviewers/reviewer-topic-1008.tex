@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Java Operators and Precedence}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1008 \\ Topic: Java Operators and Precedence}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Topic 1008: Java Operators and Precedence}
+
+\subsection*{Thinking Like the Compiler: The Rules of Evaluation}
+Operators are the verbs of Java; they perform actions. Simple expressions like \texttt{2 + 3} are easy, but the exam will present complex expressions and ask for the exact result. To answer correctly, you can't just guess the order of operations—you must know it. This topic is all about operator precedence (which operator goes first) and associativity (what to do in a tie). Getting this right is pure precision.
+
+\subsection*{The Most Important Operators for the Exam}
+
+\subsubsection*{Unary Operators: \texttt{++} and \texttt{--}}
+This is a guaranteed exam topic. You must master the difference between pre- and post-increment/decrement.
+\begin{itemize}
+    \item \textbf{Post-Increment (\texttt{x++}):} The expression evaluates to the \textit{original} value of \texttt{x}, and \textit{then} \texttt{x} is incremented.
+    \item \textbf{Pre-Increment (\texttt{++x}):} \texttt{x} is incremented \textit{first}, and the expression evaluates to the \textit{new} value of \texttt{x}.
+\end{itemize}
+\begin{verbatim}
+int a = 5;
+int b = a++; // Step 1: b is assigned the original value of a (5).
+             // Step 2: a is incremented to 6.
+             // Result: a is 6, b is 5.
+
+int c = 5;
+int d = ++c; // Step 1: c is incremented to 6.
+             // Step 2: d is assigned the new value of c (6).
+             // Result: c is 6, d is 6.
+\end{verbatim}
+
+\subsubsection*{Logical Operators and Short-Circuiting: \texttt{\&\&} and \texttt{||}}
+This is another critical concept. The short-circuiting operators can prevent the right-hand side of an expression from being executed.
+\begin{itemize}
+    \item \textbf{\texttt{\&\&} (AND):} If the left side is \texttt{false}, the result is automatically \texttt{false}, and the right side is \textbf{never evaluated}.
+    \item \textbf{\texttt{||} (OR):} If the left side is \texttt{true}, the result is automatically \texttt{true}, and the right side is \textbf{never evaluated}.
+\end{itemize}
+This is crucial when the right-hand side has a side effect, like an increment operator.
+\begin{verbatim}
+int x = 10;
+// The left side (x > 10) is false. The right side (x++ > 10)
+// is never executed. x is not incremented.
+if (x > 10 && x++ > 10) {
+    // not reached
+}
+System.out.println(x); // Prints 10
+
+// The non-short-circuiting version (&) evaluates both sides always.
+int y = 10;
+if (y > 10 & y++ > 10) {
+    // not reached
+}
+System.out.println(y); // Prints 11 (y++ was executed)
+\end{verbatim}
+
+\subsubsection*{Other Key Operators}
+\begin{itemize}
+    \item \textbf{Integer Division:} An \texttt{int} divided by an \texttt{int} always results in a truncated \texttt{int}. \texttt{7 / 2} is \texttt{3}.
+    \item \textbf{Assignment \texttt{=}:} Has very low precedence and is right-associative. \texttt{x = y = 5;} is valid; it assigns \texttt{5} to \texttt{y}, and then assigns the result of that (which is 5) to \texttt{x}.
+    \item \textbf{Equality \texttt{==}:} For objects, this compares memory addresses, not content. Use \texttt{.equals()} for meaningful comparison of object values.
+\end{itemize}
+
+\subsection*{Operator Precedence: A Simplified Guide}
+You don't need to memorize the entire official chart. Focus on these groups, from highest to lowest precedence.
+
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Precedence} & \textbf{Operators} & \textbf{Associativity} \\
+\hline
+1 (Highest) & Post-unary: \texttt{expr++}, \texttt{expr--} & Left-to-right \\
+2 & Pre-unary: \texttt{++expr}, \texttt{--expr}, \texttt{+}, \texttt{-}, \texttt{!} & Right-to-left \\
+3 & Multiplicative: \texttt{*}, \texttt{/}, \texttt{\%} & Left-to-right \\
+4 & Additive: \texttt{+}, \texttt{-} & Left-to-right \\
+5 & Relational: \texttt{>}, \texttt{<}, \texttt{>=}, \texttt{<=}, \texttt{instanceof} & Left-to-right \\
+6 & Equality: \texttt{==}, \texttt{!=} & Left-to-right \\
+7 & Logical AND: \texttt{\&\&} & Left-to-right \\
+8 & Logical OR: \texttt{||} & Left-to-right \\
+9 & Ternary: \texttt{? :} & Right-to-left \\
+10 (Lowest) & Assignment: \texttt{=}, \texttt{+=}, \texttt{-=}, etc. & Right-to-left \\
+\hline
+\end{tabular}
+
+\textbf{Golden Rule:} When you see a complex expression, don't guess. Either apply the precedence rules strictly or, even better, observe how parentheses \texttt{()} are used. Parentheses override all precedence rules. For example, in \texttt{3 + 4 * 5}, multiplication happens first (result 23). In \texttt{(3 + 4) * 5}, addition happens first (result 35).
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{Master Increment/Decrement:} Know the difference between \texttt{x++} and \texttt{++x} cold. Trace variables step-by-step.
+    \item \textbf{Watch for Short-Circuits:} In \texttt{\&\&} and \texttt{||} expressions, check if the right-hand side has a side effect that might not happen.
+    \item \textbf{Know the Precedence Tiers:} At a minimum, know that unary operators are high, then arithmetic, then relational, then logical, and finally assignment is last.
+    \item \textbf{Trust Parentheses:} Parentheses dictate the order of evaluation, period.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

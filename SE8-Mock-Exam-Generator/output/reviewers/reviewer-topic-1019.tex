@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Encapsulation and Access Modifiers}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1019 \\ Topic: Encapsulation and Access Modifiers}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Pillar 1: Encapsulation}
+Today we're tackling the first of the four great pillars of Object-Oriented Programming: \textbf{Encapsulation}. The concept is simple but powerful: we bundle the data (fields) and the methods that operate on that data into a single unit, the class. 
+
+But encapsulation is more than just bundling. Its main goal is \textbf{data hiding}. We want to protect an object's internal state from being changed in unexpected or invalid ways by the outside world. We achieve this by hiding the implementation details and exposing only a controlled, public interface.
+
+Think of it like the dashboard of a car. It \textit{encapsulates} the engine's complexity. You have a simple interface (a gas pedal), and you don't need to know—or mess with—the fuel injection system directly. This prevents you from accidentally breaking the engine.
+
+\subsection*{Implementing Encapsulation in Java}
+The standard strategy is straightforward:
+\begin{enumerate}
+    \item Declare all instance variables as \texttt{private}. This makes them inaccessible outside the class.
+    \item Provide \texttt{public} methods, called \textbf{getters} (accessors) and \textbf{setters} (mutators), to read and modify the private fields.
+\end{enumerate}
+\begin{verbatim}
+public class Employee {
+    private String name;
+    private double salary;
+
+    // Getter for name
+    public String getName() {
+        return name;
+    }
+
+    // Setter for name
+    public void setName(String name) {
+        if (name != null && !name.trim().isEmpty()) {
+            this.name = name;
+        }
+    }
+
+    // Getter for salary
+    public double getSalary() {
+        return salary;
+    }
+    
+    // A setter can contain validation logic!
+    public void setSalary(double salary) {
+        if (salary >= 0) { // Protects the object's state
+            this.salary = salary;
+        }
+    }
+}
+\end{verbatim}
+
+\section{Java's Access Modifiers}
+Java uses four access modifiers to enforce encapsulation and control visibility. You must know these inside and out for the exam.
+
+\begin{itemize}
+    \item \texttt{public}: The least restrictive. The member is accessible from any class in any package. This is for your public API.
+    \item \texttt{protected}: The member is accessible within its own package, AND to subclasses that are in \textit{different} packages. This is a common point of confusion.
+    \item \texttt{default} (Package-Private): This is what you get if you specify \textbf{no modifier at all}. The member is accessible only to classes in the exact same package. Subclasses in a different package CANNOT access it.
+    \item \texttt{private}: The most restrictive. The member is accessible only from within the same class file.
+\end{itemize}
+
+\subsection*{The Definitive Access Modifier Table}
+Memorize this table. It's the key to dozens of potential exam questions.
+
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Modifier} & \textbf{Same Class} & \textbf{Same Package} & \textbf{Subclass (Diff. Pkg)} & \textbf{World (Diff. Pkg)}\\
+\hline
+\texttt{public} & Yes & Yes & Yes & Yes \\
+\hline
+\texttt{protected} & Yes & Yes & Yes & No \\
+\hline
+\texttt{default} & Yes & Yes & No & No \\
+\hline
+\texttt{private} & Yes & No & No & No \\
+\hline
+\end{tabular}
+
+\section{Exam Traps and Nuances}
+\begin{itemize}
+    \item \textbf{Top-Level Classes:} A class declaration that is not nested inside another class can only be \texttt{public} or \texttt{default}. It can never be \texttt{private} or \texttt{protected}. The exam might show this invalid code.
+    \item \textbf{\texttt{protected} vs. \texttt{default}:} This is the trickiest comparison. A subclass in another package can access a \texttt{protected} member of its superclass, but not a \texttt{default} member. This is a favorite exam topic.
+    \item \textbf{Method Overriding:} When a subclass overrides a method from its superclass, the access modifier in the subclass must be \textbf{the same or more accessible}. For example, you can override a \texttt{protected} method with a \texttt{public} one, but you cannot override a \texttt{public} method with a \texttt{protected} one.
+\end{itemize}
+
+\section{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item Encapsulation means \textbf{data hiding}. Protect your fields by making them \texttt{private} and provide \texttt{public} getters and setters.
+    \item Master the access modifier visibility table. Be able to recall it instantly.
+    \item Pay special attention to the difference between \texttt{protected} and \texttt{default} access, especially in the context of inheritance across packages.
+    \item Remember the rules for access modifiers on top-level classes and for overridden methods.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

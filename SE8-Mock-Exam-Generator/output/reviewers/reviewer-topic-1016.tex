@@ -1,0 +1,168 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Constructors and Initialization Blocks}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1016 \\ Topic: Constructors and Initialization Blocks}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{The Birth of an Object: A Precise Sequence}
+Team, we know that the \texttt{new} keyword creates an object, but the 1Z0-808 exam demands that you know the \textit{exact} sequence of events that happens during an object's creation. The questions will often feature strange-looking code with print statements in various places, and you must be able to trace the output perfectly. Let's master this sequence.
+
+\section{Revisiting Constructors}
+A constructor's job is to initialize an object's state. Let's build on what we know.
+
+\subsection*{Constructor Overloading}
+A class can have multiple constructors, as long as their parameter lists are different (in number, type, or order of parameters). This provides flexibility in how objects are created.
+\begin{verbatim}
+public class Shirt {
+    String color;
+    char size;
+
+    // Constructor 1: No arguments
+    public Shirt() {
+        this.color = "White";
+        this.size = 'M';
+    }
+
+    // Constructor 2: Takes a color
+    public Shirt(String color) {
+        this.color = color;
+        this.size = 'M';
+    }
+
+    // Constructor 3: Takes color and size
+    public Shirt(String color, char size) {
+        this.color = color;
+        this.size = size;
+    }
+}
+\end{verbatim}
+
+\subsection*{Constructor Chaining with \texttt{this()}}
+Notice the code duplication in the constructors above. We can eliminate this by having one constructor call another using \texttt{this()}. This is called constructor chaining.
+
+\textbf{The Rule:} A call to \texttt{this(...)} must be the \textbf{very first statement} in a constructor.
+
+\begin{verbatim}
+public class Shirt {
+    String color;
+    char size;
+
+    // The "main" constructor that does the work
+    public Shirt(String color, char size) {
+        this.color = color;
+        this.size = size;
+    }
+
+    // This constructor calls the main one, providing a default size
+    public Shirt(String color) {
+        this(color, 'M'); // Calls the (String, char) constructor
+    }
+
+    // This constructor calls the second one, providing a default color
+    public Shirt() {
+        this("White"); // Calls the (String) constructor
+    }
+}
+\end{verbatim}
+
+\section{Initialization Blocks}
+Sometimes you need logic to run during initialization that doesn't fit well in a constructor. Java provides two special code blocks for this.
+
+\subsection*{Instance Initializer Block}
+This is a block of code written directly in the class body, enclosed in curly braces \texttt{\{...\}}. It is executed \textbf{every time an instance of the class is created}.
+\begin{verbatim}
+class Log {
+    {
+        // This instance initializer runs for every new Log object
+        System.out.println("Initializing new log instance...");
+    }
+}
+\end{verbatim}
+
+\subsection*{Static Initializer Block}
+This block is marked with the \texttt{static} keyword. It is executed only \textbf{once}, when the JVM first loads the class into memory. It runs before any static members are used and long before any instances are created.
+\begin{verbatim}
+class DatabaseConnection {
+    static {
+        // This runs only once when the class is first loaded
+        System.out.println("Loading database driver...");
+    }
+}
+\end{verbatim}
+
+\section{The Exam-Critical Order of Initialization}
+This is the key takeaway. You must memorize this order. Let's trace the creation of a \texttt{Child} object where \texttt{Child} extends \texttt{Parent}.
+
+\textbf{Order of Events:}
+\begin{enumerate}
+    \item \textbf{Class Loading Phase:}
+    \begin{enumerate}
+        \item \textbf{Parent} class is loaded. All \texttt{static} variable declarations and \texttt{static} initializers of \texttt{Parent} are run in the order they appear.
+        \item \textbf{Child} class is loaded. All \texttt{static} variable declarations and \texttt{static} initializers of \texttt{Child} are run in the order they appear.
+    \end{enumerate}
+    \item \textbf{Instance Creation Phase (for \texttt{new Child()}):}
+    \begin{enumerate}
+        \item \textbf{Parent} object part is created first. All \textit{instance} variable declarations and \textit{instance} initializers of \texttt{Parent} are run in order.
+        \item The \textbf{Parent} constructor is run.
+        \item \textbf{Child} object part is created. All \textit{instance} variable declarations and \textit{instance} initializers of \texttt{Child} are run in order.
+        \item The \textbf{Child} constructor is run.
+    \end{enumerate}
+\end{enumerate}
+
+\textbf{Example Trace:}
+\begin{verbatim}
+class Parent {
+    static { System.out.println("1. Parent static block"); }
+    { System.out.println("3. Parent instance block"); }
+    Parent() { System.out.println("4. Parent constructor"); }
+}
+class Child extends Parent {
+    static { System.out.println("2. Child static block"); }
+    { System.out.println("5. Child instance block"); }
+    Child() { System.out.println("6. Child constructor"); }
+    public static void main(String[] args) {
+        new Child();
+    }
+}
+\end{verbatim}
+
+\textbf{Output:}
+\begin{verbatim}
+1. Parent static block
+2. Child static block
+3. Parent instance block
+4. Parent constructor
+5. Child instance block
+6. Child constructor
+\end{verbatim}
+
+\section{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{Order is King:} Burn the initialization order into your memory. Statics of parent, then statics of child. Then for the instance: instance blocks of parent, constructor of parent, instance blocks of child, constructor of child.
+    \item \textbf{\texttt{this()} call:} Must be the first statement in a constructor.
+    \item \textbf{Static blocks run once.} Instance blocks run for every new object.
+    \item When you see an initialization question, don't rush. Grab a piece of paper and trace the execution step-by-step according to the rules.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

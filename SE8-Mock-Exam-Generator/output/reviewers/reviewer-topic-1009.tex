@@ -1,0 +1,139 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Conditional Statements (if/else, switch)}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1009 \\ Topic: Conditional Statements (if/else, switch)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Topic 1009: Conditional Statements (if/else, switch)}
+
+\subsection*{Thinking Like the Compiler: Making Decisions}
+Program flow isn't always linear. Conditional statements allow a program to make decisions and execute different blocks of code. The exam will test your knowledge of the strict syntax rules for these statements and the logical flow they create, especially in oddly formatted code or tricky `switch` blocks.
+
+\subsection*{The \texttt{if-else} Construct}
+This is the most fundamental decision-making tool.
+
+\subsubsection*{The Condition Must Be a Boolean}
+This is a non-negotiable rule in Java. The expression inside the \texttt{if(...)} parentheses must evaluate to either \texttt{true} or \texttt{false}.
+\begin{verbatim}
+int x = 10;
+if (x = 5) { ... } // COMPILE ERROR! An assignment (x=5) results in an int,
+                  // not a boolean.
+                  
+if (x == 10) { ... } // CORRECT. The result of == is a boolean.
+\end{verbatim}
+
+\subsubsection*{Optional Braces \texttt{\{ \}} and the Dangling \texttt{else}}
+The exam loves to test code where the curly braces are omitted. An \texttt{if} or \texttt{else} block without braces can only contain a \textbf{single statement}.
+
+An \texttt{else} clause always binds to the nearest preceding `if` that doesn't have an `else` yet. This is known as the "dangling else" problem.
+\begin{verbatim}
+int score = 80;
+boolean isGraded = false;
+
+// Which 'if' does this 'else' belong to?
+if (score > 60)
+    if (isGraded)
+        System.out.println("Pass");
+else // This 'else' belongs to 'if (isGraded)', NOT 'if (score > 60)'
+    System.out.println("Not graded yet");
+
+// Correctly formatted with braces for clarity:
+if (score > 60) {
+    if (isGraded) {
+        System.out.println("Pass");
+    } else {
+        System.out.println("Not graded yet");
+    }
+}
+\end{verbatim}
+
+\subsection*{The Ternary Operator (\texttt{? :})}
+This is a compact shorthand for an `if-else` statement that produces a value.
+
+\textbf{Syntax:} \texttt{booleanExpression ? valueIfTrue : valueIfFalse;}
+\begin{verbatim}
+int score = 75;
+String result;
+if (score > 60) {
+    result = "Pass";
+} else {
+    result = "Fail";
+}
+
+// The same logic using a ternary operator:
+String ternaryResult = score > 60 ? "Pass" : "Fail";
+\end{verbatim}
+
+\subsection*{The \texttt{switch} Statement}
+This is a huge topic for the exam. You must know its rules inside and out.
+
+\subsubsection*{Valid \texttt{switch} Argument Types}
+The variable you `switch` on must be of a compatible type. For Java 8, these are:
+\begin{itemize}
+    \item Primitives: \textbf{\texttt{byte}, \texttt{short}, \texttt{char}, \texttt{int}}.
+    \item Their wrapper classes: \texttt{Byte}, \texttt{Short}, \texttt{Character}, \texttt{Integer}.
+    \item \texttt{String} (since Java 7).
+    \item \texttt{enum} types.
+\end{itemize}
+\textbf{Crucial Exam Tip:} You \textbf{cannot} switch on a \texttt{long}, \texttt{float}, \texttt{double}, or \texttt{boolean}.
+
+\subsubsection*{\texttt{case} Values Must Be Compile-Time Constants}
+The value for each `case` must be known at compile time. This means it must be a literal or a \texttt{final} variable.
+\begin{verbatim}
+final int MONDAY = 1;
+int day = 2;
+switch (day) {
+    case MONDAY: System.out.println("Work"); break; // OK, MONDAY is final
+    case 2: System.out.println("Work"); break;      // OK, 2 is a literal
+    // case day: System.out.println("Huh?"); break; // COMPILE ERROR! 'day' is not a constant
+}
+\end{verbatim}
+
+\subsubsection*{The Fall-Through Trap}
+This is the most tested aspect of `switch` statements. If a \texttt{case} block does not end with a \texttt{break}, execution \textbf{falls through} to the next \texttt{case} block and executes its statements, continuing until a \texttt{break} is found or the \texttt{switch} ends.
+\begin{verbatim}
+int option = 2;
+switch (option) {
+    case 1: 
+        System.out.print("A");
+    case 2: // Matches here, execution starts
+        System.out.print("B"); // Prints B. No break, so it falls through.
+    case 3: 
+        System.out.print("C"); // Prints C. No break, so it falls through.
+    default:
+        System.out.print("D"); // Prints D.
+}
+// FINAL OUTPUT: BCD
+\end{verbatim}
+The \texttt{default} block is optional and can be placed anywhere, but its location affects the fall-through logic.
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{\texttt{if} needs a \texttt{boolean}:} An assignment like \texttt{if(x=5)} is a compile error.
+    \item \textbf{Beware of Missing Braces:} Track the logic of single-statement \texttt{if/else} blocks carefully and know the dangling \texttt{else} rule.
+    \item \textbf{Memorize \texttt{switch} types:} Know which types are allowed (\texttt{int}, \texttt{String}, \texttt{char}, etc.) and which are forbidden (\texttt{long}, \texttt{double}, \texttt{boolean}).
+    \item \textbf{Master Fall-Through:} When you see a \texttt{switch} statement, your first action should be to look for the \texttt{break} statements and trace the execution path.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

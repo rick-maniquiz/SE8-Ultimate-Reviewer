@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{One-Dimensional and Multi-Dimensional Arrays}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1024 \\ Topic: One-Dimensional and Multi-Dimensional Arrays}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Arrays: Java's Foundational Data Structure}
+Let's get back to basics. Arrays are a core part of the Java language, and you cannot pass the 1Z0-808 exam without mastering their syntax, especially the tricky parts. An array is a fixed-size, indexed collection of elements, all of the same data type. While they might seem simple, the exam will test you on every strange but valid way to declare and initialize them. Let's think like the compiler.
+
+\subsection{Declaration, Instantiation, and Initialization}
+Working with arrays is a three-step process, though these steps can be combined.
+\begin{enumerate}
+    \item \textbf{Declaration:} Creates a reference variable. No object exists yet; the reference is \texttt{null}. The exam loves to mix up the syntax.
+\begin{verbatim}
+int[] scores; // Preferred style
+int scores[]; // C-style, also valid
+\end{verbatim}
+    \item \textbf{Instantiation:} Creates the array object on the heap with a specified size. Elements are initialized to their default values (e.g., \texttt{0} for \texttt{int}, \texttt{null} for objects).
+\begin{verbatim}
+scores = new int[10]; // Creates an array of 10 integers
+\end{verbatim}
+    \item \textbf{Initialization:} Assigning values to the elements.
+\begin{verbatim}
+scores[0] = 95;
+\end{verbatim}
+\end{enumerate}
+
+\subsection*{Array Declaration and Initialization Traps}
+This is where you need to be sharp. Pay attention to these examples.
+\begin{itemize}
+    \item \textbf{Mixed Declarations:} Brackets can apply to the type or the variable.
+\begin{verbatim}
+int[] array1, array2; // Both are int arrays
+int array3[], var1;   // array3 is an int array, var1 is just an int
+int[] array4, var2[]; // array4 is a 1D array, var2 is a 2D array
+\end{verbatim}
+    \item \textbf{Array Literals (Anonymous Arrays):} You can declare, instantiate, and initialize in one go. But there's a catch.
+\begin{verbatim}
+int[] numbers = {10, 20, 30}; // This is valid
+
+int[] moreNumbers;
+// moreNumbers = {40, 50}; // COMPILE ERROR!
+moreNumbers = new int[]{40, 50}; // This is the correct way
+\end{verbatim}
+You \textbf{cannot} use the array literal shorthand to initialize an array on a separate line from its declaration.
+
+\subsection{Access, Length, and Exceptions}
+\begin{itemize}
+    \item \textbf{Access:} Use zero-based index, e.g., \texttt{numbers[0]}.
+    \item \textbf{Length:} Use the \texttt{length} \textbf{property} (not a method!). The exam will try to trick you with \texttt{array.length()}.
+    \item \textbf{\texttt{ArrayIndexOutOfBoundsException}:} This is a runtime exception thrown when you access an invalid index (less than 0 or greater than or equal to \texttt{length}). Code like \texttt{numbers[numbers.length]} will always fail.
+\end{itemize}
+
+\subsection{Multi-Dimensional Arrays}
+These are simply arrays of arrays.
+\begin{itemize}
+    \item \textbf{Declaration and Instantiation:}
+\begin{verbatim}
+String[][] names = new String[2][3];
+\end{verbatim}
+    \item \textbf{Asymmetric (Ragged) Arrays:} The inner arrays do not need to be the same length. This is a common exam topic.
+\begin{verbatim}
+int[][] ragged = new int[3][]; // Only the first dimension size is mandatory
+ragged[0] = new int[5];
+ragged[1] = new int[2];
+ragged[2] = new int[3];
+System.out.println(ragged[1][0]); // Accesses the first element of the second array
+\end{verbatim}
+    \item \textbf{Literals:}
+\begin{verbatim}
+char[][] letters = { {'a','b'}, {'c','d','e'} };
+System.out.println(letters.length);    // Prints 2 (the size of the outer array)
+System.out.println(letters[1].length); // Prints 3 (the size of the second inner array)
+\end{verbatim}
+\end{itemize}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item Master the different declaration syntaxes (\texttt{int[] x} vs. \texttt{int x[]}).
+    \item Remember the rule for initializing with a literal: must be on the same line as declaration unless you use the \texttt{new int[]{...}} syntax.
+    \item It's \texttt{array.length} (a property), not \texttt{array.length()} (a method).
+    \item For multi-dimensional arrays, you only need to specify the size of the outermost dimension at instantiation.
+\end{itemize}
+\end{enumerate}
+
+\end{document}

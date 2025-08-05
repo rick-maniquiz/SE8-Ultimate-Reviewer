@@ -1,0 +1,155 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{FECP5 45/45}
+\lhead{Date and Time API (java.time)}
+\rfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{1Z0-808 Exam Topic Reviewer}}
+\author{TopicId: 1033 \\ Topic: Date and Time API (java.time)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage\begin{enumerate}[label=(\arabic*)]
+\section*{Introduction: A New Era for Dates and Times}
+For years, Java developers struggled with the old \texttt{java.util.Date} and \texttt{java.util.Calendar} APIs. They were mutable, had confusing method names, were not thread-safe, and used a 0-based month system. The 1Z0-808 exam will test your knowledge of the modern \texttt{java.time} API introduced in Java 8, which solves all these problems. Your mantra for this topic should be: \textbf{Immutability and Clarity}.
+
+\section{The Core Classes: Human-Readable Time}
+These are the main classes you'll use to represent dates and times. They are all in the \texttt{java.time} package and are timezone-agnostic.
+
+\subsection{\texttt{LocalDate}}
+Represents a date without time or a time zone (e.g., year-month-day).
+\begin{itemize}
+    \item \textbf{Creation:}
+    \begin{verbatim}
+LocalDate today = LocalDate.now(); // Current date from system clock
+LocalDate myBirthday = LocalDate.of(1995, 8, 15); // Year, Month, Day
+LocalDate parsedDate = LocalDate.parse("2025-12-25"); // From a String
+    \end{verbatim}
+    \textbf{Exam Trap:} The month is 1-based (1 for January, 12 for December). Providing an invalid value like \texttt{LocalDate.of(2025, 13, 1)} will throw a \texttt{DateTimeException} at runtime.
+\end{itemize}
+
+\subsection{\texttt{LocalTime}}
+Represents a time without a date or a time zone (e.g., hour-minute-second).
+\begin{itemize}
+    \item \textbf{Creation:}
+    \begin{verbatim}
+LocalTime now = LocalTime.now(); // Current time
+LocalTime meetingTime = LocalTime.of(13, 30); // 1:30 PM
+LocalTime lunchTime = LocalTime.parse("12:00:00"); // From a String
+    \end{verbatim}
+\end{itemize}
+
+\subsection{\texttt{LocalDateTime}}
+Represents a date and time combined, but still without a time zone.
+\begin{itemize}
+    \item \textbf{Creation:}
+    \begin{verbatim}
+LocalDateTime rightNow = LocalDateTime.now(); // Current date and time
+LocalDateTime event = LocalDateTime.of(2025, 8, 5, 15, 30);
+// You can also combine a LocalDate and LocalTime
+LocalDateTime combined = LocalDateTime.of(myBirthday, meetingTime);
+    \end{verbatim}
+\end{itemize}
+
+\section{The Golden Rule: Immutability}
+Every class in the \texttt{java.time} package is \textbf{immutable}. This means once an object is created, it cannot be changed. All manipulation methods (like \texttt{plusDays}, \texttt{minusHours}) return a \textbf{new} object. Failing to assign the result of these methods is a classic mistake and a frequent exam trick.
+
+\textbf{Incorrect Usage (Common Trap):}
+\begin{verbatim}
+LocalDate date = LocalDate.of(2025, 1, 20);
+date.plusDays(10); // This line does nothing to the 'date' variable!
+System.out.println(date); // Prints 2025-01-20
+\end{verbatim}
+
+\textbf{Correct Usage:}
+\begin{verbatim}
+LocalDate date = LocalDate.of(2025, 1, 20);
+date = date.plusDays(10); // Re-assign the new object to the variable
+System.out.println(date); // Prints 2025-01-30
+\end{verbatim}
+
+\section{Representing Spans of Time: \texttt{Period} vs. \texttt{Duration}}
+The exam will test you on the difference between these two classes. The key is what kind of temporal unit they represent.
+
+\subsection{\texttt{Period}: Date-Based Amounts}
+Represents a quantity of time in terms of \textbf{years, months, and days}. It's used with \texttt{LocalDate} and \texttt{LocalDateTime}.
+\begin{itemize}
+    \item \textbf{Creation:} \texttt{Period p = Period.of(2, 3, 10);} // 2 years, 3 months, 10 days
+    \item \textbf{Usage:} \texttt{LocalDate futureDate = today.plus(p);}
+    \item \textbf{Exam Trap:} The \texttt{ofYears}, \texttt{ofMonths}, \texttt{ofDays} factory methods are static and do NOT chain. The last one called wins.
+    \begin{verbatim}
+// This creates a period of 5 DAYS ONLY, not 1 year and 5 days!
+Period trickyPeriod = Period.ofYears(1).ofDays(5);
+
+// To create 1 year and 5 days, you must use:
+Period correctPeriod = Period.of(1, 0, 5);
+    \end{verbatim}
+\end{itemize}
+
+\subsection{\texttt{Duration}: Time-Based Amounts}
+Represents a quantity of time in terms of \textbf{hours, minutes, seconds, and nanoseconds}. It's used with \texttt{LocalTime} and \texttt{LocalDateTime}.
+\begin{itemize}
+    \item \textbf{Creation:} \texttt{Duration d = Duration.ofHours(3).plusMinutes(30);}
+    \item \textbf{Usage:} \texttt{LocalDateTime later = rightNow.plus(d);}
+    \item \textbf{Exam Trap:} You cannot use a \texttt{Duration} with a \texttt{LocalDate}. A \texttt{LocalDate} does not have a time component. The following code throws an \texttt{UnsupportedTemporalTypeException}.
+    \begin{verbatim}
+LocalDate date = LocalDate.now();
+Duration d = Duration.ofHours(24);
+date.plus(d); // Throws Exception at runtime!
+    \end{verbatim}
+\end{itemize}
+
+\section{Formatting and Parsing}
+To convert \texttt{java.time} objects to and from Strings, you use \texttt{DateTimeFormatter}.
+
+\begin{itemize}
+    \item \textbf{Formatting (Object -> String):}
+    \begin{verbatim}
+LocalDateTime event = LocalDateTime.of(2025, 8, 5, 15, 0);
+
+// Using a predefined standard formatter
+String iso = event.format(DateTimeFormatter.ISO_DATE_TIME);
+// Result: "2025-08-05T15:00:00"
+
+// Using a custom pattern
+DateTimeFormatter formatter = 
+    DateTimeFormatter.ofPattern("MMMM dd, yyyy 'at' hh:mm a");
+String custom = event.format(formatter);
+// Result: "August 05, 2025 at 03:00 PM"
+    \end{verbatim}
+
+    \item \textbf{Parsing (String -> Object):}
+    \begin{verbatim}
+String input = "May 20, 2026";
+DateTimeFormatter f = DateTimeFormatter.ofPattern("MMMM d, yyyy");
+LocalDate parsed = LocalDate.parse(input, f);
+System.out.println(parsed); // Prints 2026-05-20
+    \end{verbatim}
+\end{itemize}
+
+\section*{Key Takeaways for the 1Z0-808 Exam}
+\begin{itemize}
+    \item \textbf{Immutability is everything.} Manipulation methods create and return new instances. Check if the result is assigned!
+    \item Know the core classes: \texttt{LocalDate}, \texttt{LocalTime}, \texttt{LocalDateTime}.
+    \item Understand the difference: \texttt{Period} is for date units (Y, M, D) and works with \texttt{LocalDate}. \texttt{Duration} is for time units (H, M, S) and works with \texttt{LocalTime}.
+    \item Be wary of creating objects with invalid values (e.g., month 13)---this results in a runtime \texttt{DateTimeException}.
+    \item Remember that \texttt{Period.ofYears(1).ofMonths(5)} creates a period of 5 months, not 1 year and 5 months.
+    \item Know how to use \texttt{DateTimeFormatter} for both formatting (\texttt{format()}) and parsing (\texttt{parse()}).
+\end{itemize}
+\end{enumerate}
+
+\end{document}
