@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         ReviewerRepository reviewerRepository = new ReviewerRepository();
-        Exam exam = new Exam(56, "hard");
+        Exam exam = new Exam(56, "hard"); // easy, medium, hard
         SolutionSheet solutionSheet = new SolutionSheet(exam);
         exam.generatePDF();
         solutionSheet.generatePDF();
