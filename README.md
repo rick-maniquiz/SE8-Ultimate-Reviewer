@@ -2,6 +2,7 @@
 
 ### Author: Rick
 
+> ⚠️ *Note: Make sure that a folder named persistent is exists in the SE8-Mock-Exam-Generator folder.*
 > ⚠️ *Note: Reviewer generation and content are still under development. Stay tuned for upcoming improvements.*
 
 This tool generates a **printable PDF mock exam** and its corresponding **solution sheet** using LaTeX. It's developed in **Java SE 8** and uses **Maven** for dependency and build management.
